@@ -3,7 +3,7 @@ if not OP.Global then OP.Global = {} end
 if not OP.Global.Locales then OP.Global.Locales = {} end
 if not OP.Global.Locales.Languages then OP.Global.Locales.Languages = {} end
 
--- AUTO LOCALES: 5 (do not change)
+-- AUTO LOCALES: 36 (do not change)
 
 OP.Global.Locales.Languages["et-EE"] = {
 	-- configuration settings for language
@@ -17,45 +17,54 @@ OP.Global.Locales.Languages["et-EE"] = {
 		warning = "Hoiatus",
 		invalid_input = "Vigane sisend.",
 		missing_input = "Puudub sisend.",
+		missing_or_invalid_input = "Puuduvad või vigased sisendid.",
 		player_not_found = "Mängijat serveri ID-ga `${serverId}` ei leitud.",
 		something_went_wrong = "Midagi läks valesti. Palun proovi uuesti.",
 		yes = "Jah",
-		no = "Ei"
+		no = "Ei",
+		n_a = "Puudub",
+		invalid_server_id = "Vigane serveri ID.",
+		appreciated_tier = "Hinnatud tase",
+		respected_tier = "Respekteeritud tase",
+		heroic_tier = "Kangelaslik tase",
+		legendary_tier = "Legendaarne tase",
+		god_tier = "Jumalik tase"
 	},
 
 	-- animations/*
+	chairs = {
+		invalid_model = "Puuduv või vigane mudeli nimi.",
+		no_nearby_chair = "Ühtegi sellise mudeli tooli läheduses pole.",
+		chair_offset_copied = "Tooli nihutus kopeeritud."
+	},
+
 	emotes = {
 		get_in_trunk = "Vajuta ~INPUT_ENTER~, et minna pakiruumi.",
 		put_boombox_in_trunk = "Vajuta ~INPUT_ENTER~, et panna boombox pakiruumi.",
+		put_bicycle_in_trunk = "Vajuta ~INPUT_ENTER~, et panna jalgratas pagasiruumi.",
+		cant_put_bicycle_in_trunk = "Sa ei saa seda jalgratast sellesse pagasiruumi panna.",
 		put_player_in_trunk = "Vajuta ~INPUT_ENTER~, et panna mängija pakiruumi.",
 		put_player_in_seat = "[${VehicleEnterKey}] Istu istmele",
+		putting_player_in_seat = "Istmele panemine",
 		trunk_interaction_display = "[${VehicleEnterKey}] Välju sõidukist [${InteractionKey}] Ava/sulge pagasiruum",
 		trunk_open_close_display = "[${InteractionKey}] Ava/sulge pagasiruum",
+		trunk_get_out_display = "[${VehicleEnterKey}] Väljumine",
 		boombox_already_in_trunk = "Pagasiruumis on juba helisüsteem.",
 		the_trunk_is_occupied = "Pagasiruum on hõivatud.",
 		unable_to_toggle_carry = "Palun oodake enne kandmise sisse/välja lülitamist.",
 		carry_disabled_animal = "Lemmikloomad ei saa kanda.",
+		no_carry_nearby = "Ühtegi kandjat pole läheduses.",
+		cant_reach_carry = "Sa ei saa lähimale inimesele ligi.",
+
+		trunk_hint = "Kasuta \"/door\" avamiseks või sulgemiseks pagasniku läheduses seistes.",
 
 		cancel_piggyback = "Vajutage ~INPUT_FRONTEND_RRIGHT~, et loobuda selja tagant kandmisest.",
 		piggyback_hop_on = "[${InteractionKey}] hüppa selga",
 		stop_piggyback = "Vajuta ~INPUT_VEH_HEADLIGHT~, et lõpetada seljakotiga sõitmist.",
 
-		lockpicking_cuffs = "Käeraua luku murdmine",
-		lockpick_cuffs_too_fast = "Liigutad liiga kiiresti.",
-		success_lockpick_cuffs = "Käearmude lukustuse murdmine õnnestus.",
-		failed_lockpick_cuffs = "Käearmude lukustuse murdmine ebaõnnestus.",
-		lockpick_lost = "Oled oma luku murtud.",
-
-		not_cuffed = "Sind ei ole käeraudadega kinni pandud.",
-		unable_to_lockpick = "Sa ei saa käeraudu lukustuse murtmist teha.",
-
-		lockpick_cuffs_logs_title = "Murdetud käeraudade lukud",
-		lockpick_cuffs_logs_details = "${consoleName} murdis oma käeraudu kasutades `${itemName}`.",
-
 		you_are_not_being_carried = "Sa ei ole praegu üles tõstetud.",
 		successfully_uncarried = "Üles tõstmine peatati edukalt.",
 		failed_uncarried = "Üles tõstmise sunniviisilist peatamist ei õnnestunud läbi viia.",
-		uncarry_missing_permissions = "Üles tõstmise sunniviisiline peatamine ebaõnnestus õiguste puudumise tõttu.",
 
 		uncarry_logs_title = "Jõuga peatatud üles tõstmine",
 		uncarry_logs_details = "${consoleName} sundis ${targetName} end üles tõstmast.",
@@ -67,12 +76,19 @@ OP.Global.Locales.Languages["et-EE"] = {
 		cant_struggle_dead = "Te ei saa surnuna võidelda",
 		struggle_to_quick = "Pärast seda, kui olete just võidelnud, olete väsinud. Oodake veidi ja proovige uuesti.",
 		struggle_logs_title = "Vabadusse pääsenud",
-		struggle_logs_details = "${consoleName} sai vabadusse ${targetName} haardetest võitles"
+		struggle_logs_details = "${consoleName} sai vabadusse ${targetName} haardetest võitles",
+
+		ragdolled_player = "Muudetud mängija ${displayName} ragdoll'iks."
+	},
+
+	ledges = {
+		no_ledge = "Sa ei ole pinna lähedal.",
+		invalid_variation = "Vigane variant (1 - 13).",
+		press_x_to_stop = "Vajuta ~INPUT_VEH_DUCK~, et lõpetada istumine."
 	},
 
 	-- base/*
 	admin = {
-		feature_toggle_not_admin = "Prooviti avada või sulgeda funktsiooni '${featureName}', kuid pole selleks piisavalt õigusi",
 		feature_toggle_activated_logs_title = "Kaugjuhtimisega aktiveeritud omadus",
 		feature_toggle_activated_logs_details_state = "${consoleName} aktiveeris mängijale ${targetConsoleName} funktsiooni '${featureName}' olekuga '${newState}''.",
 		feature_toggle_activated_all_logs_title = "Lülitas funktsiooni kõigile kaugjuhtimisega",
@@ -90,15 +106,14 @@ OP.Global.Locales.Languages["et-EE"] = {
 		noclip_toggle_activated_self_on_logs_details = "${consoleName} lülitas Noclipi sisse asukohas  `x: ${xCoord}, y: ${yCoord}, z: ${zCoord}`. (Sõidukis: ${inVehicle})",
 		noclip_toggle_activated_self_off_logs_details = "${consoleName} lülitas noclipi välja asukohas `x: ${xCoord}, y: ${yCoord}, z: ${zCoord}`.",
 
+		can_not_trigger_remotely_without_staff = "Selle käsu kaugkäivitamiseks pead olema personal.",
+
 		model_name_not_provided = "Modeli nime ei esitatud.",
 		model_name_invalid = "Mudeli nimi `${modelName}` on sobimatu.",
-		failed_to_spawn_vehicle = "Ebaõnnestus käskluse /spawn_vehicle korrektne täitmine.",
-		spawned_vehicle_for_player = "Edukalt ilmus '${modelName}' mängijale ${consoleName}.",
+		model_name_not_a_vehilce = "Mudelinimi `${modelName}` pole sõiduk.",
+		failed_to_spawn_vehicle = "Sõiduki loomine ebaõnnestus.",
+		spawned_vehicle_for_player = "Edukalt loodi '${modelName}' mängijale ${displayName} sõiduk.",
 		spawned_vehicle_for_everyone = "Edukalt ilmus '${modelName}' kõigile.",
-		spawn_vehicle_for_player_not_staff = "Mängija üritas sõidukit kellegi teise jaoks tekitada, kuid tal pole selleks vajalikke õigusi.",
-		spawn_vehicle_for_self_not_staff = "Mängija üritas iseendale sõidukit tekitada, kuid tal pole selleks vajalikke õigusi.",
-		replace_vehicle_no_permissions = "Mängija üritas oma sõidukit asendada, kuid tal pole selleks vajalikke õigusi.",
-		create_vehicle_no_permissions = "Mängija üritas sõidukit tekitada, kuid tal pole selleks vajalikke õigusi.",
 		spawned_vehicle_for_self_title = "Sõiduki tekitamine",
 		spawned_vehicle_for_self_details = "${consoleName} tekitas sõiduki mudelinimega `${modelName}`.",
 		spawned_vehicle_for_player_title = "Sõiduki tekitamine mängijale",
@@ -108,6 +123,31 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		vehicle_created = "Sõiduk edukalt loodud.",
 		failed_vehicle_creation = "Sõiduki loomine ebaõnnestus.",
+
+		invalid_network_id = "Võrgu ID vigane.",
+
+		-- NOTE: `add_vehicle` command:
+		add_vehicle_added_vehicle_for_everyone = "Lisati sõiduk mudelinimega `${modelName}` kõigile.",
+		add_vehicle_added_vehicle_for_player = "Lisatud sõiduk mudelinimega `${modelName}` #${vehicleId} mängijale ${consoleName}.",
+		add_vehicle_added_vehicle = "Lisatud sõiduk mudelinimega `${modelName}` #${vehicleId}.",
+		add_vehicle_character_not_loaded = "Valitud mängijal pole laetud ühtegi tegelast.",
+		add_vehicle_target_user_not_found = "Sihtkasutajat ei leitud.",
+		add_vehicle_invalid_input = "Vigane sisend.",
+		add_vehicle_no_permissions = "Puuduvad õigused.",
+		add_vehicle_user_not_found = "Kasutajat ei leitud.",
+		add_vehicle_invalid_player = "Serveri ID-ga `${serverId}` ei leitud ühtegi mängijat.",
+		add_vehicle_invalid_model_name = "Mudelinime `${modelName}` ei ole kehtiv mudel.",
+		add_vehicle_no_model_name = "Mudeli nime ei lisatud.",
+
+		added_vehicle_for_everyone_logs_title = "Lisas sõiduki kõigile",
+		added_vehicle_for_everyone_logs_details = "${consoleName} lisas kõigi garaažidesse sõiduki mudelinimega `${modelName}`.",
+		added_vehicle_for_player_logs_title = "Mängijale Lisatud Sõiduk",
+		added_vehicle_for_player_logs_details = "${consoleName} lisas sõiduki mudeliga `${modelName}` ${targetConsoleName} garaaži.",
+		added_vehicle_logs_title = "Lisatud Sõiduk",
+		added_vehicle_logs_details = "${consoleName} lisas sõiduki mudeliga `${modelName}` oma garaaži.",
+
+		vehicle_saved = "Sõiduk mudelinimega `${modelName}` #${vehicleId}` on edukalt salvestatud.",
+		failed_to_save_vehicle = "Sõiduki salvestamine ebaõnnestus.",
 
 		invalid_amount = "Vigane summa.",
 
@@ -155,8 +195,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		removed_bank_from_player = "Eemaldati $${amount} panka mängijalt ${targetConsoleName}.",
 		removed_bank_from_everyone = "Eemaldati $${amount} panka kõigilt.",
 
-		money_event_not_admin = "Üritati vahetada raha sündmuse `${moneyEvent}` ajal, kuid mängijal puudub vastav õigus.",
-
 		spawned_item_title = "Tehti eseme spawnaus",
 		spawned_item_details = "${consoleName} tegi endale ${amount}x `${itemName}`.",
 		spawned_item_for_player_title = "Eseme spawnimine mängijale",
@@ -164,50 +202,19 @@ OP.Global.Locales.Languages["et-EE"] = {
 		spawned_item_for_everyone_title = "Esme spawnimine kõigile",
 		spawned_item_for_everyone_details = "${consoleName} spawnis eseme nimega `${itemName}` ${amount} tk kõigile.",
 
-		report_title = "TÄHELEPANU-${reportId}, ${reporterName} teatel",
-		report_logs_title = "Teatis",
-		report_logs_details = "${consoleName} loodud teatis (${reportId}) sisaldab järgnevat sõnumit: `${reportMessage}`",
-
 		announcement_staff_title = "Töötaja teadaanne",
 		announcement_server_title = "Serveri teadaanne",
 
 		announcement_logs_title = "Serveriülene teadaanne",
 		announcement_logs_details = "${consoleName} tegi järgmise teadaande kogu serverile: `${announcementMessage}`",
-		announcement_not_admin = "Katse postitada töötajate teadaanne.",
 
-		announcement_maintenance = "Server läheb ${minutes} minuti pärast hoolduseks maha.",
-		announcement_update = "Server läheb ${minutes} minuti pärast uuendamiseks maha.",
-		announcement_restart = "Server taaskäivitatakse ${minutes} minuti pärast.",
+		new_player_revive_logs_title = "Uus mängija elustamine",
+		new_player_revive_logs_details = "${consoleName} elustati, kuna uus mängija, kes teda tappis, sai bänni.",
 
 		posted_announcement = "Teade postitatud.",
 		posted_announcement_locale = "Teade postitatud valitud keeles.",
 		failed_to_post_announcement = "Teate postitamine ebaõnnestus, sest sisu puudus.",
 		failed_to_post_announcement_locale = "Teate postitamine ebaõnnestus, kuna valitud keelt ei toetata.",
-
-		staff_title = "MEESKOND ${staffName}",
-		staff_message_logs_title = "Meeskonna sõnumid",
-		staff_message_logs_details = "${consoleName} saatis personali vestluses järgneva sõnumi: `${staffMessage}`",
-		staff_message_illegal = "Mängija üritas saatata personali vestluses sõnumit, kuid tal ei ole vastavat luba.",
-
-		staff_pm_title = "PERSONALI VESTLUS ${transmissionTitle}",
-		staff_pm_logs_title = "Personalivestlus",
-		staff_pm_logs_details = "${senderConsoleName} saatis järgneva sõnumi vastuvõtjale ${recipientConsoleName}: `${staffPrivateMessage}`",
-		staff_pm_not_logged_in = "Sa pole sisse logitud.",
-		staff_pm_not_user_not_found = "Kasutajaga, kelle serveri ID on ${serverId}, ei leitud.",
-		staff_pm_not_recipient_not_staff = "Mängijale, kellele üritad sõnumit saata, pole personali liige.",
-		staff_pm_unable_to_message_self = "Sa ei saa iseendaga sõnumit vahetada.",
-		staff_pm_warning = "Personaliga sõnumi hoiatus",
-		staff_pm_first_time = "Näeme, et te pole varem personaliga sõnumeid vahetanud. Personaliga sõnumile vastamiseks kasutage käsku /staffpm.",
-
-		external_staff_message = "Väline personali sõnum",
-		external_staff_message_from_player = "Väline personali teade mängijalt ${playerName}",
-		external_staff_message_content = "${staffMessage} (Te ei saa sellele sõnumile vastata.)",
-
-		unable_to_staff_message_yourself = "Ei saa personali sõnumit endale saata.",
-		message_sent = "Sõnum saadetud.",
-		player_not_found = "Mängijat ei leitud.",
-		missing_valid_target_source_parameter = "Puudub sobiv parameeter 'sihtmärgi allikas'.",
-		missing_valid_message_parameter = "Puudub sobiv parameeter 'sõnum'.",
 
 		invalid_coordinates = "Sisestatud koordinaadid x, y, z või w on sobimatud.",
 		player_not_loaded_character = "Mängijal pole tegelast laetud.",
@@ -215,10 +222,14 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		player_revived_success = "Mängija edukalt taaselustatud.",
 
-		missing_valid_license_identifier_parameter = "Puudub kehtiv 'licenseIdentifier' parameeter.",
+		wipe_broken = "broken - Katkised/Fragmenditud objektid",
+		wipe_npcs = "npcs - NPC-d ja nende sõidukid.",
+		wipe_objects = "objects - Kõik objektid",
+		wipe_vehicles = "vehicles - Kõik sõidukid",
+		wipe_peds = "peds - Kõik jalakäijad",
+		wipe_doors = "doors - Kõik ukseobjektid",
 
-		illegal_entity_wipe = "Mängija üritas entiteete kustutada, kuid tal pole selleks õigusi.",
-		wiped_entities = "Kustutatud entiteedid",
+		wiped_entities = "Entiteedid kustutatud. Kustutatud ${deletedEntities} võrguühenduseta entiteeti.",
 		wipe_entities_logs_title = "Kustutatud entiteedid",
 		wipe_entities_logs_details = "${consoleName} käivitas entiteetide kustutamise järgmiste seadetega: kaugus = `${distance}`, ignoreeri kohalikke entiteete = `${ignoreLocalEntities}`, mudeli nimi = `${modelName}`",
 
@@ -235,6 +246,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		you_have_been_kicked_no_reason = "Sind on välja visatud ${kicker} poolt põhjust märkimata.",
 
 		logs_player_kicked_title = "Mängijat välja visatud",
+		logs_player_kicked_system_title = "Mängija välja visatud süsteemi poolt",
 		logs_player_kicked_details = "${consoleName} on visatud serverist välja ${kicker} poolt põhjusel `${reason}`.",
 		logs_player_kicked_no_reason_details = "${consoleName} on visatud serverist välja ${kicker} poolt põhjust märkimata.",
 
@@ -243,7 +255,8 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		banner_name_generic = "töötaja",
 
-		ban_alert_title = "Süsteemi poolt keelatud",
+		ban_alert_title = "Serverist blokeeritud",
+		ban_alert_description_banner = "Teid blokeeriti automaatselt kasutaja ${banner} poolt põhjusega `${reason}`.",
 		ban_alert_description = "Süsteem on teid automaatselt banninud põhjusel `${reason}`.",
 
 		logs_player_banned_title = "Mängija bannitud",
@@ -258,12 +271,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		ban_triple_kill = "😧 Kolmekordne tapmine!!!",
 		ban_quadrouple_kill = "😨 NELIKORDNE TAPMINE!!!!!!",
 		ban_killing_spree = "🤯 TAPMISE HOOG (${count})!!!!!!",
-
-		kick_player_not_staff = "Üritati eemaldada mängijat ilma vastavate õigusteta.",
-		ban_player_not_staff = "Üritati mängijat ilma õigete lubadeta keelata.",
-
-		hide_staff_not_staff = "Üritati oma töötaja staatust varjata ilma õigete lubadeta.",
-		toggle_staff_not_staff = "Üritati oma töötaja staatust muuta ilma õigete lubadeta.",
 
 		logs_hide_staff_title = "Töötaja varjatud",
 		logs_hide_staff_hidden_details = "${consoleName} varjas oma töötaja staatuse.",
@@ -280,41 +287,24 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		staff_feature_unavailable = "See funktsioon pole saadaval, kui personali kättesaadavus pole lubatud.",
 
-		failed_toggle_tracker = "Mängija jälitaja lülitamisel tekkis viga.",
-		unable_track_player = "Mängija jälgimine ebaõnnestus.",
-		success_enable_tracker = "Mängija '${playerName}' jälgimine on edukalt lubatud.",
-		success_disable_tracker = "Mängija jälgimine on edukalt keelatud.",
-		not_tracking_player = "Sa ei jälgi praegu ühtegi mängijat.",
-		already_tracking_player = "Sa jälgid juba ühte mängijat.",
+		headache_logs_title = "Pisaratekkitav peavalu",
+		headache_logs_details = "${consoleName} vallandas peaajuvalu mängijale ${targetConsoleName}.",
 
-		toggle_player_track_no_permissions = "Mängija jälgimise proovimine ilma asjakohaste õigusteta.",
-		set_job_no_permissions = "Töö seadmise proovimine ilma asjakohaste õigusteta.",
-		toggle_reflection_no_permissions = "Katsetasite kahju peegeldamise sisse- ja väljalülitamist ilma vastava luba omamata.",
+		spawn_logs_title = "Teleportiti algsesse",
+		spawn_logs_details = "${consoleName} teleportiti algsesse asukohta (personalitorni).",
 
-		success_enable_reflection = "Kahju peegeldamine edukalt sisse lülitatud.",
-		success_disable_reflection = "Kahju peegeldamine edukalt välja lülitatud.",
-		failed_toggle_reflection = "Kahju peegeldamise sisselülitamine/väljalülitamine ebaõnnestus.",
+		super_jump_logs_title = "Superhüppe lülitamine",
+		super_jump_logs_details_on = "${consoleName} lülitas oma superhüppe sisse.",
+		super_jump_logs_details_off = "${consoleName} lülitas oma superhüppe välja.",
 
-		reflection_logs_title = "Kahju Peegeldamine on/Suletud",
-		reflection_logs_enabled_details = "${consoleName} lülitas kahju peegeldamise sisse.",
-		reflection_logs_disabled_details = "${consoleName} lülitas kahju peegeldamise välja.",
+		success_trigger_headache = "Te kitkutasite edukalt mängijale ${playerName} peavalu.",
+		failed_trigger_headache = "Ebaõnnestus mängijale peavalu tekitamine.",
 
-		protective_mode_not_staff = "Katse lubada serveri kaitse režiimi ilma sobivate õigusteta.",
-		protective_mode_toggled_on = "Serveri kaitse režiim on nüüd aktiveeritud. Nõutav mängu aeg, et ühenduda serveriga, on määratud `${playtime}`.",
-		protective_mode_toggled_off = "Serveri kaitse režiim on nüüd deaktiveeritud.",
-		protective_mode_already_on = "Serveri kaitse režiim on juba aktiveeritud nõutava mängu ajaga `${playtime}`.",
-		protective_mode_already_off = "Serveri kaitse režiim on juba deaktiveeritud.",
-		logs_protective_mode = "Serveri kaitse režiim",
-		logs_protective_mode_on = "${consoleName} lülitas Serveri kaitse režiimi sisse koos nõutava mänguajaga: `${playtime}`.",
-		logs_protective_mode_off = "${consoleName} lülitas Serveri kaitse režiimi välja.",
-
-		spawn_item_not_staff = "Püüdis eset luua ilma korralike õigusteta.",
 		no_item_name = "Eseme nime ei sisestatud.",
 		invalid_item_name = "${itemName} ei ole sobiv esme nimi.",
 		item_spawned = "Ese ${amount}x `${itemName}` loodi mängijale ${consoleName}.",
 		item_spawned_for_everyone = "Kõigile on ilmunud ${amount}x `${itemName}`.",
 
-		set_warning_message_not_staff = "Katse muuta serveri hoiatussõnumit ilma piisavate õigusteta.",
 		warning_message_set_to = "Hoiatussõnum on muudetud järgmiseks: `${warningMessage}`.",
 		warning_message_removed = "Hoiatussõnum on eemaldatud.",
 		warning_message_error = "Viga tekkis kui üritati muuta hoiatamis sõnumit.",
@@ -324,8 +314,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		warning_message_removed_title = "Hoiatusteade eemaldatud",
 		warning_message_removed_details = "${consoleName} on eemaldanud hoiatusteate.",
 
-		indestructibility_on = "'Vastupidavus' sisse lülitatud.",
-		indestructibility_off = "'Vastupidavus' välja lülitatud.",
 		speed_boost_on = "'Kiirendus' sisse lülitatud.",
 		speed_boost_off = "'Kiirendus' välja lülitatud.",
 		nitro_boost_on = "Lülitati sisse 'Nitro Boost'.",
@@ -334,14 +322,8 @@ OP.Global.Locales.Languages["et-EE"] = {
 		no_nearby_vehicles_off = "Lülitati välja 'No Nearby Vehicles'.",
 		speed_up_progress_bar_on = "Lülitati sisse 'Speed Up Progress Bar'.",
 		speed_up_progress_bar_off = "Lülitati välja 'Speed Up Progress Bar'.",
-		invisibility_on = "Lülitati sisse 'Invisibility'.",
-		invisibility_off = "Lülitati välja 'Invisibility'.",
-		wallhack_on = "Lülitati sisse 'Wallhack'.",
-		wallhack_off = "Lülitati välja 'Wallhack'.",
 		aimbot_on = "Lülitas 'Aimbot'i' sisse.",
 		aimbot_off = "Lülitas 'Aimbot'i' välja.",
-		player_bones_on = "Lülitas 'Mängija luud' sisse.",
-		player_bones_off = "Lülitas 'Mängija luud' välja.",
 		vehicle_smoke_on = "Lülitas 'Sõiduki suitsu' sisse.",
 		vehicle_smoke_off = "Lülitas 'Sõiduki suitsu' välja.",
 
@@ -352,89 +334,35 @@ OP.Global.Locales.Languages["et-EE"] = {
 		watching_off = "Lülitas vaatamisrežiimi välja.",
 		watching_label = "Vaatab: ${nearby}",
 
-		evidence_view_on = "Lülitas tõendid vaatesse.",
-		evidence_view_off = "Tõmmati tõendeid vaateväljast välja.",
-		evidence_view_title = "Lülitas tõendite vaate sisse / välja",
-		evidence_view_details_on = "${consoleName} lülitas edasijõudnutele mõeldud tõendite vaate sisse.",
-		evidence_view_details_off = "${consoleName} lülitas edasijõudnutele mõeldud tõendite vaate välja.",
-
 		report_muted_no_reason = "Sul on keelatud kasutada teavituskäsku ilma põhjuseta.",
 		report_muted = "Sul on keelatud kasutada teavituskäsku põhjusega `${reason}`.",
-
-		already_sending_report = "Sa oled juba saatmas teadet. Palun oota.",
-		unable_to_send_identical_report = "Te ei saa saata kahte identset raportit üksteise järel.",
-
-		already_sending_staff_message = "Te saadate juba personali sõnumit. Palun oodake.",
-		unable_to_send_identical_staff_message = "Te ei saa saata kahte identset personali sõnumit üksteise järel 30 sekundi jooksul.",
-
-		tp_coords_invalid_coordinates = "Vigased koordinaadid.",
-		tp_coords_teleported_to_coordinates = "Teleportiti koordinaatidele X: ${x}, Y: ${y}, Z: ${z}.",
-
-		teleported_to_waypoint = "Teleportiti teekohale ${locationLabel}.",
-		no_waypoint_set = "Te peate seadma sihtkoha.",
-
-		teleported_to_coordinates_logs_title = "Teleportis koordinaatidele",
-		teleported_to_coordinates_logs_details = "${consoleName} teleportis koordinaatidele X:${x}, Y:${y}, Z:${z}.",
-		teleported_to_waypoint_logs_title = "Teleportis sihtkohale",
-		teleported_to_waypoint_logs_details = "${consoleName} teleportis sihtkohale ${locationLabel}.",
-
-		teleport_to_coordinates_not_staff = "Mängija üritas teleporteerida koordinaatidele, kuid tal puudub selleks õigus.",
-		teleport_to_waypoint_not_staff = "Mängija üritas teleporteeruda märgitud asukohta, kuid tal pole selleks privileege.",
-
-		failed_isolate = "Mängija isoleerimine ebaõnnestus.",
-		invalid_server_id = "Vigane serveri ID.",
-		isolate_success_on = "${consoleName} isoleeriti edukalt.",
-		isolate_success_off = "${consoleName} isoleerimine lõpetati edukalt.",
-
-		isolate_missing_permissions = "Mängija üritas isoleerida teist mängijat ilma vastavate õigusteta.",
 
 		population_density_set_to = "Rahvastiku tiheduse korrutatud väärtus on nüüd ${multiplierLabel}%.",
 		population_density_set_off = "Rahvastiku tiheduse korrutaja tühistati.",
 		population_density_is_not_on = "Rahvastiku tiheduse korrutaja ülekirjutus pole lubatud.",
 		population_density_already_set_to = "Rahvastiku tiheduse korrutaja on juba seatud väärtusele ${multiplierLabel}%",
 
-		population_density_not_super_admin = "Mängija üritas rahvastiku tihedust seada ilma piisavate õigusteta.",
-
-		enabled_features_list = "Lubatud funktsioonid:",
-		aimbot_feature = "Aimbot",
-		disabled_collisions_feature = "Kokkupõrgete väljalülitamine",
-		disabled_recoil_feature = "Keelatud tagasilöök",
-		evidence_view_feature = "Tõendite vaade",
-		hit_indicator_feature = "Tabamuse indikaator",
-		indestructibility_feature = "Pöördumatuse omadus",
-		infinite_ammo_feature = "Lõpmatu tuli",
-		invisibility_feature = "Nähtamatus",
-		muted_sirens_feature = "Vaigistatud sireenid",
-		nitro_boost_feature = "Nitro tõuge",
-		no_nearby_vehicles_feature = "Puuduvad lähedal asuvad sõidukid",
-		peeking_feature = "Piilumine",
-		roll_control_feature = "Rulljuhtimine",
-		speed_boost_feature = "Kiirendus tõuge",
-		speed_up_progress_bar_feature = "Progressiriba kiirendus",
-		sticky_feet_feature = "Kleepuv jalakäimine",
-		wallhack_feature = "Seinte läbivaatamise funktsioon",
-		watching_feature = "Jälgimine",
-		fortnite_feature = "Fortnite",
-		reflection_feature = "Kahju Peegeldamine",
-
 		you_are_not_in_a_vehicle = "Sa pole sõidukis.",
 		repaired_vehicle = "Sõiduk parandatud.",
+		player_not_in_vehicle = "See mängija ei ole sõidukis.",
+		no_character = "Mängija on väljaspool võrku või tal pole laetud tegelast.",
+		repaired_player_vehicle = "Parandati sõiduk, milles oli ${displayName}.",
+		failed_player_repair = "Sõiduki parandamine ebaõnnestus.",
+
+		repaired_player_vehicle_logs_title = "Parandati mängija sõiduk",
+		repaired_player_vehicle_logs_details = "${consoleName} parandas sõiduki, milles oli ${targetConsoleName}.",
 
 		success_nos_refill = "NOS täidetud edukalt.",
 		failed_nos_refill = "NOS täitmine ebaõnnestus.",
 
-		refill_nitro_missing_permissions = "Mängija üritas täita NOS ilma asjakohaste lubadeta.",
-
 		register_invalid_character_id = "Vigane isiku ID.",
 		register_invalid_slot = "Vigane inventari pesa.",
 		register_weapon_success = "Relv pesas ${slotId} edukalt registreeritud tegelasel, kelle tegelase id on ${cid}.",
+		no_serial_number = "Relv on registreerimata seerianumbriga.",
+		unknown_character_id = "Tundmatu tegelaskuju ID.",
 		register_weapon_failed = "Relva ei õnnestunud registreerida.",
 
-		register_weapon_missing_permissions = "Mängija üritas relva registreerida, kuid tal ei ole selleks õigusi.",
-
 		vehicle_smoke_invalid_class = "Sõiduki suitsu ei saa sellesse sõidukiklassi lubada.",
-
-		repair_vehicle_not_super_admin = "Mängija üritas sõidukit parandada ilma vastavate õigusteta.",
 
 		repaired_vehicle_logs_title = "Parandatud sõiduk",
 		repaired_vehicle_logs_details = "${consoleName} parandas sõidukit, milles nad viibisid.",
@@ -442,6 +370,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		unable_to_enter_vehicle_while_dead = "Surnuna ei saa sõidukisse siseneda.",
 		the_closest_vehicle_had_no_free_seats = "Lähim sõiduk polnud vabade kohtadega.",
 		there_are_no_nearby_vehicles = "Läheduses ei ole ühtegi sõidukit.",
+		vehicle_not_found_network = "Sõidukit võrgu ID-ga ei leitud.",
 		entered_vehicle = "Üritas sisse minna lähedalasuvasse sõidukisse ${vehicleName}.",
 
 		set_vehicle_modifications_logs_title = "Määra sõiduki modifikatsioonid",
@@ -449,9 +378,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		set_vehicle_livery_logs_title = "Määra sõiduki kate",
 		set_vehicle_livery_logs_details = "${consoleName} määras sõiduki kattena, mille numbrimärk on `${vehiclePlate}`, kate indeksiga `${liveryIndex}`.",
-
-		set_livery_missing_permissions = "Mängija üritas muuta sõiduki kattet ilma nõuetekohaste õigusteta.",
-		set_modifications_missing_permissions = "Mängija üritas muuta sõiduki muudatust ilma nõuetekohaste õigusteta.",
 
 		set_vehicle_modification = "Määra sõiduki modifikatsioon sõidukile modifikatsiooni tüüpi `${modType}` indeksiga `${modIndex}`. (kohandatud rehvid: ${customTires})",
 		mod_index_invalid_for_type = "Modi indeks `${modIndex}` ei ole sobiv modi tüübile `${modType}`.",
@@ -471,15 +397,9 @@ OP.Global.Locales.Languages["et-EE"] = {
 		invalid_dirt_level = "Vigane mustuse tase",
 		set_dirt_level = "Sõiduki mustuse tase on nüüd `${dirtLevel}`.",
 
-		set_dirt_level_not_super_admin = "Mängija üritas muuta sõiduki mustuse taset ilma vajalike lubadeta.",
-
-		set_fake_plate_not_super_admin = "Mängija üritas muuta sõiduki numbrimärki ilma vajalike lubadeta.",
-
 		already_fake_disconnecting = "Sa püüad juba võlts väljalogimist. Palun oota.",
 		started_fake_disconnect = "Alustati võlts väljalogimist. Käsku korrata, et peatada.",
 		stopped_fake_disconnect = "Võlts väljalogimine peatatud.",
-
-		fake_disconnect_not_super_admin = "Mängija üritas võlts väljalogimist ilma vajalike õigusteta.",
 
 		disabled_idle_cam = "Idle kaamera välja lülitatud.",
 		enabled_idle_cam = "Idle kaamera uuesti sisse lülitatud.",
@@ -487,12 +407,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		created_vehicle_smoke_for_player_logs_title = "Loodud sõiduki suits",
 		created_vehicle_smoke_for_player_logs_details = "${consoleName} lõi sõidukile suitsu.",
 
-		player_info_not_staff = "Katse saada mängija tegelase infot ilma õige loata.",
 		player_info_title = "${consoleName}",
 		player_info = "${fullName} #${characterId}\nMängitud aeg: ${playtime}.\n${jobName}, ${departmentName}, ${positionName}\n\n${backstory}",
 
 		inventory_name_missing = "Puudub inventari nimi.",
-		force_inventory_missing_perms = "Katse sunniviisiliselt avada inventari ilma õige loata.",
 
 		auto_driving_engaged = "Automaatjuhtimine on aktiveeritud (Stiil: ${style}).",
 		auto_driving_updated = "Autojuhtimise kiirus/asukoht on uuendatud.",
@@ -501,10 +419,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		invalid_auto_drive_speed = "Vigane või puudu autojuhtimise kiirus.",
 		reset_auto_drive_speed = "Lähtesta autojuhtimise kiirus vaikimisi.",
 		set_auto_drive_speed = "Määra autojuhtimise kiirus ${speed} miili tunnis.",
-
-		disable_collisions_on = "Sinu kokkupõrgete funktsionaalsus on nüüd keelatud.",
-		disable_collisions_off = "Sinu kokkupõrgete funktsionaalsus on nüüd lubatud.",
-		failed_toggle_collisions = "Kokkupõrgete lülitamine keelatud ebaõnnestus.",
 
 		disabled_recoil_on = "Püstolirekli keelatud.",
 		disabled_recoil_off = "Püstolirekli lubatud.",
@@ -517,14 +431,11 @@ OP.Global.Locales.Languages["et-EE"] = {
 		attachment_off = "'${attachment}' lisavarustus on edukalt välja lülitatud.",
 
 		tint_invalid = "Sobimatu relva värviskeem.",
-		tint_range_invalid = "Sobimatu relva värvivaliku vahemik (vahemiku väärtuseks peab olema vahemikus 0 kuni ${max}).",
+		tint_index_invalid = "Vigane relva tooni indeks.",
 		tint_failed_set = "Relva värvi muutmine ebaõnnestus.",
 		tint_removed = "Relva värv edukalt eemaldatud.",
 		tint_set = "Relva värv edukalt muudetud `${tint}` (${tintIndex}).",
 		no_weapon_tint = "Sellel relval pole värve.",
-
-		weapon_attachment_missing_perms = "Relva lisavarustuse sisselülitamine ebaõnnestus õiguste puudumise tõttu.",
-		weapon_tint_missing_perms = "Relva värvi muutmine ebaõnnestus õiguste puudumise tõttu.",
 
 		no_attachments = "Ühtegi lisavarustust pole saadaval.",
 		available_attachments = "Saadaolevad lisandid",
@@ -542,27 +453,22 @@ OP.Global.Locales.Languages["et-EE"] = {
 		cleaned_ped_self = "Teie tegelaskuju on edukalt puhtaks tehtud.",
 		clean_ped_failed = "Teie tegelaskuju puhastamine ebaõnnestus.",
 		cleaned_ped_for_all = "Kõigi tegelaskujude puhastamine oli edukas.",
-		clean_ped_no_permission = "Üritati mängija tegelaskuju puhastada ilma vajalike õigusteta.",
 
 		item_durability_set_success = "Eseme kulumistaset on edukalt määratud ${amount}% ja pesasse ${slotId}.",
 		item_durability_set_failed = "Eseme kulumistase määramine ebaõnnestus.",
 		item_durability_invalid_amount = "Kehtetu kulumise tase (0 <> 100).",
-		item_durability_set_no_permission = "Üritati määrata ese kulumistase ilma vajalike õigusteta.",
 
-		item_metadata_set_no_permission = "Katse muuta eseme metaandmeid ilma piisavate õigusteta.",
-		item_metadata_invalid_metadata = "Vigased eseme metaandmed.",
 		item_metadata_set_success = "Eseme ${slotId} metaandmed on edukalt määratud.",
 		item_metadata_set_failed = "Metaandmete määramine ebaõnnestus.",
+		item_metadata_missing_key = "Puuduvad metaandmete võtmed.",
 
 		advanced_metagame_on = "Lülitatud sisse võimalus edasijõudnud metamänguks.",
 		advanced_metagame_off = "Lülitatud välja võimalus edasijõudnud metamänguks.",
 
-		identity_set = "Sinu identiteet on edukalt muudetud nimeks `${name}`.",
-		identity_reset = "Sinu identiteedi taastamine õnnestus.",
-		identity_set_failed = "Identiteedi määramine ebaõnnestus.",
+		identity_set = "Identiteet on edukalt määratud kasutajale ${displayName}: `${name}`.",
+		identity_reset = "Identiteet on edukalt lähtestatud kasutajal ${displayName}.",
+		identity_set_failed = "Ebaõnnestus kasutaja ${displayName} identiteedi määramine.",
 		identity_hud = "Identiteet: ${playerName}",
-
-		set_identity_no_permission = "Mängija üritas määrata enda mängijanime ilma õigete õigusteta.",
 
 		invalid_range_parameter = "Vigane vahemiku parameeter.",
 		wipe_first_owned_success = "Kõik ${amount} eset, mis on esmalt mängija `${serverId}` omaduses, on edukalt kustutatud.",
@@ -574,13 +480,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		scoop_invalid = "Sa pole veel ühtegi mängijat korjanud.",
 		unscooped_players = "Laskid lahti ${amount} ${total} mängijast.",
 		unscoop_failed = "Ebaõnnestus mängijaid lahti lasta.",
-
-		unscoop_missing_permissions = "Mängija üritas mängijaid lahti lasta ilma vastava õiguseta.",
-
-		toggle_collisions_missing_permissions = "Mängija üritas oma kokkupõrgete seadeid muuta ilma vastava õiguseta.",
-		wipe_first_owned_missing_permissions = "Mängija üritas kustutada omal võimu esimesi omandatud objekte, kuid tal puudusid selleks õigused.",
-
-		freeze_missing_permissions = "Mängija üritas külmutada või avakülmutada teist mängijat, kuid tal puudusid selleks õigused.",
 
 		freeze_success = "Mängija ${consoleName} on edukalt külmutatud.",
 		failed_freeze = "Mängija külmutamine ebaõnnestus.",
@@ -597,20 +496,14 @@ OP.Global.Locales.Languages["et-EE"] = {
 		slap_failed = "Ei õnnestunud mängijat pohmellitada.",
 		slap_logs_title = "Mängijat on pohmellitatud",
 		slap_logs_details = "${consoleName} pohmellitas ${targetName}.",
-		slap_missing_permissions = "Mängija üritas teist mängijat pohmellitada ilma korralike õigusteta.",
 
 		damaged_player = "Edukalt kahjustati mängijat ${consoleName} ${damage} elupunktiga.",
 		damage_player_failed = "Ei õnnestunud mängijat kahjustada.",
 		damage_player_logs_title = "Mängija vigastamine",
 		damage_player_logs_details = "${consoleName} vigastas ${targetConsoleName} ${damage} tervist.",
-		damage_player_missing_permissions = "Mängija üritas teist mängijat vigastada ilma vajalike õigusteta.",
 
 		refill_nitro_logs_title = "Lisati nitro",
 		refill_nitro_logs_details = "${consoleName} lisas oma autole nitro.",
-
-		isolated_logs_title = "Mängija isoleerimine",
-		isolated_off_logs_details = "${consoleName} lülitas välja ${targetName} isolatsiooni.",
-		isolated_on_logs_details = "${consoleName} lülitas sisse ${targetName} isolatsiooni.",
 
 		character_data_logs_title = "Karakteri Andmed",
 		character_data_logs_details = "${consoleName} vaatas ${targetName}'i karakteerandmeid (CID: ${characterId}).",
@@ -632,29 +525,35 @@ OP.Global.Locales.Languages["et-EE"] = {
 		fake_disconnect_off_logs_details = "${consoleName} lülitas oma võltslahutamise välja.",
 
 		identity_logs_title = "Identiteedi ülekirjutus",
-		identity_on_logs_details = "${consoleName} muutis oma identiteedi nimeks `${playerName}`.",
-		identity_off_logs_details = "${consoleName} nullistas oma identiteedi.",
+		identity_on_logs_details = "${consoleName} määras kasutajale ${targetConsoleName} identiteedi: `${playerName}`.",
+		identity_off_logs_details = "${consoleName} lähtestas kasutaja ${targetConsoleName} identiteedi.",
 
 		clean_ped_logs_title = "Ped-i puhastamine",
 		clean_ped_logs_details = "${consoleName} puhastas ${targetName} ped-i.",
 
-		collisions_logs_title = "Kokkupõrked",
-		collisions_off_logs_details = "${consoleName} lülitas välja kokkupõrgete vältimise.",
-		collisions_on_logs_details = "${consoleName} lülitas sisse kokkupõrgete vältimise.",
+		create_vehicle_logs_title = "Loodud Sõiduk",
+		create_vehicle_logs_details = "${consoleName} lõi sõiduki mudeliga `${modelName}`.",
 
-		invalid_job_search = "Vigane töökoha otsing (peab olema vähemalt 3 tähemärki).",
-		failed_job_search = "Töökohtade otsimine ebaõnnestus.",
-		job_search_no_results = "Töökohti ei leitud.",
-		job_search_results = "Määratud ${consoleName} töökoht positsiooniga „${positionName}, ${departmentName}, ${jobName}“ (Tulemus: ${score}).",
+		replace_vehicle_logs_title = "Asendatud sõiduk",
+		replace_vehicle_logs_details = "${consoleName} asendas oma `${oldModelName}` sõiduki `${modelName}` vastu.",
 
-		job_reset_success = "${consoleName} töökoht edukalt nullitud.",
-		failed_job_reset = "Töökohta ei õnnestunud nullida."
+		set_durability_logs_title = "Seadista eseme vastupidavus",
+		set_durability_logs_details = "${consoleName} seadis esemes oleva pesa ${slot} vastupidavuseks ${durability}.",
+
+		set_metadata_logs_title = "Seadista eseme metaandmed",
+		set_metadata_logs_details = "${consoleName} seadis esemes oleva pesa ${slot} metaandmeteks `${metadata}`.",
+
+		registered_weapon_logs_title = "Registreeritud relv",
+		registered_weapon_logs_details = "${consoleName} registreeris relva seerianumbriga `${serialNumber}` tegelasele karakteri ID-ga `${characterId}`.",
+
+		wipe_first_owned_logs_title = "Eemaldati esimesed omad",
+		wipe_first_owned_logs_details = "${consoleName} eemaldas ${amount} esimest omavara, mida omab mängija serveri ID-ga `${serverId}`, vahemikuga ${range} meetrit.",
+
+		unscoop_logs_title = "Mängijad ilma järelevalveta",
+		unscoop_logs_details = "${consoleName} eemaldas ${amount} mängija(d) asukohas `${coords}`."
 	},
 
 	anti_cheat = {
-		illegal_client_event = "Mine otse vanglasse. Ära läbi Mobiilimängu. Ära kogu 200 dollarit.",
-		illegal_server_event = "Mine otse vanglasse. Ära läbi Mobiilimängu. Ära kogu 200 dollarit.",
-		bad_entity_spawn = "Sünnitatud üksus mudelinimega `${modelName}`.",
 		bad_entity_title = "Vigane entiteet loodi",
 		bad_entity_message = "${consoleName} lõi entiteedi mille mudeli nimi on `${modelName}`.",
 		detected_entity_title = "Avastatud entiteet loodi",
@@ -663,60 +562,106 @@ OP.Global.Locales.Languages["et-EE"] = {
 		model_already_added_to_list = "Mudel `${modelName}` (${modelHash}) on juba avastamise nimekirjas.",
 		removed_model_to_list = "Eemaldati mudel `${modelName}` (${modelHash}) avastamise nimekirjast.",
 		model_not_in_list = "Mudel ${modelName} (${modelHash}) pole avastamisloendisse lisatud.",
-		set_model_detected_not_staff = "Mängija üritas lisada mudelit avastamisloendisse, kuid tal polnud selleks õigusi.",
-		set_model_undetected_not_staff = "Mängija üritas eemaldada mudelit avastamisloendist, kuid tal polnud selleks õigusi.",
-		add_detection_area_not_staff = "Mängija üritas lisada avastusalale, kuid tal polnud selleks õigusi.",
-		remove_detection_area_not_staff = "Mängija üritas eemaldada avastusalalt, kuid tal polnud selleks õigusi.",
 		detection_area_close = "[${InteractionKey}] Eemalda avastuse piirkond (${areaId})",
 		detection_area = "Avastuse piirkond (${areaId})",
+
+		suspicious_transfer_title = "Kahtlane ülekanne",
+		suspicious_transfer_message = "${from} kandis hiljuti üle $${amount} kasutajale ${to}.",
+
+		failed_toggle_strict_mode = "Viga rangeda range režiimi.",
+		strict_mode_enabled = "Range režiim edukalt sisse lülitatud.",
+		strict_mode_disabled = "Range režiim edukalt välja lülitatud.",
 
 		ban_notification_title = "Anti-Cheat",
 		ban_notification = "Keelatud ${consoleName} põhjusel `${banReason}`.",
 
-		bad_screen_word_ban = "Me kuulsime avatud raamatukogu eksamitest, kuid see on naeruväärne.",
+		suspicious_transfer_title = "Kahtlane ülekanne",
+		suspicious_transfer_details = "${consoleName} kandis üle $${amount} kasutajale ${targetConsoleName}.",
+
+		-- GPT-4 generated ban messages
+		bad_entity_spawn = "Ah, proovite välja kutsuda ajaloolist artefakti nimega `${modelName}`? See ei ole Agonii näitus ega selle reliikvia jääb pangakeldrisse.",
 		blacklisted_command_ban = "Vabandust, kuid Sinul ei ole selle käsu käivitamiseks õigusi. Palun võta ühendust serveri administraatoritega, kui arvad, et see on viga.",
+		clear_tasks_ban = "See pole Jedide meelt koolitav keskus. Sinu katseid teiste vaba tahte mõjutada on märgatud... ja tagasi lükatud.",
 		damage_modifier_ban = "Sinu võimusaste ei saa olla üle 9000.",
 		distance_taze_ban = "Teie hämmastav esitus kaugelt ei olnud hinnatud.",
 		fast_movement_ban = "Lennata ei ole sellel serveril lubatud.",
 		freecam_ban = "Tundub, et teil oli kehaväline kogemus.",
 		honeypot_ban = "Te üritasite sisse lülitada loomeolekut, kuid teil ei olnud selleks õigusi.",
-		hotwire_driving_ban = "Vroom Vroom, ma olen ema autos.",
-		illegal_freeze_ban = "Tead ju, et soe toit on palju parem kui külmutatud toit?",
-		illegal_ped_change_ban = "Iseendale plastilise kirurgia tegemine on ohtlik.",
-		illegal_spectating_ban = "Te peate olema FIB agendiks, et teisi mängijaid jälgida või kasutada /gamemode spectator enne jälgimist.",
+		illegal_client_event = "Ah, proovite häälestuda kinnisele sagedusele nimega `${eventName}`? See ei ole salajane raadiojaam ega see lugu ei ole meie esitusloendis.",
+		illegal_damage_ban = "Võimu tasakaal on liiga kallutatud sinu kasuks, rikkudes meie kuningriigi tasakaalu.",
+		illegal_freeze_ban = "Kuigi hinged võivad rännata vabalt, oleme meie surelikud seotud füüsikaseadustega. Hr. Isaac Newton ei võtaks midagi muud.",
+		illegal_global_ban = "Proovisid siseneda maatriksisse, eks ju? Neo võib olla muljetatud, kuid meie mitte.",
+		illegal_native_ban = "Proovisime vestelda digitaalse rea vaimudega, eksperimentile ei andnud õnnestu. Parimad soovid eetriplaanis.",
+		illegal_ped_change_ban = "Isiku vargus pole nali, Jim! Miljonid tegelased kannatavad igal aastal.",
+		illegal_server_event = "Soovisime tantsida kuuldu võrratu rütmi saatel `${eventName}`, eks ole? See pole salajane tantsusaal ja need tantsuliigutused? Rängalt keelatud.",
+		illegal_spectating_ban = "Kummituslikud vaime on reserveeritud kummituslikesse mõisadesse, mitte siia. Märgati teie astraae projektsiooni oskusi, kuid need ei olnud teretulnud.",
 		illegal_vehicle_modifier_ban = "Erinevalt Dom Torettost kiired ja vihased filmidest, me siin perekond ei ole.",
+		infinite_ammo_ban = "Populaarse arvamusele vaatamata kehtivad siin konservatsiooniseadused. Maagiline laskemoonakott on konfiskeeritud.",
+		invalid_health_ban = "Sinu terviseindikaator tundub olevat natuke liiga suur, Popeye",
 		invincibility_ban = "Te ei ole Must rüütel, nii et te ei saa olla surematu.",
-		ped_spawn_ban = "Proovisite läbi viia mitoosi, aga päikesevalgust ei piisanud fotosünteesiks.",
+		ped_spawn_ban = "Ah, lootsite meelitada esile tema legendaarse kuju `${modelName}`, eks ole? See pole Hollywoodi näitlemise proov ja too staar jääb lavataguseks.",
 		player_blips_ban = "Õhuruum on täis, UAV pole saadaval.",
 		runtime_texture_ban = "Mod menüü teil on, kuid mitte kasutada seda, te ei tohiks.",
-		spiked_resource_ban = "Üritades skripti muuta ilma loata, on sama nagu üritada muuta lõppu loole ainult seetõttu, et sulle see ei meeldi.",
+		semi_godmode_ban = "Teie tungimine igavese nooruse allikale on häirinud aja loomulikku voolu. Igavik pole nii lõbus, kui see kõlab.",
+		suspicious_explosion_ban = "Vabandust, aga see pole Michael Bay film. Liiga palju plahvatusi pole lubatud.",
 		text_entry_ban = "Inspect Element'i kasutamine selles brauseris pole lubatud.",
 		thermal_night_vision_ban = "Heledama öövaate kasutamine pole lubatud.",
 		vehicle_modification_ban = "Sa ei leidnud oma auto esitulede vedelikku.",
-		vehicle_spam_ban = "Counter terrorists win.",
-		vehicle_spawn_ban = "Sa üritasid punast kivi malmvaguni kasutada, kuid sul ei olnud piisavalt toiterelssi.",
-		weapon_spawn_ban = "Te üritasite kasutada FiveMi maksmiski teed, kus te tegelikult maksisite enda bännerdamise eest.",
+		vehicle_spawn_ban = "Ah, unistate sõidust koos `${modelName}`-ga, kas pole? See pole näidisteruum ja see konkreetne mudel? Sellel on igavene ootenimekiri!",
+		weapon_spawn_ban = "Igatsused `${weaponName}` järele, kas pole? See pole relvahoidla ja see ese? Ikka sepikojas.",
+		advanced_noclip_ban = "Proovib salaja libiseda märkamatutesse koridoridesse? See pole kummituste valss ja see liigutus? Pole meie tantsukaardil.",
+		illegal_local_vehicle_ban = "Paistab, et sa oled leidnud Lord Mirage'i nähtamatu ratsu! Kahjuks on see müstiline sõit reserveeritud aastasele nähtamatule paraadile.",
+		handling_field_ban = "Tundub, et proovisite füüsikaseadusi tuunida. Ilus katse, kuid selles maailmas hoiame oma rattad reaalsuses maas.",
+		teleported_ban = "Vinja ja oledgi läinud? Mitte selles dimensioonis, rändur.",
+		honeypot_native = "Oh, häda! Tundub, et oled sattunud kohta, kus mett ei oleks pidanud leiduma. Mõned potid on parem jätta rahule, hoolimata sellest, kui ahvatlevad nad võivad tunduda.",
+
+		type_aimbot = "Eesmärkbot",
+		type_bad_creation = "Halb loomine",
+		type_blacklisted_command = "Mustas nimekirjas olev käsk",
+		type_clear_tasks = "Kustuta ülesanded",
+		type_damage_modifier = "Kahju muutja",
+		type_distance_taze = "Kaugus taserdamine",
+		type_fast_movement = "Kiire liikumine",
+		type_teleported = "Teleportitud",
+		type_freecam_detected = "Freecam tuvastatud",
+		type_honeypot = "Meemianum",
+		type_honeypot_native = "Mesipot Native",
+		type_illegal_damage = "Keelatud kahjustus",
+		type_illegal_event = "Ebaseaduslik Kliendi Sündmus",
+		type_illegal_freeze = "Ebaseaduslik Külmumine",
+		type_illegal_global = "Keelatud ülemaailmne kasutus",
+		type_illegal_handling_field = "Ebaseadusliku käsitlemise väli",
+		type_illegal_native = "Ebaseaduslik Native-kutse",
+		type_illegal_ped_spawn = "Loomistatud Ped",
+		type_illegal_server_event = "Ebaseaduslik Serveri Sündmus",
+		type_illegal_vehicle_modifier = "Sõiduki Muutuja",
+		type_illegal_vehicle_spawn = "Loomistatud Sõiduk",
+		type_illegal_weapon = "Relva Loomine",
+		type_infinite_ammo = "Lõputu laskemoon",
+		type_advanced_noclip = "Täpsem noclipping",
+		type_invalid_health = "Vigane Tervis",
+		type_invincibility = "Surematuse Seadistamine",
+		type_modified_fov = "Muudetud Vaateväli",
+		type_ped_change = "Ped Muutus",
+		type_player_blips = "Mängija Kaardimärgid",
+		type_runtime_texture = "Käiguaegne tekstuur",
+		type_semi_godmode = "Pooljumalus",
+		type_spawned_object = "Loodud objekt",
+		type_spectate = "Vaata",
+		type_suspicious_explosion = "Kahtlane plahvatus",
+		type_suspicious_transfer = "Kahtlane ülekanne",
+		type_text_entry = "Teksti sisestamine",
+		type_thermal_night_vision = "Termiline/öine nägemine",
+		type_vehicle_modification = "Sõiduki muutmine",
+		type_illegal_local_vehicle = "Keelatud mittevõrgusõidukit kasutades",
+
+		event_prefix = "Ei-tehing: ${type}",
 
 		mp_f_freemode_01_label = "Vaba režiim (naine)",
 		mp_m_freemode_01_label = "Vaba režiim (mees)",
 		player_one_label = "Franklin",
 		player_two_label = "Trevor",
 		player_zero_label = "Michael",
-
-		notification_distance_taze = "Anti-Cheat: ${displayName} taser kasutanud kedagi väga suure kauguse (${distance}m) tagant.",
-		notification_bad_screen_word = "Anti-Cheat: ${displayName}'i ekraanil tuvastati ${count} tundlikku sõna.",
-
-		notification_freecam_detected = "Anti-Cheat: Freecam tuvastatud",
-		notification_illegal_vehicle_modifier = "Anti-Cheat: Sobimatud sõiduki muutjad",
-		notification_illegal_vehicle_spawn = "Anti-Cheat: Sõiduk loodi",
-		notification_fast_movement = "Anticheat: Kiire liikumine",
-		notification_illegal_freeze = "Anticheat: Ebaregulaarne külmutus",
-		notification_invincibility = "Anticheat: Läbimatus",
-		notification_vehicle_modification = "Anticheat: Sõiduki modifikatsioon",
-		notification_damage_modifier = "Anticheat: Kahju modifitseerija",
-		notification_illegal_weapon = "Anticheat: Keelatud relv",
-		notification_spawned_object = "Anticheat: Loodud objekt",
-		notification_driving_hotwire = "Anticheat: Hotwire'iga sõidukijuhtimine",
 
 		ig_orleans_label = "Sasquatch",
 		u_m_m_jesus_01_label = "Jeesus",
@@ -743,80 +688,61 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		illegal_oxy_run = "Mängija täitis oxy jooksu kiiremini kui inimene võimalik oleks.",
 
+		fov_warning = "Teie vaatenurk on ebatavaliselt kõrge",
+		fov_warning_details = "See on tõenäoliselt põhjustatud vaatenurga muutjast. Praegune: ${fov}",
+
+		stretched_res_warning = "Venitatud eraldusvõime (~r~${ratio}~w~)",
+
 		fast_movement_warning = "Olete märgistatud liiga kiiresti liikumise eest! Palun teavitage arendajat ja öelge talle, mida tegite, et see juhtuks, kuna te ei tohiks selle vestlusakna sõnumi saamist teha.",
 		invincibility_warning = "Oled märgistatud invinsibiliteedi kasutamise eest! Palun anna sellest arendajatele teada ning ütle, mida sa tegid, et see juhtuks. Sa ei tohiks sellest suvatseda chat sõnumist teada saada.",
 		damage_modifier_warning = "Oled märgistatud vigase kahju modifikaatori kasutamise eest! Palun anna sellest arendajatele teada ning ütle, mida sa tegid, et see juhtuks. Sa ei tohiks sellest suvatseda chat sõnumist teada saada.",
-		freeze_warning = "Oled märgistatud külmumise eest, kui see ei ole võimalik! Palun anna sellest arendajatele teada ning ütle, mida sa tegid, et see juhtuks. Sa ei tohiks sellest suvatseda chat sõnumist teada saada.",
-
-		distance_taze_screenshot = "Tõkestamine: Tazeri kaugus (${distance}m)",
-		spectating_screenshot = "Tõkestamine: Vaatlusrežiimis",
-		fast_movement_screenshot = "Tõkestamine: Kiire liikumine",
-		illegal_freeze_screenshot = "Tõkestamine: Ebaseaduslik külmumine",
-		illegal_vehicle_modifier_screenshot = "Tõkestamine: Sõiduki muutmise ebaseaduslik (${modifierName} = ${modifierValue})",
-		damage_modifier_screenshot = "Tõkestamine: Vigane kahjustuse muutja (${activeModifier}/${currentModifier})",
-		illegal_weapon_screenshot = "Tõkestamine: Loodud relv (${weaponLabel})",
-		illegal_vehicle_spawn_screenshot = "Anti-Cheat: Spawnete sõiduki (${modelName})",
-		vehicle_modification_screenshot = "Anti-Cheat: Modifitseeritud sõiduk (${types})",
-		thermal_night_vision_screenshot = "Anti-Cheat: Termiline/öine nägemine (${nativeName})",
-		text_entry_screenshot = "Anti-Cheat: Teksti sisestamine (${textEntry})",
-		player_blips_screenshot = "Anti-Cheat: Mängija ikoonid",
-		modified_fov_screenshot = "Anti-Cheat: Muudetud vaatenurk (${fov})",
-		ped_change_screenshot = "Anti-Cheat: Keelatud tegelase muutmine",
-		invincibility_screenshot = "Anti-Cheat: Läbimatu",
-		runtime_texture_screenshot = "Petturitõrje: Kasutusele võetud tekstuur (${textureDict}, ${textureName})",
-		bad_screen_word_screenshot = "Petturitõrje: Halb ekraanisõna (${words})",
-		freecam_detected_screenshot = "Petturitõrje: Vaba kaamera tuvastatud (${distance}m)",
-		driving_hotwire_screenshot = "Petturitõrje: Juhtimine samal ajal kui autot varastatakse"
+		freeze_warning = "Oled märgistatud külmumise eest, kui see ei ole võimalik! Palun anna sellest arendajatele teada ning ütle, mida sa tegid, et see juhtuks. Sa ei tohiks sellest suvatseda chat sõnumist teada saada."
 	},
 
 	authentication = {
-		ip_not_found = "Teie IP-aadressi ei leitud.",
-		authenticating_local_server = "Autentimine kohaliku serveriga...",
-		authenticating_global_server = "Autentimine OP-FW serveritega...",
-		error_fetching_data = "Andmete haaramise ajal tekkis viga.",
-		region_blocked = "See server on blokeerinud piirkonna, kust te ühendate.",
-		server_config_not_loaded = "Serveri konfiguratsiooni pole laaditud.",
-		something_went_horribly_wrong = "Midagi läks jubedalt valesti. Palun proovi uuesti.",
-		local_firewall_enabled = "Kohalik tulemüür on lubatud.",
+		waiting_for_server = "Ootame serveri valmisolekut...",
+		authenticating_with_server = "Autentimine serveriga...",
 
-		local_firewall_on = "Lülita sisse kohalik tulemüür blokeeriva sõnumiga `${blockMessage}`.",
-		local_firewall_re_enabled = "Kohalik tulemüür on uuesti sisse lülitatud blokeeriva sõnumiga `${blockMessage}`.",
-		local_firewall_off = "Lokaaalne tulemüür välja lülitatud.",
-		local_firewall_blocked = "Kohalik tulemüür: blokeeritud ${playerName} (${licenseIdentifier})",
+		failed_to_get_global_user = "Ei õnnestunud global kasutajat saada.",
+		failed_to_get_local_user = "Ei õnnestunud kohalikku kasutajat saada.",
+		failed_to_get_local_ban = "Ei õnnestunud kohalikku keelumist saada.",
 
-		developer = "arendaja",
-		super_admin = "super administraator",
-		staff = "personal",
-		reconnect = "ühendage uuesti",
-		random = "juhuslik",
-		beginner = "algaja",
-		custom = "kohandatud",
-		christmas = "jõulud",
-		casino = "kasiino",
+		global_ban = "Olete globaalselt bännitud kõigist OP-FW serveritest.\n\nBänni Hash: ${banHash}\nBänni Põhjus: ${reason}\n\nKui arvate, et see on ekslik bänn, siis palun liituge OP-FW Discord ühendusega edasise info ja kaebuse esitamise juhiste saamiseks aadressil ${frameworkDiscord}",
+		local_ban = "Olete keelatud ${communityName}.\n\nKeeldumise räsi: ${banHash}\nKeelu põhjus: ${reason}\nKeelaja nimi: ${creatorName}\nAeg: ${timestamp}\n\n${indefiniteOrExpires}\n\nLiituge meie Discordi kogukonnaga, et saada teavet edasikaebamise kohta aadressil ${communityDiscord}",
+		local_ban_no_creator = "Olete keelatud ${communityName}.\n\nKeeldumise räsi: ${banHash}\nKeelu põhjus: ${reason}\nAeg: ${timestamp}\n\n${indefiniteOrExpires}\n\nLiituge meie Discordi kogukonnaga, et saada teavet edasikaebamise kohta aadressil ${communityDiscord}",
 
-		job_low = "madal töö",
-		job_medium = "keskmine töö",
-		job_high = "kõrge töö",
-
-		banned_globally = "Olete global banninga all kõigilt OP-FW serveritelt.\n\nBan Hash: ${banHash}\nBan Põhjus: ${banReason}\n\n Kui arvate, et see on vale bän, palun liituge OP-FW discord guildiga teabe saamiseks edasikaebamise kohta aadressil ${frameworkDiscord}",
-		banned_locally = "Teie konto on ${communityName}-st blokeeritud.\n\nBlokeeringu kood: ${banHash}\nBlokeeringu seadis: ${creatorName}\nBlokeeringu põhjus: ${banReason}\nAeg: ${timestamp}\n\n${indefiniteOrExpires}\n\nKüsimuste korral võtke ühendust ${communityDiscord} discordi kanali kaudu.",
-		banned_locally_no_creator = "Teie konto on ${communityName}-st blokeeritud.\n\nBlokeeringu kood: ${banHash}\nBlokeeringu põhjus: ${banReason}\nAeg: ${timestamp}\n\n${indefiniteOrExpires}\n\nKüsimuste korral võtke ühendust ${communityDiscord} discordi kanali kaudu.",
 		ban_indefinite = "See blokeering on määramata ajaks.",
 		ban_expires = "See blokeering aegub ${timeLeft}.",
-		not_whitelisted = "Sa ei ole sellel serveril additud valgesse nimekirja. Kui soovid lisainfot selle kohta, kuidas seda teha, siis palun liitu meie Discordi kanaliga.\n\n${communityDiscord}",
-		api_error = "Andmeid ei ole võimalik võtta. (tõrkekood ${errorCode})",
+
 		pepega_moderate = "Oled igaveseks blokeeritud kõikidelt OP-FW serveritelt, põhjuseta.",
 		pepega_ultimate = "Oled sellel serveril blokeeritud.",
-		ban_code_not_found = "Oled igaveseks blokeeritud kõikidelt OP-FW serveritelt. Otsinguga ei leitud blokeeringu kohta andmeid.",
-		fraud_chargeback = "Petakas / Tagasimakse",
-		threatening_ddos = "Ähvardamine meie infrastruktuuri ründamisega.",
-		unknown = "Teadmata",
-		api_offline = "Meie tagakülje teenus pole hetkel kättesaadav ega suuda teie andmeid kätte saada. Palun proovige hiljem uuesti.",
-		protective_mode_on = "Serveri kaitse režiim on hetkel selles serveris lubatud, see tähendab, et serveriga saavad ühenduda ainult teatud ajaga mängijad. See on hetkeline ja server peaks varsti tavapärasele režiimile naasma. \n\nLiituge meie discordiga rohkemate juhtumite kohta ${communityDiscord}.",
-		server_restarting = "Server taaskäivitub. Palun proovige mõne minuti pärast uuesti.",
-		connection_cancelled = "See ühendus tühistati, kuna teine ​​on juba käimas.",
-		no_reason_provided = "Põhjust ei ole määratud.",
-		discord_whitelist_id_not_found = "Teie Discordi ID ei leitud. Veenduge, et teil oleks Discord taustal avatud ja et teie ustav FiveM saaks andmeid teie Discordi kliendilt saada.\n\n${communityDiscord}"
+
+		welcome_to = "Tere tulemast",
+
+		connection_rejected_logs_title = "Ühendus tagasi lükatud",
+		connection_rejected_logs_details = "${consoleName} ühendus lükati tagasi põhjusel `${rejectCode}`.",
+
+		connection_accepted_logs_title = "Ühendus aktsepteeritud",
+		connection_accepted_logs_details = "${consoleName} ühendus aktsepteeriti."
+	},
+
+	bans = {
+		banned_no_permissions = "Üritati teha `${reason}` ilma asjakohaste õigusteta.",
+		fraud_chargeback = "Petmine / Chargeback",
+		none_provided = "Mitu ette antud.",
+		you_stopped_streaming = "Lõpetasid striimimise."
+	},
+
+	characters = {
+		character_refreshed = "Karakter värskendatud.",
+		something_went_wrong = "Midagi läks valesti.",
+		user_does_not_have_sent_character_loaded = "Kasutajal pole saatel olevat karakterit laetud.",
+		user_has_no_character_loaded = "Kasutajal ei ole laetud ühtegi tegelast.",
+		user_not_found = "Saadetud kasutajat ei leitud serveris.",
+		invalid_character_id = "Vale tegelase id parameeter saadetud.",
+		invalid_license_identifier = "Vale litsentsi identifikaatori parameeter saadetud.",
+
+		your_character_refreshed = "Teie tegelane on värskendatud."
 	},
 
 	chat = {
@@ -867,49 +793,64 @@ OP.Global.Locales.Languages["et-EE"] = {
 		sit_command = "istu",
 		sit_command_help = "Ürita istuda lähedalasuva toolile.",
 		sit_command_parameter_variation = "variatsioon",
-		sit_command_parameter_variation_help = "Millist istumise animatsiooni esitada (1 - 6)",
+		sit_command_parameter_variation_help = "Millist istumise animatsiooni esitada (1 - 6).",
 		sit_command_substitutes = "tool",
+
+		chair_offset_command = "tool_offset",
+		chair_offset_command_help = "Määrake konkreetse mudeli lähedal tooli nihke.",
+		chair_offset_command_parameter_model_name = "mudeli nimi",
+		chair_offset_command_parameter_model_name_help = "Tooli nime mudel, millele nihet määrata.",
+		chair_offset_command_substitutes = "",
+
+		-- animations/couches
+		sleep_command = "magama",
+		sleep_command_help = "Ürita magada lähedal oleva diivani või maa peal.",
+		sleep_command_parameter_variation = "varieerumine",
+		sleep_command_parameter_variation_help = "Millist magamise animatsiooni esitada (1 - 2).",
+		sleep_command_substitutes = "heida_maha",
+
+		couch_offset_command = "diivan_offset",
+		couch_offset_command_help = "Kopeeri konkreetsele diivanimudelile lähedal asuva diivani nihkekoefitsient.",
+		couch_offset_command_parameter_model_name = "mudeli nimi",
+		couch_offset_command_parameter_model_name_help = "Diivani mudeli nimi, mille nihkekoefitsienti soovid kopeerida.",
+		couch_offset_command_substitutes = "",
 
 		-- animations/emotes
 		ragdoll_command = "nukk",
 		ragdoll_command_help = "Lülita ragdoll sisse/välja.",
+		ragdoll_command_parameter_server_id = "serveri id",
+		ragdoll_command_parameter_server_id_help = "Määrake mängija ragdollimiseks serveri id.",
 		ragdoll_command_substitutes = "",
 
-		-- base/admin
-		report_command = "teade",
-		report_command_help = "Saatke sõnum kõigile aktiivsetele personaliliikmetele.",
-		report_command_parameter_message = "sõnum",
-		report_command_parameter_message_help = "Sõnum, mida soovite saata.",
-		report_command_substitutes = "",
+		-- animations/ledges
+		sit_ledge_command = "istu_rinnatisel",
+		sit_ledge_command_help = "Istu rinnatisel, kui oled selle ees. Pead olema rinnatisega näoga vastamisi.",
+		sit_ledge_command_parameter_variation = "variant",
+		sit_ledge_command_parameter_variation_help = "Millist istumisanimatsooni kasutada (1 - 13).",
+		sit_ledge_command_substitutes = "rinnatis",
 
+		-- animations/walkstyles
+		marathon_command = "maraton",
+		marathon_command_help = "Lülitage sisse/välja 'maraton' silumisfunktsioon, et näha, milliseid käikuid tuleks parandada.",
+		marathon_command_substitutes = "",
+
+		-- base/admin
 		announce_command = "teadaanne",
 		announce_command_help = "Edastage teade kõigile mängijatele.",
 		announce_command_parameter_message = "sõnum",
 		announce_command_parameter_message_help = "Sõnum, mida soovite edastada.",
 		announce_command_substitutes = "",
 
-		staff_pm_command = "staff_pm",
-		staff_pm_command_help = "Saada sõnum töötajale või mängijale töötajana.",
-		staff_pm_command_parameter_server_id = "serveri id",
-		staff_pm_command_parameter_server_id_help = "Mängija serveri ID, keda soovite sõnumitada.",
-		staff_pm_command_parameter_message = "sõnum",
-		staff_pm_command_parameter_message_help = "Sõnum, mida soovite saata.",
-		staff_pm_command_substitutes = "töötajasõnum",
-
-		staff_command = "töötajad",
-		staff_command_help = "Edasta teade kõigile aktiivsetele töötajatele.",
-		staff_command_parameter_message = "sõnum",
-		staff_command_parameter_message_help = "Sõnum, mida soovid saata.",
-		staff_command_substitutes = "",
-
 		wipe_command = "puhastus",
 		wipe_command_help = "Puhasta soovimatud entiteedid kaardilt.",
 		wipe_command_parameter_distance = "kaugus",
-		wipe_command_parameter_distance_help = "Kui soovid kustutada ainult teatud kaugusel olevad entiteedid, sisesta siia kaugus. Jäta `false` või `0` kogu kaardile.",
+		wipe_command_parameter_distance_help = "Kui soovite kustutada ainult teatud kauguses olevad üksused, sisestage siia kaugus. Kogu kaardi jaoks sisestage `-1`.",
 		wipe_command_parameter_ignore_local_entities = "ignoreeri lokaalseid entiteede",
 		wipe_command_parameter_ignore_local_entities_help = "Ignoreeri mittevõrgustatud entiteete? Kui puhastad petise tegevusest, siis soovitatakse see seade muuta `true` või `1` peale.",
 		wipe_command_parameter_model_name = "mudeli nimi",
-		wipe_command_parameter_model_name_help = "Kui soovite kustutada ainult teatud mudelinimega objekte, sisestage siia mudeli nimi. Või jätke tühjaks, 'false' või '0'. Võite määrata ka 'sõidukid' või 'jalakäijad'.",
+		wipe_command_parameter_model_name_help = "Kui soovite kustutada ainult teatud mudelinimega objekte, sisestage siia mudelinimi. Vastasel juhul jätke tühjaks, 'false' või '0'. Saate seada ka 'sõidukid', 'tegelased', 'objektid', 'uksed', 'katki' või 'NPC-d'.",
+		wipe_command_parameter_camera = "camara",
+		wipe_command_parameter_camera_help = "Usa las coordenadas de tu cámara en lugar de las coordenadas de tu personaje. El valor predeterminado es no, `1` o `s` para sí.",
 		wipe_command_substitutes = "",
 
 		noclip_command = "läbimine läbi objektide",
@@ -924,8 +865,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		delete_vehicle_command = "kustuta_sõiduk",
 		delete_vehicle_command_help = "Kustutab lähedal asuva sõiduki.",
-		delete_vehicle_command_parameter_ignore_heading = "jah",
+		delete_vehicle_command_parameter_ignore_heading = "ignoreerige suunamist",
 		delete_vehicle_command_parameter_ignore_heading_help = "Kas soovite ignoreerida oma mängija suunda? Tühjaks jätmisel töötab see nagu `ei`.",
+		delete_vehicle_command_parameter_ignore_occupied = "ignoreerige hõivatud",
+		delete_vehicle_command_parameter_ignore_occupied_help = "Kas soovite ignoreerida hõivatud sõidukeid? Tühjaks jätmise korral käitub see nagu 'ei'.",
 		delete_vehicle_command_substitutes = "dv",
 
 		delete_vehicle_interactively_command = "interaktiivse sõiduki kustutamise lüliti",
@@ -958,18 +901,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		staff_toggle_command_help = "Lülitage sisse/välja oma personali kättesaadavus. Väljalülitamine takistab aruannete, personali sõnumite ja saatjate sõnumite kuvamist.",
 		staff_toggle_command_substitutes = "",
 
-		protective_mode_command = "protective_mode",
-		protective_mode_command_help = "Lülitage sisse/välja serveri kaitse režiim. See takistab uute ühenduste loomist mängijatele, kellel on vähem kui vajalik mänguaeg. See kontroll on välistatud personaliliikmetelt ja serveri toetajatelt.",
-		protective_mode_command_parameter_enabled = "sisse lülitatud",
-		protective_mode_command_parameter_enabled_help = "Kas kontroll on sisse lülitatud? Kehtivad sisendid on: `true`, `false`, `1` ja `0`.",
-		protective_mode_command_parameter_playtime = "Mänguaeg",
-		protective_mode_command_parameter_playtime_help = "Nõutav mänguaeg (sekundites) uue ühenduse aktsepteerimiseks.",
-		protective_mode_command_substitutes = "",
-
 		spawn_vehicle_command = "tekita_sõiduk",
 		spawn_vehicle_command_help = "Tekitab sõiduki.",
 		spawn_vehicle_command_parameter_model_name = "mudeli nimi",
-		spawn_vehicle_command_parameter_model_name_help = "Auto mudeli nimi, mida soovite välja kutsuda.",
+		spawn_vehicle_command_parameter_model_name_help = "Sõiduki mudelinimi, mida soovite ilmuma panna. (Vaikimisi `adder`)",
 		spawn_vehicle_command_parameter_server_id = "serveri id",
 		spawn_vehicle_command_parameter_server_id_help = "Mängija serveri id, kelle jaoks soovite sõiduki luua. Jätke see tühjaks või määrake `0` enda jaoks valimiseks.",
 		spawn_vehicle_command_substitutes = "sv",
@@ -988,6 +923,18 @@ OP.Global.Locales.Languages["et-EE"] = {
 		replace_vehicle_command_parameter_model_name_help = "Sõiduki mudelinimi, mida soovite ilmuda.",
 		replace_vehicle_command_substitutes = "rv",
 
+		add_vehicle_command = "add_vehicle",
+		add_vehicle_command_help = "Lisa sõiduk kellegi garaaži.",
+		add_vehicle_command_parameter_model = "mudel",
+		add_vehicle_command_parameter_model_help = "Sõiduki mudeli nimi või mudeli hash, mida soovite lisada. Kui jätate tühjaks, lisatakse praeguses seisundis olev sõiduki mudel.",
+		add_vehicle_command_parameter_server_id = "serveri id",
+		add_vehicle_command_parameter_server_id_help = "Mängija serveri ID, kellele soovite sõiduki anda. Jättes selle tühjaks, valib see automaatselt teil endal.",
+		add_vehicle_command_substitutes = "",
+
+		save_vehicle_command = "salvesta_sõiduk",
+		save_vehicle_command_help = "Salvestage oma hetkel asuva sõiduki koos selle modifikatsioonidega garaaži.",
+		save_vehicle_command_substitutes = "",
+
 		aimbot_command = "aimbot",
 		aimbot_command_help = "Lülita sisse/välja 'aimbot'.",
 		aimbot_command_parameter_server_id = "serveri ID",
@@ -995,18 +942,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		aimbot_command_parameter_targets = "sihtmärgid",
 		aimbot_command_parameter_targets_help = "Sihtmärkide serveri ID-d (toimib ainult siis, kui lülitate enda jaoks). (Võtab sihtmärkideks ainult nende serveri ID-ga mängijaid)",
 		aimbot_command_substitutes = "",
-
-		player_bones_debug_command = "player_bones_debug",
-		player_bones_debug_command_help = "Lülita mängija luustiku veatuvastus sisse/välja.",
-		player_bones_debug_command_parameter_server_id = "serveri ID",
-		player_bones_debug_command_parameter_server_id_help = "Kui soovid lülitada mängija luustiku veatuvastuse kellegi teise jaoks, sisesta siia nende serveri ID.",
-		player_bones_debug_command_substitutes = "player_bones",
-
-		wallhack_command = "seinavaatlus",
-		wallhack_command_help = "Lülita funktsioon 'seinavaatlus' sisse/välja.",
-		wallhack_command_parameter_server_id = "serveri ID",
-		wallhack_command_parameter_server_id_help = "Kui soovite kellegi teise 'seinavaatega' vahetada, sisestage siia nende serveri ID.",
-		wallhack_command_substitutes = "",
 
 		speed_boost_command = "kiirenduse_luliti",
 		speed_boost_command_help = "Lülita sisse/välja 'kiirenduse'.",
@@ -1020,39 +955,11 @@ OP.Global.Locales.Languages["et-EE"] = {
 		nitro_boost_command_parameter_server_id_help = "Kui soovid kellegi teise jaoks 'nitro boosti' sisse/välja lülitada, sisesta siia nende serveri ID.",
 		nitro_boost_command_substitutes = "nitro",
 
-		indestructibility_command = "vastupidavus",
-		indestructibility_command_help = "Lülita 'vastupidavus' sisse/välja.",
-		indestructibility_command_parameter_server_id = "serveri ID",
-		indestructibility_command_parameter_server_id_help = "Kui soovid kellegi teise jaoks 'vastupidavus' sisse/välja lülitada, sisesta siia nende serveri ID.",
-		indestructibility_command_substitutes = "ind, jumal, jumal režiim, jumalrežiim",
-
 		no_nearby_vehicles_command = "lähedal pole sõidukeid",
 		no_nearby_vehicles_command_help = "Lülita lähedal olevate sõidukite välja või sisse.",
 		no_nearby_vehicles_command_parameter_server_id = "serveri-ID",
 		no_nearby_vehicles_command_parameter_server_id_help = "Kui soovite kellegi teise jaoks lähedal asuvaid sõidukeid välja või sisse lülitada, sisestage siia nende serveri-ID.",
 		no_nearby_vehicles_command_substitutes = "",
-
-		disable_collisions_command = "keela kokkupõrked",
-		disable_collisions_command_help = "Keela kokkupõrked sõidukite ja jalakäijatega 10-meetrises raadiuses.",
-		disable_collisions_command_substitutes = "kokkupõrked",
-
-		ghost_command = "kummitus",
-		ghost_command_help = "See käsk võimaldab /peek, nähtamatuks muutumise ja /disable_collisions.",
-		ghost_command_substitutes = "",
-
-		job_command = "töö",
-		job_command_help = "Uuenda kellegi tööd otsingu põhjal.",
-		job_command_parameter_server_id = "serveri id",
-		job_command_parameter_server_id_help = "Mängija serveri id või 0, et valida iseennast.",
-		job_command_parameter_search = "otsi",
-		job_command_parameter_search_help = "Töö/departemangu/ameti nimi või selle osa, mida otsida, või 'none', et töö eemaldada.",
-		job_command_substitutes = "",
-
-		reset_job_command = "reset_job",
-		reset_job_command_help = "Kustutab mängijalt töö, jättes ta töötuks.",
-		reset_job_command_parameter_server_id = "serveri id",
-		reset_job_command_parameter_server_id_help = "Mängija serveri id või 0, et valida ennast.",
-		reset_job_command_substitutes = "",
 
 		watching_command = "vaatlemine",
 		watching_command_help = "Näitab kõiki mängijaid, kes jälgivad lähedal.",
@@ -1066,15 +973,19 @@ OP.Global.Locales.Languages["et-EE"] = {
 		infinite_ammo_command_help = "Vahetab lõpmatu laskemoona lülituse.",
 		infinite_ammo_command_substitutes = "",
 
-		track_player_command = "jälgimismängija",
-		track_player_command_help = "Lülitab sisse/välja jälgija kindla mängija jaoks.",
-		track_player_command_parameter_server_id = "serveri ID",
-		track_player_command_parameter_server_id_help = "Mängija serveri ID, keda soovite jälgida. Jätke tühjaks, et keelata.",
-		track_player_command_substitutes = "",
+		trigger_headache_command = "põhjusta-peavalu",
+		trigger_headache_command_help = "Põhjustab määratud mängijale lühiajaliselt viivituse.",
+		trigger_headache_command_parameter_server_id = "serveri id",
+		trigger_headache_command_parameter_server_id_help = "Mängija serveri id, kellele soovite peavalu põhjustada.",
+		trigger_headache_command_substitutes = "peavalu",
 
-		reflect_damage_command = "peegelda_kahju",
-		reflect_damage_command_help = "Lülitab sisse/välja kahju peegeldamise. (Iga mängija, kes sulle kahju teeb, saab ise kahjustada)",
-		reflect_damage_command_substitutes = "peegel",
+		super_jump_command = "super_jump",
+		super_jump_command_help = "Lülitab sisse/välja ülihüppe.",
+		super_jump_command_substitutes = "",
+
+		spawn_command = "spawn",
+		spawn_command_help = "Teleporteerib teid personalitorni.",
+		spawn_command_substitutes = "",
 
 		stick_command = "klammerdu",
 		stick_command_help = "Klamberdu auto külge, mille peal viibid.",
@@ -1087,7 +998,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		clean_ped_command = "puhasta_tegelane",
 		clean_ped_command_help = "Puhastab tegelase verd, kuuliauke, tolmu jne.",
 		clean_ped_command_parameter_server_id = "Serveri ID",
-		clean_ped_command_parameter_server_id_help = "Mängija serveri ID, mille pedi soovite puhastada. Kui jätate tühjaks, valitakse automaatselt teie enda ID.",
+		clean_ped_command_parameter_server_id_help = "Mängija serveri id, kelle pedi soovite puhastada.",
 		clean_ped_command_substitutes = "",
 
 		toggle_vehicle_smoke_command = "toggle_vehicle_smoke",
@@ -1107,12 +1018,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		speed_up_progress_bar_command_parameter_server_id = "serveri id",
 		speed_up_progress_bar_command_parameter_server_id_help = "Kui soovite kellegi teise 'kiirenda edusammude rida' sisse või välja lülitada, sisestage tema serveri id siia.",
 		speed_up_progress_bar_command_substitutes = "kiirenda",
-
-		invisibility_command = "nähtamatus",
-		invisibility_command_help = "Lülita sisse/välja 'nähtamatus'.",
-		invisibility_command_parameter_server_id = "serveri ID",
-		invisibility_command_parameter_server_id_help = "Kui soovid kellegi teise 'nähtamatuks' tegemist sisse või välja lülitada, sisesta siia nende serveri ID.",
-		invisibility_command_substitutes = "inv, invis, nähtumatu",
 
 		add_cash_command = "lisa_raha",
 		add_cash_command_help = "Lisage kellegi tegelasele raha.",
@@ -1164,30 +1069,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		warning_message_command_parameter_message_help = "Sõnum, mida soovite mängijatele kuvada. Võite selle parameetri jätta tühjaks, et eemaldada hoiatussõnum.",
 		warning_message_command_substitutes = "",
 
-		tp_coords_command = "tp_koordinaadid",
-		tp_coords_command_help = "Teleportige mõnele koordinaadile.",
-		tp_coords_command_parameter_x = "x-kordinaat",
-		tp_coords_command_parameter_x_help = "X-koordinaat, kuhu soovite teleportida.",
-		tp_coords_command_parameter_y = "y",
-		tp_coords_command_parameter_y_help = "Y-koordinaat, kuhu soovite teleportida.",
-		tp_coords_command_parameter_z = "z",
-		tp_coords_command_parameter_z_help = "Z-koordinaat, kuhu soovite teleportida. See parameeter on valikuline. Kui see jätta tühjaks, otsitakse automaatselt pinnase koordinaate.",
-		tp_coords_command_substitutes = "tpc",
-
-		tp_waypoint_command = "tp_waypoint",
-		tp_waypoint_command_help = "Teleportige oma sisestatud teeviitpunkti juurde.",
-		tp_waypoint_command_substitutes = "tp_marker, tp",
-
-		isolate_player_command = "isoleeri_mängija",
-		isolate_player_command_help = "Isoleerib mängija, keelates neil midagi teha.",
-		isolate_player_command_parameter_server_id = "serveri id",
-		isolate_player_command_parameter_server_id_help = "Sihtmängija.",
-		isolate_player_command_substitutes = "isoleeri",
-
-		show_all_evidence_command = "näita_kogu_tõendusmaterjali",
-		show_all_evidence_command_help = "Näitab kõiki läheduses olevaid kuulikesta tõendeid.",
-		show_all_evidence_command_substitutes = "kõik_tõendid, näita_tõendeid, tõendid",
-
 		population_density_command = "rahvastiku_tihedus",
 		population_density_command_help = "Muudab globaalset rahvastiku tiheduse kordajat.",
 		population_density_command_parameter_multiplier = "kordaja",
@@ -1196,10 +1077,14 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		repair_vehicle_command = "paranda_sõiduk",
 		repair_vehicle_command_help = "Parandab sõiduki, milles sa oled.",
+		repair_vehicle_command_parameter_server_id = "serveri_id",
+		repair_vehicle_command_parameter_server_id_help = "Sõiduki parandamiseks kasutatav serveri ID. (valikuline)",
 		repair_vehicle_command_substitutes = "paranda",
 
 		enter_vehicle_command = "sisse",
 		enter_vehicle_command_help = "Sunnib teie mängijat sõidukisse sisenema, mis on teile lähim (teeb teid väljumiseks sõidukist, kui olete selles).",
+		enter_vehicle_command_parameter_network_id = "võrgu ID",
+		enter_vehicle_command_parameter_network_id_help = "Sõiduki võrgu ID, millele soovite siseneda. (valikuline)",
 		enter_vehicle_command_substitutes = "sv",
 
 		set_modification_command = "seadista_modifikatsioon",
@@ -1236,6 +1121,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		player_info_command_parameter_server_id_help = "Mängija serveri ID, mille kohta soovite infot saada. Juhul kui jätate tühjaks, valitakse teie enda ID.",
 		player_info_command_substitutes = "mängija, mi",
 
+		ender_chest_command = "ender_kast",
+		ender_chest_command_help = "Pääse oma ender-kasti juurde.",
+		ender_chest_command_substitutes = "ek",
+
 		inventory_command = "inventar",
 		inventory_command_help = "Ava konkreetne inventar.",
 		inventory_command_parameter_inventory_name = "inventari nimi",
@@ -1253,7 +1142,9 @@ OP.Global.Locales.Languages["et-EE"] = {
 		fake_disconnect_command_substitutes = "väljajuhtimine, dc",
 
 		set_identity_command = "määra_identiteet",
-		set_identity_command_help = "Eristab sinu mängija nime.",
+		set_identity_command_help = "Ülekirjutab mängija nime.",
+		set_identity_command_parameter_server_id = "serveri ID",
+		set_identity_command_parameter_server_id_help = "Mängija serveri ID, kelle nime tahad üle kirjutada. (0 = iseend)",
 		set_identity_command_parameter_player_name = "mängija nimi",
 		set_identity_command_parameter_player_name_help = "Nimi, mida soovid määrata või jäta tühjaks, et lähtestada.",
 		set_identity_command_substitutes = "identiteet",
@@ -1305,9 +1196,11 @@ OP.Global.Locales.Languages["et-EE"] = {
 		set_metadata_command = "määra_metainfo",
 		set_metadata_command_help = "Määratakse kõigi esemete metainfo kindlasse pesasse.",
 		set_metadata_command_parameter_slot = "pesa",
-		set_metadata_command_parameter_slot_help = "Millises pesas metainfot seadistada.",
-		set_metadata_command_parameter_metadata = "metainfo",
-		set_metadata_command_parameter_metadata_help = "JSON-metainfo, mida määrata.",
+		set_metadata_command_parameter_slot_help = "Millisesse pesasse soovite ese andmeid seada.",
+		set_metadata_command_parameter_key = "võti",
+		set_metadata_command_parameter_key_help = "Metaandmete võti, mida soovite määrata.",
+		set_metadata_command_parameter_value = "väärtus",
+		set_metadata_command_parameter_value_help = "Metaandmete väärtus, mida soovite määrata. (Tühjendage võti kustutamiseks)",
 		set_metadata_command_substitutes = "metaandmed",
 
 		refill_nitro_command = "taasta_nitro",
@@ -1320,10 +1213,14 @@ OP.Global.Locales.Languages["et-EE"] = {
 		register_weapon_command_parameter_slot_help = "Lõuend, kus relv asub.",
 		register_weapon_command_parameter_character_id = "tegelaskuju id",
 		register_weapon_command_parameter_character_id_help = "Tegelaskuju id, kellele soovite relva registreerida.",
+		register_weapon_command_parameter_no_job = "Failed to automatically generate translation.",
+		register_weapon_command_parameter_no_job_help = "Failed to automatically generate translation.",
 		register_weapon_command_substitutes = "",
 
 		advanced_metagame_command = "täiustatud_metamäng",
-		advanced_metagame_command_help = "Superadmini käsk, mis aitab teil oma metamängimist järgmisele tasemele viia.",
+		advanced_metagame_command_help = "Käsk, mis aitab sul oma metamängu uuele tasemele viia.",
+		advanced_metagame_command_parameter_use_characters = "kasuta tegelasi",
+		advanced_metagame_command_parameter_use_characters_help = "Kasutage tegelaste nimesid mängijate asemel.",
 		advanced_metagame_command_substitutes = "am",
 
 		list_weapon_attachments_command = "nimekiri_relva_lisavarustusest",
@@ -1354,7 +1251,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		slap_command_help = "Laksutab mängijat (tappes selle).",
 		slap_command_parameter_server_id = "serveri id",
 		slap_command_parameter_server_id_help = "Mängija serveri id, keda sa soovid laksutada.",
-		slap_command_substitutes = "",
+		slap_command_substitutes = "Failed to automatically generate translation.",
 
 		damage_player_command = "kahjusta_mängijat",
 		damage_player_command_help = "Kahjustab mängija tervist.",
@@ -1388,6 +1285,16 @@ OP.Global.Locales.Languages["et-EE"] = {
 		trigger_ems_call_command_help = "Saadab kohalikust asukohast kiirabikutse.",
 		trigger_ems_call_command_substitutes = "",
 
+		ridealong_command = "liitumine",
+		ridealong_command_help = "Lülitab sisse võimaluse siseneda NPC-de sõidukitesse.",
+		ridealong_command_substitutes = "",
+
+		kill_ped_command = "tapape",
+		kill_ped_command_help = "Tapab pedi, kellel on antud võrgu-ID.",
+		kill_ped_command_parameter_network_id = "võrgu-ID",
+		kill_ped_command_parameter_network_id_help = "Tapetava pedi võrgu-ID.",
+		kill_ped_command_substitutes = "",
+
 		-- base/anti_cheat
 		model_detect_add_command = "model_detect_add",
 		model_detect_add_command_help = "Lisab ajutiselt mudeli tuvastamise nimekirja. Loend lähtestatakse serveri taaskäivitamisel.",
@@ -1413,6 +1320,14 @@ OP.Global.Locales.Languages["et-EE"] = {
 		detection_area_remove_command_parameter_area_id_help = "Eemaldatava vaatlusalaga seotud ID.",
 		detection_area_remove_command_substitutes = "ala_eemalda",
 
+		screen_text_debug_command = "ekraanitekst_debug",
+		screen_text_debug_command_help = "Ekraaniteksti välistamise ristkülikute silumine.",
+		screen_text_debug_command_substitutes = "ekraanitekst",
+
+		anti_cheat_strict_mode_command = "tõrje_rikkuja_range_rez",
+		anti_cheat_strict_mode_command_help = "Lülita tõrje-rikkumise range režiim välja või sisse. See muudab tõrje veelgi agressiivsemaks ja võib põhjustada rohkem valepositiivseid tulemusi.",
+		anti_cheat_strict_mode_command_substitutes = "",
+
 		-- base/commands
 		help_command = "abi",
 		help_command_help = "Kuvab kõik saadaolevad käsklused.",
@@ -1436,26 +1351,89 @@ OP.Global.Locales.Languages["et-EE"] = {
 		emojis_refresh_command_help = "Uuenda saadaolevaid emojisi. Saadame uusima nimekirja alates guild serverist.",
 		emojis_refresh_command_substitutes = "",
 
-		-- base/ping
-		get_pings_command = "pingid_hankimine",
-		get_pings_command_help = "Hankige keskmine ping erinevatelt hostidelt üle maailma, et leida selle serveri jaoks sobivaim hosti asukoht.",
-		get_pings_command_substitutes = "",
+		-- base/points
+		points_command = "punktid",
+		points_command_help = "Näitab sinu OP-punktide summat.",
+		points_command_substitutes = "",
+
+		use_points_command = "kasuta_punkte",
+		use_points_command_help = "Kasuta punkte. Seda kasutatakse siis, kui serveril on erilisi hüvesid, mida tuleb käsitsi tasustada. Ära kasuta seda juhul, kui sulle pole öeldud, kuna see võtab sinu punktid ilma pikemalt mõtlemata!",
+		use_points_command_parameter_amount = "kogus",
+		use_points_command_parameter_amount_help = "Punktid, mida server peaks sinult võtma proovima.",
+		use_points_command_parameter_label = "märge",
+		use_points_command_parameter_label_help = "Märge, mis logitakse koos punktide kasutamisega.",
+		use_points_command_substitutes = "",
 
 		-- base/profile
 		profile_debug_command = "profiili_debugimine",
 		profile_debug_command_help = "Lülita sisse/välja profiilide silumine.",
 		profile_debug_command_substitutes = "",
 
+		remove_twitch_ban_exception_command = "Failed to automatically generate translation.",
+		remove_twitch_ban_exception_command_help = "Failed to automatically generate translation.",
+		remove_twitch_ban_exception_command_parameter_server_id = "No se pudo agregar acceso.",
+		remove_twitch_ban_exception_command_parameter_server_id_help = "ID de personaje no válido o desconocido.",
+		remove_twitch_ban_exception_command_substitutes = "",
+
+		-- base/staff_pm
+		report_command = "teade",
+		report_command_help = "Saatke sõnum kõigile aktiivsetele personaliliikmetele.",
+		report_command_parameter_message = "sõnum",
+		report_command_parameter_message_help = "Sõnum, mida soovid saata. Lühikokkuvõte sellest, millest sa teavitad (Näide: \"Mind ründasid ja tapeti, nende ID oli...\").",
+		report_command_substitutes = "kutsuadmin, peks, modküs, aitame",
+
+		claim_report_command = "nõua_raportit",
+		claim_report_command_help = "Nõua konkreetset raportit.",
+		claim_report_command_parameter_report_id = "raporti id",
+		claim_report_command_parameter_report_id_help = "Raporti id, mida soovid nõuda.",
+		claim_report_command_substitutes = "nõue, nr, nõuaraport",
+
+		staff_pm_command = "staff_pm",
+		staff_pm_command_help = "Saada sõnum töötajale või mängijale töötajana.",
+		staff_pm_command_parameter_server_id = "serveri id",
+		staff_pm_command_parameter_server_id_help = "Mängija serveri ID, keda soovite sõnumitada.",
+		staff_pm_command_parameter_message = "sõnum",
+		staff_pm_command_parameter_message_help = "Sõnum, mida soovite saata.",
+		staff_pm_command_substitutes = "töötajaprivatchat, sõnum, pm, msg, vastus, vastuspm, vastus_pm",
+
+		important_staff_pm_command = "oluline_staff_pm",
+		important_staff_pm_command_help = "Saada oluline sõnum mängijale personaliliikmena.",
+		important_staff_pm_command_parameter_server_id = "serveri id",
+		important_staff_pm_command_parameter_server_id_help = "Mängija serveri ID, kellele soovite teate saata.",
+		important_staff_pm_command_parameter_message = "teade",
+		important_staff_pm_command_parameter_message_help = "Oluline teade, mida soovite saata.",
+		important_staff_pm_command_substitutes = "!staffpm, !staff_pm, !pm",
+
+		staff_command = "töötajad",
+		staff_command_help = "Edasta teade kõigile aktiivsetele töötajatele.",
+		staff_command_parameter_message = "sõnum",
+		staff_command_parameter_message_help = "Sõnum, mida soovid saata.",
+		staff_command_substitutes = "",
+
+		local_staff_command = "kohalik_personal",
+		local_staff_command_help = "Edastage sõnum kõigile aktiivsetele personaliliikmetele 25 m raadiuses.",
+		local_staff_command_parameter_message = "sõnum",
+		local_staff_command_parameter_message_help = "Sõnum, mida soovite saata.",
+		local_staff_command_substitutes = "lpersonal",
+
 		-- base/users
 		playtime_command = "mänguaeg",
 		playtime_command_help = "Kontrolli, kui palju aega oled serveris veetnud nii kokku kui ka sel sessioonil.",
+		playtime_command_parameter_total_playtime = "kogu mänguaeg",
+		playtime_command_parameter_total_playtime_help = "Vaikimisi kasutatakse tegelikult mängitud aega tegelaste jaoks. Seadke see `y`-le, et kasutada selle asemel üldist aega serveris.",
 		playtime_command_parameter_server_id = "serveri id",
 		playtime_command_parameter_server_id_help = "Mängija serveri ID, kelle mänguaega soovid kontrollida. Võid selle tühjaks jätta või asetada `0`, et valida enda mänguaeg.",
 		playtime_command_substitutes = "",
 
 		leaderboard_command = "edetabel",
 		leaderboard_command_help = "Kontrolli mänguaegadega seotud edetabelit.",
+		leaderboard_command_parameter_total_playtime = "koguaeg",
+		leaderboard_command_parameter_total_playtime_help = "Vaikimisi kasutatakse tegelikku mänguaega tegelaskujudel. Määra see `y` väärtuseks, et kasutada serveris üldiselt kulunud koguaega.",
 		leaderboard_command_substitutes = "",
+
+		economy_leaderboard_command = "majandusliiderlaud",
+		economy_leaderboard_command_help = "Kontrolli majandusliidertabelit.",
+		economy_leaderboard_command_substitutes = "eliderlaud",
 
 		package_command = "pakett",
 		package_command_help = "Kontrolli ja värskenda oma paketti.",
@@ -1478,26 +1456,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		admin_command_help = "Avab administraatormenüü.",
 		admin_command_substitutes = "",
 
-		tp_player_command = "tp_mängija",
-		tp_player_command_help = "Teleporteerib sind mängija juurde.",
-		tp_player_command_parameter_server_id = "serveri id",
-		tp_player_command_parameter_server_id_help = "Mängija serveri id, kelle juurde soovite teleporteerida.",
-		tp_player_command_substitutes = "",
-
-		tp_here_command = "tp_siia",
-		tp_here_command_help = "Teleporteerib mängija enda juurde.",
-		tp_here_command_parameter_server_id = "serveri id",
-		tp_here_command_parameter_server_id_help = "Mängija serveri ID, kelle tahad enda juurde teleporteerida.",
-		tp_here_command_substitutes = "",
-
-		tp_to_command = "tp_üles",
-		tp_to_command_help = "Teleporteerib mängija teise mängija juurde.",
-		tp_to_command_parameter_source_id = "allika id",
-		tp_to_command_parameter_source_id_help = "Mängija, keda soovid teleporteerida.",
-		tp_to_command_parameter_destination_id = "sihtkoha id",
-		tp_to_command_parameter_destination_id_help = "Mängija, kelle juurde soovid teleporteerida.",
-		tp_to_command_substitutes = "",
-
 		-- game/airdrops
 		create_airdrop_command = "loo langevarju abi",
 		create_airdrop_command_help = "Looge langevarjuabi.",
@@ -1506,6 +1464,19 @@ OP.Global.Locales.Languages["et-EE"] = {
 		create_airdrop_command_parameter_item_amount = "esemete kogus",
 		create_airdrop_command_parameter_item_amount_help = "Esemete arv, mida langevarjuabi peaks sisaldama.",
 		create_airdrop_command_substitutes = "",
+
+		create_airdrop_custom_command = "loo_airdrop_kohandatud",
+		create_airdrop_custom_command_help = "Tekitab kohandatud sisuga lendava kasti.",
+		create_airdrop_custom_command_parameter_items = "esemed",
+		create_airdrop_custom_command_parameter_items_help = "Sõne, mis sisaldab milliseid esemeid ja mitu neist peaks olema. See peaks välja nägema näiteks 'roheline õun:5,hamburger:3'.",
+		create_airdrop_custom_command_substitutes = "",
+
+		-- game/airports
+		registration_lookup_command = "registriotsing",
+		registration_lookup_command_help = "Otsi lennuki registreerimist.",
+		registration_lookup_command_parameter_registration = "registreerimine",
+		registration_lookup_command_parameter_registration_help = "Lennuki registreerimine (nt N123AZ).",
+		registration_lookup_command_substitutes = "registreerimine",
 
 		-- game/airstrike
 		call_airstrike_command = "kutsu õhulöök",
@@ -1517,14 +1488,12 @@ OP.Global.Locales.Languages["et-EE"] = {
 		airsupport_command_help = "Kutsu õhutoetus abi saamiseks.",
 		airsupport_command_substitutes = "",
 
-		-- game/alerts
-		show_alert_command = "show_alert",
-		show_alert_command_help = "Näitab hoiatust konkreetse mängija jaoks (või kõigile).",
-		show_alert_command_parameter_server_id = "serveri id",
-		show_alert_command_parameter_server_id_help = "Mängija serveri id, kellele tahad hoiatust näidata.",
-		show_alert_command_parameter_content = "sisu",
-		show_alert_command_parameter_content_help = "Hoiatuse sisu.",
-		show_alert_command_substitutes = "häire",
+		-- game/animals
+		animal_sound_command = "loomaheli",
+		animal_sound_command_help = "Esitage loomaheli efekt.",
+		animal_sound_command_parameter_sound = "helind",
+		animal_sound_command_parameter_sound_help = "Helind, mida soovite esitada. (Oleneb looma mudelist)",
+		animal_sound_command_substitutes = "",
 
 		-- game/archives
 		create_archive_command = "uus_arhiiv",
@@ -1541,8 +1510,12 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		-- game/arena
 		respawn_command = "elusta",
-		respawn_command_help = "Tapke end. (areeni jaoks)",
+		respawn_command_help = "Tapa ennast ära. (mängus) (arenale)",
 		respawn_command_substitutes = "enesetapp",
+
+		arena_menu_command = "areenimenüü",
+		arena_menu_command_help = "Lülita Areena menüü sisse ja välja.",
+		arena_menu_command_substitutes = "areen",
 
 		-- game/audio
 		audio_debug_command = "audio_debug",
@@ -1559,15 +1532,24 @@ OP.Global.Locales.Languages["et-EE"] = {
 		play_audio_command_parameter_server_id_help = "Mängija serveri ID, mille jaoks soovite seda heli mängida. Kõigi mängijate puhul saate teha `-1`.",
 		play_audio_command_substitutes = "",
 
+		-- game/bandaids
+		random_bandaid_command = "juhu-põsk",
+		random_bandaid_command_help = "Annab sulle juhusliku plaastrit. :)",
+		random_bandaid_command_substitutes = "plaastrit",
+
 		-- game/battle_royale
 		battle_royale_toggle_command = "battle_royale_toggle",
 		battle_royale_toggle_command_help = "Vahetage Battle Royale funktsiooni olekut.",
+		battle_royale_toggle_command_parameter_max_teammates = "maksimaalsed meeskonnaliikmed",
+		battle_royale_toggle_command_parameter_max_teammates_help = "Lubatud meeskonnaliikmete maksimaalne arv. Vaikimisi on 4. Miinimum on 1 ja maksimum on 10.",
 		battle_royale_toggle_command_substitutes = "br_toggle",
 
 		battle_royale_start_command = "battle_royale_start",
 		battle_royale_start_command_help = "Alustage Battle Royale matši.",
 		battle_royale_start_command_parameter_no_vehicles = "ilma sõidukiteta",
 		battle_royale_start_command_parameter_no_vehicles_help = "Loo matš ilma sõidukiteta.",
+		battle_royale_start_command_parameter_new_inventories = "uued inventarid",
+		battle_royale_start_command_parameter_new_inventories_help = "Loo matš, kus kõigil on tühi, ajutine inventar.",
 		battle_royale_start_command_substitutes = "br_start",
 
 		battle_royale_invite_command = "battle_royale_invite",
@@ -1601,6 +1583,16 @@ OP.Global.Locales.Languages["et-EE"] = {
 		bed_command_help = "Katseta lähima voodi peal magamist.",
 		bed_command_substitutes = "",
 
+		-- game/bicycles
+		pickup_bicycle_command = "võta_jalgratas",
+		pickup_bicycle_command_help = "Võtke lähim jalgratas.",
+		pickup_bicycle_command_substitutes = "vj",
+
+		-- game/bills
+		create_bill_command = "create_bill",
+		create_bill_command_help = "Saada mängijale arve teatud summa eest.",
+		create_bill_command_substitutes = "arve, arve_mängijale",
+
 		-- game/bombs
 		toggle_bombs_command = "vaheta_pommide_seisu",
 		toggle_bombs_command_help = "Lülitab sisse/välja pommid lennukis, kus sa hetkel oled.",
@@ -1611,6 +1603,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		toggle_ignition_bomb_command_substitutes = "ignition_bomb",
 
 		-- game/boomboxes
+		mute_boomboxes_command = "vähenda_boomboxid",
+		mute_boomboxes_command_help = "Vaigista/luba kõik boomboxid.",
+		mute_boomboxes_command_substitutes = "",
+
 		wipe_boomboxes_command = "wipe_boomboxes",
 		wipe_boomboxes_command_help = "Kustutab boomboxid.",
 		wipe_boomboxes_command_parameter_radius = "raadius",
@@ -1628,12 +1624,15 @@ OP.Global.Locales.Languages["et-EE"] = {
 		spawn_contract_command_parameter_server_id_help = "Serveri ID, mille jaoks soovid lepingut spawndata. Kui jäetakse tühjaks, siis valitakse automaatselt sinu enda server.",
 		spawn_contract_command_substitutes = "",
 
-		-- game/cache
-		cache_assets_command = "limi_resursid",
-		cache_assets_command_help = "Sunnib serverit küsima ja alla laadima enamasti kasutatavad ressursid (sõidukid, objektid ja rõivad). Seda ei soovitata, välja arvatud siis, kui sul on aeglane ühendus ja ressursid ei laadu piisavalt kiiresti, et olla ilma katkestusteta. See võib ka põhjustada klientide jaoks probleeme ning lõpetada nende kokkuvarisemisega.",
-		cache_assets_command_parameter_slow_download = "aeglane allalaadimine",
-		cache_assets_command_parameter_slow_download_help = "Kas soovite andmeid aeglaselt alla laadida? See võtab kaua aega, kuid vähendab kokkujooksmise riski.",
-		cache_assets_command_substitutes = "andmepuhver_allalaadimine, eelkäivituse_allalaadimine, laadi_puhver",
+		-- game/buddy_pass
+		buddy_pass_command = "sõbra_pääse",
+		buddy_pass_command_help = "Ava sõbra pääsme liidest.",
+		buddy_pass_command_substitutes = "",
+
+		-- game/camera
+		stable_cam_command = "stabiilne_cam",
+		stable_cam_command_help = "Stabiliseeritud kaamera sisse/välja lülitamine.",
+		stable_cam_command_substitutes = "",
 
 		-- game/cargo
 		cargo_start_command = "kauba_alustamine",
@@ -1670,12 +1669,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		cayo_perico_command_substitutes = "",
 
 		-- game/cinema
-		cinema_blacklist_add_command = "lisa_filmi_mustlisti",
-		cinema_blacklist_add_command_help = "Lisa video kohaliku kino mustlisti.",
-		cinema_blacklist_add_command_parameter_video_key = "video_võti",
-		cinema_blacklist_add_command_parameter_video_key_help = "Selle video võtmele lisatav musta nimekirja video võti. Näide: 'youtube:dQw4w9WgXcQ'",
-		cinema_blacklist_add_command_substitutes = "",
-
 		cinema_screens_debug_command = "kinoekraanid_debug",
 		cinema_screens_debug_command_help = "Kuva kinoekraanide tõrkeotsingut.",
 		cinema_screens_debug_command_substitutes = "",
@@ -1758,6 +1751,16 @@ OP.Global.Locales.Languages["et-EE"] = {
 		reconnect_command_socket_command_help = "Proovib uuesti ühendust võtta käsu pistikuga.",
 		reconnect_command_socket_command_substitutes = "",
 
+		-- game/container_storage
+		containers_command = "konteinerid",
+		containers_command_help = "Vaadake ja haldage renditud ladustuskonteinereid.",
+		containers_command_substitutes = "ladustamiskohad",
+
+		-- game/containers
+		containers_debug_command = "konteinerid_debug",
+		containers_debug_command_help = "Joonista kõik läheduses olevad konteinerid.",
+		containers_debug_command_substitutes = "",
+
 		-- game/crafting
 		crafting_debug_command = "valmistamise_veaotsing",
 		crafting_debug_command_help = "Kuvab kõikide käsitöökohtade veateated.",
@@ -1804,12 +1807,22 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		-- game/debug
 		debug_command = "debug",
-		debug_command_help = "Lülitage sisse/ välja üksuste tõrkeseadmik. See kuvab mõne üldise teabe lähedal asuvate üksuste kohta.",
+		debug_command_help = "Lülitage siluri sisse. See näitab teie ja maailma kohta üldist teavet ning kuvab teie vaadatud üksusi.",
+		debug_command_parameter_minimal = "minimaalne",
+		debug_command_parameter_minimal_help = "Näitab ainult minimaalset teavet (vältides palju looduslikke kõnesid).",
 		debug_command_substitutes = "",
+
+		entity_debug_command = "üksuse_silur",
+		entity_debug_command_help = "Lülitage üksuse siluri sisse. See näitab üldist teavet üksuse kohta, mida vaatate.",
+		entity_debug_command_substitutes = "",
 
 		npc_debug_command = "npc_debug",
 		npc_debug_command_help = "Tõrkeotsib teie lähikonnas kõiki mitte-loomalikke npcs'id.",
 		npc_debug_command_substitutes = "nsd",
+
+		vehicle_debug_command = "vehicle_debug",
+		vehicle_debug_command_help = "Silub kõik teie ümberolevad mitteloomalised sõidukid.",
+		vehicle_debug_command_substitutes = "sõidukid",
 
 		network_debug_command = "võrgu_tõrkeotsing",
 		network_debug_command_help = "Lülitage sisse või välja üksuse võrgumurdja. See näitab mõnda võrguteavet üksuse kohta, mida vaatate.",
@@ -1829,13 +1842,17 @@ OP.Global.Locales.Languages["et-EE"] = {
 		position_command_parameter_label_help = "Valikuline silt, mis salvestatakse asukohaga.",
 		position_command_substitutes = "pos, coords",
 
+		copy_ground_command = "kopeeri_maapind",
+		copy_ground_command_help = "Kopeeri oma praeguse asukoha maapinna koordinaadid lõikelauale.",
+		copy_ground_command_substitutes = "maapind",
+
+		copy_coords_command = "copy_coords",
+		copy_coords_command_help = "Kopeeri oma praeguse asukoha koordinaadid lõikelauale.",
+		copy_coords_command_substitutes = "",
+
 		save_commands_list_command = "salvesta_käskude_nimekiri",
 		save_commands_list_command_help = "Salvestab kõigi saadaolevate op-fw käskude nimekirja.",
 		save_commands_list_command_substitutes = "",
-
-		save_vehicle_data_command = "salvesta_sõiduki_andmed",
-		save_vehicle_data_command_help = "Salvestab sõidukite kohta hulgaliselt andmeid.",
-		save_vehicle_data_command_substitutes = "",
 
 		draw_radius_command = "joonista_raadius",
 		draw_radius_command_help = "Joonista raadius.",
@@ -1883,6 +1900,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		vehicle_info_command_help = "Trükib välja sõidukiga seotud teabe probleemide lahendamiseks.",
 		vehicle_info_command_substitutes = "",
 
+		vehicle_doors_command = "sõiduki_uksed",
+		vehicle_doors_command_help = "Kuva kõik lähedalasuvate sõidukite uksed.",
+		vehicle_doors_command_substitutes = "",
+
 		delete_entity_command = "kustuta_olemus",
 		delete_entity_command_help = "Kustutab olekuse määratud võrgu-ID-ga.",
 		delete_entity_command_parameter_network_id = "võrgu-ID",
@@ -1895,13 +1916,15 @@ OP.Global.Locales.Languages["et-EE"] = {
 		move_entity_command_parameter_network_id_help = "Esse või objekti võrgu ID, mida soovid liigutada.",
 		move_entity_command_parameter_ground = "maapinnale",
 		move_entity_command_parameter_ground_help = "Kas esse või objekt peaks olema maapinnal korrektselt paigutatud (ainult sõidukid).",
+		move_entity_command_parameter_heading = "peakaart",
+		move_entity_command_parameter_heading_help = "Kui objekt tuleb paigutada koos sama peakaardiga kui sinul.",
 		move_entity_command_substitutes = "mv",
 
-		fake_lag_command = "vale_lag",
-		fake_lag_command_help = "Loo vale võrkude aeglustumine.",
-		fake_lag_command_parameter_counter = "loksutuste_arv",
-		fake_lag_command_parameter_counter_help = "See arv määrab lagi kestuse. Mida suurem on see arv, seda aeglasem see on. Tühjaks jätmiseks või keelamiseks jätke see väli tühjaks või kirjutage `0`.",
-		fake_lag_command_substitutes = "lagi",
+		server_entity_command = "serveri_olemus",
+		server_entity_command_help = "Silub serveri teavet olemuse kohta.",
+		server_entity_command_parameter_network_id = "võrgu ID",
+		server_entity_command_parameter_network_id_help = "Olemuse võrgu ID.",
+		server_entity_command_substitutes = "",
 
 		view_weapon_command = "vaata_relva",
 		view_weapon_command_help = "Spawnib objekti määratud mudelinimega ja paigutab selle täpselt ekraanipildi jaoks.",
@@ -1926,6 +1949,12 @@ OP.Global.Locales.Languages["et-EE"] = {
 		play_animation_command_parameter_flags = "lipud",
 		play_animation_command_parameter_flags_help = "Animatsiooni lipud, mida soovite esitada.",
 		play_animation_command_substitutes = "animatsioon",
+
+		play_scenario_command = "mängi stsenaariumi",
+		play_scenario_command_help = "Mängib määratud stsenaariumi.",
+		play_scenario_command_parameter_scenario = "stsenaarium",
+		play_scenario_command_parameter_scenario_help = "Stsenaariumi nimi, mida soovite mängida.",
+		play_scenario_command_substitutes = "stsenaarium",
 
 		draw_coords_command = "joonista_koordinaadid",
 		draw_coords_command_help = "Joonista koordinaadid maailmas.",
@@ -2021,20 +2050,61 @@ OP.Global.Locales.Languages["et-EE"] = {
 		ped_bone_command_parameter_bone_name_help = "Luu, mida soovite siluda.",
 		ped_bone_command_substitutes = "",
 
-		edit_marker_command = "muuda_markerit",
-		edit_marker_command_help = "Muuda markeri asendit või pane uus marker.",
-		edit_marker_command_parameter_marker_name = "markeri nimi",
-		edit_marker_command_parameter_marker_name_help = "Marker, mida soovite redigeerida (jätke tühi uue markeri jaoks).",
-		edit_marker_command_substitutes = "",
+		rotate_marker_command = "pööra_märk",
+		rotate_marker_command_help = "Muuda märgi pööramist.",
+		rotate_marker_command_parameter_marker_name = "märgi nimi",
+		rotate_marker_command_parameter_marker_name_help = "See marker, mida soovite muuta.",
+		rotate_marker_command_substitutes = "",
 
-		rectangle_command = "ristkülik",
-		rectangle_command_help = "Loo ristkülik 3D ruumis.",
-		rectangle_command_substitutes = "rect",
+		debug_info_command = "debug_info",
+		debug_info_command_help = "Kogub mõne mängija kohta silumisinformatsiooni.",
+		debug_info_command_parameter_server_id = "teenindaja id",
+		debug_info_command_parameter_server_id_help = "Mängija, kelle jaoks soovite silumisinformatsiooni koguda.",
+		debug_info_command_substitutes = "",
+
+		where_is_street_command = "where_is_street",
+		where_is_street_command_help = "Asukoht konkreetsele tänavale kaardil.",
+		where_is_street_command_parameter_name = "nimi",
+		where_is_street_command_parameter_name_help = "Tänava nimi või osa nimest.",
+		where_is_street_command_substitutes = "kuson, tänav",
+
+		random_position_command = "juhuslik_asukoht",
+		random_position_command_help = "Teleporteerib sind juhuslikule asukohale peasaarel. (Lülitab ka nähtamatuks)",
+		random_position_command_parameter_server_id = "serveri id",
+		random_position_command_parameter_server_id_help = "Mängija serveri id, kuhu soovite teleporteeruda.",
+		random_position_command_substitutes = "juhuslik",
+
+		crash_ui_command = "krahhi_liides",
+		crash_ui_command_help = "Täida kasutajaliideses sündmus, mis põhjustab tahtliku kokkuvarisemise ja kuulsad 'pimestava pomm'i viga.",
+		crash_ui_command_substitutes = "",
+
+		toggle_deep_log_events_command = "vaheta_sügavad_logisündmused",
+		toggle_deep_log_events_command_help = "Lülita sisse sündmuste sügav logimine konsoolis.",
+		toggle_deep_log_events_command_substitutes = "",
+
+		find_native_toggles_command = "find_native_toggles",
+		find_native_toggles_command_help = "See aitab teil leida potentsiaalseid 'toggle' natiivseid funktsioone teatud käitumise jaoks, kontrollides iga ticki jooksul hulka natiivseid funktsioone. Logitakse muudatused.",
+		find_native_toggles_command_parameter_extreme = "ekstreemne",
+		find_native_toggles_command_parameter_extreme_help = "Kaasake kõik tundmatud natiivsed funktsioonid, mis ei oma parameetreid.",
+		find_native_toggles_command_substitutes = "",
+
+		show_cancelled_vehicles_command = "näita_tühistatud_sõidukeid",
+		show_cancelled_vehicles_command_help = "Lülita tühistatud sõidukite kuvamine sisse/välja.",
+		show_cancelled_vehicles_command_substitutes = "",
+
+		print_object_models_command = "print_object_models",
+		print_object_models_command_help = "Prindi hetkel konsoolis olevad objekti mudelid.",
+		print_object_models_command_substitutes = "",
 
 		-- game/debug_menu
 		debug_menu_command = "silumise_menüü",
 		debug_menu_command_help = "Lülitab sisse/välja tõrkeotsingu menüü.",
 		debug_menu_command_substitutes = "dm",
+
+		-- game/development
+		toggle_developer_ambience_command = "Failed to automatically generate translation.",
+		toggle_developer_ambience_command_help = "Lülita arendaja õhkkond sisse/välja.",
+		toggle_developer_ambience_command_substitutes = "arendaja_õhkkond, õhkkond",
 
 		-- game/dna_evidence
 		take_dna_sample_command = "võta_dna_proov",
@@ -2060,6 +2130,19 @@ OP.Global.Locales.Languages["et-EE"] = {
 		door_debug_command_help = "Annab informatsiooni lähedal asuvate uste kohta.",
 		door_debug_command_substitutes = "",
 
+		disable_doors_command = "keela_uksed",
+		disable_doors_command_help = "Keelab täielikult ukse skripti ukseliste objektide muutmise.",
+		disable_doors_command_substitutes = "",
+
+		add_doors_command = "lisa_uksed",
+		add_doors_command_help = "Lülitab uste lisamise kopeerimiseks sisse/välja.",
+		add_doors_command_substitutes = "",
+
+		-- game/effect_zones
+		effect_zones_debug_command = "efekti_tsoonide_vead",
+		effect_zones_debug_command_help = "Veateade, millistes efekti tsoonides te praegu viibite.",
+		effect_zones_debug_command_substitutes = "",
+
 		-- game/elevators
 		elevator_enable_command = "elevator_enable",
 		elevator_enable_command_help = "Lülitab lähedal asuva lifti sisse.",
@@ -2072,6 +2155,29 @@ OP.Global.Locales.Languages["et-EE"] = {
 		elevator_enable_all_command = "elevator_enable_all",
 		elevator_enable_command_all_help = "Lülitab kõik liftid sisse.",
 		elevator_enable_command_all_substitutes = "",
+
+		-- game/emotes
+		emote_menu_command = "emote_menu",
+		emote_menu_command_help = "Lülita emote menüü sisse/välja.",
+		emote_menu_command_substitutes = "",
+
+		emote_command = "No se pudo crear la cuenta de ahorros.",
+		emote_command_help = "No se pudo eliminar la cuenta de ahorros.",
+		emote_command_parameter_name = "El saldo de la cuenta es insuficiente.",
+		emote_command_parameter_name_help = "El saldo de tu cuenta bancaria es insuficiente.",
+		emote_command_substitutes = "Solo el propietario de la cuenta puede eliminarla y gestionarla. Las personas con acceso a la cuenta solo pueden retirar y depositar. Puedes crear hasta 5 cuentas de ahorro diferentes.",
+
+		walk_command = "Failed to automatically generate translation.",
+		walk_command_help = "Failed to automatically generate translation.",
+		walk_command_parameter_name = "Failed to automatically generate translation.",
+		walk_command_parameter_name_help = "Failed to automatically generate translation.",
+		walk_command_substitutes = "",
+
+		mood_command = "meel",
+		mood_command_help = "Määra oma väljend / meeleolu.",
+		mood_command_parameter_name = "nimi",
+		mood_command_parameter_name_help = "Väljendi / meeleolu nimi.",
+		mood_command_substitutes = "",
 
 		-- game/evidence
 		fingerprint_command = "sõrmejälgede võtmine",
@@ -2091,6 +2197,33 @@ OP.Global.Locales.Languages["et-EE"] = {
 		fake_id_command_parameter_female = "naine",
 		fake_id_command_parameter_female_help = "Määrab väärtuse tõeks, kui soovite naistunnistust meestunnistuse asemel.",
 		fake_id_command_substitutes = "",
+
+		-- game/fields
+		field_debug_command = "field_debug",
+		field_debug_command_help = "Siluge kõiki läheduses olevaid väljavälja taimi.",
+		field_debug_command_substitutes = "",
+
+		-- game/flag_swap
+		flag_swap_command = "lippude_vahetus",
+		flag_swap_command_help = "Vahetab serveri ulatuses 'lippude vahetuse' ürituse sisse/lülita see välja.",
+		flag_swap_command_parameter_flags = "lippude_arv",
+		flag_swap_command_parameter_flags_help = "Lippude arv, mis peaks sündmuse ajal maailmas olema. (vaikimisi: 100)",
+		flag_swap_command_substitutes = "",
+
+		flag_swap_show_flags_command = "lippude_näitamine",
+		flag_swap_show_flags_command_help = "Lülita sisse või välja kõikide lähedal asuvate lippude näitamine.",
+		flag_swap_show_flags_command_substitutes = "",
+
+		flag_swap_leaderboard_command = "lippude_edetabel",
+		flag_swap_leaderboard_command_help = "Lülita lippude edetabel sisse või välja.",
+		flag_swap_leaderboard_command_substitutes = "",
+
+		-- game/flight_radar
+		callsign_command = "kutse",
+		callsign_command_help = "Määra oma kutse lennuraadari jaoks.",
+		callsign_command_parameter_callsign = "kutse",
+		callsign_command_parameter_callsign_help = "Sinu kutse või tühikutest tühjaks muutmiseks.",
+		callsign_command_substitutes = "",
 
 		-- game/forcefields
 		create_forcefield_command = "tee_jõuväli",
@@ -2121,6 +2254,13 @@ OP.Global.Locales.Languages["et-EE"] = {
 		fortnite_wipe_command_parameter_radius = "raadius",
 		fortnite_wipe_command_parameter_radius_help = "Raadius, mida soovite kustutada. Jättes tühjaks või määrates selleks 0, kustutatakse kõik.",
 		fortnite_wipe_command_substitutes = "",
+
+		-- game/fortune_cookies
+		fortune_cookie_command = "õnneküpsis",
+		fortune_cookie_command_help = "Loo õnneküpsis eeldefineeritud sõnumiga.",
+		fortune_cookie_command_parameter_fortune = "fortune",
+		fortune_cookie_command_parameter_fortune_help = "Soovitud õnnekommi sõnum.",
+		fortune_cookie_command_substitutes = "",
 
 		-- game/freecam
 		freecam_command = "freecam",
@@ -2163,6 +2303,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		gun_trader_debug_command = "relvakaupmees_vead",
 		gun_trader_debug_command_help = "Kuva tekst relvakaupleja praeguse asukoha kohta.",
 		gun_trader_debug_command_substitutes = "",
+
+		unlock_gun_trader_command = "ava_relvakaupmees",
+		unlock_gun_trader_command_help = "Avab relvakaupmehe kohe.",
+		unlock_gun_trader_command_substitutes = "",
 
 		-- game/gas_masks
 		gas_debug_command = "gaasi_veaotsing",
@@ -2221,23 +2365,15 @@ OP.Global.Locales.Languages["et-EE"] = {
 		range_revive_command_parameter_distance_help = "Kaugus, mille raadiuses soovite mängijaid taaselustada (1 kuni 200 vahemikus).",
 		range_revive_command_substitutes = "taaselusta_kaugus",
 
-		recent_deaths_command = "viimased_surmad",
-		recent_deaths_command_help = "Saada kõige hiljutisemad surmad.",
-		recent_deaths_command_parameter_amount = "kogus",
-		recent_deaths_command_parameter_amount_help = "Surmade arv, mida soovite saada. Kehtivad väärtused on vahemikus `1` kuni `100`. Kui jätate selle tühjaks, valitakse automaatselt `20`.",
-		recent_deaths_command_substitutes = "vaata_surmade_nimekirja",
-
-		player_death_command = "mängija_surm",
-		player_death_command_help = "Saada info mängija viimase surma kohta.",
-		player_death_command_parameter_server_id = "serveri id",
-		player_death_command_parameter_server_id_help = "Mängija serveri ID. Kui jätate tühjaks, valitakse automaatselt teie ID.",
-		player_death_command_substitutes = "vaata_surma",
-
 		death_timer_command = "surma_taimer",
 		death_timer_command_help = "Ületa aeg surmarežiimis viibimiseks.",
 		death_timer_command_parameter_time = "aeg",
 		death_timer_command_parameter_time_help = "Aja aeg sekundites, mille soovid taimeri seadistada. Tühjendamiseks jäta tühi.",
 		death_timer_command_substitutes = "",
+
+		cpr_command = "klmi",
+		cpr_command_help = "Teosta elustamist lähima NPC või mängija peal.",
+		cpr_command_substitutes = "",
 
 		-- game/hitmarkers
 		hitmarkers_command = "löögimärgid",
@@ -2280,10 +2416,21 @@ OP.Global.Locales.Languages["et-EE"] = {
 		animal_debug_command_help = "Lülitab loomade debug'i sisse/välja.",
 		animal_debug_command_substitutes = "",
 
+		-- game/indestructability
+		indestructibility_command = "vastupidavus",
+		indestructibility_command_help = "Lülita oma lammutamatu olek sisse/välja.",
+		indestructibility_command_parameter_server_id = "serveri ID",
+		indestructibility_command_parameter_server_id_help = "Kui soovid kellegi teise lammutamatu oleku sisse/välja lülitada, sisesta siia nende serveri ID.",
+		indestructibility_command_substitutes = "ind, jumal, jumal režiim, jumalrežiim",
+
 		-- game/injuries
 		inspect_command = "kontrolli",
 		inspect_command_help = "Lähima mängija uurimine vigastuste osas.",
 		inspect_command_substitutes = "",
+
+		autopsy_command = "autopsia",
+		autopsy_command_help = "Teosta lähima mängija laiba lahang. (Kuvatakse viimane salvestatud surmapõhjus)",
+		autopsy_command_substitutes = "",
 
 		-- game/instances
 		instance_create_command = "loomeksemplari",
@@ -2349,7 +2496,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		wipe_ground_inventories_command = "pühkige_maapinnalt_inventarid",
 		wipe_ground_inventories_command_help = "Pühkige maapinnalt inventarid.",
 		wipe_ground_inventories_command_parameter_radius = "raadius",
-		wipe_ground_inventories_command_parameter_radius_help = "Pühkimise raadius. Jättes selle tühjaks, valitakse automaatselt `100`. Kehtivad väärtused on üle `0` ning `0` ja `-1`, mis valivad kõik inventarid.",
+		wipe_ground_inventories_command_parameter_radius_help = "Kustutamisraadius. Jäta see tühjaks, et valida automaatselt `5`. Kehtivad väärtused: `0` ja `-1`, mis valivad kõik inventarid.",
 		wipe_ground_inventories_command_substitutes = "pühhiinventarid, pühkige_inventarid, pühkige_maapind",
 
 		refresh_inventory_command = "värskenda_inventari",
@@ -2359,7 +2506,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		refresh_inventory_command_substitutes = "",
 
 		toggle_big_inventory_command = "vaheta_suur_inventar",
-		toggle_big_inventory_command_help = "Suurendab ajutiselt tegelase inventari ruumi 250-le.",
+		toggle_big_inventory_command_help = "Ajutiselt suurendab teie tegelase inventuuri ruume 250-le. (See on AJUTINE ja nullitakse uuesti sisse logides)",
 		toggle_big_inventory_command_substitutes = "suur_inventar",
 
 		item_lookup_command = "eseme_otsing",
@@ -2367,6 +2514,32 @@ OP.Global.Locales.Languages["et-EE"] = {
 		item_lookup_command_parameter_item_id = "eseme id",
 		item_lookup_command_parameter_item_id_help = "Eseme ID, mida soovite otsida.",
 		item_lookup_command_substitutes = "ese",
+
+		clear_evidence_command = "clear_evidence",
+		clear_evidence_command_help = "Kustutab määratud tõendite kapis olevad esemed. See toiming ei ole tagasipööratav!",
+		clear_evidence_command_parameter_evidence_id = "tõendite ID",
+		clear_evidence_command_parameter_evidence_id_help = "Tõendite kapi ID, mida soovite tühjendada.",
+		clear_evidence_command_substitutes = "",
+
+		-- game/invisibility
+		invisibility_command = "nähtamatus",
+		invisibility_command_help = "Lülitage nähtamatus sisse või välja.",
+		invisibility_command_parameter_server_id = "serveri ID",
+		invisibility_command_parameter_server_id_help = "Kui soovite lülitada kellegi teise nähtamatusse.",
+		invisibility_command_substitutes = "inv, invis, nähtumatu",
+
+		invisibility_mode_command = "invisibility_mode",
+		invisibility_mode_command_help = "Määrake oma nähtamatusrežiim. Võib olla kas 'täis' (oled nähtav ainult vanemadministraatoritele+ oma nähtamatusrežiimil) või 'tavaline' (oled nähtav kõigile administraatoritele, kellel on piiluv).",
+		invisibility_mode_command_parameter_mode = "režiim",
+		invisibility_mode_command_parameter_mode_help = "Võib olla kas 'täis' täielikuks nähtamatuseks või 'tavaline' tavaliseks nähtavuseks.",
+		invisibility_mode_command_substitutes = "",
+
+		-- game/isolation
+		isolate_player_command = "isoleeri_mängija",
+		isolate_player_command_help = "Isoleerib mängija, keelates neil midagi teha.",
+		isolate_player_command_parameter_server_id = "serveri id",
+		isolate_player_command_parameter_server_id_help = "Sihtmängija.",
+		isolate_player_command_substitutes = "isoleeri",
 
 		-- game/items
 		clear_map_command = "tühjenda_kaart",
@@ -2383,6 +2556,32 @@ OP.Global.Locales.Languages["et-EE"] = {
 		jackpot_take_fees_command = "võta_jackpoti_tasud",
 		jackpot_take_fees_command_help = "Võta tasud kõigilt jackpoti laoruumidelt.",
 		jackpot_take_fees_command_substitutes = "",
+
+		-- game/jail
+		check_jail_command = "kontrolli vanglat",
+		check_jail_command_help = "Kontrolli, kui palju aega mängijal vanglas on.",
+		check_jail_parameter_server_id = "serveri ID",
+		check_jail_parameter_server_id_help = "Mängija serveri ID.",
+		check_jail_command_substitutes = "",
+
+		modify_jail_command = "muuda_vangla",
+		modify_jail_command_help = "Muuda mängija vanglas veedetavat aega.",
+		modify_jail_parameter_server_id = "serveri ID",
+		modify_jail_parameter_server_id_help = "Mängija serveri ID.",
+		modify_jail_parameter_operation = "tegevus",
+		modify_jail_parameter_operation_help = "Tegevus, mida soovite teha. (Lisa või lahuta)",
+		modify_jail_parameter_amount = "kogus",
+		modify_jail_parameter_amount_help = "Aeg, mida soovite lisada või eemaldada minutites. Ei saa olla rohkem kui 5 minutit korraga.",
+		modify_jail_command_substitutes = "mod_jail",
+
+		-- game/lag
+		fake_lag_command = "vale_lag",
+		fake_lag_command_help = "Loo vale võrkude aeglustumine.",
+		fake_lag_command_parameter_fps = "kaadrisagedus",
+		fake_lag_command_parameter_fps_help = "Sihtkaadrisagedus (>= 1).",
+		fake_lag_command_parameter_spike = "silmus",
+		fake_lag_command_parameter_spike_help = "Juhuslikult langetab teie kaadrisagedust (peavalu).",
+		fake_lag_command_substitutes = "lagi",
 
 		-- game/locate
 		locate_entity_command = "asukoht",
@@ -2409,10 +2608,30 @@ OP.Global.Locales.Languages["et-EE"] = {
 		roll_lottery_command_help = "Veereta loterii käsitsi.",
 		roll_lottery_command_substitutes = "",
 
+		-- game/lucky_wheel
+		set_podium_vehicle_command = "määra_poodiumi_sõiduk",
+		set_podium_vehicle_command_help = "Määra võidetav poodiumi sõiduk kasiinos.",
+		set_podium_vehicle_command_parameter_model_name = "mudeli nimi",
+		set_podium_vehicle_command_parameter_model_name_help = "Sõiduki mudeli nimi, milleks soovite selle muuta.",
+		set_podium_vehicle_command_substitutes = "",
+
 		-- game/magazines
 		refresh_magazines_command = "värskenda_jaamaplaate",
 		refresh_magazines_command_help = "Värskenda jaamaplaate, kui andmebaasis on muudatusi.",
 		refresh_magazines_command_substitutes = "",
+
+		create_magazine_command = "loo_ajakiri",
+		create_magazine_command_help = "Loo ajakiri kindla väljaande ja konkreetses seerias.",
+		create_magazine_command_parameter_series_name = "seeria nimi",
+		create_magazine_command_parameter_series_name_help = "Ajakirja seeria nimi.",
+		create_magazine_command_parameter_issue_id = "väljaande ID",
+		create_magazine_command_parameter_issue_id_help = "Väljaanne, mida soovid luua.",
+		create_magazine_command_substitutes = "",
+
+		-- game/map
+		live_map_command = "live_kaart",
+		live_map_command_help = "Lülita sisse live-kaart (kuvatakse kõik mängijad sinu kaardil).",
+		live_map_command_substitutes = "",
 
 		-- game/mdt
 		mdt_command = "MDT",
@@ -2424,13 +2643,40 @@ OP.Global.Locales.Languages["et-EE"] = {
 		check_vehicle_upgrades_command_help = "Kontrollib, kas läheduses olev sõiduk on mootori 5 uuendusega.",
 		check_vehicle_upgrades_command_substitutes = "check_upgrades, upgrades",
 
+		-- game/meow
+		meow_command = "miisu",
+		meow_command_help = "Miisu.",
+		meow_command_substitutes = "",
+
+		maxwell_debug_command = "maxwell_debug",
+		maxwell_debug_command_help = "Silumine: Maxwelli asukoht.",
+		maxwell_debug_command_substitutes = "",
+
+		-- game/minecraft
+		minecraft_command = "minecraft",
+		minecraft_command_help = "Pane minecrafti plokid, väga vinge!",
+		minecraft_command_parameter_no_sound = "ilma helita",
+		minecraft_command_parameter_no_sound_help = "Helita plokkide paigutamine.",
+		minecraft_command_substitutes = "",
+
+		minecraft_wipe_command = "minecraft_puhastus",
+		minecraft_wipe_command_help = "Puhasta kõik minecrafti plokid antud raadiuses.",
+		minecraft_wipe_command_parameter_radius = "raadius",
+		minecraft_wipe_command_parameter_radius_help = "Raadius, mida soovite plokkidest puhastada. (0 = kõik plokid, maksimaalselt 5000)",
+		minecraft_wipe_command_substitutes = "",
+
+		-- game/minigames
+		skip_minigames_command = "jäta_mängud_vahele",
+		skip_minigames_command_help = "Vaheta minimängude vahele jätmine sisse/välja.",
+		skip_minigames_command_substitutes = "",
+
 		-- game/mining
 		mining_debug_command = "mining_debug",
 		mining_debug_command_help = "Lülita kaevandamise tõrkeotsing sisse või välja.",
 		mining_debug_command_substitutes = "",
 
 		-- game/miscellaneous
-		-- these two commands should remain the same on all languages in case someone joins in with a language they don't know.
+		-- these two commands (language & languages) should remain the same on all languages in case someone joins in with a language they don't know.
 		-- you can change the _help parts though if you'd like, not the "language code" though.
 		language_command = "language",
 		language_command_help = "Sea oma eelistatud keel. See seade salvestub tuleviku sessioonide jaoks. Muutus jõustub kohe.",
@@ -2504,6 +2750,14 @@ OP.Global.Locales.Languages["et-EE"] = {
 		no_copyright_command_help = "See käsk keelab kõik potentsiaalselt autoriõigustega kaitstud helid raamistikust, kui see on lubatud.",
 		no_copyright_command_substitutes = "",
 
+		picture_command = "pilt",
+		picture_command_help = "Loo muudetava pildiga ese",
+		picture_command_parameter_url = "url",
+		picture_command_parameter_url_help = "Pildi URL",
+		picture_command_parameter_description = "kirjeldus",
+		picture_command_parameter_description_help = "Pildi kirjeldus",
+		picture_command_substitutes = "",
+
 		tps_command = "tps",
 		tps_command_help = "Võta serveri hetkeline TPS.",
 		tps_command_substitutes = "",
@@ -2511,6 +2765,43 @@ OP.Global.Locales.Languages["et-EE"] = {
 		uptime_command = "uptime",
 		uptime_command_help = "Kontrolli serveri tööaega.",
 		uptime_command_substitutes = "",
+
+		auto_run_command = "automaatjooks",
+		auto_run_command_help = "Seab automaatjooksu klahvipuute.",
+		auto_run_command_parameter_control_id = "kontrolli id",
+		auto_run_command_parameter_control_id_help = "Kontrolli ID, mille soovite siduda automaatse jooksuga.",
+		auto_run_command_substitutes = "",
+
+		walk_forwards_command = "käi_edasi",
+		walk_forwards_command_help = "Paneb sind või teise mängija automaatselt edasi liikuma (proovides takistusi vältida).",
+		walk_forwards_command_parameter_server_id = "serveri id",
+		walk_forwards_command_parameter_server_id_help = "Mängija serveri id, keda soovite käima panna.",
+		walk_forwards_command_parameter_sprint = "sprint",
+		walk_forwards_command_parameter_sprint_help = "Kas mängija peaks jooksma edasi liikudes. (Vaikimisi: false)",
+		walk_forwards_command_substitutes = "",
+
+		info_command = "Failed to automatically generate translation.",
+		info_command_help = "Failed to automatically generate translation.",
+		info_command_substitutes = "",
+
+		whois_command = "keson",
+		whois_command_help = "Leia mängija nime või nimeosa järgi.",
+		whois_command_parameter_search = "otsi",
+		whois_command_parameter_search_help = "Mängija nimi või osa sellest.",
+		whois_command_substitutes = "",
+
+		-- game/model_view
+		model_view_command = "model_view",
+		model_view_command_help = "Vaata mudelit taustal oleva rohelise ekraaniga.",
+		model_view_command_parameter_model = "mudel",
+		model_view_command_parameter_model_help = "Mudeli nimi või kood, mida soovite vaadata.",
+		model_view_command_parameter_no_blocker = "ilma varjutajata",
+		model_view_command_parameter_no_blocker_help = "Keela varjutaja (vaikimisi: ei).",
+		model_view_command_parameter_clamp = "piir",
+		model_view_command_parameter_clamp_help = "Piirab suurust alati vähem kui 0,25 (aitab väikeste mudelitega).",
+		model_view_command_parameter_components = "komponendid",
+		model_view_command_parameter_components_help = "Relva komponendid (koma eraldatud).",
+		model_view_command_substitutes = "mudel, vaade",
 
 		-- game/money
 		cash_command = "raha",
@@ -2528,14 +2819,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		give_cash_command_parameter_amount = "summa",
 		give_cash_command_parameter_amount_help = "Summa raha, mida soovite mängijale anda.",
 		give_cash_command_substitutes = "",
-
-		bill_player_command = "arve_mängijale",
-		bill_player_command_help = "Saatke teisele mängijale kindel summa raha.",
-		bill_player_command_parameter_server_id = "serveri id",
-		bill_player_command_parameter_server_id_help = "Mängija serveri ID, kellele soovite arve saata.",
-		bill_player_command_parameter_amount = "summa",
-		bill_player_command_parameter_amount_help = "Summa raha, mille soovite mängijalt arveldada.",
-		bill_player_command_substitutes = "arve",
 
 		-- game/notepads
 		notepad_command = "märkmik",
@@ -2577,6 +2860,13 @@ OP.Global.Locales.Languages["et-EE"] = {
 		remove_notice_command_parameter_message_id_help = "Sõnumi ID, mida soovite eemaldada.",
 		remove_notice_command_substitutes = "",
 
+		-- game/npc_watch
+		npc_watch_command = "npc_watch",
+		npc_watch_command_help = "Vaata juhuslikku NPC-t nende igapäevastes tegevustes.",
+		npc_watch_command_parameter_in_vehicle = "sõidukis",
+		npc_watch_command_parameter_in_vehicle_help = "NPC peab olema sõidukis. (vaikimisi ei)",
+		npc_watch_command_substitutes = "",
+
 		-- game/objects
 		frozen_objects_scan_command = "frozen_objects_scan",
 		frozen_objects_scan_command_help = "Otsi jäätunud objekte mudeli koodi järgi ja salvesta need serveri faili.",
@@ -2598,6 +2888,15 @@ OP.Global.Locales.Languages["et-EE"] = {
 		oxy_tutorial_command = "oxy_juhend",
 		oxy_tutorial_command_help = "Mängi järgmisel korral, kui käivitad oksi-tutorjali.",
 		oxy_tutorial_command_substitutes = "",
+
+		-- game/pacific_bank
+		power_generators_debug_command = "power_generators_debug",
+		power_generators_debug_command_help = "Lülita sisse/välja Vaikse ookeani panga toitegeneraatorite silumine.",
+		power_generators_debug_command_substitutes = "",
+
+		power_generators_disable_command = "power_generators_disable",
+		power_generators_disable_command_help = "Keelake iga Pacific Banki võimsusgeneraator. See on sama mis igaühe edukalt keelamine samal ajal, mis polnud juba keelatud.",
+		power_generators_disable_command_substitutes = "",
 
 		-- game/panel
 		panel_command = "paneel",
@@ -2643,6 +2942,12 @@ OP.Global.Locales.Languages["et-EE"] = {
 		roll_command_parameter_max_help = "Kõrgeim väärtus, mida saate ühe veeretusega saada. Kõrgeim väärtus on siin 100 000.",
 		roll_command_substitutes = "",
 
+		rock_paper_scissors_command = "kivi_paber_käärid",
+		rock_paper_scissors_command_help = "Mängi kivi paber kääre kellegagi.",
+		rock_paper_scissors_command_parameter_what = "mida",
+		rock_paper_scissors_command_parameter_what_help = "Mida soovid mängida. Kehtivad väärtused on `kivi`, `paber` ja `käärid`. (Juhul kui jätad tühjaks, siis juhuslik valik)",
+		rock_paper_scissors_command_substitutes = "rpk",
+
 		card_command = "kaart",
 		card_command_help = "Tõmmake juhuslik kaart.",
 		card_command_substitutes = "",
@@ -2658,8 +2963,8 @@ OP.Global.Locales.Languages["et-EE"] = {
 		ped_spawn_command_parameter_model_help = "Mudel, mida soovite luua.",
 		ped_spawn_command_parameter_weapon = "relv",
 		ped_spawn_command_parameter_weapon_help = "Millist relva peaks pedi käes hoidma (valikuline, \"false\" selle vahele jätmiseks).",
-		ped_spawn_command_parameter_fearless = "kartmatu",
-		ped_spawn_command_parameter_fearless_help = "Kas ped peaks kartma relvi jm (vaikimisi: ei).",
+		ped_spawn_command_parameter_invincible = "võitmatu",
+		ped_spawn_command_parameter_invincible_help = "Kas NPC peaks olema võitmatu. (vaikimisi: ei)",
 		ped_spawn_command_substitutes = "",
 
 		ped_task_command = "pedi_töö",
@@ -2680,6 +2985,12 @@ OP.Global.Locales.Languages["et-EE"] = {
 		ped_remove_command_help = "Eemaldab kõik teie loodud pedid.",
 		ped_remove_command_substitutes = "",
 
+		ped_attack_command = "ped_rünnak",
+		ped_attack_command_help = "Sunnib lähimale ped'ile ründama teatud mängijat.",
+		ped_attack_command_parameter_target = "sihtmärk",
+		ped_attack_command_parameter_target_help = "Mängija, keda soovite lähima ped'i rünnata.",
+		ped_attack_command_substitutes = "",
+
 		list_ped_emotes_command = "loetle_ped_emotsioonid",
 		list_ped_emotes_command_help = "Loetleb kõik saadaval olevad pedi emotsioonid.",
 		list_ped_emotes_command_substitutes = "",
@@ -2694,13 +3005,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		ped_steal_command_parameter_server_id = "serveri id",
 		ped_steal_command_parameter_server_id_help = "Mängija serveri id.",
 		ped_steal_command_substitutes = "varasta_ped",
-
-		-- game/ped_takeover
-		takeover_ped_command = "valluta_ped",
-		takeover_ped_command_help = "Võimaldab sul võtta üle teatud pedi kontrolli.",
-		takeover_ped_command_parameter_network_id = "võrgu id",
-		takeover_ped_command_parameter_network_id_help = "Pedi võrgu id, mida soovid üle võtta.",
-		takeover_ped_command_substitutes = "võtaüle",
 
 		-- game/ped_tasks
 		ped_debug_command = "ped_debug",
@@ -2721,6 +3025,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		phone_number_available_command_parameter_phone_number = "telefoninumber",
 		phone_number_available_command_parameter_phone_number_help = "Telefoninumber, mida soovite kontrollida, kas see on saadaval. Veenduge, et see järgib formaati XXX-XXXX.",
 		phone_number_available_command_substitutes = "number_available",
+
+		share_phone_number_command = "jaga_telefoninumbrit",
+		share_phone_number_command_help = "Jagab sinu telefoninumbrit kõigi enda ümber (< 1.5m).",
+		share_phone_number_command_substitutes = "jaga_number",
 
 		-- game/player_control
 		drive_for_command = "sõida_kelleski_teise_eest",
@@ -2757,6 +3065,17 @@ OP.Global.Locales.Languages["et-EE"] = {
 		properties_debug_command_help = "Lülita sisse/välja omaduste veatõrje.",
 		properties_debug_command_substitutes = "omadused",
 
+		property_locate_command = "property_locate",
+		property_locate_command_help = "Leia kinnisvara.",
+		property_locate_command_parameter_address = "aadress",
+		property_locate_command_parameter_address_help = "Kinnisvara aadress, mida soovid leida.",
+		property_locate_command_substitutes = "leia",
+
+		-- game/prop_hide
+		prop_hide_command = "vara_peitmine",
+		prop_hide_command_help = "Lülita vara peitmine sisse või välja.",
+		prop_hide_command_substitutes = "",
+
 		-- game/props
 		props_manage_command = "asjade_halamine",
 		props_manage_command_help = "Halda läheduses olevaid esemeid.",
@@ -2767,18 +3086,12 @@ OP.Global.Locales.Languages["et-EE"] = {
 		spawn_prop_command_parameter_model_hash = "mudel",
 		spawn_prop_command_parameter_model_hash_help = "Mudel, mille soovid luua.",
 		spawn_prop_command_parameter_network = "võrk",
-		spawn_prop_command_parameter_network_help = "Kas soovite võrgustada propi? Soovitame seda lubada ainult propi jaoks, mis peaksid liikuma.",
-		spawn_prop_command_parameter_no_pickup = "ei korja üles",
-		spawn_prop_command_parameter_no_pickup_help = "Kas see prop peaks olema ainult superadminide poolt korjatav?",
+		spawn_prop_command_parameter_network_help = "Kas soovite võrku vastavust vea propile? Soovitatav on see lubada ainult propide puhul, mis peaksid saama liikuda. Kuid mitte kõik propid ei ole liigutatavad.",
+		spawn_prop_command_parameter_restricted = "piiratud",
+		spawn_prop_command_parameter_restricted_help = "Luba selle propi korjamist ainult super administraatoritel.",
+		spawn_prop_command_parameter_culling = "kaugus",
+		spawn_prop_command_parameter_culling_help = "Kaugus, mille raadiuses propi saab genereerida/kõrvaldada. Vaikimisi raadius on 200m, suurendage seda ainult suurte propide jaoks, mida peaks kaugelt nägema.",
 		spawn_prop_command_substitutes = "",
-
-		spawn_exact_prop_command = "spawn_exact_prop",
-		spawn_exact_prop_command_help = "Loo prop täpselt teie asukohas.",
-		spawn_exact_prop_command_parameter_model_name = "mudeli nimi",
-		spawn_exact_prop_command_parameter_model_name_help = "Mudel, mida soovite ilmunud detailina kasutada.",
-		spawn_exact_prop_command_parameter_ground = "maapind",
-		spawn_exact_prop_command_parameter_ground_help = "Kas detail peaks ilmnema maapinnale või mitte.",
-		spawn_exact_prop_command_substitutes = "",
 
 		props_debug_command = "props_debug",
 		props_debug_command_help = "Dubleerib  kõiki teie ümber olevaid detaile.",
@@ -2795,6 +3108,69 @@ OP.Global.Locales.Languages["et-EE"] = {
 		wipe_props_command_parameter_radius = "raadius",
 		wipe_props_command_parameter_radius_help = "Puhastuse raadius (1-250).",
 		wipe_props_command_substitutes = "",
+
+		-- game/racing
+		race_leave_command = "võidujooks_lahe",
+		race_leave_command_help = "Lahku võistlusest, milles osaled.",
+		race_leave_command_substitutes = "võidujooks_kustuta",
+
+		race_share_command = "võidujooks_jagamine",
+		race_share_command_help = "Jaga võidusõidurada teise mängijaga.",
+		race_share_command_parameter_server_id = "serveri ID",
+		race_share_command_parameter_server_id_help = "Mängija serveri ID, kellega soovid rada jagada.",
+		race_share_command_parameter_track_name = "raja nimi",
+		race_share_command_parameter_track_name_help = "Raja nimi, mida soovid jagada.",
+		race_share_command_substitutes = "",
+
+		race_record_command = "võidusõidu_salvestus",
+		race_record_command_help = "Salvesta võidusõidu.",
+		race_record_command_substitutes = "",
+
+		race_save_command = "võidusõidu_salvesta",
+		race_save_command_help = "Salvesta võidusõidu.",
+		race_save_command_parameter_track_name = "raja nimi",
+		race_save_command_parameter_track_name_help = "Nimi, millega soovid seda salvestada.",
+		race_save_command_parameter_track_type = "raja tüüp",
+		race_save_command_parameter_track_type_help = "Võidusõidu raja tüüp.",
+		race_save_command_substitutes = "",
+
+		race_delete_command = "võidusõidu_kustuta",
+		race_delete_command_help = "Kustuta võidusõidu.",
+		race_delete_command_parameter_track_name = "rajanimi",
+		race_delete_command_parameter_track_name_help = "Raja nimi, mida soovite kustutada.",
+		race_delete_command_substitutes = "",
+
+		race_list_command = "race_list",
+		race_list_command_help = "Näita kõiki salvestatud võistlusi.",
+		race_list_command_substitutes = "",
+
+		race_load_command = "race_load",
+		race_load_command_help = "Laadi võistlus.",
+		race_load_command_parameter_track_name = "rajanimi",
+		race_load_command_parameter_track_name_help = "Raja nimi, mida soovite laadida.",
+		race_load_command_substitutes = "",
+
+		race_start_command = "race_start",
+		race_start_command_help = "Alusta võidusõitu.",
+		race_start_command_parameter_amount = "summa",
+		race_start_command_parameter_amount_help = "Võistlusele sisenemise maksumus.",
+		race_start_command_parameter_start_delay = "alguse viivitus",
+		race_start_command_parameter_start_delay_help = "Alguse viivitus sekundites.",
+		race_start_command_parameter_laps = "ringid",
+		race_start_command_parameter_laps_help = "Ringide arv.",
+		race_start_command_substitutes = "",
+
+		race_cancel_command = "võistlus_tühistamine",
+		race_cancel_command_help = "Tühista võistlus.",
+		race_cancel_command_substitutes = "",
+
+		race_checkpoints_command = "kontrollpunktid_võistlus",
+		race_checkpoints_command_help = "Lülita sisse/välja kontrollpunktid.",
+		race_checkpoints_command_substitutes = "",
+
+		race_sounds_command = "võidusõidu_helid",
+		race_sounds_command_help = "Lülita helid sisse/välja.",
+		race_sounds_command_substitutes = "",
 
 		-- game/radio
 		radio_command = "raadio",
@@ -2830,8 +3206,13 @@ OP.Global.Locales.Languages["et-EE"] = {
 		radio_volume_command = "raadio_helitugevus",
 		radio_volume_command_help = "Reguleeri raadio helitugevust.",
 		radio_volume_command_parameter_volume = "helitugevuse tase",
-		radio_volume_command_parameter_volume_help = "Raadio helitugevuse tase. Väärtus peab olema vahemikus 0 kuni 1. Vaikimisi on 0,5. Jätke see väli tühjaks, et näha oma praegust helitugevuse taset.",
-		radio_volume_command_substitutes = "",
+		radio_volume_command_parameter_volume_help = "Failed to automatically generate translation.",
+		radio_volume_command_substitutes = "Failed to automatically generate translation.",
+
+		-- game/reflect
+		reflect_damage_command = "peegelda_kahju",
+		reflect_damage_command_help = "Failed to automatically generate translation.",
+		reflect_damage_command_substitutes = "peegel",
 
 		-- game/relationships
 		relationships_debug_command = "relationships_debug",
@@ -2866,10 +3247,40 @@ OP.Global.Locales.Languages["et-EE"] = {
 		remove_riot_player_command_parameter_server_id_help = "Mängija serveri ID, keda soovite eemaldada. Jätke see tühi, et ise valida.",
 		remove_riot_player_command_substitutes = "",
 
+		-- game/rooms
+		rooms_debug_command = "tubade_debugimine",
+		rooms_debug_command_help = "Debugib kõik ruumid.",
+		rooms_debug_command_substitutes = "",
+
+		-- game/rules
+		explain_rule_command = "selgita_reeglit",
+		explain_rule_command_help = "Näita teatud reegli selgitust.",
+		explain_rule_command_parameter_number = "number",
+		explain_rule_command_parameter_number_help = "Reegli number (näiteks: 1.1)",
+		explain_rule_command_substitutes = "reegel",
+
+		rules_command = "reeglid",
+		rules_command_help = "Ava kogukonna reeglid oma veebilehitsejas.",
+		rules_command_substitutes = "",
+
+		-- game/savings_accounts
+		savings_accounts_command = "Failed to automatically generate translation.",
+		savings_accounts_command_help = "Failed to automatically generate translation.",
+		savings_accounts_command_substitutes = "Failed to automatically generate translation.",
+
+		-- game/scenarios
+		scenarios_debug_command = "scenarios_debug",
+		scenarios_debug_command_help = "Lülita sisse/välja stsenaariumide silumine.",
+		scenarios_debug_command_substitutes = "",
+
 		-- game/scoreboard
 		metagame_command = "metamäng",
 		metagame_command_help = "Lülitab sisse või välja pideva mängijate serveri ID jälgimise.",
 		metagame_command_substitutes = "meta, m",
+
+		hide_server_id_command = "peida_serveri_id",
+		hide_server_id_command_help = "Peidab või näitab sinu serveri ID-d su peal.",
+		hide_server_id_command_substitutes = "vidin",
 
 		-- game/security_cameras
 		security_cameras_command = "turvakaamerad",
@@ -2898,10 +3309,28 @@ OP.Global.Locales.Languages["et-EE"] = {
 		create_shockwave_command_parameter_radius_help = "Põrutuslaine raadius (1 - 100).",
 		create_shockwave_command_substitutes = "põrutuslaine",
 
+		push_player_command = "tõuka_mängijat",
+		push_player_command_help = "Mängija või tema autosõiduki tõukamine sinust eemale.",
+		push_player_command_parameter_server_id = "server id",
+		push_player_command_parameter_server_id_help = "Mängija serveri ID.",
+		push_player_command_substitutes = "tõuka",
+
 		-- game/shrooms
 		draw_shroom_areas_command = "joonista_seened_ala",
 		draw_shroom_areas_command_help = "Joonista kõik seened alad ja lisa rohkem.",
 		draw_shroom_areas_command_substitutes = "seen_ala",
+
+		-- game/smell
+		smell_command = "haistma",
+		smell_command_help = "Haista enda ümbrust ja otsi midagi ebatavalist.",
+		smell_command_substitutes = "",
+
+		-- game/sound_effects
+		play_sound_command = "esita_hääl",
+		play_sound_command_help = "Esitab heliefekti sinu asukohas.",
+		play_sound_command_parameter_sound = "heli",
+		play_sound_command_parameter_sound_help = "Heliefekti nimi, mida soovid esitada.",
+		play_sound_command_substitutes = "",
 
 		-- game/spying
 		search_for_devices_command = "otsi_seadmeid",
@@ -2973,7 +3402,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		weather_command = "ilm",
 		weather_command_help = "Muudab ilmastikut.",
 		weather_command_parameter_weather = "ilmastiku nimetus",
-		weather_command_parameter_weather_help = "Ilmastiku nimetus, mida soovite seada. Kehtivad ilmastiku nimetused on EXTRASUNNY, CLEAR, CLOUDS, SMOG, FOGGY, OVERCAST, RAIN, THUNDER, CLEARING, NEUTRAL, SNOW, BLIZZARD, SNOWLIGHT, XMAS ja HALLOWEEN.",
+		weather_command_parameter_weather_help = "Ilma nimi, mille soovite selleks määrata. Kehtivad ilmanimed on EXTRASUNNY, CLEAR, CLOUDS, SMOG, FOGGY, OVERCAST, RAIN, THUNDER, CLEARING, NEUTRAL, SNOW, BLIZZARD, SNOWLIGHT, XMAS, HALLOWEEN, RAIN_HALLOWEEN ja SNOW_HALLOWEEN.",
 		weather_command_substitutes = "",
 
 		advance_weather_command = "järgmine_ilmaolukord",
@@ -2997,44 +3426,74 @@ OP.Global.Locales.Languages["et-EE"] = {
 		tablet_command_help = "Avab tahvelarvuti kasutajaliidese (kui teil on tahvelarvuti).",
 		tablet_command_substitutes = "",
 
+		-- game/taxes
+		tax_collection_command = "maksude_kogumine",
+		tax_collection_command_help = "Käivitage käsitsi maksude kogumine.",
+		tax_collection_command_parameter_percentage = "protsent",
+		tax_collection_command_parameter_percentage_help = "Protsent, mida soovite mängijate varandusest maksustada. Makstakse ka mängijatele, kes on mitte sisse logitud. Tavaline number võib olla 0.1 (0.1%).",
+		tax_collection_command_substitutes = "",
+
+		taxes_command = "maksud",
+		taxes_command_help = "Näita oma makse.",
+		taxes_command_substitutes = "",
+
+		-- game/teleporting
+		tp_back_command = "tp_back",
+		tp_back_command_help = "Teleporti tagasi kohta, kust viimati teleportisid.",
+		tp_back_command_substitutes = "tagasi",
+
+		tp_coords_command = "tp_koordinaadid",
+		tp_coords_command_help = "Teleportige mõnele koordinaadile.",
+		tp_coords_command_parameter_x = "x-kordinaat",
+		tp_coords_command_parameter_x_help = "X-koordinaat, kuhu soovite teleportida.",
+		tp_coords_command_parameter_y = "y",
+		tp_coords_command_parameter_y_help = "Y-koordinaat, kuhu soovite teleportida.",
+		tp_coords_command_parameter_z = "z",
+		tp_coords_command_parameter_z_help = "Z-koordinaat, kuhu soovite teleportida. See parameeter on valikuline. Kui see jätta tühjaks, otsitakse automaatselt pinnase koordinaate.",
+		tp_coords_command_parameter_w = "Failed to automatically generate translation.",
+		tp_coords_command_parameter_w_help = "Failed to automatically generate translation.",
+		tp_coords_command_substitutes = "tpc",
+
+		tp_waypoint_command = "tp_waypoint",
+		tp_waypoint_command_help = "Teleportige oma sisestatud teeviitpunkti juurde.",
+		tp_waypoint_command_substitutes = "tp_marker, tp",
+
+		tp_to_player_command = "tp_mängijale",
+		tp_to_player_command_help = "Teleporteerib sind mängija juurde.",
+		tp_to_player_command_parameter_server_id = "serveri id",
+		tp_to_player_command_parameter_server_id_help = "Mängija serveri id, kuhu soovid teleporteeruda.",
+		tp_to_player_command_parameter_into_vehicle = "sõidukisse",
+		tp_to_player_command_parameter_into_vehicle_help = "Kui soovite teleportida mängija sõidukisse.",
+		tp_to_player_command_substitutes = "tpmängijale",
+
+		tp_player_here_command = "tp_mängija_siia",
+		tp_player_here_command_help = "Teleporteerib mängija sinu juurde.",
+		tp_player_here_command_parameter_server_id = "serveri id",
+		tp_player_here_command_parameter_server_id_help = "Mängija serveri id, keda soovid teleporteerida.",
+		tp_player_here_command_parameter_freeze = "külmuta",
+		tp_player_here_command_parameter_freeze_help = "Kui soovite mängija külmutada.",
+		tp_player_here_command_substitutes = "tpmängijatejuurde",
+
+		tp_player_player_command = "tp_player_player",
+		tp_player_player_command_help = "Teleporteerib mängija teisele mängijale.",
+		tp_player_player_command_parameter_source_id = "lähtekoha id",
+		tp_player_player_command_parameter_source_id_help = "Mängija, keda soovite teleportida.",
+		tp_player_player_command_parameter_destination_id = "sihtkoha id",
+		tp_player_player_command_parameter_destination_id_help = "Mängija, kelle juurde soovite lähtekohast mängija teleportida.",
+		tp_player_player_command_substitutes = "",
+
 		-- game/test_server
-		set_vehicle_preset_command = "asetab_auto_eelsisseade",
-		set_vehicle_preset_command_help = "Värskendab täielikult sõiduki, milles praegu viibite, ja rakendab värvused määratletud eelsisseade järgi.",
-		set_vehicle_preset_command_parameter_preset = "eelsõnastatud",
-		set_vehicle_preset_command_parameter_preset_help = "Värvipreset, mida soovite rakendada (punane, sinine, roheline, kollane, oranž, valge, must).",
-		set_vehicle_preset_command_substitutes = "auto_eelsisseade",
-
-		detach_all_doors_command = "lahuta_kõik_uksed",
-		detach_all_doors_command_help = "Lahutab kõik sõiduki uksed, milles praegu viibite.",
-		detach_all_doors_command_substitutes = "",
-
-		pop_all_tires_command = "lase-kõik-rehvid-tühjaks",
-		pop_all_tires_command_help = "Lase tühjaks kõik sõiduki rehvid, milles sa praegu oled.",
-		pop_all_tires_command_substitutes = "",
-
-		upgrade_vehicle_fully_command = "täiusta-sõidukit-täielikult",
-		upgrade_vehicle_fully_command_help = "Täienda täielikult sõidukit, milles sa praegu oled.",
-		upgrade_vehicle_fully_command_substitutes = "",
-
-		random_vehicle_colors_command = "juhuslikud-sõidukivärvid",
-		random_vehicle_colors_command_help = "Juhuslikult genereerib sõidukivärvid sõidukile, milles sa praegu oled.",
-		random_vehicle_colors_command_parameter_lights = "tuled",
-		random_vehicle_colors_command_parameter_lights_help = "Kas ka tuled (ksenon ja neon) tuleks randomiseerida.",
-		random_vehicle_colors_command_substitutes = "",
-
-		starve_command = "näljasta",
-		starve_command_help = "Määrab su toitumise ja janu 0-le.",
-		starve_command_substitutes = "",
-
-		car_command = "auto",
-		car_command_help = "Ilmutab su juhusliku auto.",
-		car_command_substitutes = "",
+		test_menu_command = "testi_menüü",
+		test_menu_command_help = "Lülita testserveri menüü sisse või välja.",
+		test_menu_command_substitutes = "",
 
 		-- game/time_scale
 		set_time_scale_command = "määra_aega_skaleerida",
 		set_time_scale_command_help = "Määrab serveri ajaskaala.",
 		set_time_scale_command_parameter_time_scale = "ajaskaala",
 		set_time_scale_command_parameter_time_scale_help = "Ajaskaala, mida soovid määrata. Väärtus peab olema vahemikus 0 kuni 1.",
+		set_time_scale_command_parameter_instanced = "eraldatud",
+		set_time_scale_command_parameter_instanced_help = "Kas ajatempo peaks olema seade kehtiv ainult sinu praeguse instantsi jaoks. (vaikimisi ei)",
 		set_time_scale_command_substitutes = "ajaskaala, aegluubis",
 
 		-- game/titanic
@@ -3052,22 +3511,18 @@ OP.Global.Locales.Languages["et-EE"] = {
 		-- game/trackers
 		tracker_command = "jälgija",
 		tracker_command_help = "Lülitab sisse/välja jälgija nähtavuse.",
+		tracker_command_parameter_break = "katkesta",
+		tracker_command_parameter_break_help = "Katkesta jälgija ja saada sellest teade hädahelkuriteenistusele. Sisesta 'yes' või 'y', et katkestada jälgija. (Ei saa uuesti sisse lülitada enne, kui on möödunud 20 minutit)",
 		tracker_command_substitutes = "",
 
 		trackers_split_command = "jälgijate_eraldus",
 		trackers_split_command_help = "Lülitab ümber jälgijate hoidmise ühest suurest kategooriast kaheks osaks eraldi.",
 		trackers_split_command_substitutes = "",
 
-		-- game/trains
-		trains_debug_command = "rongidebugi",
-		trains_debug_command_help = "Lülita rongidebugi sisse/välja.",
-		trains_debug_command_substitutes = "",
-
-		spawn_train_command = "loomekspress",
-		spawn_train_command_help = "Loob uue rongi.",
-		spawn_train_command_parameter_track_id = "rööbastee id",
-		spawn_train_command_parameter_track_id_help = "Vali rööbastee, kuhu soovid rongi luua. (1 kuni 12)",
-		spawn_train_command_substitutes = "",
+		-- game/train_pass
+		train_passes_command = "rongi_piletid",
+		train_passes_command_help = "Kontrollige oma rongi piletite arvu.",
+		train_passes_command_substitutes = "",
 
 		-- game/treasure_maps
 		spawn_map_piece_command = "loekatsetükk",
@@ -3078,6 +3533,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		spawn_map_piece_command_parameter_piece_number_help = "Osa number, mida soovite luua.",
 		spawn_map_piece_command_substitutes = "",
 
+		treasure_maps_debug_command = "aardekaardid_debug",
+		treasure_maps_debug_command_help = "Lülita aardekaartide silumistööriist sisse/välja.",
+		treasure_maps_debug_command_substitutes = "",
+
 		-- game/tsunami
 		set_ocean_scaler_command = "määra_ocean_scaler",
 		set_ocean_scaler_command_help = "Muudab globaalselt ookeani skaalat.",
@@ -3085,18 +3544,47 @@ OP.Global.Locales.Languages["et-EE"] = {
 		set_ocean_scaler_command_parameter_intensity_help = "Skaala, mida soovite määrata.",
 		set_ocean_scaler_command_substitutes = "ocean_scaler, set_waves_intensity, waves_intensity",
 
+		tsunami_toggle_command = "tsunami_käivitus",
+		tsunami_toggle_command_help = "Lülitab järk-järgulise tsunami sisse.",
+		tsunami_toggle_command_parameter_minutes = "minutit",
+		tsunami_toggle_command_parameter_minutes_help = "Minutite arv, mis kulub enne kui tsunami üle kogu kaardi ujutab. Vaikimisi on 60 minutit.",
+		tsunami_toggle_command_substitutes = "",
+
+		-- game/twitter_bid
+		twitter_bid_command = "twitter_pakkumine",
+		twitter_bid_command_help = "Lülita Twitteri pakkumise kasutajaliidest sisse/välja.",
+		twitter_bid_command_substitutes = "",
+
 		-- game/vdm
 		vdm_command = "vdm",
 		vdm_command_help = "Selle käsu sisestamisel üritab konkreetne NPC rammida määratud sihtmärki.",
 		vdm_command_parameter_target = "sihtmärk",
 		vdm_command_parameter_target_help = "Sihtmärgi serveri ID.",
 		vdm_command_parameter_network_id = "võrgu ID",
-		vdm_command_parameter_network_id_help = "Kohaliku võrgu ID (või selle sõiduki) määrang.",
+		vdm_command_parameter_network_id_help = "Sõiduki võrgu ID, mis teostab VDMi (kui jätate tühjaks, valib kõige lähedasema sõiduki).",
 		vdm_command_substitutes = "",
 
 		vdm_clear_command = "vdm_clear",
 		vdm_clear_command_help = "Tühjendab kõik teie VDM sihtkohad.",
 		vdm_clear_command_substitutes = "",
+
+		steal_vehicle_command = "vargusõiduk",
+		steal_vehicle_command_help = "Teeb lähimast npcdst sihtmärgi sõiduki vargaks.",
+		steal_vehicle_command_parameter_network_id = "võrgu-ID",
+		steal_vehicle_command_parameter_network_id_help = "Sõiduki võrgu-ID.",
+		steal_vehicle_command_substitutes = "",
+
+		drive_to_command = "Failed to automatically generate translation.",
+		drive_to_command_help = "Failed to automatically generate translation.",
+		drive_to_command_parameter_network_id = "Failed to automatically generate translation.",
+		drive_to_command_parameter_network_id_help = "Kas põlvkonna id, sõidukite põlvkonna id (mille juht on kuues) või jätke tühjaks praeguse sõiduki juhi valimiseks.",
+		drive_to_command_substitutes = "",
+
+		hop_in_command = "hüppa",
+		hop_in_command_help = "Teeb lähima mittemängitava tegelase hüppama sinu sõidukisse (kui iste on vaba).",
+		hop_in_command_parameter_network_id = "võrgu ID",
+		hop_in_command_parameter_network_id_help = "NPC võrgu ID (valikuline).",
+		hop_in_command_substitutes = "",
 
 		-- game/voice
 		voice_debug_command = "voice_debug",
@@ -3105,9 +3593,9 @@ OP.Global.Locales.Languages["et-EE"] = {
 		voice_debug_command_parameter_server_id_help = "Kui soovid kellegi teise 'hääle silumise' olekut muuta, sisesta siia nende serveri ID.",
 		voice_debug_command_substitutes = "",
 
-		muted_areas_debug_command = "vaigistatud_alade_silumine",
-		muted_areas_debug_command_help = "Joonistab kõik vaigistatud häälte alad.",
-		muted_areas_debug_command_substitutes = "vaigistatud_alad",
+		broadcast_all_command = "üleüldine_ülekanne",
+		broadcast_all_command_help = "Lülita üleüldine ülekandmine kõigile mängijatele sisse/välja.",
+		broadcast_all_command_substitutes = "",
 
 		listen_command = "kuula",
 		listen_command_help = "Lülitab sisse kuulamisrežiimi kindla kasutaja jaoks. (Saad kuulda, mida nad ütlevad)",
@@ -3121,34 +3609,23 @@ OP.Global.Locales.Languages["et-EE"] = {
 		toggle_voice_mute_command_parameter_server_id_help = "Inimene, keda soovid vaigistada või mittevaigistada.",
 		toggle_voice_mute_command_substitutes = "voice_mute",
 
+		change_voice_mode_command = "muuda_hääle_režiimi",
+		change_voice_mode_command_help = "Lülitab sisse/välja 'muusika' häälesisendi režiimi. See režiim keelab müravähenduse ja kaja eemaldamise, tagades selgema muusika.",
+		change_voice_mode_command_substitutes = "häälerežiim",
+
+		-- game/wallhack
+		wallhack_command = "seinavaatlus",
+		wallhack_command_help = "Lülita seinad läbipaistvaks.",
+		wallhack_command_parameter_server_id = "serveri ID",
+		wallhack_command_parameter_server_id_help = "Kui soovid lülitada seinad läbipaistvaks kellegi teise jaoks, sisesta siia nende serveri ID.",
+		wallhack_command_substitutes = "",
+
 		-- game/wizard
 		wizard_command = "wizard",
 		wizard_command_help = "Avab võluri menüü.",
 		wizard_command_parameter_server_id = "serveri ID",
 		wizard_command_parameter_server_id_help = "Valige kindel mängija menüüst (valikuline).",
 		wizard_command_substitutes = "",
-
-		ragdoll_player_command = "ragdoll_player",
-		ragdoll_player_command_help = "Paneb mängija ragdoll seisundisse.",
-		ragdoll_player_command_parameter_server_id = "serveri ID",
-		ragdoll_player_command_parameter_server_id_help = "Mängija serveri ID, kelle soovite ragdoll seisundisse valada.",
-		ragdoll_player_command_parameter_force = "jõud",
-		ragdoll_player_command_parameter_force_help = "Rakendab juhusliku jõu mängijale, peale seda kui nad on pandud ragdoll seisundisse.",
-		ragdoll_player_command_substitutes = "",
-
-		ragdoll_radius_command = "ragdoll_radius",
-		ragdoll_radius_command_help = "Sunnib juhuslikul hetkel antud raadiuses olema mängijad randusesse kukkuma.",
-		ragdoll_radius_command_parameter_radius = "raadius",
-		ragdoll_radius_command_parameter_radius_help = "Raadius, milles mängijad randusesse kukuvad.",
-		ragdoll_radius_command_parameter_force = "jõud",
-		ragdoll_radius_command_parameter_force_help = "Rakendatakse juhuslik jõud mängijale pärast randusesse kukkumist.",
-		ragdoll_radius_command_substitutes = "",
-
-		punch_radius_command = "punch_radius",
-		punch_radius_command_help = "Sunnib juhuslikul hetkel antud raadiuses olema mängijad lööke lööma.",
-		punch_radius_command_parameter_radius = "raadius",
-		punch_radius_command_parameter_radius_help = "Mängijate suvaliselt löömise raadius.",
-		punch_radius_command_substitutes = "",
 
 		flashbang_command = "pimestav kähise",
 		flashbang_command_help = "Pimestab teatud mängijat.",
@@ -3176,11 +3653,11 @@ OP.Global.Locales.Languages["et-EE"] = {
 		explode_command_parameter_server_id_help = "Sihtmängija serveri ID.",
 		explode_command_substitutes = "",
 
-		ignite_player_command = "süüta_mängija",
-		ignite_player_command_help = "Süütab mängija põlema lühikeseks ajaks.",
-		ignite_player_command_parameter_server_id = "serveri id",
-		ignite_player_command_parameter_server_id_help = "Sihtmängija serveri ID.",
-		ignite_player_command_substitutes = "süüta, põleta",
+		taze_player_command = "taze_player",
+		taze_player_command_help = "Tazeerib mängija.",
+		taze_player_command_parameter_server_id = "serveri ID",
+		taze_player_command_parameter_server_id_help = "Sihtmängija serveri ID.",
+		taze_player_command_substitutes = "ehmata, taze",
 
 		run_command_as_command = "jooksuta_käsk",
 		run_command_as_command_help = "Teine mängija käsku täitma panemine.",
@@ -3192,20 +3669,28 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		ped_reverse_command = "jalakäija_tagaasi",
 		ped_reverse_command_help = "Paneb lähedalasuva NPC auto tagurpidi liikuma.",
+		ped_reverse_command_parameter_duration = "kestus",
+		ped_reverse_command_parameter_duration_help = "Tagurdamise kestus sekundites (1s - 20s, vaikimisi 4s).",
 		ped_reverse_command_substitutes = "",
 
 		ped_forwards_command = "ped_edasi",
 		ped_forwards_command_help = "Pane kõige lähem ped sõidukis edasi sõitma.",
+		ped_forwards_command_parameter_duration = "kestus",
+		ped_forwards_command_parameter_duration_help = "Edasi sõitmise kestus sekundites (1s - 20s, vaikimisi 4s).",
 		ped_forwards_command_substitutes = "",
+
+		vehicle_flip_command = "sõiduki_pööramine",
+		vehicle_flip_command_help = "Pöörake sõidukit ümber telje.",
+		vehicle_flip_command_parameter_axis = "telg",
+		vehicle_flip_command_parameter_axis_help = "Telg, mille ümber pöörata, kas `x`, `y` või `z`.",
+		vehicle_flip_command_parameter_network_id = "võrgu ID",
+		vehicle_flip_command_parameter_network_id_help = "Sõiduki võrgu ID, mida pöörata. Jätke tühi, et pöörata sõidukit, milles viibite.",
+		vehicle_flip_command_substitutes = "vf",
 
 		-- global/entities
 		local_entities_debug_command = "kohalikud_objektid_deb",
 		local_entities_debug_command_help = "Lülita sisse/välja kohalike objektide silumisrežiim.",
 		local_entities_debug_command_substitutes = "lobjektid",
-
-		no_ped_population_areas_debug_command = "no_ped_populatsiooni_alad",
-		no_ped_population_areas_debug_command_help = "Lülita sisse/välja 'no ped population areas' silumisrežiim.",
-		no_ped_population_areas_debug_command_substitutes = "",
 
 		-- global/explosions
 		create_explosion_command = "loo_plahvatus",
@@ -3227,21 +3712,49 @@ OP.Global.Locales.Languages["et-EE"] = {
 		confirm_no_command_help = "Katkesta praegune toiming.",
 		confirm_no_command_substitutes = "tühista, lõpeta",
 
+		-- global/locales
+		show_raw_locales_command = "show_raw_locales",
+		show_raw_locales_command_help = "Lülita sisse kuvatava toore kohaliku nime väljalülitamiseks abistamiseks vajalike kohtade silumisel.",
+		show_raw_locales_command_substitutes = "",
+
+		-- global/shapes
+		areas_command = "piirkonnad",
+		areas_command_help = "Määrake ringikujulised piirkonnad.",
+		areas_command_substitutes = "",
+
+		polygon_command = "No se pudo eliminar acceso.",
+		polygon_command_help = "Määrake 2D polügoon.",
+		polygon_command_substitutes = "No se pudo depositar.",
+
+		box_command = "kast",
+		box_command_help = "Määratlege 3D kast.",
+		box_command_substitutes = "",
+
 		-- global/states
 		entity_states_command = "entiteedi_seisundid",
 		entity_states_command_help = "Prindib konkreetse entiteedi kõik seisundid.",
 		entity_states_command_parameter_network_id = "võrgu ID",
-		entity_states_command_parameter_network_id_help = "Entiteedi võrgu ID.",
+		entity_states_command_parameter_network_id_help = "Üksuse võrgu ID. Kui jätate tühjaks või seadke 0, valitakse sõiduk, milles viibite, kui olete selles, ja seejärel teie enda mängija tegelane.",
 		entity_states_command_substitutes = "",
 
-		-- illegal/corner
-		corner_command = "nurgaümbris",
-		corner_command_help = "Müü narkootikume lähedalolevale isikule. Müüdav narkootikum sõltub asukohast, kus sa asud.",
-		corner_command_substitutes = "",
+		draw_entity_states_command = "joonista_olekuid",
+		draw_entity_states_command_help = "Näitab kõiki objekte, millel on vähemalt 1 olek.",
+		draw_entity_states_command_substitutes = "",
 
-		corner_debug_command = "nurgaümbris_debug",
-		corner_debug_command_help = "Näita kõiki müügi alasid.",
-		corner_debug_command_substitutes = "",
+		set_entity_state_command = "määra_üksuse_seisund",
+		set_entity_state_command_help = "Määrab üksuse seisundi antud väärtuseks sõltumata piirangutest.",
+		set_entity_state_command_parameter_network_id = "võrgu id",
+		set_entity_state_command_parameter_network_id_help = "Üksuse võrgu ID. Kui jätate tühjaks või seadke 0, valitakse sõiduk, milles viibite, kui olete selles, ja seejärel teie enda mängija tegelane.",
+		set_entity_state_command_parameter_key = "võti",
+		set_entity_state_command_parameter_key_help = "Seisundi nimi.",
+		set_entity_state_command_parameter_value = "väärtus",
+		set_entity_state_command_parameter_value_help = "Väärtus, mille soovite seadistada olekuks.",
+		set_entity_state_command_substitutes = "",
+
+		-- illegal/drugs
+		drugs_debug_command = "narkokaubanduse_debugimine",
+		drugs_debug_command_help = "Debugib kõik narkokaubanduse kohad.",
+		drugs_debug_command_substitutes = "",
 
 		-- interfaces/interfaces
 		clear_uis_command = "puhasta_uis",
@@ -3252,11 +3765,39 @@ OP.Global.Locales.Languages["et-EE"] = {
 		interface_focuses_command_help = "Kontrolli, millised kasutajaliidesed on fookuses.",
 		interface_focuses_command_substitutes = "liidese_fookus, fookus, fookused",
 
+		-- jobs/bus_driver
+		bus_debug_command = "bussi_silumine",
+		bus_debug_command_help = "Kuvab kõik bussipeatused.",
+		bus_debug_command_substitutes = "",
+
+		start_bus_route_command = "alusta_bussiliini",
+		start_bus_route_command_help = "Alusta konkreetset bussiliini.",
+		start_bus_route_command_parameter_route = "liin",
+		start_bus_route_command_parameter_route_help = "Liini nimi, mida soovite alustada.",
+		start_bus_route_command_substitutes = "",
+
+		--jobs/doj
+		lookup_character_command = "lookup_character",
+		lookup_character_command_help = "Otsib tegelase vastavalt otsingule, mida kasutavad kohtunikud.",
+		lookup_character_command_parameter_type = "tüüp",
+		lookup_character_command_parameter_type_help = "llamaradmin",
+		lookup_character_command_parameter_search = "camara",
+		lookup_character_command_parameter_search_help = "Usa las coordenadas de tu cámara en lugar de las coordenadas de tu personaje. El valor predeterminado es no, `1` o `s` para sí.",
+		lookup_character_command_substitutes = "El nombre del modelo o el hash del vehículo que deseas agregar. Si se deja en blanco, se agregará el vehículo en el que te encuentras actualmente (incluyendo sus modificaciones actuales).",
+
+		create_vehicle_hold_command = "ignorar vehículo",
+		create_vehicle_hold_command_help = "Si se establece en `1` o `s`, solo estarás invencible, no el vehículo en el que te encuentras.",
+		create_vehicle_hold_command_parameter_time = "Failed to automatically generate translation.",
+		create_vehicle_hold_command_parameter_time_help = "Failed to automatically generate translation.",
+		create_vehicle_hold_command_parameter_plate = "Failed to automatically generate translation.",
+		create_vehicle_hold_command_parameter_plate_help = "Failed to automatically generate translation.",
+		create_vehicle_hold_command_substitutes = "Failed to automatically generate translation.",
+
 		--jobs/duty
 		toggle_duty_status_command = "lülita_vastutusseisund_sisse_välja_käsk",
 		toggle_duty_status_command_help = "Lülitab Sinu vastutusseisundit sisse või välja.",
 		toggle_duty_status_command_parameter_server_id = "serveri id",
-		toggle_duty_status_command_parameter_server_id_help = "Siia tuleb sisestada sihtserveri id või jätta tühi, kui soovid lülitada sisse või välja oma enda vastutusseisundit.",
+		toggle_duty_status_command_parameter_server_id_help = "Sihtserveri ID või tühi, kui soovite oma valve olekut vahetada.",
 		toggle_duty_status_command_substitutes = "vastutusseisund, vastutus",
 
 		toggle_training_command = "lülita_koolitus_sees_välja_käsk",
@@ -3266,6 +3807,30 @@ OP.Global.Locales.Languages["et-EE"] = {
 		toggle_operator_status_command = "vaheta_halduri_staatus",
 		toggle_operator_status_command_help = "Vaheta oma hädaolukorra halduri staatust. Selle lubamine võimaldab sul vastu võtta hädaabikõnesid.",
 		toggle_operator_status_command_substitutes = "haldur, vaheta_haldur, halduri_staatus",
+
+		-- jobs/emergency
+		remove_clothing_command = "eemalda_riided",
+		remove_clothing_command_help = "Eemaldab teatud rõivatüki teiselt mängijalt. Toimib ainult kas käeraudadega või maha surutud mängijate puhul.",
+		remove_clothing_command_parameter_type = "tüüp",
+		remove_clothing_command_parameter_type_help = "Rõivatüüp, mida soovite eemaldada. Võib olla `mask`, `prillid`, `müts` või `kindad`.",
+		remove_clothing_command_parameter_server_id = "serveri ID",
+		remove_clothing_command_parameter_server_id_help = "Mängija serveri ID, kellelt soovite riietust eemaldada. Kui jätate tühjaks, valitakse lähim kinnivõetud või maha löödud mängija.",
+		remove_clothing_command_substitutes = "rc",
+
+		-- jobs/jobs
+		job_command = "töö",
+		job_command_help = "Uuenda kellegi ametit kiirvaliku abil või lülitage ameti liides sisse või välja.",
+		job_command_parameter_server_id = "serveri id",
+		job_command_parameter_server_id_help = "Mängija serveri id või 0, et valida iseennast.",
+		job_command_parameter_shortcut = "kiirvalik",
+		job_command_parameter_shortcut_help = "Kiirvalik ametile, mida soovite seada. Jätke see tühjaks, et lülitada ameti liides sisse või välja.",
+		job_command_substitutes = "",
+
+		reset_job_command = "reset_job",
+		reset_job_command_help = "Kustutab mängijalt töö, jättes ta töötuks.",
+		reset_job_command_parameter_server_id = "serveri id",
+		reset_job_command_parameter_server_id_help = "Mängija serveri id või 0, et valida ennast.",
+		reset_job_command_substitutes = "",
 
 		-- jobs/police
 		aim_assist_command = "sihi_abi",
@@ -3283,7 +3848,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		pd_impound_command = "pd_hoiulepanek",
 		pd_impound_command_help = "See käsk paneb mängija sõiduki hoiule teatud ajaks.",
 		pd_impound_command_parameter_minutes = "minutid",
-		pd_impound_command_parameter_minutes_help = "Kui kauaks sõiduk hoiule pannakse (1 minuti kuni 12 tunni vahel).",
+		pd_impound_command_parameter_minutes_help = "Kui kauaks sõiduk peaks konfiskeeritud olema (1 minutist kuni 48 tunnini).",
 		pd_impound_command_substitutes = "",
 
 		dispatch_command = "hädaabi",
@@ -3329,6 +3894,44 @@ OP.Global.Locales.Languages["et-EE"] = {
 		licenses_command_help = "Vaadake oma litsentse.",
 		licenses_command_substitutes = "",
 
+		set_marriage_command = "määra_abielu",
+		set_marriage_command_help = "Määra abieluseis kahe tegelase vahel.",
+		set_marriage_command_parameter_partner_a_cid = "partner a",
+		set_marriage_command_parameter_partner_a_cid_help = "Esimase partneri tegelase ID.",
+		set_marriage_command_parameter_partner_b_cid = "partner b_cid",
+		set_marriage_command_parameter_partner_b_cid_help = "Teise partneri tegelaskuju ID.",
+		set_marriage_command_parameter_state = "olek",
+		set_marriage_command_parameter_state_help = "Kas `abiellunud` või `lahutatud`.",
+		set_marriage_command_substitutes = "",
+
+		-- jobs/tasks
+		tasks_debug_command = "tasks_debug",
+		tasks_debug_command_help = "Prindib voo F8 kõigi ülesannete kohta silumisinfo.",
+		tasks_debug_command_parameter_area_id = "ala ID",
+		tasks_debug_command_parameter_area_id_help = "Ülesande piirkonna ID, mida soovite siluda. Jätke tühjaks, et prindida kõik alad.",
+		tasks_debug_command_substitutes = "",
+
+		-- jobs/taxi
+		taxi_display_command = "taksomeeter_kuva",
+		taxi_display_command_help = "Lülitage oma taksomeetri kuvamine sisse/välja.",
+		taxi_display_command_substitutes = "taksokuva, taxi",
+
+		taxi_hire_command = "tellimustakso",
+		taxi_hire_command_help = "Lülitage oma tellimustakso sisse või välja.",
+		taxi_hire_command_substitutes = "tellimustakso",
+
+		taxi_reset_command = "taksomeeter_reset",
+		taxi_reset_command_help = "Nullige oma taksomeeter.",
+		taxi_reset_command_substitutes = "taksomeeterreset",
+
+		taxi_fare_command = "takso_tariif",
+		taxi_fare_command_help = "Määrake oma takso tariif.",
+		taxi_fare_command_parameter_type = "summa",
+		taxi_fare_command_parameter_type_help = "Millist tariifi soovite määrata (abi, näita, algne, miil või minut).",
+		taxi_fare_command_parameter_amount = "summa",
+		taxi_fare_command_parameter_amount_help = "Summa, mille soovite sõidu hinna määra.",
+		taxi_fare_command_substitutes = "taksosõiduhinnas",
+
 		-- jobs/tow
 		toggle_mechanic_messages_command = "lülita_mehaaniku_sõnumid",
 		toggle_mechanic_messages_command_help = "Lülitab sisse/välja mehhaanikute sõnumite vastuvõtu.",
@@ -3338,6 +3941,19 @@ OP.Global.Locales.Languages["et-EE"] = {
 		toggle_anchor_command = "lülita_ankur",
 		toggle_anchor_command_help = "Lülitab ümbruses oleva paadi ankru sisse/välja.",
 		toggle_anchor_command_substitutes = "ankur",
+
+		-- vehicles/cruise_control
+		set_cruise_control_speed_command = "set_cruise_control_speed",
+		set_cruise_control_speed_command_help = "Määrake sõidukis oleva kiirushoidiku kiirus.",
+		set_cruise_control_speed_command_parameter_speed = "kiirus",
+		set_cruise_control_speed_command_parameter_speed_help = "Kiirus, mille soovite seada.",
+		set_cruise_control_speed_command_substitutes = "püsikiirusehoidja, pkh",
+
+		set_speed_limiter_speed_command = "määra_kiirusepiirajas_kiirus",
+		set_speed_limiter_speed_command_help = "Määrake sõiduki kiirusepiiraja kiirus.",
+		set_speed_limiter_speed_command_parameter_speed = "kiirus",
+		set_speed_limiter_speed_command_parameter_speed_help = "Maksimaalne kiirus, mille soovite seada.",
+		set_speed_limiter_speed_command_substitutes = "kiiruspiirangu_lüliti, kl",
 
 		-- vehicles/damage
 		vehicle_damage_debug_command = "sõiduki_kahju_veebilogi_test",
@@ -3349,27 +3965,82 @@ OP.Global.Locales.Languages["et-EE"] = {
 		set_fuel_command_help = "Seadistab sõiduki kütuse taseme.",
 		set_fuel_command_parameter_fuel_level = "kütuse tase",
 		set_fuel_command_parameter_fuel_level_help = "Kütuse tase, mille soovite seadistada. Jätke tühjaks, et automaatselt valida '100'.",
+		set_fuel_command_parameter_server_id = "serveri id",
+		set_fuel_command_parameter_server_id_help = "Kui soovite määrata kütuse teisele mängijale. Jätke see tühi, et valida automaatselt ennast.",
 		set_fuel_command_substitutes = "fuel",
+
+		fuel_debug_command = "kütuse_lahendamine",
+		fuel_debug_command_help = "Prindi sõiduki kütuse taseme muudatused konsooli.",
+		fuel_debug_command_substitutes = "",
+
+		-- vehicles/garage_access
+		manage_garage_command = "haldus_garaaž",
+		manage_garage_command_help = "Haldage oma garaaži ja kellel on sellele juurdepääs.",
+		manage_garage_command_substitutes = "hg",
 
 		-- vehicles/garages
 		toggle_garage_debug_command = "toggle_garage_debug",
 		toggle_garage_debug_command_help = "Lülitab garaaži silumise sisse/välja.",
 		toggle_garage_debug_command_substitutes = "garaaži_veaotsing",
 
+		garage_vehicle_command = "garaaž_sõiduk",
+		garage_vehicle_command_help = "Kustuta sõiduk ja saada see garaaži.",
+		garage_vehicle_command_parameter_repair = "Failed to automatically generate translation.",
+		garage_vehicle_command_parameter_repair_help = "Failed to automatically generate translation.",
+		garage_vehicle_command_substitutes = "garaaž",
+
+		ungarage_vehicle_command = "võta_auto_garaažist",
+		ungarage_vehicle_command_help = "Võta auto välja selle asukohast garaažist.",
+		ungarage_vehicle_command_parameter_vehicle_id = "auto id",
+		ungarage_vehicle_command_parameter_vehicle_id_help = "Auto ID, mida soovite välja võtta.",
+		ungarage_vehicle_command_substitutes = "võta_auto_välja",
+
+		respawn_vehicle_command = "respawna_sõiduk",
+		respawn_vehicle_command_help = "Sõiduki taastamine (garage & ungarage).",
+		respawn_vehicle_command_parameter_repair = "paranda",
+		respawn_vehicle_command_parameter_repair_help = "Kas sõiduk tuleks enne taastamist parandada.",
+		respawn_vehicle_command_substitutes = "",
+
+		create_garage_command = "loo_garage",
+		create_garage_command_help = "Ajutise garaaži loomine lähima sõidukinoodi juurde.",
+		create_garage_command_substitutes = "",
+
+		remove_garage_command = "eemalda_garage",
+		remove_garage_command_help = "Ajutise garaaži eemaldamine.",
+		remove_garage_command_parameter_garage_id = "garaaži ID",
+		remove_garage_command_parameter_garage_id_help = "Ajutise garaaži identifikaator, mida soovite eemaldada.",
+		remove_garage_command_substitutes = "",
+
 		-- vehicles/keys
 		give_key_command = "anna_võti",
 		give_key_command_help = "Anna sõiduki võti lähedalolevale inimesele.",
 		give_key_command_parameter_server_id = "serveri_id",
-		give_key_command_parameter_server_id_help = "Mängija serveri id, kellele soovite võtme anda. Seda saab tühjaks jätta (või seada 0), kui soovite selle anda lähimale inimesele.",
+		give_key_command_parameter_server_id_help = "Mängija serveri ID, kellele soovite võtit anda. Seda saab jätta tühjaks (või panna 0), et anda see lähimale isikule.",
 		give_key_command_substitutes = "võtme_anna",
 
 		hotwire_vehicle_command = "autosse_sissejuhtimine",
 		hotwire_vehicle_command_help = "Kävitab sisse mootori sõidukis, kus viibite.",
+		hotwire_vehicle_command_parameter_server_id = "serveri ID",
+		hotwire_vehicle_command_parameter_server_id_help = "Muudab mängija juhitud sõiduki koheselt varastatuks.",
 		hotwire_vehicle_command_substitutes = "hotwire",
 
 		pickup_keys_command = "korja_võtmed",
 		pickup_keys_command_help = "Võimaldab sul korjata lähima sõiduki võtmed.",
 		pickup_keys_command_substitutes = "",
+
+		grab_keys_command = "võtmed_kätte",
+		grab_keys_command_help = "Võta võtmed sõidukist, mida hetkel juhid.",
+		grab_keys_command_substitutes = "",
+
+		keys_command = "võtmed",
+		keys_command_help = "Saage võtmed hetkel viibitud sõiduki jaoks.",
+		keys_command_parameter_server_id = "serveri id",
+		keys_command_parameter_server_id_help = "Andke teisele mängijale võtmed sõidukisse, milles nad praegu viibivad.",
+		keys_command_substitutes = "",
+
+		check_ignition_tampering_command = "kontrolli_süütevigade_eest",
+		check_ignition_tampering_command_help = "Kontrollige, kas lähima sõiduki süütamisega on manipuleeritud.",
+		check_ignition_tampering_command_substitutes = "",
 
 		-- vehicles/modifications
 		wheel_offset_command = "velje_nihutus",
@@ -3377,16 +4048,19 @@ OP.Global.Locales.Languages["et-EE"] = {
 		wheel_offset_command_parameter_wheels = "ees/taga",
 		wheel_offset_command_parameter_wheels_help = "Milliseid rattaid soovid muuta?",
 		wheel_offset_command_parameter_value = "väärtus",
-		wheel_offset_command_parameter_value_help = "Summa (vahemikus -0,15 kuni 0,15), mida soovite muuta. 0 on vaikimisi.",
+		wheel_offset_command_parameter_value_help = "Summa, mille abil soovite seda muuta. See võib olla vahemikus -0,15 kuni 0,2, 0 on vaikimisi.",
 		wheel_offset_command_substitutes = "",
 
-		wheel_rotation_command = "ratase_pöörlemine",
-		wheel_rotation_command_help = "Muudab sõiduki rataste pöörlemist.",
-		wheel_rotation_command_parameter_wheels = "ees/taga",
-		wheel_rotation_command_parameter_wheels_help = "Milliseid rattaid soovite muuta?",
-		wheel_rotation_command_parameter_value = "väärtus",
-		wheel_rotation_command_parameter_value_help = "Summa, mida soovite muuta. See võib olla vahemikus -0,5 kuni 0,5, 0 on vaikimisi.",
-		wheel_rotation_command_substitutes = "",
+		suspension_height_command = "vedrustuse_kõrgus",
+		suspension_height_command_help = "Muutke sõiduki visuaalset vedrustuse kõrgust.",
+		suspension_height_command_parameter_value = "väärtus",
+		suspension_height_command_parameter_value_help = "Väärtus, mida soovite muuta. See võib olla mis tahes vahemikus -0.15 kuni 0.1, 0 tähendab vaikimisi.",
+		suspension_height_command_substitutes = "",
+
+		-- vehicles/oil
+		oil_level_command = "õlitaseme",
+		oil_level_command_help = "Kontrolli lähima sõiduki õlitaseme.",
+		oil_level_command_substitutes = "õli",
 
 		-- vehicles/plates
 		fake_plate_command = "vale_number",
@@ -3404,8 +4078,14 @@ OP.Global.Locales.Languages["et-EE"] = {
 		custom_plate_command_parameter_vehicle_id = "sõiduki ID",
 		custom_plate_command_parameter_vehicle_id_help = "Sõiduki ID, millele soovite panna kohandatud numbrimärgi. (Seda ID-d saate leida oma garaažist)",
 		custom_plate_command_parameter_plate_number = "numbrimärk",
-		custom_plate_command_parameter_plate_number_help = "Numbrimärk, mida soovite seada. Numbrimärgid võivad olla kuni 8 tähemärki pikkad ja koosnevad ainult suurtähtedest ja numbritest.",
+		custom_plate_command_parameter_plate_number_help = "Sõiduki numbrimärk, mida soovite määrata. Numbrimärk võib sisaldada kuni 8 tähemärki ja koosneda ainult suurtest tähtedest ja numbritest. Mänge ignoreerivad tühikud.",
 		custom_plate_command_substitutes = "",
+
+		reset_plate_command = "reset_plate",
+		reset_plate_command_help = "Lähtesta oma sõiduki numbrimärk (kui see on kohandatud numbrimärgiga, mis ei vasta tavalisele formaadile).",
+		reset_plate_command_parameter_vehicle_id = "sõiduki ID",
+		reset_plate_command_parameter_vehicle_id_help = "Sõiduki ID, mille tahaksid numbrimärki lähtestada. (Selle ID leiad oma garaažist)",
+		reset_plate_command_substitutes = "",
 
 		-- vehicles/runways
 		ifr_command = "ifr",
@@ -3417,9 +4097,18 @@ OP.Global.Locales.Languages["et-EE"] = {
 		mute_sirens_command_help = "Vaigistab kõik sireenid ja signaalid.",
 		mute_sirens_command_substitutes = "",
 
+		sirens_debug_command = "sirens_debug",
+		sirens_debug_command_help = "Joonista kõik häiresignaalid, hääled ja tuled.",
+		sirens_debug_command_substitutes = "",
+
+		-- vehicles/trailers
+		toggle_trailer_command = "vaheta_traileri_seisundit",
+		toggle_trailer_command_help = "Ühendab või lahutab haagise sõidukist, milles viibite.",
+		toggle_trailer_command_substitutes = "haagise",
+
 		-- vehicles/vehicles
 		flip_command = "ümberpaiskamine",
-		flip_command_help = "Keeruta autot ümber, kui see on tagurpidi.",
+		flip_command_help = "Veere ümber ümberpööratud sõiduk või ostukäru.",
 		flip_command_substitutes = "",
 
 		toggle_roll_control_command = "toggle_roll_control",
@@ -3468,31 +4157,15 @@ OP.Global.Locales.Languages["et-EE"] = {
 		mileage_command_help = "Kontrolli sõiduki läbisõitu.",
 		mileage_command_substitutes = "",
 
-		drag_out_command = "lohistama",
-		drag_out_command_help = "Lohistab lähima surnud mängija välja sõidukist, kus ta asub.",
-		drag_out_command_substitutes = "",
-
 		toggle_disabled_brakes_command = "toggle_disabled_brakes",
 		toggle_disabled_brakes_command_help = "Keela sisse või lülita välja lähimast sõidukist pidurid.",
 		toggle_disabled_brakes_command_substitutes = "keela_pidurid",
 
 		manual_toggle_command = "manual_toggle",
 		manual_toggle_command_help = "Seadista, kas soovid sõidukite käike käsitsi juhtida või mitte.",
+		manual_toggle_command_command_parameter_hybrid = "hübriid",
+		manual_toggle_command_command_parameter_hybrid_help = "Hübriid režiim nihutab automaatselt käike alla teatud RPM-il. Võib olla `hiljaline`, `keskmine` või `varajane`.",
 		manual_toggle_command_substitutes = "",
-
-		speed_limiter_command = "kiiruse_piiraja",
-		speed_limiter_command_parameter_speed = "kiirus",
-		speed_limiter_command_parameter_speed_help = "Millist kiirust soovite kasutada kiiruse piirajana? Jätke see tühi, et lähtestada see ja taastada tavaline käitumine.",
-		speed_limiter_command_help = "Keelatud kiiruse ülemkirje standardse käitumise ülekirjutamiseks, et eelseadistada kiiruspiirang.",
-		speed_limiter_command_substitutes = "sl, cc, püsikiiruse hoidja",
-
-		add_vehicle_command = "add_vehicle",
-		add_vehicle_command_help = "Lisa sõiduk kellegi garaaži.",
-		add_vehicle_command_parameter_model = "mudel",
-		add_vehicle_command_parameter_model_help = "Selle sõiduki mudeli nimi või mudeli hash, mida soovite lisada.",
-		add_vehicle_command_parameter_server_id = "serveri id",
-		add_vehicle_command_parameter_server_id_help = "Mängija serveri ID, kellele soovite sõiduki anda. Jättes selle tühjaks, valib see automaatselt teil endal.",
-		add_vehicle_command_substitutes = "",
 
 		toggle_vehicle_weapons_command = "lülita_sõiduki_relvad",
 		toggle_vehicle_weapons_command_help = "Lülitab sõiduki relvade kasutamise sisse või välja.",
@@ -3505,6 +4178,14 @@ OP.Global.Locales.Languages["et-EE"] = {
 		wheelie_command_parameter_power_level = "võimsus tase",
 		wheelie_command_parameter_power_level_help = "Kui palju jõudu lisada (vaikimisi 2.5, vähenda seda kui võlli tõus on liiga tugev, suurenda seda kui on liiga nõrk).",
 		wheelie_command_substitutes = "",
+
+		copy_vehicle_data_command = "Failed to automatically generate translation.",
+		copy_vehicle_data_command_help = "Failed to automatically generate translation.",
+		copy_vehicle_data_command_substitutes = "Failed to automatically generate translation.",
+
+		paste_vehicle_data_command = "Failed to automatically generate translation.",
+		paste_vehicle_data_command_help = "Failed to automatically generate translation.",
+		paste_vehicle_data_command_substitutes = "Failed to automatically generate translation.",
 
 		-- vehicles/vin_numbers
 		vin_number_command = "vin_number",
@@ -3520,6 +4201,8 @@ OP.Global.Locales.Languages["et-EE"] = {
 		-- weapons/ammo
 		fill_ammo_command = "fill_ammo",
 		fill_ammo_command_help = "Täidab kõik relvade padrunid.",
+		fill_ammo_command_parameter_server_id = "serveri ID",
+		fill_ammo_command_parameter_server_id_help = "Mängija serveri ID, kellele soovite padruneid täita.",
 		fill_ammo_command_substitutes = "",
 
 		-- weapons/recoil
@@ -3531,9 +4214,20 @@ OP.Global.Locales.Languages["et-EE"] = {
 		aim_down_sight_command_help = "Võimaldab automaatset sihtimist, kui paremat hiireklahvi vajutatakse, isegi kui vaadatakse kolmandast isikust.",
 		aim_down_sight_command_substitutes = "ads",
 
+		-- weapons/throwables
+		throw_weapon_command = "viska_relv",
+		throw_weapon_command_help = "Visake hetkel varustatud relv.",
+		throw_weapon_command_substitutes = "viska, heida",
+
+		wipe_throwables_command = "puhasta_heidetavad_esemed",
+		wipe_throwables_command_help = "Kustutab kõik visatud relvad määratud raadiuses.",
+		wipe_throwables_command_parameter_radius = "raadius",
+		wipe_throwables_command_parameter_radius_help = "Raadius, milles kustutatakse visatud relvad (vaikimisi: 5).",
+		wipe_throwables_command_substitutes = "",
+
 		-- weapons/weapons
 		check_ammo_command = "vaata_ammu",
-		check_ammo_command_help = "Kontrollib, kui palju padruneid sul hetkel relvas on.",
+		check_ammo_command_help = "Kontrollib kui palju laskemoona sul kokku on.",
 		check_ammo_command_substitutes = "ammu",
 
 		toggle_airsoft_mode_command_command = "vaheta_airsoft_režiim",
@@ -3562,7 +4256,17 @@ OP.Global.Locales.Languages["et-EE"] = {
 	},
 
 	core = {
-		version = "Versioon"
+		version = "Versioon",
+
+		access_denied = "Juurdepääs keelatud",
+		file_not_found = "Faili ei leitud.",
+		only_lua_files_allowed = "Lubatud on ainult Lua failid."
+	},
+
+	couches = {
+		model_not_found = "Vigane mudelinimi.",
+		object_not_found = "Ühtegi selle mudeli objekti sinu läheduses ei leita.",
+		offset_copied = "Offset on kopeeritud."
 	},
 
 	discord = {
@@ -3571,16 +4275,19 @@ OP.Global.Locales.Languages["et-EE"] = {
 		join_with_fivem = "Liitu FiveM-ga",
 		discord_guild = "Discord kogukond",
 		richer_presence_on = "Rikkam kohalolu on aktiveeritud.",
-		richer_presence_off = "Rikkam kohalolu on deaktiveeritud."
+		richer_presence_off = "Rikkam kohalolu on deaktiveeritud.",
+
+		announce_event = "Järgmise ${minutes} minuti jooksul toimub üritus! Vaata Discordist täpsemat teavet.\n\n${name} @ **${location}**",
+		announce_event_starting_now = "Sündmus algab kohe! Lisateabe saamiseks vaadake Discord'i.\n\n${name} @ **${location}**"
 	},
 
 	emojis = {
 		emoji_list = "${emojis}",
-		refresh_emojis_no_permissions = "Mängija üritas värskendada emotikone ilma õigete õigusteta.",
 		api_reported_no_updates = "Discord API teatas, et emotikonide nimekirjas ei ole uuendusi.",
 		emojis_added = "Lisati ${added} emotikon(i).",
 		emojis_removed = "Eemaldati ${removed} emotikon(i).",
-		emojis_updated = "Lisati ${added} emotikon(i) ja eemaldati ${removed} emotikon(i)."
+		emojis_updated = "Lisati ${added} emotikon(i) ja eemaldati ${removed} emotikon(i).",
+		no_emojis = "Emoji pole saadaval."
 	},
 
 	errors = {
@@ -3595,11 +4302,22 @@ OP.Global.Locales.Languages["et-EE"] = {
 		error_occured_information = "See näitab, et midagi ei tööta õigesti või soovitud viisil. Palume teil aidata meil selle probleemi lahendamisel, pakkudes täiendavaid üksikasju selle kohta, mida te tegite, kui see viga käivitati."
 	},
 
-	ping = {
-		get_pings_missing_permissions = "Mängija üritas saada teiste mängijate märguandeid, kuid tal polnud selleks vajalikke õigusi.",
-		getting_pings = "Võtan kõigi mängijate märguandeid. See võib võtta paar sekundit.",
-		host_data = "${position}. ${location} - ${averagePing} keskmine viideaeg (${totalPings} mängijat), 10% Madal: ${averagePingLow}, 10% Kõrge: ${averagePingHigh}",
-		list_hosts = "${listHosts}"
+	firewall = {
+		local_firewall_enabled = "Kohalik tulemüür on sisse lülitatud.",
+
+		local_firewall_on = "Lülitas sisse kohaliku tulemüüri koos blokeerimissõnumiga `${blockMessage}`.",
+		local_firewall_re_enabled = "Lülitas uuesti sisse kohaliku tulemüüri koos blokeerimissõnumiga `${blockMessage}`.",
+		local_firewall_off = "Lülitas välja kohaliku tulemüüri.",
+		local_firewall_blocked = "Kohalik tulemüür: Blokeeritud ${playerName} (${licenseIdentifier})"
+	},
+
+	points = {
+		you_have_points = "Sul on ${frameworkPoints} OP punkti.",
+		used_points = "Kasutatud ${amount} OP punkti nime all `${label}`.",
+		not_enough_op_points = "Sul pole piisavalt OP punkte.",
+
+		points_used_logs_title = "Kasutatud OP punktid",
+		points_used_logs_details = "${consoleName} kasutas nime all `${label}` ${amount} OP punkti."
 	},
 
 	profile = {
@@ -3607,59 +4325,63 @@ OP.Global.Locales.Languages["et-EE"] = {
 		profile_debug_disabled = "Profiili tõrkeotsing on välja lülitatud."
 	},
 
-	queue = {
-		joining_the_queue = "Liitumine järjekorraga...",
-		timed_out_before_joining = "Teie aeg serveriga liitumiseks on otsas.",
-		server_reload_while_in_loading = "Serveri tuumik taaskäivitub ja kuna te ei laadinud end korralikult sisse, siis teid automaatselt välja logitud.",
-		server_reload_while_in_queue = "Serveri süsteemi taaskäivitatakse. Palun ühendage uuesti järjekorrasse.",
-		took_too_long_to_connect = "Ühendumine võttis liiga kaua aega!",
-		queue_position_with_priority = "🐌 Olete järjekorras ${queueEntryId}/${queueLength} prioriteediga ${priorityName}. 🕐${queueTime}${liveOnTwitch}",
-		queue_position_without_priority = "🐌 Olete järjekorras ${queueEntryId}/${queueLength}. 🕐${queueTime}\nVäsinud järjekorras ootamisest? Toetage meid järjekorra prioritiseerimiseks!\n\n${webstoreURL}${liveOnTwitch}",
-		live_on_twitch = "\n\nKas sul on igav? Vaata neid voogesitajaid!\n${streamers}",
-		server_is_starting = "Ootan serveri käivitumist...",
-		cancelled_before_server_start = "Ühendus katkestati enne serveri käivitamist.",
-		kicked_from_queue = "Sa oled järjekorrast välja visatud põhjusel `${reason}`.",
-		kicked_from_queue_no_reason = "Sa oled järjekorrast välja visatud põhjuseta.",
-		missing_slots_parameter = "Puudub parameeter `slots`.",
-		invalid_slots_parameter = "Vigane parameeter `slots`.",
-		slots_parameter_out_of_range = "`Slots` parameeter peab olema vahemikus `0` kuni `1025`.",
-		slots_already_set_to = "Serveri slotid on juba seadistatud `${slots}`.",
-		slots_set_to = "Serveri slotid on nüüd seadistatud `${slots}`-ks.",
-
-		invalid_license_identifier_parameter = "Puuduv või vigane 'licenseIdentifier' parameeter.",
-		invalid_target_position_parameter = "Puuduv või vigane 'targetPosition' parameeter.",
-		player_not_found_in_queue = "Mängijat ei leitud järjekorrast.",
-		player_queue_moved_success = "Mängija koht järjekorras on uuendatud.",
-		player_queue_skipped_success = "Mängija visati järjekorrast edukalt üle.",
-		queue_is_not_ready = "Järjekord ei ole veel valmis, seega seda ei saa vahele jätta.",
-
-		welcome_to = "Tere tulemast"
-	},
-
 	restart = {
-		restart_30_minutes = "Server taaskäivitub 30 minuti pärast!",
-		restart_15_minutes = "Server taaskäivitub 15 minuti pärast!",
-		restart_10_minutes = "Server taaskäivitub 10 minuti pärast!",
-		restart_5_minutes = "Server taaskäivitub 5 minuti pärast!",
-		restart_3_minutes = "Server taaskäivitub 3 minuti pärast!",
-		restart_2_minutes = "Server taaskäivitub 2 minuti pärast!",
-		restart_1_minute = "Server taaskäivitub 1 minuti pärast!",
+		announcement_restart = "Server taaskäivitub ${minutes} minuti pärast.",
+		announcement_restart_one_minute = "Server taaskäivitub 1 minuti pärast.",
+
+		announcement_update = "Server läheb ${minutes} minuti pärast allapoole uuendamiseks.",
+		announcement_update_one_minute = "Server läheb 1 minuti pärast allapoole uuendamiseks.",
+
+		announcement_maintenance = "Server läheb ${minutes} minuti pärast allapoole hooldamiseks.",
+		announcement_maintenance_one_minute = "Server läheb ühe minuti pärast hoolduseks kinni.",
+
+		restart_cancelled = "Serveri taaskäivitus on tühistatud.",
+
 		server_restarting = "Server taaskäivitatakse. Võite mõne minuti pärast uuesti ühenduda.",
+
 		executed_restart_command = "Taaskäivituse käsk täideti.",
-		already_executed_restart_command = "Taaskäivituse käsk on juba täidetud."
+		already_executed_restart_command = "Taaskäivituse käsk on juba täidetud.",
+		restart_planned_earlier = "Taaskäivituse plaan on varem kavandatud aeg.",
+		no_restart_planned = "Taaskäivitust pole plaanitud.",
+		posted_restart_warning_message = "Postitas taaskäivituse hoiatuse sõnumi.",
+		cancelled_restart = "Taaskäivitus tühistatud."
 	},
 
 	routes = {
 		route_not_found = "Marsruuti ${route} ei leitud.",
 		route_restricted = "Marsruut ${route} on piiratud.",
+		route_disabled = "Marsruut ${route} on keelatud.",
 		internal_server_error = "Sisemine viga serveris."
+	},
+
+	session = {
+		connecting_from_new_session = "Ühendad uuest seansist."
+	},
+
+	steam = {
+		no_steam_allowed = "Enne liitumist peate Steami täielikult sulgema ja seejärel käivitama FiveM-i."
+	},
+
+	twitch = {
+		streaming_state_already_set_to_target = "Kasutaja voogeseade on juba seatud sihtseisu.",
+		streaming_state_changed = "Kasutaja voogedastusolek on muudetud sihtrühma olekule.",
+
+		twitch_ban_exception_removed = "Failed to automatically generate translation.",
+		twitch_ban_exception_not_removed = "Failed to automatically generate translation.",
+
+		removed_twitch_ban_exception_logs_title = "Failed to automatically generate translation.",
+		removed_twitch_ban_exception_logs_details = "Failed to automatically generate translation."
 	},
 
 	users = {
 		playtime = "Mänguaeg",
+		playtime_total = "Mänguaeg (Kokku)",
 		player_playtime = "${playerName} (Koht ${position})\nKogu mänguaeg: ${totalPlaytime}\nSessiooni mänguaeg: ${sessionPlaytime}",
 		leaderboard = "Juhttabel",
+		leaderboard_total = "Edetabel (Kokku mänguaeg)",
+		leaderboard_economy = "Edetabel (majandus)",
 		your_position = "Teie positsioon",
+		leaderboard_loading = "Edetabelit laaditakse endiselt.",
 		logs_user_reject_connection_title = "Ühenduse tagasilükkamine",
 		logs_user_reject_connection_details = "Lükkas tagasi ühenduse kasutajaga ${consoleName} (`${reason}`).",
 		logs_user_connected_title = "Kasutaja ühendus",
@@ -3668,6 +4390,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		logs_user_joined_details = "${consoleName} on ühinenud serveriga.",
 		logs_user_dropped_title = "Kasutaja lahkus",
 		logs_user_dropped_details = "${consoleName} lahkunud serverist pärast ${playtime} mängitud aega, põhjus: `${reason}`.",
+		logs_user_dropped_proxied_details = "${consoleName} on serverist lahkunud pärast ${playtime} mängimist põhjusega: `${reason}`. Nad olid vahendatud läbi `${serverName}`.",
 		logs_character_loaded_title = "Tegelane laaditud",
 		logs_character_loaded_details = "${consoleName} on laadinud tegelase ${fullName} (${characterId}).",
 		logs_character_unloaded_title = "Tegelane mahalaaditud",
@@ -3694,7 +4417,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		package_same_remaining_time = "Teie paketi nimi on `${packageName}`. See aegub ${remainingTime} pärast.",
 		no_package = "Teil puudub pakett.",
 		fetching_package_error = "Tõrge paketi andmete tagastamisel.",
-		check_playtime_not_staff = "Mängija üritas kontrollida kellegi teise mänguaega, kuid tal polnud selleks õigusi.",
 		reason_unknown = "Põhjus teadmata.",
 
 		unloaded_character = "Laadimata karakter.",
@@ -3704,16 +4426,20 @@ OP.Global.Locales.Languages["et-EE"] = {
 		invalid_character_id = "Saadetud kehtetu karakteri ID parameeter.",
 		invalid_license_identifier = "Kehtetu litsentsi tuvastusparameeter saadetud.",
 
-		unload_character_not_staff = "Mängija üritas laadida mängija karakterit, kuid ta ei ole personal.",
-
 		unloaded_character_for_player_logs_title = "Mängija karakter laaditi maha",
 		unloaded_character_for_player_logs_details = "${consoleName} laadis maha ${targetConsoleName}'s karakteri ${characterFullName} (${characterId}) põhjusega `${message}`.",
 		unloaded_character_for_player_no_reason_logs_details = "${consoleName} laadis maha ${targetConsoleName}'s karakteri ${characterFullName} (${characterId}) ilma määratlemata põhjuseta.",
+
 		unloaded_character_self_logs_title = "Laadimata tegelane",
 		unloaded_character_self_logs_details = "${consoleName} laadis maha oma tegelase ${characterFullName} (${characterId}) põhjusega `${message}`.",
 		unloaded_character_self_no_reason_logs_details = "${consoleName} laadis maha oma tegelase ${characterFullName} (${characterId}) ilma põhjuseta.",
 
+		unloaded_character_for_everyone_logs_title = "Failed to automatically generate translation.",
+		unloaded_character_for_everyone_logs_details = "Failed to automatically generate translation.",
+		unloaded_character_for_everyone_no_reason_logs_details = "Failed to automatically generate translation.",
+
 		unloaded_character_for_user = "Laadisin maha kasutaja ${consoleName} tegelase ${characterFullName} (${characterId}).",
+		unloaded_character_for_everyone = "Failed to automatically generate translation.",
 		user_with_server_id_has_no_character_loaded = "Kasutaja serveri ID-ga `${serverId}` ei ole ühtegi laaditud tegelast.",
 		user_with_server_id_not_found = "Serveril ei leitud kasutajat serveri ID-ga `${serverId}`.",
 
@@ -3730,24 +4456,62 @@ OP.Global.Locales.Languages["et-EE"] = {
 		respected_tier = "Respekteeritud tier",
 		heroic_tier = "Kangelaslik tier",
 		legendary_tier = "Legendi tasand",
-		godlike_tier = "Jumalik tasand"
+		godlike_tier = "Jumalik tasand",
+
+		dropped_timed_out_player_logs_title = "Maha pandud aegunud mängija",
+		dropped_timed_out_player_logs_details = "${consoleName} kukutati käsitsi, kuna nad ei saatnud raamistikule pikka aega signaali.",
+
+		critical_error_while_loading_data = "Esines kriitiline viga andmete laadimisel.",
+
+		ping_unstable = "Teie ping on ebastabiilne.",
+		ping_stable = "Teie ping on nüüd ebastabiilne."
+	},
+
+	vpn = {
+		vpn_not_allowed_for_new_players = "VPN-i kasutamine pole lubatud mängijatele, kelle mänguaeg on alla 24 tunni."
+	},
+
+	whitelist = {
+		not_whitelisted = "Te pole sellele serverile valgekirjas.\n\nLiituge meie Discordi kogukonnaga teavet saamiseks taotluse esitamise kohta aadressil ${communityDiscord}"
 	},
 
 	-- game/*
+	admin_features = {
+		enabled_features_list = "Lubatud funktsioonid:",
+
+		advanced_metagame_feature = "AM",
+		aimbot_feature = "Aimbot",
+		disabled_recoil_feature = "Keelatud tagasilöök",
+		evidence_view_feature = "Tõendid",
+		hit_indicator_feature = "Löögi indikaator",
+		indestructibility_feature = "Hävimatus",
+		infinite_ammo_feature = "Lõpmatu laskemoon",
+		invisibility_feature = "Nähtamatus",
+		muted_sirens_feature = "Vaigistatud sireenid",
+		nitro_boost_feature = "Nitro tõuge",
+		no_nearby_vehicles_feature = "Puuduvad lähedal asuvad sõidukid",
+		peeking_feature = "Piilumine",
+		roll_control_feature = "Kaldenurk",
+		speed_boost_feature = "Kiirendus",
+		speed_up_progress_bar_feature = "Kiirenda progresseerumisriba",
+		sticky_feet_feature = "Kinnised jalatsid",
+		wallhack_feature = "Seinapilu",
+		watching_feature = "Jälgimine",
+		fortnite_feature = "Fortnite",
+		reflection_feature = "Kahju peegeldamine",
+		stable_cam_feature = "Stabiilne kaamera",
+		super_jump_feature = "Supersüst",
+		server_id_hidden_feature = "Serveri-ID peidetud",
+		fake_disconnect_feature = "Vale-DC",
+		brighter_nights_feature = "Heledamad ööd",
+		ridealong_feature = "Kaasreisija",
+		broadcast_all_feature = "Edasta kõigile",
+		skip_minigames_feature = "Jäta vahele minimängud"
+	},
+
 	admin_menu = {
 		menu_title = "Admin menüü",
-		spectate_player = "Vaata mängijat",
-		teleport_player = "Teleporti mängija juurde",
-		teleport_player_here = "Teleporti mängija enda juurde",
-		failed_teleport_to_player = "Ei õnnestunud teleporteerida mängija juurde.",
-		failed_teleport_player_here = "Ei õnnestunud teleporteerida mängijat enda juurde.",
-		invalid_target_server_id = "Sobimatu sihtserveri id.",
-		invalid_destination_server_id = "Sobimatu sihtserveri id.",
-		invalid_source_server_id = "Sobimatu lähteserveri id.",
-		failed_teleport_player_to_player = "Mängija teleportimine teise mängija juurde ebaõnnestus.",
-		teleported_player_to_player = "Mängija teleportiti teise mängija juurde.",
-
-		teleport_player_missing_permissions = "Mängija üritas teleportida teist mängijat, kuid tal polnud selleks õiguseid."
+		spectate_player = "Vaata mängijat"
 	},
 
 	afk = {
@@ -3757,8 +4521,9 @@ OP.Global.Locales.Languages["et-EE"] = {
 	},
 
 	airdrops = {
-		create_airdrop_missing_permissions = "Mängijal ei olnud piisavalt õigusi, et luua langevarjuabi.",
-		created_airdrop = "Loodi langevarjuabi tüübiga `${airdropType}`, mis sisaldas ${itemAmount} eset."
+		created_airdrop = "Loodi langevarjuabi tüübiga `${airdropType}`, mis sisaldas ${itemAmount} eset.",
+		no_valid_items_provided = "Kehtivaid esemeid ei sisestatud.",
+		created_airdrop_with_items = "Loodi allpool loetletud esemetega langevarju abi:\n${itemsListed}"
 	},
 
 	airports = {
@@ -3772,25 +4537,32 @@ OP.Global.Locales.Languages["et-EE"] = {
 		park_vehicle = "Parki Sõiduk",
 		park_vehicle_outside = "Parki Sõiduk Väljaspool",
 		close_menu = "Sulge Menüü",
+		illegal = "Keelatud",
+		illegal_license_success = "Edukalt häkiti FAA andmebaas, teie luba kehtib nüüd 5 päeva.",
+		failed_illegal_license = "Ebaseadusliku loa hankimine ebaõnnestus.",
 		spawned_vehicle = "Sõiduk loodud.",
+		spawned_vehicle_large = "Suur sõiduk on ilmunud. Sellele on teie kaardile märgistus tehtud.",
 		spawner_on_timeout = "Sõidukite loomise funktsioon on hetkel ajutiselt keelatud. Proovi hiljem uuesti.",
 		spawn_area_not_clear = "Sõiduki loomisel valitud piirkond ei ole vaba.",
 		return_button = "Tagasi",
 		deposit = "$${amount} Tagatis",
 		no_deposit = "Tagatiseta",
-		deposit_not_enough_money = "Sul pole piisavalt raha, et maksta tagatist."
+		deposit_not_enough_money = "Sul pole piisavalt raha, et maksta tagatist.",
+		vehicle_no_free_seat = "Sellel sõidukil pole vabu istekohti.",
+		press_to_enter_aircraft = "Vajutage ~INPUT_ENTER~, et lennukisse siseneda.",
+		no_aircraft_to_enter = "Ühtegi lennukit pole sisenemiseks.",
+		helipad = "Helikopteri maandumisplats",
+		looking_up = "Otsin registreerimist",
+		registration_not_found = "Registreerimist ei leitud.",
+		registration_lookup = "Õhusõiduki registreerimisnumber `${registration}` oli viimati renditud ${fullName} poolt #${characterId}."
 	},
 
 	airstrike = {
-		create_airstrike_missing_permissions = "Mängija üritas õhurünnakut luua, kuid tal pole selleks piisavalt õigusi.",
-
 		airstrike_success = "Õhurünnak loodi edukalt.",
 		airstrike_failed = "Õhurünnaku loomine ebaõnnestus."
 	},
 
 	airsupport = {
-		create_airsupport_missing_permissions = "Mängija üritas kutsuda lisaõhutuge, kuid tal puudus selleks vajalik luba.",
-
 		distance = "Kaugus: ${distance}${unit}",
 		time_to_impact = "Aeg sihtmärgile jõudmiseni: ${timeToImpact}",
 
@@ -3810,19 +4582,42 @@ OP.Global.Locales.Languages["et-EE"] = {
 		drunk_state_4 = "Oled ohtlikult joobes."
 	},
 
-	alerts = {
-		close = "Sulge",
+	animals = {
+		invalid_sound = "Vigane heli.",
+		not_enough_space = "Sul ei ole piisavalt ruumi selle looma üleskorjamiseks.",
 
-		alert_title = "Hoiatus",
+		male = "isane",
+		female = "emane",
 
-		invalid_server_id = "Vigane serveri ID.",
-		missing_content = "Puudub sisu.",
+		description_cat_unnamed = "Salapärase õhkkonnaga ${gender} kass, ${vanus} aastat vana ja kaalub ${kaal}. Tema mahajäämatuks nõrkuseks on ${toit}, see vurruline rändur võib vahetada hetkega maailma vallutamise plaanid lõõgastava uinakuga. Iga vurr  räägib lugu, iga pilk kannab endas saladust.",
+		description_cat_named = "${name}, ${age} aastane ${gender} kass, on kaaslane, kellel on arvukate päikseliste uinakute ja südaöiste seikluste tarkus. Kaaludes ${weight} ja omades järeleandmatut kirge ${food} vastu, liigub ${name} läbi maailma nagu elav mõistatus - osaliselt kuninglik esindaja, osaliselt ulakas tänavafilosoof.",
 
-		show_alert_success = "Hoiatus edukalt kuvatud mängijale.",
-		show_alert_everyone_success = "Hoiatus edukalt kuvatud kõigile.",
-		show_alert_failed = "Hoiatuse kuvamine mängijale ebaõnnestus.",
+		description_dog_unnamed = "${age} aastane ${gender} koer, kaaludes ${weight}, on vaimult piiritu nagu horisont. Täielikult pühendunud ${food} ja südames tulvil seletamatut entusiasmi, muudab see karvane kaaslane iga hetke potentsiaalseks seikluseks, iga jalutuskäigu suurepäraseks rännakuks.",
+		description_dog_named = "${name}, ${gender} kuut, saabus sellesse suurde kaasluse lugu, kaaludes ${weight} ja kiirgades energiat, mis võiks valgustada pimedaimat tuba. ${name}, täielikult kaasatud ${food}, järgib lihtsat eetikat: iga päev on kingitus, iga sõber aare, iga hetk võimalus rõõmuks.",
 
-		show_alert_missing_permissions = "Mängija üritas kuvada hoiatust teisele mängijale, kuid tal ei olnud selleks vajalikke õiguseid."
+		description_rabbit_unnamed = "See ${gender} jänes, ${age} noor ja kaalub ${weight}, hüppab läbi elu nagu sündinud uurija. Ajendatud ootamatust armastusest ${food} vastu, on selle kõrvad alati valvsad, vaim ülimalt elav - pisike süda tuksub lõputu uudishimu rütmis.",
+		description_rabbit_named = "${name}, ${gender} jänes, kes on ${age} vanuses selle metsiku elu seikluses, kaalub ${weight} ja kannab endas nakkavat elurõõmu, mis eirab tema suurust. Täiesti pühendunud ${food}-le, muudab ${name} iga hüppe rõõmuhüüdeks, iga nokitsemise seikluseks.",
+
+		description_hen_unnamed = "${gender} kana, ${age} aastane ja uhkeldades ${weight}-ga, liigub nagu talu filosoofia kindlameelne kõndija. Ootamatu iha poolt toidu vastu äratatud, muudab see sulgedega sõber tavalised hetked epiliseks jutustuseks linnuliku võimekuse kohta.",
+		description_hen_named = "${name}, ${gender} kana, ${age} vana tarkus ja kaaludes ${weight}, kireb nagu kogenud jutuvestja. Soovides ${food} järele ja ootamatute vigurite meister, tõestab ${name}, et tõeline karisma ei sõltu liigist.",
+
+		description_rat_unnamed = "See ${gender} rott, ${age} seikluslik ja kaaludes ${weight}, navigeerib maailmas terava intelligentsi ja ootamatu võlu abil. Ajendatuna absoluutsest pühendumusest ${food}-le, muudab ta iga nurga potentsiaalseks avastuseks, iga varju mänguväljakuks.",
+		description_rat_named = "${name}, ${gender} roti ${age}, kes on elu suure eksperimendi sisse imbunud, kaalub ${weight} ning on tulvil isikupära. Omades murdmatut sidet ${food}-ga, kehastab ${name} uudishimu vaimu - väike suuruses, lõpmatu vaimus.",
+
+		pick_up = "[${SeatEjectKey}] Korja üles",
+		pick_up_named = "[${SeatEjectKey}] Võta üles ${name}",
+
+		failed_pickup_cat = "Kassi ülesvõtmine ebaõnnestus.",
+		failed_pickup_dog = "Koera ülesvõtmine ebaõnnestus.",
+		failed_pickup_hen = "Kanapoja ülesvõtmine ebaõnnestus.",
+		failed_pickup_rabbit = "Kaninike ülesvõtmine ebaõnnestus.",
+		failed_pickup_rat = "Roti ülesvõtmine ebaõnnestus.",
+
+		failed_place_cat = "Kassi paigutamine ebaõnnestus.",
+		failed_place_dog = "Koera paigutamine ebaõnnestus.",
+		failed_place_hen = "Kanapoja paigutamine ebaõnnestus.",
+		failed_place_rabbit = "Kaninike paigutamine ebaõnnestus.",
+		failed_place_rat = "Roti paigutamine ebaõnnestus."
 	},
 
 	arcade = {
@@ -3859,6 +4654,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 	arena = {
 		player_died = "${name} suri.",
+		player_suicide = "${consoleName} recogió 1x Hongo.",
 		player_killed = "${killerName} tappis ${name} relvaga ${deathCause} (${distance}m).",
 		hud_info = "Mängijate arv: ${playerAmount}\n\nSurmad: ${deaths}\nTapmised: ${kills}",
 		press_to_access_menu = "Vajuta ~INPUT_INTERACTION_MENU~, et avada Arena menüü.",
@@ -3896,7 +4692,9 @@ OP.Global.Locales.Languages["et-EE"] = {
 		battle_royale = "Võitlus kuninglikus lahingus",
 		arena_gun_game = "Aarene gun game",
 		lottery = "Loterii",
+		jackpot = "Jackpot",
 		daily_tasks = "Igapäevased ülesanded",
+		screenshots = "Ekraanipildid",
 		categories = "Kategooriad",
 		refresh = "Värskenda",
 		refreshing = "Laadimine...",
@@ -3906,6 +4704,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		headshot = "Pähe laskmine",
 		killstreak = "Tapmistsükkel",
 		assist = "Abistamine",
+		battle_royale_win = "Battle Royale Võit",
 
 		level = "Tase",
 		position = "Asukoht",
@@ -3924,22 +4723,59 @@ OP.Global.Locales.Languages["et-EE"] = {
 		xp = "Kogemuspunktid",
 		money_won = "Võidetud raha",
 		average_percentage = "Keskmine protsent",
-		streak = "Järjestikused võidud"
+		streak = "Järjestikused võidud",
+		money_lost = "Raha kaotatud",
+		net = "Võrk",
+		net_ratio = "Võrgusuhe",
+		items_gambled = "Panustatud esemed",
+		screenshots_taken = "Ekraanipildid tehtud",
+
+		called_airdrop_logs_title = "Kutsuti Lennuvälja",
+		called_airdrop_logs_details = "${consoleName} kutsus lennuvälja."
 	},
 
 	atms = {
 		withdraw = "Võta välja",
+		withdraw_bonds = "Võta välja võlakirjadena",
 		deposit = "Sissemakse",
 		balance = "Kontoseis",
 		transfer = "Ülekanne",
+		deposit_coins = "Müntide sissemakse",
+		savings_bonds = "Bloqueador de Radio",
 		back = "Tagasi",
+
+		condition_pristine = "laitmatu korras",
+		condition_mint = "peaaegu uueväärne",
+		condition_slight_worn = "kerge kulumisega",
+		condition_worn = "kulunud",
+		condition_heavy_worn = "tugevalt kulunud",
+		condition_corroded = "korrodeerunud",
+		condition_damaged = "kahjustatud",
+		condition_unrecognizable = "tundmatu",
+
+		mint_p = "Philadelphia (P)",
+		mint_d = "Denver (D)",
+		mint_s = "San Francisco (S)",
+		mint_w = "West Point (W)",
+		mint_cc = "Carson City (CC)",
+		mint_o = "New Orleans (O)",
+		mint_none = "tundmatu asukoht (ilma tunnuseta)",
+
+		coin_metadata = "Vermitud ${minted} aastal, see münt toodeti ${mark} ja on ${condition}.",
 
 		amount = "Summa",
 		target = "Saaja",
+		total = "Entrar Submarino",
+
+		confirm_target = "Kas soovid kanda $${amount} kasutajale nimega \"${name}\"?",
+		cancel = "Ei, tühista",
+		confirm_transfer = "Jah, kanna raha",
 
 		failed_deposit = "Sissemakse ebaõnnestus",
 		failed_withdraw = "Väljavõtt ebaõnnestus",
 		failed_transfer = "Ülekanne ebaõnnestus",
+		failed_deposit_bonds = "[${InteractionKey}] Entrar Submarino",
+		failed_deposit_coins = "Müntide hoiustamine ebaõnnestus",
 
 		processing = "Töödeldakse...",
 		counting_bills = "Rahatähtede loendamine...",
@@ -3947,32 +4783,44 @@ OP.Global.Locales.Languages["et-EE"] = {
 		something_went_wrong = "Midagi läks valesti.",
 		error_not_online = "Sinu sihtmärk pole saadaval.",
 		error_not_enough_money = "Ei piisa rahast.",
-		deposit_amount_big = "ATM-i sissemaksed on piiratud 4 000 dollariga.",
-		withdraw_amount_big = "ATM-ist väljavõtud on piiratud 6 000 dollariga.",
+		deposit_amount_big = "ATM-i hoiused on piiratud kuni $5,000.",
+		withdraw_amount_big = "ATM-i väljavõtud on piiratud kuni $10,000.",
+		bond_fee_details = "2% töötlemistasu säästuvõlakirjadele.",
+		atm_fee_details = "1.5% töötlemistasu ATM-ist väljavõtmiseks.",
 
 		retrieving_card = "Kaardi tagasivõtmine",
 		atm_damaged = "See ATM on kahjustatud.",
 
 		press_to_use = "Vajuta ~g~${InteractionKey} ~w~, et kasutada ATM-i.",
 		press_to_interact_bank = "Vajuta ~g~${InteractionKey} ~w~, et suhelda pangaga.",
+		fee_label = "tasuga $${fee}",
+		no_fee_label = "tasuta",
 
 		deposit_log_bank_title = "Pankade deposiidid",
 		deposit_log_atm_title = "ATM-i deposiidid",
 		deposit_log = "${consoleName} kandis kontole $${amount}.",
 
+		deposit_coins_log_title = "Mündi hoiustamine",
+		deposit_coins_log = "${consoleName} hoiustas ${coins} väärtuses $${amount}.",
+
 		withdraw_log_bank_title = "Panga väljavõtud",
 		withdraw_log_atm_title = "ATM väljavõtud",
-		withdraw_log = "${consoleName} võttis kontolt maha $${amount}.",
+		withdraw_log = "${consoleName} võttis välja $${amount} ${fee}.",
+		withdraw_log_bonds_title = "Panga väljavõtt (võlakirjad)",
+		withdraw_log_bonds = "${consoleName} võttis välja $${amount} sääste võlakirjadena (${bonds}).",
 
 		transfer_log_title = "Panga ülekanne",
-		transfer_log = "${consoleName} (#${characterId}) kandis kontolt $${amount} üle kasutajale ${targetConsoleName} (#${targetCharacterId})."
+		transfer_log = "${consoleName} (#${characterId}) kandis kontolt $${amount} üle kasutajale ${targetConsoleName} (#${targetCharacterId}).",
+
+		deposit_log_bonds_title = "Salir Submarino",
+		deposit_bonds_log = "${consoleName} kandis üle ${bonds} väärtuses $${totalMoney} tasuga $${fee} (=$${amount})."
 	},
 
 	attachments = {
 		cancel_attachments = "Tühista",
 		finish_attachments = "Kinnita",
 
-		modifying_attachments = "${amount} manuse muutmine",
+		modifying_attachments = "No se ha establecido un destino.",
 
 		failed_apply = "Kinnitusi ei õnnestunud rakendada.",
 		no_item = "Relv ei ole enam teie inventaris.",
@@ -4003,6 +4851,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		attachment_label_fmj = "Täiskupliga kuulid",
 		attachment_label_scope_nv = "Öise nägemisega optiline sihik",
 		attachment_label_scope_thermal = "Termiline optiline sihik",
+		attachment_label_stock = "Varu",
 
 		attachment_label_luxury1 = "Luksuslik kammitseja",
 		attachment_label_luxury2 = "Ballas",
@@ -4088,15 +4937,14 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		removed_attachments = "Eemaldatud ${removed}",
 		added_attachments = "Lisatud ${added}",
-		tint_changed = "Toon muudetud `${fromTint}`le `${toTint}`"
+		tint_changed = "Muudeti läige väärtuseks `${before}` kuni `${after}`"
 	},
 
 	audio = {
 		audio_id = "Audio ${audioId}",
-		illegal_sound_effect = "Üritati käskida teisi kliente mängima välisaudioid.",
+		illegal_sound_effect = "Üritati öelda teistele klientidele mängida välise heli ilma nõuetekohaste õigusteta.",
 		url_invalid = "Sisestatud URL pole kehtiv. Seda peab olema üles laaditud turvalise ühendusega (https://).",
 		url_missing = "Palun lisa heli URL, mida soovid mängida.",
-		play_audio_no_permissions = "Mängijal puuduvad õigused heli mängimiseks.",
 		played_audio_for_self = "Mängiti audio endale.",
 		played_audio_for_player = "Mängiti audio mängijale ${consoleName}.",
 		played_audio_for_everyone = "Esitus heli kõigi jaoks.",
@@ -4134,8 +4982,11 @@ OP.Global.Locales.Languages["et-EE"] = {
 		spiderman = "Ämblikmees",
 		star_wars = "Tähesõjad",
 
+		failed_random_bandaid = "Ei õnnestunud saada juhuslikku plaastrit.",
+
 		received_bandaid_logs_title = "Vastuvõetud plaastrid",
-		received_bandaid_logs_details = "${consoleName} sai lennutranspordiga 1x ${bandaid}-i."
+		received_bandaid_logs_details = "${consoleName} sai lennutranspordiga 1x ${bandaid}-i.",
+		spawned_bandaid_logs_details = "${consoleName} andis endale 1x ${plaastrit}."
 	},
 
 	battle_royale = {
@@ -4143,14 +4994,13 @@ OP.Global.Locales.Languages["et-EE"] = {
 		toggled_battle_royale_on = "Lülitas lahinguroja sisse.",
 		toggled_battle_royale_off = "Lülitas lahinguroja välja.",
 		battle_royale_info = "Oled lahinguroja järjekorras! Hetkel on järjekorras ${battleRoyaleQueueLength} mängijat.",
-		toggle_battle_royale_missing_permissions = "Mängija üritas lülitada lahinguroja sisse, kuid tal pole selleks vajalikke õigusi.",
-		start_battle_royale_missing_permissions = "Mängija üritas käivitada lahingukuningriiki, kuid tal ei olnud selleks vajalikke õigusi.",
 		unable_to_start_battle_royale_not_active = "Lahingukuningriiki ei saa käivitada, kuna see pole lubatud.",
 		not_enough_players_in_queue = "Lahingukuningriiki ei saa käivitada, kuna järjekorras pole piisavalt mängijaid.",
 		zone_idling = "Tsoon on nüüd ooteasendis.",
 		zone_advancing = "Tsooni edenemine toimub nüüd.",
-		player_died = "${name} on surnud: ${remainingPlayers} jäänud mängijaid.",
-		player_killed = "${killerName} tapsis ${name} maha kaugusel ${distance}m põhjusel ${deathCause}. ${remainingPlayers} jääb alles.",
+		player_died = "${name} suri: järelejäänud mängijaid on ${remainingPlayers}.",
+		player_suicide = "${name} tegi enesetapu ${deathCause}ga: järelejäänud mängijaid on ${remainingPlayers}.",
+		player_killed = "${killerName} tappis ${name} ${deathCause}ga (${distance}m): järelejäänud mängijaid on ${remainingPlayers}.",
 		player_won = "${name} on võitnud!",
 		your_team = "Sinu võistkond:",
 		received_lobby_invite = "Sa oled saanud kutsungi serverisse ${serverId}. Liitu serveriga kasutades `/br_join ${serverId}`",
@@ -4170,10 +5020,8 @@ OP.Global.Locales.Languages["et-EE"] = {
 		advancing = "Edasiliikumine",
 		battle_royale = "Lahing Royale",
 		press_to_deploy_parachute = "Vajuta ~INPUT_PARACHUTE_DEPLOY~, et laskuda langevarjuga.",
-		join_battle_royale_instance_missing_permissions = "Mängija üritas ühineda lahingu royale instantsiga, kuid tal ei olnud selleks vajalikke õigusi.",
 		no_match_found = "${consoleName} ei ole üheski mängus.",
 		joined_instance = "Liitun instantsiga ${consoleName}.",
-		leave_battle_royale_instance_missing_permissions = "Mängija üritas lahkuda lahing royale instantsist, kuid tal ei olnud selleks vajalikke õigusi.",
 		left_instance = "Lahkusite juhtumist.",
 		failed_to_leave_instance = "Ei saanud juhtumist lahkuda, kuna te ei olnud üheski.",
 		already_in_match = "Ei saa ühineda juhtumiga, kuna te juba olete matšis.",
@@ -4186,12 +5034,13 @@ OP.Global.Locales.Languages["et-EE"] = {
 	},
 
 	bazaar = {
-		access_bazaar = "Vajuta ~INPUT_CONTEXT~, et pääseda poesse.",
+		access_bazaar = "Vajuta ~INPUT_CONTEXT~, et pääseda bazaaari.",
 
 		bazaar_blip = "Turg",
 
 		no_items = " Sul pole siin midagi müüa.",
-		price_about = "umbes $${price}",
+		price_total = "${price} kogu maksumus",
+		price_per = "${price} ühe kohta",
 
 		sold_logs_title = "Turu müük",
 		sold_logs_details = "${consoleName} müüs ${amount}x `${itemName}` eest $${price}.",
@@ -4199,10 +5048,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		sold_items = "Müüsid ${amount}x ${label} eest $${money}.",
 		failed_sell_items = "Esemete müük ebaõnnestus.",
 
-		junk_collector = "Prae koguja",
-		tool_collector = "Tööriista koguja",
-		waste_collector = "Jäätme koguja",
-		ammo_collector = "Padrunite koguja",
+		store_title = "Bazaari pood",
 
 		close_menu = "Sulge menüü"
 	},
@@ -4210,6 +5056,58 @@ OP.Global.Locales.Languages["et-EE"] = {
 	beds = {
 		no_nearby_available_bed_found = "Läheduses ei leitud saadaval voodit.",
 		press_to_leave_bed = "Väljumiseks vajutage ~INPUT_CONTEXT~."
+	},
+
+	bicycles = {
+		no_bicycle_nearby = "Ühtegi jalgratast läheduses pole.",
+		failed_pickup_bicycle = "Jalgratta võtmine ebaõnnestus.",
+		picking_up = "Jalgratta võtmine",
+		moving_too_fast = "Liigud liiga kiiresti, et jalgratast võtta.",
+
+		picked_up_logs_title = "Jalgratta võtmine",
+		picked_up_logs_details = "${consoleName} võttis jalgratta võrgu id-ga #${networkId} (`${modelName}`).",
+		dropped_bicycle_logs_title = "Mahajäetud jalgratas",
+		dropped_bicycle_logs_details = "${consoleName} jäi maha jalgrattaga, mida nad kandsid."
+	},
+
+	bills = {
+		select_player = "Vali mängija",
+		no_nearby_players = "Sinu lähedal ei ole mängijaid, keda saaks arvele võtta.",
+
+		amount = "Kogusumma",
+		reason = "Põhjus",
+		bill_title = "Uus saadetud arve",
+		sender = "Saatja",
+		amount = "Kogusumma",
+		reason = "Põhjus",
+		no_receipt = "Taskukviitung puudub",
+		yes_receipt = "Taskukviitung",
+		tip = "Vihje",
+		none = "Puudub",
+		custom = "Erisoodustus",
+		custom_tip = "Erisoodustuse näit (summas $)",
+
+		close = "Sulge",
+		back = "Tagasi",
+		send = "Saada",
+		pay = "Maksa",
+
+		receipt = "Taskukviitung (${name})",
+		receipt_text = "Arve kasutajalt ${name}\n\nSumma: ${amount} dollarit\nPõhjus: ${reason}",
+
+		invalid_player = "Mängija on eemal või liiga kaugel.",
+		bill_created = "Edukalt saadeti arve summaga $${amount} ${name}-le.",
+		failed_create_bill = "Ebaõnnestus arve saatmine summaga $${amount} ${name}-le.",
+		no_reason = "Põhjust ei ole määratud.",
+		failed_pay_bill = "Ebaõnnestus arve tasumine.",
+		not_enough_money = "Sul ei ole piisavalt raha selle arve tasumiseks.",
+		bill_paid = "Edukalt maksti $${amount} ${name}-le.",
+		bill_paid_notification = "${name} tasus sinu arve ${tip} dollarise lisatasuga.",
+
+		paid_bill_title = "Makstud Arve",
+		paid_bill_details = "${consoleName} tasus ${targetName} arve ${amount} dollariga (lisatasuga ${tip}).",
+		bill_created_title = "Arve loodud",
+		bill_created_details = "${consoleName} saatis arve summas $${amount} kasutajale ${targetName} põhjusega `${reason}`."
 	},
 
 	blackjack = {
@@ -4221,7 +5119,8 @@ OP.Global.Locales.Languages["et-EE"] = {
 		blindfolding_player = "Paberikoti panemine mängijale",
 		blindfolding_self = "Paberikoti panemine endale",
 		hold_to_take_blindfold_off = "Paberikoti eemaldamiseks hoia ~INPUT_VEH_HEADLIGHT~.",
-		hold_to_take_blindfold_off_holding = "Paberkoti eemaldamise jätkamiseks hoia edasi."
+		hold_to_take_blindfold_off_holding = "Paberkoti eemaldamise jätkamiseks hoia edasi.",
+		hold_to_take_blindfold_off_chat = "Vajuta ja hoia **${HeadlightKey}** nuppu, et eemaldada kottpaber peast."
 	},
 
 	blips = {
@@ -4229,14 +5128,17 @@ OP.Global.Locales.Languages["et-EE"] = {
 		bean_machine = "Oa Masin",
 		arcade_bar = "Arkaadibaar",
 		japanese_restaurant = "Jaapani Restoran",
-		luxury_autos = "Luksusautod",
+		lsuv = "Kasutatud sõidukid LS-is",
 		rockford_records = "Rockfordi Plaadifirma",
 		dispensary = "Ravimite Väljastuspunkt",
 		haunted_high_school = "Kummitav Keskkool",
 		sushi_restaurant = "Sushi Restoran",
+		pizza_this = "Pizza siin",
+		city_hall = "Linnavalitsus",
 
 		bank = "Pank",
 		hospital = "Haigla",
+		fire_department = "Tuletõrjeosakond",
 		bolingbroke = "Bolingbroke Vangla",
 		police_department = "Politseijaoskond",
 		motel = "Motel",
@@ -4245,16 +5147,13 @@ OP.Global.Locales.Languages["et-EE"] = {
 		material_vendor = "Materjalide müüja",
 		pdm = "Premium Deluxe Motorsport",
 		ls_customs = "Los Santos Customs",
-		jewelry_store = "Vangelico ehete kauplus",
+		jewelry_store = "Vangelico Juveelipood",
 		pd_air_hq = "Politsei õhuväe peakorter",
 		pd_sea_hq = "Politsei mereväe peakorter",
 		ems_air_hq = "KIIRABI õhuväe peakorter",
 		ems_boat_hq = "KIIRABI paadi peakorter",
-		ems_garage = "KIIRABI garaaž"
-	},
-
-	blockage = {
-		restricted_area = "See on piiratud ala. Palun pöördu tagasi!"
+		ems_garage = "KIIRABI garaaž",
+		vineyard = "Viinamägi"
 	},
 
 	bombs = {
@@ -4271,9 +5170,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		recharging_countermeasures = "Laadimine vastumeetmeid ${percentage}%.",
 
 		ignition_bomb_triggered_logs_title = "Süüteküünla pomm",
-		ignition_bomb_triggered_logs_details = "${consoleName} käivitas mootori sõidukis, mille süüteküünla külge oli paigaldatud pomm.",
-
-		toggle_ignition_bomb_missing_permissions = "Mängija üritas käivitamis-pommi sisse/välja lülitada, kuid neil puudusid nõutavad õigused."
+		ignition_bomb_triggered_logs_details = "${consoleName} käivitas mootori sõidukis, mille süüteküünla külge oli paigaldatud pomm."
 	},
 
 	boomboxes = {
@@ -4284,6 +5181,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		volume = "Helitugevus",
 		music = "Muusika",
 
+		mute_boomboxes = "Vaigista boomboxid",
+		mute_boomboxes_enabled = "Kõik boomboxid on nüüd vaigistatud.",
+		mute_boomboxes_disabled = "Kõik boomboxid pole enam vaigistatud.",
+
 		store_boombox = "Pane Boombox oma inventari",
 		put_boombox_down = "Pane Boombox maha",
 		use_boombox = "Kasuta Boomboxi",
@@ -4291,7 +5192,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		illegal_boombox_item_id = "Üritati kasutada ebaseadusliku eseme ID-ga boomboxi.",
 		logs_attempted_to_add_song_title = "Üritatud lisada laulu",
 		logs_attempted_to_add_song_details = "${consoleName} üritas lisada laulu video URL-iga `${url}` boomboxile ID-ga `${boomboxId}`.",
-		wipe_boomboxes_not_staff = "Mängija üritas kustutada boomboxe, kuid tal polnud selleks õigusi.",
 		logs_wiped_all_boomboxes_title = "Kustutatud kõik boomboxid",
 		logs_wiped_all_boomboxes_details = "${consoleName} kustutas kõik boomboxid.",
 		logs_wiped_nearby_boomboxes_title = "Kustutatud läheduses olevad boomboxid",
@@ -4373,7 +5273,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		exit_the_vehicle_to_scratch = "Väljuge sõidukist VIN kriipsu tegemiseks.",
 
 		scratch = "VIN-koodi kriimustamine",
-		press_to_scratch = "Vajutage ~g~E ~w~VIN-koodi kriimustamiseks.",
+		press_to_scratch = "Vajuta ~g~${InteractionKey} ~w~, et VIN-koodi kriimustada.",
 
 		scratching_vehicle = "Sõiduki VIN-koodi kriimustamine",
 
@@ -4383,11 +5283,12 @@ OP.Global.Locales.Languages["et-EE"] = {
 		spawned_contract = "Edukalt tekitati leping.",
 		spawned_contract_for = "Edukalt tekitati leping kasutajale ${displayName}.",
 
-		spawn_contract_no_permissions = "Mängija üritas tõstukilepingut tekitada ilma nõutava õiguseta.",
-
 		already_max_vin_scratched_vehicles = "Teil on juba maksimaalne arv VIN-koodiga sõidukeid oma garaažis.",
 		contract_has_expired = "See leping on aegunud.",
-		you_already_have_a_contract_started = "Teil on juba alustatud leping."
+		you_already_have_a_contract_started = "Teil on juba alustatud leping.",
+
+		transferred_crypt_logs_title = "Üle kantud krüpt",
+		transferred_crypt_logs_details = "${consoleName} kandis üle ${amount} krüpti ${targetConsoleName}-le."
 	},
 
 	brochure = {
@@ -4418,15 +5319,45 @@ OP.Global.Locales.Languages["et-EE"] = {
 		medical_care_1 = "Kui sa said vigastada, võid minna haiglasse sisse registreerima ja ennast ravima. Haigla asukoht on kaardil märgitud. Sulle võib abi olla ka sidemetest ja esmaabikomplektidest, millega saad ennast ise ravida.",
 		medical_care_2 = "Kui sa taaselustud ilma haiglasse toomata või lõpetad mängu olles vigastatud, võid kaotada osa oma esemetest. Serveri taaskäivitamine loetakse 'mängu lõpetamiseks'.",
 
-		safety_hint = "Näpunäide: saate ohutusparametri välja lülitada, vajutades klaviatuuri ALT-lahkriista vahetusnuppu. Olge turvaline!",
+		safety_hint = "Vihje: Saate relva ohutuks muutmiseks kasutada klahvi ${keybind}. Olge turvaline!",
 
 		closing_sentence = "Linnas on palju teisigi asju teha! Küsige ringi ja leidke sõpru ;)"
 	},
 
-	cache = {
-		download_progress = "Allalaadimise edenemine:\n- Sõidukid: ${vehiclesDone}/${vehiclesTotal}\n- Objektid: ${objectsDone}/${objectsTotal}\n- NPC-d: ${pedsDone}/${pedsTotal}\n- Riided: ${clothingRequested}/${clothingTotal}",
-		slow_download_enabled = "Aeglane allalaadimine on lubatud.",
-		slow_download_disabled = "Aeglane allalaadimine on keelatud."
+	buddy_pass = {
+		buddy_pass = "Sõbra Pääse",
+		information_part_1 = "Pushige oma sõber järjekorras koheselt sõbra pääsmega!",
+		information_part_2 = "Kõigil God Tieri toetajatel on see funktsioon tasuta üks kord kasutada.",
+		information_part_3 = "'Pääse' on aktiivne kuni teie sõber katkestab ühenduse serveriga. Seejärel saate teise inimese läbi lasta.",
+		information_part_4 = "Küsi neilt järjekorra PIN-koodi, et nad edasi lükata!",
+		queue_pin = "Järjekorra PIN-kood",
+		available = "Saadaval",
+		close = "Sulge",
+		webstore = "Veebipood",
+		buddy_passes = "Sõbrapiletid",
+		push_through = "Lükka edasi!",
+		queue_pin_not_set = "Sa pead lisama järjekorra PIN-koodi.",
+		queue_pin_is_a_4_digit_pin = "Järjekorra PIN-kood on 4-kohaline kood.",
+		no_buddy_passes = "Sul pole ühtegi sõbrapiletit.",
+		no_buddy_passes_available = "Sul pole ühtegi saadaolevat sõbrapiletit.",
+		no_queue_with_queue_pin = "Järjekorras ei olnud kedagi selle koodiga.",
+		buddy_pushed_through = "Sa surusid ${playerName} järjekorrast läbi!",
+		no_players_in_queue = "Järjekorras pole ühtegi mängijat.",
+
+		buddy_pass_used_logs_title = "Buddy Pass'i kasutati",
+		buddy_pass_used_logs_details = "${consoleName} kasutas oma Buddy Pass'it, et lükata läbi ${targetConsoleName}.",
+
+		push_through_random = "Tundub helde? Lükkake juhuslik inimene järjekorrast läbi!"
+	},
+
+	bus_map = {
+		bus_tracker = "Buss"
+	},
+
+	caffeine = {
+		chest_pain = "Sul on rinnusvalu.",
+		heart_attack = "Sul on südameatakk.",
+		heart_attack_death = "Südameatakk (kofeiin)"
 	},
 
 	capri_sun = {
@@ -4434,8 +5365,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 	},
 
 	cargo = {
-		start_cargo_no_permissions = "Mängija üritas käivitada Cargo röövi, kuid tal polnud selleks lubasid.",
-		end_cargo_no_permissions = "Mängija üritas lõpetada Cargo röövi, kuid tal polnud selleks lubasid.",
 		cargo_already_active = "Cargo on juba aktiivne.",
 		started_cargo = "Cargo on käivitatud.",
 		cargo_not_active = "Cargo ei ole aktiivne.",
@@ -4448,7 +5377,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 	},
 
 	casino = {
-		set_casino_screen_id_not_staff = "Mängija üritas määrata kasiino ekraani id-d, kuid tal polnud õiget luba selle tegemiseks.",
 		successfully_set_screen_label = "Ekraani identifikaatori väärtus on edukalt muudetud: `${screenLabel}`.",
 		successfully_queued_screen_label = "Ekraan nimega `${screenLabel}` on edukalt lisatud järjekorda.",
 		failed_to_set_screen_label = "Ekraani nimega `${screenLabel}` seadmine ebaõnnestus.",
@@ -4504,7 +5432,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		screen_model_size = "Suurus: x: ${sizeX}, y: ${sizeY}",
 		screen_model_offset = "Nihke koordinaadid: x: ${offsetX}, y: ${offsetY}, z: ${offsetZ}",
-		screen_model_rotation = "Pööramine: ${rotation}",
+		screen_model_rotation = "Pööramine: x: ${rotationX}, y: ${rotationY}, z: ${rotationZ}",
 		screen_model_volume = "Helitugevus: ${volumeRadius} (${volumeCutOffRadius})",
 		screen_model_model = "Mudel: ${modelName}",
 
@@ -4517,13 +5445,11 @@ OP.Global.Locales.Languages["et-EE"] = {
 		failed_to_blacklist_video = "Ei õnnestunud keelata video võtmega `${videoKey}`.",
 		video_is_already_blacklisted = "Video '${videoKey}' on juba mustas nimekirjas.",
 
-		blacklist_video_missing_permissions = "Mängija üritas video mustaks nimekirjaks märkida, kuid neil ei ole selleks vajalikke õigusi.",
-
 		watching_movie = "Vaatab filmi '${title}'",
 
 		cinema = "Kino",
 		doppler_cinema = "Doppler kino",
-		sandy_cinema = "Sanndy kino",
+		sandy_cinema = "Sandy kino",
 		tv = "Telekas",
 		monitor = "Monitor",
 		laptop = "Sülearvuti",
@@ -4541,7 +5467,26 @@ OP.Global.Locales.Languages["et-EE"] = {
 		author = "Autor",
 		queue = "Järjekord",
 		search_through_library = "Otsi raamatukogust...",
-		add_to_library = "Lisa video raamatukokku (URL)..."
+		add_to_library = "Lisa video raamatukokku (URL)...",
+
+		share_your_screen = "Jaga oma ekraani",
+		how_to_share_screen = "Ekraani jagamine OBS-iga:",
+		how_to_share_screen_part_1 = "Ava OBS ja mine seadetesse.",
+		how_to_share_screen_part_2 = "'Stream' sektsioonis vali 'Custom...' teenusena.",
+		how_to_share_screen_part_3 = "Sisesta järgmised väärtused.",
+		how_to_share_screen_part_4 = "Alusta OBS-is voogedastamist.",
+		how_to_share_screen_part_5 = "Klõpsa allpool nuppu 'Mine otseülekandesse'.",
+		server = "Server",
+		stream_key = "Voogedastuse võti",
+		cancel = "Tühista",
+		go_live = "Mine otseülekandesse!",
+		copied = "Kopeeritud!",
+		low_latency = "Voogedastuse latentsuse vähendamine:",
+		how_to_reduce_latency_part_1 = "Ava OBS ja mine seadistuste juurde.",
+		how_to_reduce_latency_part_2 = "Vali 'Väljundrežiimi' all 'Väljund' jaotises 'Täpsem' valik.",
+		how_to_reduce_latency_part_3 = "Otsi kodeerija seadetest välja Keyframe'i intervalli seadet.",
+		how_to_reduce_latency_part_4 = "Seadista võtme intervall 1 sekundiks.",
+		custom_stream = "Kohandatud voog"
 	},
 
 	cinematic = {
@@ -4561,6 +5506,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		outfit_failed = "Riietuse rakendamine ebaõnnestus.",
 		missing_outfit = "Puuduva riietuse tõttu olekut ei rakendatud.",
 		missing_outfit_name = "Riietusnime puudu.",
+		invalid_outfit = "Vigane riietus.",
 		no_nearby_clothing_spot = "Läheduses pole ühtegi riietumiskohta.",
 		trunk_closed = "Pagasnik on suletud.",
 		trunk_too_far = "Oled liiga kaugel pagasnikust.",
@@ -4576,7 +5522,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		failed_delete_outfit_doesnt_exists = "Kustutamine ebaõnnestus, riietus ${name} ei ole olemas.",
 		failed_delete_outfit = "Riietuse kustutamine ebaõnnestus.",
 
-		invalid_server_id = "Vigane või puuduv serveri id.",
 		player_model_missmatch = "Sa ei saa jagada riietust selle mängijaga.",
 		player_too_far = "Mängija on liiga kaugel.",
 		shared_outfit_too_far = "${displayName} jagas riietust sinuga, kuid sa ei ole lähedal riietuspoele.",
@@ -4591,6 +5536,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		loading_model = "Laadin mängija mudelit...",
 		loading_spawn = "Loodud mängija mudel...",
+		loading_preload_data = "Laadin pede andmeid...",
 		loading_set_data = "Seadistatakse tegelase andmeid...",
 		loading_tattoos = "Seadistatakse tätoveeringud...",
 		loading_finalize = "Viimistletakse..."
@@ -4629,6 +5575,8 @@ OP.Global.Locales.Languages["et-EE"] = {
 		secondary_color = "Teine värv",
 		opacity = "Läbipaistvus",
 
+		limited_customization = "Sellel tegelasel puuduvad/piiratud kohandamisvõimalused.",
+
 		press_to_access = "Vajutage ~INPUT_CONTEXT~, et pääseda riietuspoesse.",
 		press_no_freemode = "See tegelaskuju ei saa riietuspoesse ligi.",
 		press_no_freemode_barber = "Selle ped-mudeli juurdepääs juuksurile pole võimalik.",
@@ -4639,11 +5587,13 @@ OP.Global.Locales.Languages["et-EE"] = {
 		barbershop = "Juuksurisalong",
 
 		changing_area = "Riietusruum",
+		barber = "Juuksemeister",
 
 		switch_outfit = "Vahetada rõivastust.",
 		replace_outfit = "Asenda see rõivastus.",
 		new_outfit = "Salvesta rõivastus",
 		no_saved_outfits = "Salvestatud rõivastusi pole.",
+		last_updated = "Viimati uuendatud ${ago}.",
 
 		save_outfit_title = "Salvesta uus rõivastus",
 		save_outfit_label = "Riiete nimi:",
@@ -4669,9 +5619,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		clothing_menu_success = "Riiete menüü avati edukalt mängijale ${consoleName}.",
 		barber_menu_success = "Viga juuksuri menüü avamisel.",
 		failed_toggle_barber_menu = "Juuksuri menüü avati edukalt mängijale ${consoleName}.",
-		invalid_server_id = "Vigane serveri id.",
-
-		clothing_menu_missing_permissions = "Mängija üritas avada riiete menüüd teise mängija jaoks, kuid tal puudusid vajalikud õigused.",
 
 		hats_and_helmets = "Mütsid/Kiivrid",
 		glasses = "Päikseprillid",
@@ -4713,24 +5660,48 @@ OP.Global.Locales.Languages["et-EE"] = {
 		failed_reconnect = "Ei õnnestunud uuesti ühenduda käsu sokliga."
 	},
 
+	containers = {
+		drill_container = "Vajuta ~INPUT_CONTEXT~, et avada konteinerilukk puuriga.",
+		drill_warehouse = "Vajuta ~INPUT_CONTEXT~, et avada ladu lukk puuriga.",
+		drilling_lock = "Puurimisriiv",
+		failed_drill = "Ei õnnestunud lukku avada puurimisega.",
+		drill_success = "Lukk avati edukalt puurimisega.",
+
+		containers_due_soon = "${count} sinu konteineritest/ladudest on peagi maksmisel.",
+		container_blip = "Konteiner",
+		warehouse_blip = "Ladu"
+	},
+
 	crafting = {
 		menu_title = "Käsitöö",
 		close_menu = "Sulge menüü",
 
-		smelt_glass = "Sulata katkised pudelid",
-		press_to_smelt_glass = "[${SeatEjectKey}] Sulata katkised pudelid",
-		smelting_glass = "Sulatan ${usedItems}",
-		smelted_glass = "Sulatasin ${usedItems} klaasiks.",
-		failed_smelt_glass = "Ebaõnnestus klaasi sulatamine.",
+		smelt_materials = "Materjalide sulatamine",
+		press_to_smelt_materials = "[${SeatEjectKey}] Materjalide sulatamine",
 
-		craft_steel = "Valmista teras",
-		press_to_craft_steel = "[${SeatEjectKey}] Valmista teras",
-		crafting_steel = "Valmistan ${usedItems}",
-		crafted_steel = "Valmistasin ${usedItems} teraseks.",
-		failed_craft_steel = "Ebaõnnestus terase valmistamine.",
+		glass_recipe = "Sulata klaas",
+		steel_recipe = "Sulata teras",
+		scrap_metal_recipe = "Sulata taaskasutatud metall",
+		melt_gun_parts_recipe = "Sulata relvaosade retsept",
+		aluminium_recipe = "Sulata alumiinium",
+		copper_recipe = "Tõmba vask välja",
+		copper_wire_recipe = "Valmista vasktraat",
+		brass_recipe = "Kombineeri tsink ja vask",
+		aluminium_ore_recipe = "Valmista alumiiniumi maak",
+		steel_ore_recipe = "Valmista raua maak",
+		gold_ore_recipe = "Valmista kulla maak",
+		gold_nuggets_recipe = "Valmista kuldsegmendid",
+		tungsten_bar_recipe = "Tasakaal Tungsten-kang",
+		titanium_bar_recipe = "Tasakaal Titanium-kang",
+		smelt_rusty_metal_recipe = "Valmista roostes metalli",
+		smelt_rusty_tank_shell_recipe = "Sulata roostes tankimunakas",
+		smelt_rusty_diving_helmet_recipe = "Sulata roostes sukeldumispeakaitse",
 
-		scrapping_item = "Jäätmete sorteerimine: ${usedItems}",
-		scrapped_item = "Ekstraheeritud vanametall ${usedItems}-st.",
+		smelting_materials = "Sulatan ${usedItems}",
+		smelted_materials = "Sulatati ${usedItems}.",
+		failed_smelt_materials = "Materjalide sulatamine ebaõnnestus.",
+		smelting_copper = "Vase sulatamine",
+		combining_copper_zinc = "Vase ja tsingi kombineerimine",
 
 		scrap_knife = "Vanametallist noad",
 		press_to_scrap_knife = "[${SeatEjectKey}] Vanametalli nuga",
@@ -4740,36 +5711,70 @@ OP.Global.Locales.Languages["et-EE"] = {
 		press_to_scrap_item = "[${SeatEjectKey}] Vanametallist esemed",
 		failed_scrap_item = "Esemeid ei saa vanametalliks muuta.",
 
-		cut_item = "Lõigatud kartulid",
-		press_to_cut_item = "[${SeatEjectKey}] Lõika kartulid",
-		cutting_item = "Lõikan 3 kartulit",
-		cut_item_done = "Lõikasin kartulid friikartuliteks.",
-		failed_cut_item = "Kartulite lõikamine ebaõnnestus.",
+		cut_potato = "Lõika kartulid",
+		press_to_cut_potato = "[${SeatEjectKey}] Lõika kartulid",
+		cutting_potato = "Kartulite lõikamine",
+		cut_potato_done = "Lõigatud kartulid friikartuliteks.",
+		failed_cut_potato = "Kartulite lõikamine ebaõnnestus.",
 
-		fry_item = "Fritüüri friikartuleid",
-		press_to_fry_item = "[${SeatEjectKey}] Fritüüri friikartuleid",
-		frying_item = "Friikartulite fritüürimine",
-		fried_item = "Valmistatud Belgia friikartulid.",
-		failed_fry_item = "Friikartulite valmistamine ebaõnnestus.",
+		prepare_chicken_nuggets = "Valmista kananagitsid",
+		press_to_prepare_chicken_nuggets = "[${SeatEjectKey}] Valmista kananagitsid",
+		preparing_chicken_nuggets = "Kananagitsite valmistamine.",
+		prepared_chicken_nuggets = "Valmistatud kananagitsad.",
+		failed_prepare_chicken_nuggets = "Kananagitsate valmistamine ebaõnnestus.",
 
-		grill_item = "Grilli tooreid hakklihapalle",
-		press_to_grill_item = "[${SeatEjectKey}] Grilli tooreid hakklihapalle",
-		grilling_item = "Hakklihapallide grillimine",
-		grilled_item = "Grillitud hakklihapallid.",
-		failed_grill_item = "Hakklihapallide grillimine ebaõnnestus.",
+		use_fryer = "Kasuta fritüüri",
+		press_to_use_fryer = "[${SeatEjectKey}] Kasuta fritüüri",
+
+		fries_recipe = "Belgia Friikartulid",
+		frying_fries = "Friikartulite praadimine",
+		fried_fries = "Praetud belgia friikartulid.",
+		failed_fry_fries = "Friikartulite praadimine ebaõnnestus.",
+
+		nuggets_recipe = "Kananagitsad",
+		frying_nuggets = "Kananagitsate praadimine",
+		fried_nuggets = "Praetud kananagitsad.",
+		failed_fry_nuggets = "Kananagitsate praadimine ebaõnnestus.",
+
+		grill_item = "Grill",
+		press_to_grill_item = "[${SeatEjectKey}] Grill",
+		grilling_patty = "Grilli Pats",
+		grilled_patty = "Grillitud kotlet",
+		failed_grill_patty = "Kotleti grillimine ebaõnnestus.",
+		grilling_bacon = "Bekoniga grillimine",
+		grilled_bacon = "Grillitud bekon",
+		failed_grill_bacon = "Bekoni grillimine ebaõnnestus.",
+		frying_egg = "Muna praadimine",
+		fried_egg = "Praetud muna",
+		failed_fry_egg = "Muna praadimine ebaõnnestus.",
+
+		patty_recipe = "Kotleti grillimine",
+		bacon_recipe = "Suitsuliha",
+		egg_recipe = "Muna praadimine",
 
 		hamburger_recipe = "Hamburger",
 		cheeseburger_recipe = "Juustuburger",
+		bacon_burger_recipe = "Bekoniburger",
+		bne_burger_recipe = "Bekoni ja muna burger",
+		veggie_burger_recipe = "Taimetoitlane burger",
 
 		assemble_burger = "Koosta burger",
 		press_to_assemble_burger = "[${SeatEjectKey}] Koosta burger",
-		assembling_burger = "Burgeri koostamine",
-		assembled_burger = "Burger valmis",
-		failed_assemble_burger = "Ei õnnestunud burgerit kokku panna.",
-
-		assembling_cheeseburger = "Juustuburgeri koostamine",
-		assembled_cheeseburger = "Juustuburger valmis",
-		failed_assemble_cheeseburger = "Ei õnnestunud juustuburgerit kokku panna.",
+		assembling_burger = "Hamburgeri valmistamine",
+		assembled_burger = "Valmistas hamburgeri",
+		failed_assemble_burger = "Hamburgeri valmistamine ebaõnnestus.",
+		assembling_cheeseburger = "Valmistab juustuburgerit",
+		assembled_cheeseburger = "Valmistas juustuburgeri",
+		failed_assemble_cheeseburger = "Juustuburgeri valmistamine ebaõnnestus.",
+		assembling_bacon_burger = "Valmistab peekoniburgerit",
+		assembled_bacon_burger = "Valmistas peekoniburgeri",
+		failed_assemble_bacon_burger = "Pekoniburgeri valmistamine ebaõnnestus.",
+		assembling_bne_burger = "Valmistab peekoni- ja munaburgerit",
+		assembled_bne_burger = "Valmistas peekoni ja muna burgeri",
+		failed_assemble_bne_burger = "Bakoni ja muna burgeri valmistamine ebaõnnestus.",
+		assembling_veggie_burger = "Vegiburgeri valmistamine",
+		assembled_veggie_burger = "Valmis Vegiburger",
+		failed_assemble_veggie_burger = "Vegiburgeri valmistamine ebaõnnestus.",
 
 		mix_avocado_smoothie = "Sega avokaado smoothie",
 		press_to_mix_avocado_smoothie = "[${SeatEjectKey}] Sega avokaado smoothie",
@@ -4782,12 +5787,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		filling_nitro_tank = "Nitrotanki täitmine",
 		filled_nitro_tank = "Nitrotank täidetud",
 		failed_fill_nitro_tank = "Nitrotanki täitmine ebaõnnestus.",
-
-		craft_sheet_metal = "Loo lehtmetall",
-		press_to_craft_sheet_metal = "[${SeatEjectKey}] Loo lehtmetall",
-		crafting_sheet_metal = "Lehe Metalli Töötlemine",
-		crafted_sheet_metal = "Valmistatud lehe metall.",
-		failed_craft_sheet_metal = "Lehe metalli töötlemine ebaõnnestus.",
 
 		craft_empty_tank = "Tühja Mahuti Kokkupanek",
 		press_to_craft_empty_tank = "[${SeatEjectKey}] Kokku panna tühi mahuti",
@@ -4807,17 +5806,37 @@ OP.Global.Locales.Languages["et-EE"] = {
 		crafted_nitro_tank = "Lisavarustuse paaki kokku pandud.",
 		failed_craft_nitro_tank = "Lisavarustuse paagi kokkupanek ebaõnnestus.",
 
+		craft_glass_pipe = "Valmista klaasist toru",
+		press_craft_glass_pipe = "[${SeatEjectKey}] Valmista klaasist toru",
+		crafting_glass_pipe = "Valmistamine klaasist toru",
+		crafted_glass_pipe = "Valmistatud klaasist toru.",
+		failed_craft_glass_pipe = "Klaasist toru valmistamine ebaõnnestus.",
+
 		salvage_meth_table = "Metamfetamiini valmistuslaualt osade eemaldamine",
 		press_to_salvage_meth_table = "[${SeatEjectKey}] Metamfetamiini valmistuslaualt osade eemaldamine",
 		salvaging_meth_table = "Metamfetamiini valmistuslaualt osade eemaldamine käib",
 		salvaged_meth_table = "Taastatud meth laud.",
 		failed_salvage_meth_table = "Meth laua taastamine ebaõnnestus.",
 
+		make_crack = "Tee Crack",
+		press_to_make_crack = "[${SeatEjectKey}] Tee Crack",
+		making_crack = "Crack'i tegemine",
+		made_crack = "Crack valmistatud.",
+		failed_make_crack = "Crack'i tegemine ebaõnnestus.",
+
 		refill_vape = "Täida e-sigaret",
 		press_to_refill_vape = "[${SeatEjectKey}] Täida e-sigaret",
 		refilling_vape = "E-sigareti täitmine käsil",
 		refilled_vape = "E-sigaret on täidetud.",
 		failed_refill_vape = "E-sigareti täitmine ebaõnnestus.",
+
+		plain_vape = "Tavaline (Ilma maitseta)",
+		weed_vape = "THC õli",
+		mango_vape = "Mango maitse",
+		strawberry_vape = "Maasika maitse",
+		menthol_vape = "Mentooli maitse",
+		apple_vape = "Õunte maitse",
+		blueberry_vape = "Mustika maitse",
 
 		deconstructing_item = "Lammutan ${usedItems}",
 		deconstructed_item = "Lammutatud ${usedItems}.",
@@ -4852,22 +5871,68 @@ OP.Global.Locales.Languages["et-EE"] = {
 		failed_process_copper = "Vasenuggetside töötlemine ebaõnnestus.",
 
 		process_rubber = "Kumm töötlemine",
-		press_process_rubber = "[${SeatEjectKey}] Töötle kummi",
 		failed_process_rubber = "Kummi töötlemine ebaõnnestus.",
 
-		process_aluminium = "Alumiiniumi töötlemine",
-		press_process_aluminium = "[${SeatEjectKey}] Töötle alumiiniumi",
-		failed_process_aluminium = "Alumiiniumi töötlemine ebaõnnestus.",
+		process_polymer_resin = "Töötle polümeer vaik",
+		failed_process_polymer_resin = "Polümeer vaigu töötlemine ebaõnnestus.",
 
-		process_steel = "Terase töötlemine",
-		press_process_steel = "[${SeatEjectKey}] Töötle terast",
+		craft_components = "Käsitöö komponendid",
+		press_craft_components = "[${SeatEjectKey}] Käsitöö komponendid",
+
+		aluminium_rod_recipe = "Alumiiniumvard",
+		aluminium_plate_recipe = "Alumiiniumleht",
+		sheet_metal_recipe = "Lehtmetall",
+		steel_tube_recipe = "Terasest toru",
+		tungsten_plate_recipe = "Volframleht",
+		titanium_rod_recipe = "Titaanvard",
+		hardened_steel_plate_recipe = "Kõvastunud terasleht",
+		screws_recipe = "Terasest kruvid",
+		spring_recipe = "Terasvedru",
+		high_tensile_spring_recipe = "Kõrge tõmbetugevusega terasvedru",
+		pvc_pipe_recipe = "PVC Toru",
+		lens_recipe = "Lääts",
+		muzzle_brake_recipe = "Tulireduktor",
+
+		crafting_pvc_pipe = "Valmistatakse PVC toru",
+		crafted_pvc_pipe = "Valmistatud PVC toru.",
+		failed_craft_pvc_pipe = "PVC toru valmistamine ebaõnnestus.",
+
+		failed_process_aluminium = "Alumiiniumi töötlemine ebaõnnestus.",
 		failed_process_steel = "Terase töötlemine ebaõnnestus.",
 
-		craft_lens = "Läätse valmistamine",
-		press_craft_lens = "[${SeatEjectKey}] Valmista lääts",
 		crafting_lens = "Prillide valmistamine",
 		crafted_lens = "Valmistatud lääts.",
 		failed_craft_lens = "Läätse valmistamine ebaõnnestus.",
+
+		craft_gun_parts = "Valmista Relvavaruosi",
+		press_craft_gun_parts = "[${SeatEjectKey}] Valmista Relvavaruosi",
+		assemble_gun_parts = "Koosta Relvavaruosi",
+		press_assemble_gun_parts = "[${SeatEjectKey}] Koosta Relvavaruosi",
+
+		trigger_recipe = "Päästik",
+		smg_lower_receiver_recipe = "SMG Alumine Voll",
+		smg_lower_receiver_mk2_recipe = "SMG Alumine Voll MK2",
+		smg_upper_receiver_recipe = "SMG Ülemine Voll",
+		smg_upper_receiver_mk2_recipe = "SMG Ülemine Voll MK2",
+		rifle_lower_receiver_recipe = "Püssi alumine vastuvõtja",
+		rifle_lower_receiver_mk2_recipe = "Püssi alumine vastuvõtja MK2",
+		rifle_upper_receiver_recipe = "Püssi ülemine vastuvõtja",
+		rifle_upper_receiver_mk2_recipe = "Püssi ülemine vastuvõtja MK2",
+		shotgun_lower_receiver_recipe = "Püssirohu alumine vastuvõtja",
+		shotgun_lower_receiver_mk2_recipe = "Püssirohu alumine vastuvõtja MK2",
+		shotgun_upper_receiver_recipe = "Püssirohu ülemine vastuvõtja",
+
+		crafting_trigger = "Käsitööpäästik",
+		crafted_trigger = "Valmis päästik.",
+		failed_craft_trigger = "Ebaõnnestus päästiku valmistamisel.",
+
+		crafting_lower_receiver = "Alumise vastuvõtja valmistamine",
+		crafted_lower_receiver = "Valmistatud alumine vastuvõtja.",
+		failed_craft_lower_receiver = "Alumise vastuvõtja valmistamine nurjus.",
+
+		crafting_upper_receiver = "Ülemise vastuvõtja valmistamine",
+		crafted_upper_receiver = "Valmistatud ülemine vastuvõtja.",
+		failed_craft_upper_receiver = "Ülemise vastuvõtja valmistamine nurjus.",
 
 		craft_sight = "Sihi valmistamine",
 		press_craft_sight = "[${SeatEjectKey}] Valmista Siht",
@@ -4959,17 +6024,34 @@ OP.Global.Locales.Languages["et-EE"] = {
 		crafted_advanced_repair_kit = "Käsitööna valmistatud edasijõudnud tööriista kast.",
 		failed_craft_advanced_repair_kit = "Edasijõudnud tööriista kasti valmistamine ebaõnnestus.",
 
-		pulverize_aluminium = "Alumiiniumi purustamine",
-		press_pulverize_aluminium = "[${SeatEjectKey}] Purusta alumiinium",
+		process_metal = "Töötle metalli",
+		press_process_metal = "[${SeatEjectKey}] Töötle metalli",
+
+		aluminium_powder_recipe = "Valmista alumiiniumipulbrit",
 		pulverizing_aluminium = "Alumiiniumi purustamine",
 		pulverized_aluminium = "Purustatud alumiinium.",
 		failed_pulverize_aluminium = "Alumiiniumi purustamine ebaõnnestus.",
 
-		pulverize_steel = "Terase purustamine",
-		press_pulverize_steel = "[${SeatEjectKey}] Purusta terast",
+		iron_oxide_recipe = "Fabricar óxido de hierro",
 		pulverizing_steel = "Terase purustamine",
 		pulverized_steel = "Purustatud teras.",
 		failed_pulverize_steel = "Teras ei purunenud.",
+
+		steel_filings_recipe = "Fabricar limaduras de acero",
+		filing_steel = "Limando acero",
+		filed_steel = "Acero limado.",
+		failed_file_steel = "Error al limar el acero.",
+
+		converter_recipe = "Konverteri lagundamine",
+		breaking_down_converter = "Konverteri lagundamine",
+		broke_down_converter = "Konverter on lagundatud.",
+		failed_break_converter = "Konverteri lagundamine ebaõnnestus.",
+
+		craft_steel_file = "Fabricar lima de acero",
+		press_craft_steel_file = "[${SeatEjectKey}] Fabricar lima de acero",
+		crafting_steel_file = "Elaborando lima de acero",
+		crafted_steel_file = "Lima de acero elaborada.",
+		failed_craft_steel_file = "Error al elaborar la lima de acero.",
 
 		mix_thermite = "Sega termiit",
 		press_mix_thermite = "[${SeatEjectKey}] Sega termiit",
@@ -4993,8 +6075,15 @@ OP.Global.Locales.Languages["et-EE"] = {
 		press_deconstruct_chip = "[${SeatEjectKey}] Lammuta kiip",
 		failed_deconstruct_chip = "Kiipide lammutamine ebaõnnestus.",
 
-		craft_device_scanner = "Valmista Seadme skanner",
-		press_craft_device_scanner = "[${SeatEjectKey}] Valmista Seadme skanner",
+		craft_equipment = "Valmista varustust",
+		press_craft_equipment = "[${SeatEjectKey}] Valmista varustust",
+
+		radio_decrypter_recipe = "Raadio dekrüpteerija",
+		crafting_radio_decrypter = "Raadio dekrüpteerija valmistamine",
+		crafted_radio_decrypter = "Valmistatud raadio dekrüpteerija.",
+		failed_craft_radio_decrypter = "Raadio dekrüpteerija valmistamisel tekkis viga.",
+
+		device_scanner_recipe = "Seadme skanner",
 		crafting_device_scanner = "Valmistatakse Seadme skannerit",
 		crafted_device_scanner = "Valmistati seadme skanner.",
 		failed_craft_device_scanner = "Seadme skanneri valmistamine ebaõnnestus.",
@@ -5004,6 +6093,12 @@ OP.Global.Locales.Languages["et-EE"] = {
 		crafting_decryption_key = "Valmistatakse Dekrüpteerimisvõtit",
 		crafted_decryption_key = "Valmistatud dekrüpteerimisvõti.",
 		failed_craft_decryption_key = "Dekrüpteerimisvõtme valmistamine ebaõnnestus.",
+
+		break_decryption_key = "Murra dekrüpteerimisvõti",
+		press_break_decryption_key = "[${SeatEjectKey}] Murra dekrüpteerimisvõti",
+		breaking_decryption_key = "Krakitud krüpteerimisvõti",
+		broke_decryption_key = "Krüpteerimisvõti on purustatud.",
+		failed_break_decryption_key = "Krüpteerimisvõtme purustamine ebaõnnestus.",
 
 		craft_tire_wall = "Valmistada rehvisein",
 		press_craft_tire_wall = "[${SeatEjectKey}] Valmistada rehvisein",
@@ -5023,11 +6118,18 @@ OP.Global.Locales.Languages["et-EE"] = {
 		sawed_shotgun = "Püssirohi saetud.",
 		failed_saw_shotgun = "Püssirohu saagimine ebaõnnestus.",
 
-		bake_brownies = "Küpseta pruune küpsiseid",
-		press_bake_brownies = "[${SeatEjectKey}] Küpseta pruune küpsiseid",
+		use_microwave = "Kasuta mikrolaineahju",
+		press_to_use_microwave = "[${SeatEjectKey}] Kasuta mikrolaineahju",
+
+		brownies_recipe = "Brownie'd",
 		baking_brownies = "Pruunide küpsiste küpsetamine",
 		baked_brownies = "Pruunid küpsised küpsetatud.",
 		failed_bake_brownies = "Pruunide küpsiste küpsetamine ebaõnnestus.",
+
+		weed_gummies_recipe = "Canabisega geelikarud",
+		making_weed_gummies = "Valmistatakse canabisega geelikarusid",
+		made_weed_gummies = "Valmistatud canabisega geelikarud.",
+		failed_make_weed_gummies = "Canabisega geelikarude valmistamine ebaõnnestus.",
 
 		mix_brushstroke_paint = "Sega harjavärv",
 		press_mix_brushstroke_paint = "[${SeatEjectKey}] Segage pintslilöökide värv",
@@ -5065,12 +6167,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		mixed_patriotic_paint = "Segatud patriootiline värv.",
 		failed_mix_patriotic_paint = "Patriootilise värvi segamine ebaõnnestus.",
 
-		craft_radio_decrypter = "Valmista raadio dekrüpteerija",
-		press_craft_radio_decrypter = "[${SeatEjectKey}] Valmista raadio dekrüpteerija",
-		crafting_radio_decrypter = "Raadio dekrüpteerija valmistamine",
-		crafted_radio_decrypter = "Valmistatud raadio dekrüpteerija.",
-		failed_craft_radio_decrypter = "Raadio dekrüpteerija valmistamisel tekkis viga.",
-
 		craft_grenade_shell = "Granaadi kesta valmistamine",
 		press_craft_grenade_shell = "[${SeatEjectKey}] Valmista granaadi kest",
 		crafting_grenade_shell = "Granaadi kesta valmistamine",
@@ -5089,6 +6185,329 @@ OP.Global.Locales.Languages["et-EE"] = {
 		crafted_gas_grenade = "Gaasi granaat valmistatud.",
 		failed_craft_gas_grenade = "Gaasi granaadi valmistamine ebaõnnestus.",
 
+		break_apart_ring = "Lahuta sõrmus",
+		press_break_apart_ring = "[${SeatEjectKey}] Lahuta sõrmus",
+		breaking_ring = "Sõrmuse lahtiharutamine",
+		broke_ring = "Sõrmus lahtiharutatud.",
+		failed_break_ring = "Sõrmuse lahtiharutamine ebaõnnestus.",
+
+		mix_lean = "Sega Lean",
+		press_to_mix_lean = "[${SeatEjectKey}] Sega Lean",
+		mixing_lean = "Segan Lean'i",
+		mixed_lean = "Lean on segatud.",
+		failed_mix_lean = "Lean'i segamine ebaõnnestus.",
+
+		craft_pager = "Valmista Pager",
+		press_to_craft_pager = "[${SeatEjectKey}] Valmista Pager",
+		crafting_pager = "Pageri valmistamine",
+		crafted_pager = "Pager on valmistatud.",
+		failed_craft_pager = "Pagari valmistamine ebaõnnestus.",
+
+		craft_multi_tool = "Valmista Mitmekülgne Tööriist",
+		press_to_craft_multi_tool = "[${SeatEjectKey}] Valmista Mitmekülgne Tööriist",
+		crafting_multi_tool = "Valmistan Mitmekülgset Tööriista",
+		crafted_multi_tool = "Mitmekülgne tööriist on valmistatud.",
+		failed_craft_multi_tool = "Mitmekülgse tööriista valmistamine ebaõnnestus.",
+
+		mix_grimace_shake = "Sega Grimace Shake",
+		press_to_mix_grimace_shake = "[${SeatEjectKey}] Sega Grimace Shake",
+		mixing_grimace_shake = "Segan Grimace Shake'i",
+		mixed_grimace_shake = "Segatud grimace shake.",
+		failed_mix_grimace_shake = "Ebaõnnestus grimassi shake'i segamine.",
+
+		assemble_snowlauncher = "Koosta lumepallipilduja",
+		press_to_assemble_snowlauncher = "[${SeatEjectKey}] Kokkupanemine Lumepalli loopija",
+		assembling_snowlauncher = "Lumepalli loopija koostamine",
+		assembled_snowlauncher = "Kokku pandud lumepalli loopija.",
+		failed_assemble_snowlauncher = "Lumepalli loopija kokkupanemine ebaõnnestus.",
+
+		deconstruct_ammo = "Lammuta laskemoon",
+		press_to_deconstruct_ammo = "[${SeatEjectKey}] Lammuta laskemoon",
+
+		craft_casings = "Valmista korpuseid",
+		crafting_casings = "Korpuste valmistamine",
+		crafted_casings = "Valmistatud korpused.",
+		failed_craft_casings = "Korpuste valmistamine ebaõnnestus.",
+
+		pistol_deconstruct_recipe = "Lammuta püstoli laskemoon",
+		shotgun_deconstruct_recipe = "Lammuta püssi laskemoon",
+		sub_deconstruct_recipe = "Lammuta automaadi laskemoon",
+		rifle_deconstruct_recipe = "Lahuta automaadivõrku",
+
+		deconstructing_ammo = "Võrgu lahutamine",
+		deconstructed_ammo = "Võrgu lahutamine õnnestus.",
+		failed_deconstruct_ammo = "Võrgu lahutamine ebaõnnestus.",
+
+		craft_ammo = "Loo võrk",
+		press_to_craft_ammo = "[${SeatEjectKey}] Loo võrk",
+
+		pistol_ammo_recipe = "Loo käsiõhupüstoli võrk",
+		shotgun_ammo_recipe = "Loo püssihaavli võrk",
+		sub_ammo_recipe = "Loo automaadivõrk",
+		rifle_ammo_recipe = "Loo püssivõrk",
+
+		crafting_ammo = "Võrgu loomine",
+		crafted_ammo = "Võrgu loomine õnnestus.",
+		failed_craft_ammo = "Ebaõnnestus laskemoona valmistamine.",
+
+		gift_box_bomb_recipe = "Erikingituse karp",
+		crafting_gift = "Erikingituse kasti valmistamine",
+		crafted_gift = "Valmistatud erikingituse kast.",
+		failed_craft_gift = "Kingituskarbi valmistamine ebaõnnestus.",
+
+		process_weed = "Käitle Kanepit",
+		press_to_process_weed = "[${SeatEjectKey}] Käitle kanepit",
+
+		package_1q_recipe = "Pakend 4x 1q Kanepit",
+		packaging_1q = "4x 1q Kanepi pakendamine",
+		packaged_1q = "Pakendatud 4x 1q kanepit.",
+		failed_package_1q = "Ebaõnnestus 4x 1q kanepi pakendamine.",
+
+		process_bud_recipe = "Töötle kanepit",
+		processing_bud = "Kanepi töötlemine",
+		processed_bud = "Töödeldud kanep",
+		failed_process_bud = "Kanepi töötlemine ebaõnnestus",
+
+		process_meat = "Töötle liha",
+		press_to_process_meat = "[${SeatEjectKey}] Töötle liha",
+
+		beef_sausages_recipe = "Veiseliha vorstid",
+		crafting_beef_sausages = "Veiseliha vorstide valmistamine",
+		crafted_beef_sausages = "Valmistatud veiseliha vorstid",
+		failed_craft_beef_sausages = "Veiseliha vorstide valmistamine ebaõnnestus",
+
+		bacon_recipe = "Suitsuliha",
+		crafting_bacon = "Suitsuliha valmistamine",
+		crafted_bacon = "Valmistatud peekon.",
+		failed_craft_bacon = "Pekoni valmistamine ebaõnnestus.",
+
+		make_mochi = "Valmistada Mochi",
+		press_to_make_mochi = "[${SeatEjectKey}] Valmista Mochi",
+
+		mochi_mango_recipe = "Mango Mochi",
+		making_mochi_mango = "Mango Mochi valmistamine",
+		made_mochi_mango = "Valmistatud mangomochi.",
+		failed_make_mochi_mango = "Mangomochi valmistamine ebaõnnestus.",
+
+		mochi_strawberry_recipe = "Maasika Mochi",
+		making_mochi_strawberry = "Maasika Mochi valmistamine",
+		made_mochi_strawberry = "Valmistatud maasikamochi.",
+		failed_make_mochi_strawberry = "Maasikamochi valmistamine ebaõnnestus.",
+
+		mochi_green_tea_recipe = "Roheline Tee Mochi",
+		making_mochi_green_tea = "Rohelise tee moci valmistamine",
+		made_mochi_green_tea = "Valmis rohelise tee moci.",
+		failed_make_mochi_green_tea = "Rohelise tee mochi valmistamine ebaõnnestus.",
+
+		mochi_chocolate_recipe = "Šokolaadimoci",
+		making_mochi_chocolate = "Šokolaadimoci valmistamine",
+		made_mochi_chocolate = "Valmis šokolaadimoci.",
+		failed_make_mochi_chocolate = "Šokolaadimoci valmistamine ebaõnnestus.",
+
+		cook_food = "Valmista toitu",
+		press_to_cook_food = "[${SeatEjectKey}] Valmista toitu",
+
+		rice_recipe = "Riis",
+		cooking_rice = "Riisi valmistamine",
+		cooked_rice = "Valminud riis.",
+		failed_cook_rice = "Riisi keetmine ebaõnnestus.",
+
+		miso_soup_recipe = "Miso supp",
+		cooking_miso_soup = "Miso supi keetmine",
+		cooked_miso_soup = "Keedetud miso supp.",
+		failed_cook_miso_soup = "Miso supi keetmine ebaõnnestus.",
+
+		ramen_recipe = "Ramen",
+		cooking_ramen = "Rameni keetmine",
+		cooked_ramen = "Keedetud ramen.",
+		failed_cook_ramen = "Rameni keetmine ebaõnnestus.",
+
+		spicy_ramen_recipe = "Vürtsikas Ramen",
+		cooking_spicy_ramen = "Vürtsika Rameni keetmine",
+		cooked_spicy_ramen = "Keedetud vürtsikas ramen.",
+		failed_cook_spicy_ramen = "Vürtsika rameni keetmine ebaõnnestus.",
+
+		green_tea_recipe = "Roheline tee",
+		brewing_green_tea = "Rohelise tee pruulimine",
+		brewed_green_tea = "Valmis pruulitud roheline tee.",
+		failed_brew_green_tea = "Rohelise tee pruulimine ebaõnnestus.",
+
+		cut_ingridients = "Lõika koostisosad",
+		press_to_cut_ingridients = "[${SeatEjectKey}] Lõika koostisosad",
+
+		tofu_recipe = "Tofu kuubikud",
+		cutting_tofu = "Tofu lõikamine",
+		cut_tofu_done = "Tofu on lõigatud.",
+		failed_cut_tofu = "Tofu lõikamine ebaõnnestus.",
+
+		spring_onions_recipe = "Sibulavõrsed",
+		cutting_spring_onions = "Sibulavõrsete lõikamine",
+		cut_spring_onions_done = "Sibulavõrsed on lõigatud.",
+		failed_cut_spring_onions = "Sibulavõrsete lõikamine ebaõnnestus.",
+
+		fish_recipe = "Kalafilee",
+		filetting_fish = "Kala fileerimine",
+		filet_fish = "Kala fileeritud.",
+		failed_filet_fish = "Kalade fileerimine ebaõnnestus.",
+
+		assemble_sushi = "Kokkupanemine Sushi",
+		press_to_assemble_sushi = "[${SeatEjectKey}] Kokkupanemine Sushi",
+
+		sushi_recipe = "Sushi",
+		assembling_sushi = "Sushi kokkupanemine",
+		assembled_sushi = "Kokku pandud sushi.",
+		failed_assemble_sushi = "Sushi kokkupanemine ebaõnnestus.",
+
+		nigiri_recipe = "Nigiri",
+		assembling_nigiri = "Nigiri kokkupanemine",
+		assembled_nigiri = "Kokku pandud nigiri.",
+		failed_assemble_nigiri = "Nigiri kokkupanemine ebaõnnestus.",
+
+		bento_box_recipe = "Bento Box",
+		assembling_bento_box = "Bento Box kokkupanemine",
+		assembled_bento_box = "Kokku pandud bento karp.",
+		failed_assemble_bento_box = "Ei õnnestunud bento karpi kokku panna.",
+
+		kimchi_recipe = "Kimchi",
+		making_kimchi = "Kimchi valmistamine",
+		made_kimchi = "Valmis kimchi.",
+		failed_make_kimchi = "Kimchi valmistamine ebaõnnestus.",
+
+		mix_pizza_dough = "Sega pitsapõhi",
+		press_to_mix_pizza_dough = "[${SeatEjectKey}] Sega pitsapõhi",
+		mixing_pizza_dough = "Pitsapõhja segamine",
+		mix_pizza_dough_done = "Segatud pitsapõhi.",
+		failed_mix_pizza_dough = "Ei õnnestunud pitsapõhi segada.",
+
+		slice_ingredients = "Lõika koostisosad",
+		press_to_slice_ingredients = "[${SeatEjectKey}] Viiluta koostisained",
+
+		pineapple_slice_recipe = "Viiluta ananass",
+		slicing_pineapple = "Ananassi viilutamine",
+		sliced_pineapple = "Viilutatud ananass.",
+		failed_slice_pineapple = "Ananassi viilutamine ebaõnnestus.",
+
+		bell_pepper_slice_recipe = "Viiluta paprika",
+		slicing_bell_pepper = "Paprika viilutamine",
+		sliced_bell_pepper = "Viilutatud paprika.",
+		failed_slice_bell_pepper = "Paprika viilutamine ebaõnnestus.",
+
+		top_pizza = "Pizza kattmine",
+		press_to_top_pizza = "[${SeatEjectKey}] Kata pizza",
+
+		margherita_recipe = "Margherita pitsa",
+		topping_margherita = "Toppimine Margherita pitsale",
+		topped_margherita = "Täidetud margherita pitsa.",
+		failed_topping_margherita = "Margherita pitsa topimine ebaõnnestus.",
+
+		salami_recipe = "Salami pitsa",
+		topping_salami = "Toppimine Salami pitsale",
+		topped_salami = "Täidetud salami pitsa.",
+		failed_topping_salami = "Salami pitsa topimine ebaõnnestus.",
+
+		pepperoni_recipe = "Pepperoni pitsa",
+		topping_pepperoni = "Toppimine Pepperoni pitsale",
+		topped_pepperoni = "Täidetud pepperoni pitsa.",
+		failed_topping_pepperoni = "Viga pepperoni pitsa katmisel.",
+
+		vegetarian_recipe = "Taimetoidu pitsa",
+		topping_vegetarian = "Taimetoidu pitsa katmine",
+		topped_vegetarian = "Katmata taimetoidu pitsa.",
+		failed_topping_vegetarian = "Viga taimetoidu pitsa katmisel.",
+
+		ham_recipe = "Sink-pitsa",
+		topping_ham = "Sink-pitsa katmine",
+		topped_ham = "Katmata sink-pitsa.",
+		failed_topping_ham = "Viga sink-pitsa katmisel.",
+
+		diavola_recipe = "Diavola pitsa",
+		topping_diavola = "Diavola pitsa katmine",
+		topped_diavola = "Katmata diavola pitsa.",
+		failed_topping_diavola = "Diavola pitsat katmine ebaõnnestus.",
+
+		hawaiian_recipe = "Hawaii pitsa",
+		topping_hawaiian = "Hawaii pitsa katmine",
+		topped_hawaiian = "Katmata Hawaii pitsa.",
+		failed_topping_hawaiian = "Hawaii pitsa katmine ebaõnnestus.",
+
+		bake_pizza = "Küpseta pitsat",
+		press_to_bake_pizza = "[${SeatEjectKey}] Küpseta pitsat",
+
+		bread_sticks_recipe = "Küpseta saiapulgad",
+		baking_bread_sticks = "Saiapulkade küpsetamine",
+		baked_bread_sticks = "Küpsetatud saiapulgad.",
+		failed_baking_bread_sticks = "Saiapulkade küpsetamine ebaõnnestus.",
+
+		baking_margherita = "Margherita pitsa küpsetamine",
+		baked_margherita = "Küpsetatud margherita pitsa.",
+		failed_baking_margherita = "Margherita pitsa küpsetamine ebaõnnestus.",
+
+		baking_ham = "Hambi pitsa küpsetamine",
+		baked_ham = "Küpsetatud hambi pitsa.",
+		failed_baking_ham = "Hambi pitsa küpsetamine ebaõnnestus.",
+
+		baking_hawaiian = "Havai pitsa küpsetamine",
+		baked_hawaiian = "Küpsetatud havai pitsa.",
+		failed_baking_hawaiian = "Havai pitsa küpsetamine ebaõnnestus.",
+
+		baking_diavola = "Diavola pitsa küpsetamine",
+		baked_diavola = "Küpsetatud diavola pitsa.",
+		failed_baking_diavola = "Diavola pitsa küpsetamine ebaõnnestus.",
+
+		baking_salami = "Salami pitsa küpsetamine",
+		baked_salami = "Küpsetatud salami pitsa.",
+		failed_baking_salami = "Salami pitsa küpsetamine ebaõnnestus.",
+
+		baking_pepperoni = "Pepperoni pitsa küpsetamine",
+		baked_pepperoni = "Küpsetatud pepperoni pitsa.",
+		failed_baking_pepperoni = "Pepperoni pitsa küpsetamine ebaõnnestus.",
+
+		baking_vegetarian = "Vegetaarne pitsa küpsetamine",
+		baked_vegetarian = "Küpsetatud vegetaarne pitsa.",
+		failed_baking_vegetarian = "Vegetaarne pitsa küpsetamine ebaõnnestus.",
+
+		bake_cake = "Küpseta kook",
+		press_to_bake_cake = "[${SeatEjectKey}] Küpseta kook",
+
+		lemon_cake_recipe = "Sidrunikook",
+		baking_lemon_cake = "Sidrunikoogi küpsetamine",
+		baked_lemon_cake = "Küpsetatud sidrunikook.",
+		failed_baking_lemon_cake = "Sidrunikoogi küpsetamine ebaõnnestus.",
+
+		berry_cake_recipe = "Marjakook",
+		baking_berry_cake = "Marjakooki küpsetamine",
+		baked_berry_cake = "Küpsetatud marjakook.",
+		failed_baking_berry_cake = "Marjakooki küpsetamine ebaõnnestus.",
+
+		chocolate_cake_recipe = "Šokolaadikook",
+		baking_chocolate_cake = "Šokolaadikoogi küpsetamine",
+		baked_chocolate_cake = "Küpsetatud šokolaadikook.",
+		failed_baking_chocolate_cake = "Šokolaadikoogi küpsetamine ebaõnnestus.",
+
+		make_coffee = "Tee kohvi",
+		press_to_make_coffee = "[${SeatEjectKey}] Tee kohvi",
+
+		bean_coffee_recipe = "Oa kohv",
+		espresso_recipe = "Espresso",
+		cappuccino_regular_recipe = "Cappuccino (lehmade piim)",
+		cappuccino_almond_recipe = "Cappuccino (mandlipiim)",
+		cappuccino_pigeon_recipe = "Cappuccino (tuvidempiim)",
+		iced_latte_regular_recipe = "Jäätis latte (lehmade piim)",
+		iced_latte_almond_recipe = "Jäätis latte (mandlipiim)",
+		iced_latte_pigeon_recipe = "Jäätis latte (tuvidempiim)",
+
+		brewing_coffee = "Kohvi valmistamine",
+		brewed_coffee = "Keedetud kohv.",
+		failed_brewing_coffee = "Kohvi keetmine ebaõnnestus.",
+
+		hot_chocolate_regular_recipe = "Kuum šokolaad (lehmapiim)",
+		hot_chocolate_pigeon_recipe = "Kuum šokolaad (mandlipiim)",
+		hot_chocolate_almond_recipe = "Kuum šokolaad (tuvispiim)",
+
+		making_hot_chocolate = "Kuum šokolaadi valmistamine",
+		made_hot_chocolate = "Valmis kuum šokolaad.",
+		failed_make_hot_chocolate = "Kuum šokolaadi valmistamine ebaõnnestus.",
+
 		no_required_items = "Sul pole kõiki vajalikke esemeid.",
 
 		debug_multi = "-Mitmed väljundid-",
@@ -5099,13 +6518,18 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 	crashes = {
 		crash_failed = "Ei õnnestunud põhjustada kokkujooksu mängijale ${consoleName}.",
-		crash_success = "Mängijale ${consoleName} põhjustati kokkujooks.",
-		server_id_invalid = "Vigane serveri ID."
+		crash_success = "Mängijale ${consoleName} põhjustati kokkujooks."
 	},
 
 	creation = {
 		turn_right = "Pööra paremale",
-		turn_left = "Pööra vasakule"
+		turn_left = "Pööra vasakule",
+		toggle_light = "Lülitada tuli",
+		move_menu = "Menú de movimiento",
+		change_colors = "Cambiar colores",
+		move_sliders = "Mover control deslizante",
+		enter = "Failed to automatically generate translation.",
+		back = "Failed to automatically generate translation."
 	},
 
 	creation_menu = {
@@ -5127,10 +6551,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		divorced = "Lahutatud",
 		divorced_description = "Valige, kas teie vanemad on lahutatud.",
 
-		["in"] = "in",
-		out = "välja",
-		up = "üles",
-		down = "alla",
+		["in"] = "In",
+		out = "Väljas",
+		up = "Üles",
+		down = "Alla",
 		brow = "kulm",
 		brow_description = "Muuda oma füüsilisi omadusi.",
 
@@ -5333,7 +6757,11 @@ OP.Global.Locales.Languages["et-EE"] = {
 		secondary_offset = "Teisene offset",
 		rotation = "Pööramine",
 		color = "Värv",
-		duration = "Kestus (ms)"
+		duration = "Kestus (ms)",
+
+		flash_no_image = "Tapmise välk ei tööta kohandatud pildiga.",
+		do_flash = "Tekita välk",
+		flashing = "Välgutamine"
 	},
 
 	clip_saver = {
@@ -5353,11 +6781,77 @@ OP.Global.Locales.Languages["et-EE"] = {
 		north_west = "NW"
 	},
 
+	confirm = {
+		confirm_purchase = "Kinnita ost",
+		confirm_purchase_label = "${label} | ${cost}",
+
+		deny_purchase = "Ei, ma ei soovi seda",
+		accept_purchase = "Jah, ma soovin seda osta",
+		accept_purchase_info = "Olete kindel, et soovite selle ostu teha? Seda ei saa tagasi võtta.",
+
+		yes = "Jah",
+		no = "Ei"
+	},
+
+	container_storage = {
+		rent_container = "[${InteractionKey}] Rendi C-${id} ($${price} nädalas)",
+		rent_warehouse = "[${InteractionKey}] Rendi W-${id} ($${price} nädalas)",
+		renting_container = "Konteineri üürimine",
+		renting_warehouse = "Laona rendile võtmine",
+		failed_rent_container = "Konteineri üürimine ebaõnnestus.",
+		failed_rent_warehouse = "Laona rendile võtmine ebaõnnestus.",
+		rent_container_success = "Konteineri #${id} edukalt üüritud. Saad hallata oma konteinereid kasutades `/containers` käsku.",
+		rent_warehouse_success = "Laona rentimine õnnestus nr#${id}. Saad haldada oma ladusid kasutades `/warehouses` käsku.",
+		access_container = "[${InteractionKey}] Juurdepääs C-${id}",
+		access_warehouse = "[${InteractionKey}] Juurdepääs W-${id}",
+		container_id = "C-${id}",
+		warehouse_id = "W-${id}",
+
+		storage_containers = "Ladustamiskonteinerid/Laod",
+		container = "Konteiner",
+		warehouse = "Laohoone",
+		loading = "Laadimine...",
+		failed_remove_access = "Ligipääsu eemaldamine ebaõnnestus.",
+		failed_add_access = "Ligipääsu lisamine ebaõnnestus.",
+		access = "Ligipääs",
+		add_cid = "Lisa CID",
+		no_containers = "Sul ei ole ühtegi oma või juurdepääsetavat ladustuskonteinerit/ladu.",
+		no_access = "Ühelgi inimesel peale sinu pole juurdepääsu sellele konteinerile/ladule.",
+		back = "Tagasi",
+		close = "Sulge",
+		character_not_exist = "Karakterit ei ole olemas.",
+		paid_until = "Makstud kuni:",
+		pay_rent = "Maksa Üür",
+		expired = "Aegunud",
+		not_enough_money = "Teil pole piisavalt raha.",
+		failed_pay_rent = "Ebaõnnestus üüri tasumine.",
+		mark_gps = "Märgi GPS",
+		container_alert = "Sinu konteineri/lao #${containerId}ga tegeletakse.",
+
+		rented_container_logs_title = "Üüritud konteiner",
+		rented_container_logs_details = "${consoleName} rentis ${type} #${containerId} hinnaga $${price}.",
+		paid_rent_logs_title = "Makstud konteineri üür",
+		paid_rent_logs_details = "${consoleName} tasus ${type} #${containerId} eest üüri $${price} (tasutud kuni `${till} UTC`).",
+		lockpicked_container_logs_title = "Lukustatud konteiner",
+		lockpicked_container_logs_details = "${consoleName} murdis lahti ${type} #${containerId}."
+	},
+
 	courthouse = {
 		press_to_use_gavel = "Vajuta ~INPUT_CONTEXT~, et kasutada vasarat."
 	},
 
+	crack = {
+		press_to_sell_crack = "Vajuta ~INPUT_CONTEXT~, et müüa Cracki.",
+		local_not_interested = "Kohalik ei tundu hetkel huvitatud olevat.",
+		selling_crack = "Kräki müümine.",
+
+		sold_crack_logs_title = "Müüdud kräkk",
+		sold_crack_logs_details = "${consoleName} müüs 1x Kräki kotti eest $${reward}."
+	},
+
 	daily_activities = {
+		not_enough_money = "Sul pole piisavalt raha.",
+
 		press_to_daily_activities = "[${InteractionKey}] Igapäevased tegevused",
 		daily_activities = "Igapäevased tegevused",
 		resets_in = "Lähtestub ${resetsIn}...",
@@ -5366,10 +6860,16 @@ OP.Global.Locales.Languages["et-EE"] = {
 		remain_money = "${remain} dollarit jäänud",
 		claimed = "Korjatud",
 		claim = "Nõua",
-		streak_reward = "Kui teil on järjestikune päevade arv 7 või suurem, saate tasuta päevase keerutuse õnnelikul rattal.",
+		streak_reward_one = "Kui teie järjestikus on 7 või rohkem, saate veel ühe tasuta päevase keerutuse Lucky Wheel'is.",
+		streak_reward_two = "Kui teie järjestikus on 30 või rohkem, on teil võimalus võita eriline sõiduk oma 4. ülesandega.",
 
-		reset_daily_activities_no_permissions = "Mängija püüdis lähtestada oma igapäevaseid tegevusi ilma sobivate õigusteta.",
+		special_vehicle_won = "Te olete võitnud erilise sõiduki! Leiate selle oma garaažist.",
+
 		reset_daily_activities = "Lähtesta igapäevased tegevused.",
+
+		task_progress = "Ülesande edenemine: ${task} (${remain} alles)",
+		task_progress_money = "Ülesande edenemine: ${task} ($${remain} alles)",
+		task_finished = "Ülesanne lõppenud: ${task}",
 
 		parachute_from_location = "Langevarjuga ${kohast} hüpata.",
 		gamble_at_blackjack = "Mängi ${summa} käsi Blackjacki lauas.",
@@ -5378,8 +6878,8 @@ OP.Global.Locales.Languages["et-EE"] = {
 		headshot_kills_in_arena = "Saada ${kogus} pealööki Arenal.",
 		punch_locals = "Löö ${kogus} kohalikku elanikku.",
 		move_from_place_to_place = "Liigu kohast ${algselt} kohasse ${lõpuks} ${ajaga} sekundiga.",
-		put_bets_in_jackpot = "Pane kihlvedusid väärtuses $${summa} Ohjuspoti mängu.",
-		win_bets_in_jackpot = "Võida esemeid väärtuses $${amount} Jackpotis.",
+		put_bets_in_jackpot = "Panusta kasiino jackpoti väärtuses $${amount}.",
+		win_bets_in_jackpot = "Võida esemeid jackpoti väärtuses $${amount} kasiinos.",
 		chop_vehicles = "Lõhka ${amount} autot.",
 		purchase_ammo = "Osta ${amount} padrunit.",
 		collect_items_from_diving = "Kogu ${amount}x ${itemLabel} sukeldumisest.",
@@ -5387,7 +6887,30 @@ OP.Global.Locales.Languages["et-EE"] = {
 		dig_up_a_treasure = "Kaeva üles aare kaardi abil.",
 		refine_gems = "Töötle ${amount} kivi.",
 		visit_location = "Külasta kohta: ${location}.",
-		visit_the_location = "Külasta ${location}."
+		visit_the_location = "Külasta ${location}.",
+		punch_a_shark = "Löö haid.",
+		put_bets_in_lottery = "Panusta kogusummas $${amount} loteriisse.",
+
+		confirm_task_refresh = "Kas olete kindel, et soovite selle ülesande uuesti laadida? Hind on $${cost}.",
+		yes = "Jah",
+		no = "Ei",
+
+		logs_daily_streak_changed_title = "Päevas kestus muutus",
+		logs_daily_streak_changed_details = "${consoleName}il on nüüd igapäevane järjestikune arvestus `${streak}`.",
+
+		logs_daily_task_completed_title = "Igapäevane ülesanne täidetud",
+		logs_daily_task_completed_details = "${consoleName} täitis igapäevase ülesande nimega `${taskName}`.",
+
+		restore_streak = "Taasta järjepidevus ${streak}",
+		confirm_streak_restore = "Kas soovite kindlasti taastada oma ${streak} päeva järjepidevuse? Hind on ${cost} OP punkti.",
+
+		not_enough_op_points = "Oma järjekorra taastamiseks on sul vaja ${cost} OP punkti. Sul on ${points} OP punkti.",
+		streak_restored = "Sinu ${streak} päeva pikkune järjepidevus on taastatud hinnaga ${cost} OP Points.",
+
+		logs_daily_task_reward_title = "Igapäevase ülesande tasu",
+		logs_daily_task_reward_money_details = "${consoleName} täitis ülesande ja sai $${amount}.",
+		logs_daily_task_reward_items_details = "${consoleName} täitis ülesande ja sai ${amount} eset.",
+		logs_daily_task_reward_brought_items_details = "${consoleName} tõi ${itemAmount} ese(d) ja sai selle eest $${amount}."
 	},
 
 	dashcam = {
@@ -5404,7 +6927,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		state_seal_three = "Iga volitamata kasutamine on karistatav raskete karistustega vastavalt 13 S.A. Pen. Kood 502(a) punktile.",
 
 		kmh = "km/h",
-		mph = "mi/h",
+		mph = "miili tunnis",
 
 		set_unit_id_to = "Sinu üksuse ID on nüüd määratud kui ${unitId}.",
 		reset_unit_id = "Sinu üksuse ID on nüüd lähtestatud.",
@@ -5420,19 +6943,29 @@ OP.Global.Locales.Languages["et-EE"] = {
 		ped = "Jalakäija",
 		vehicle = "Sõiduk",
 		object = "Objekt",
-		network_id = "Võrgu-ID",
 		owned_by_us = "Kuulub meile",
 		owned_by = "Kuulub",
-		one_state_set = "1 seisund määratud",
-		many_states_set = "${count} seisundit määratud",
+		one_state_set = "Failed to automatically generate translation.",
+		many_states_set = "Failed to automatically generate translation.",
 		no_states = "Ühtegi olekut pole",
-		entity_health = "Tervis ${health}/${maxHealth}",
+		native_model = "Failed to automatically generate translation.",
 		owned_by_server = "Server",
+		owned_by_you = "Sinu oma",
 		first_owned_short = "Esimene omanik: ${firstOwned}",
+		current_owned_short = "Praegune omanik: ${currentOwner}",
 		network_id_side = "Võrgu ID: ${networkId}",
 		no_target = "Ei valitud sihtmärki",
+		loading_owner = "Registreeritud ~y~Laadimine...",
+		owner_npc = "Registreeritud ~b~${fullName}-le",
+		owner_player = "Registreeritud ~g~${fullName}-le",
+		character_known = "Tegelane: ~g~${fullName}",
+		character_unknown = "Tegelane: ~r~Tundmatu",
+		entity_id = "Entiteedi ID: ${entity}",
+		model_name = "Mudeli nimi: ${modelName}",
+		resource = "Ressurs: ${resource}",
+		network_id = "Võrgu ID: ${networkId}",
+		["local"] = "-local-",
 		invalid_radius_parameter = "Vigane `raadius` parameeter.",
-		inject_code_not_developer = "Mängija üritas sisestada koodi, kuid ta pole arendaja.",
 		inject_code_invalid_player = "Serveri ID '${serverId}'-ga mängijaid pole.",
 		inject_code_success_for_everyone = "Koodi süstimine õnnestus kõigile.",
 		inject_code_success_for_player = "${consoleName} koodi süstimine õnnestus.",
@@ -5448,17 +6981,34 @@ OP.Global.Locales.Languages["et-EE"] = {
 		ped_config_flags = "Tegelaskuju konfiguratsiooni lipud:",
 		ped_is = "Tegelaskuju on:",
 		vehicle_is = "Sõiduk on:",
-		native_calls = "Loomulikud kõned: ${trueNativeCallsLastFrame} (${totalNativeCalls})",
+		world_is = "Maailm:",
+		controls = "Juhtimine: ${controls}",
+		tasks = "Üleskutsed: ${calls} (${total})",
+		invoke_calls = "Failed to automatically generate translation.",
+		native_calls = "Loomuvad kõned: ${calls} (${total})",
+		draw_calls = "Failed to automatically generate translation.",
 		player_speed = "Mängija kiirus: ${playerSpeed}",
 		player_ped = "Mängija ped: ${playerPedId}",
 		heading = "Suund: ${heading}",
+		bearing = "Suund: ${bearing}°",
 		coords = "Koordinaadid: ${coords}",
 		rotation = "Pööramine: ${rotation}",
+		normal = "Pind: ${normal}",
+		surface_heading = "Pind: ${heading}",
 		velocity = "Kiirusvektor: ${velocity}",
 		ground_material = "Maapinna materjal: ${material}",
-		g_force = "G-jõud: ${force}",
 		debug_print_f8 = "Tõrkeotsingu info on trükitud sinu F8 konsooli.",
 		no_vehicle_bone = "Puudub \"${boneName}\" luu",
+		server_vehicles = "Failed to automatically generate translation.",
+		not_networked_vehicles = "Failed to automatically generate translation.",
+		invisible_vehicles = "Nähtamatud sõidukid: ${count}",
+		parked_vehicles = "Failed to automatically generate translation.",
+		available_doors = "Saadaval olevad ukse ID-d: ${doors}",
+		copied_object_info = "Kopeeritud objekti info.",
+		copied_model_name = "Kopeeritud mudeli nimi.",
+		copied_entity_id = "Kopeeritud olevuse ID.",
+		copied_hit_coords = "Kopeeritud tabamise koordinaadid.",
+		copied_surface_heading = "Kopeeritud pinnapealkiri.",
 
 		distance = "Kaugus: ${distance}m",
 		distance_first = "Esimese asukoha salvestamine.",
@@ -5474,23 +7024,17 @@ OP.Global.Locales.Languages["et-EE"] = {
 		vehicle_acceleration = "0 kuni 60: ${time}",
 		vehicle_acceleration_120 = "0 kuni 120: ${time}",
 		vehicle_acceleration_150 = "0 kuni 150: ${time}",
-		vehicle_acceleration_force = "Stardijõud: ${force}",
+		vehicle_brake_distance = "Pidurduskaugus: ${distance}m",
 
-		invalid_network_id = "Vigane võrgu-ID.",
 		delete_entity_success = "Üksus võrgu-ID-ga ${networkId} kustutatud.",
 		delete_entity_failed = "Üksuse kustutamine ebaõnnestus.",
-		delete_entity_no_permissions = "Mängija üritas kustutada eset ilma õiguseta.",
 
+		failed_entity_info = "Ebaõnnestus üksuse teabe hankimine.",
+		printed_entity_info = "Prinditud üksuse serveri teave F8 klahvi abil.",
+
+		no_entity_network = "Ühtegi võrgu ID-ga üksust pole: ${networkId}.",
 		move_entity_success = "Ese edukalt liigutatud, võrgu ID-ga ${networkId}.",
 		move_entity_failed = "Ese liigutamine ebaõnnestus.",
-		move_entity_no_permissions = "Mängija üritas liigutada eset ilma õiguseta.",
-
-		fake_lag_updated = "Vale viivitus arv on uuendatud `${counter}`-ks.",
-		fake_lag_already_set_to = "Vale viivitus on juba seadistatud `${counter}`-ks.",
-		fake_lag_enabled = "Vale viivitus on aktiveeritud, arv ${counter}.",
-		fake_lag_invalid_counter_value = "Väärtus `${counter}` on kehtetu(fake lag'i jaoks).",
-		fake_lag_disabled = "Vale viivitus(fake lag) on keelatud.",
-		fake_lag_not_enabled = "Vale viivitus(fake lag) pole lubatud.",
 
 		weapon_name_missing = "Relva nimi puudub parameetritest.",
 		weapon_name_invalid = "`${weaponName}` ei ole kehtiv relva nimi.",
@@ -5500,12 +7044,9 @@ OP.Global.Locales.Languages["et-EE"] = {
 		model_view_disabled = "Mudelivaade on välja lülitatud.",
 		invalid_component = "Vigane komponent `${componentName}`.",
 
-		animation_currently_playing = "Hetkel mängitakse animatsiooni.",
 		invalid_or_missing_animation_dict = "Vigane või puuduolev animatsiooni sõnastik `${animationDict}`.",
-		missing_animation_name = "Puuduolev või vigane animatsiooni nimi `${animationName}`.",
+		missing_animation_name = "Vigane või puuduv animatsiooni nimi.",
 		invalid_animation_flags = "Vigased animatsiooni lipud.",
-		animation_played = "Mängin `${animationDict}` `${animationName}` (lipud: ${flags}).",
-		no_flags = "Pole määratud",
 
 		invalid_coordinates = "Vigased koordinaadid.",
 		added_coordinates_draw = "Lisati koordinaadid `x: ${x}, y: ${y}, z: ${z}` joonistamise nimekirja ID-ga `${drawId}`.",
@@ -5518,8 +7059,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		enabled_network_debug = "Objekti võrgu silumine on sisse lülitatud.",
 		disabled_network_debug = "Olekuvõrgu silumine keelatud.",
 		failed_network_debug = "Ei suudetud lubada olekuvõrgu silumist.",
-
-		network_owner_subscription_no_permissions = "Üritati tellida olekuvõrgu omanikele ilma nõuetekohase loata.",
 
 		missing_ipl = "Puudub ipl parameeter.",
 		enabled_ipl = "Ipl `${ipl}` edukalt lubatud.",
@@ -5535,6 +7074,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		missing_code = "Puudub koodiparameeter.",
 		run_code_success = "Koodijupp edukalt käivitatud.",
+		run_code_invalid = "Vigane koodilõik.",
 		run_code_error = "Koodijupp põhjustas vea.",
 
 		searching_world = "Otsin maailmast:\n${modelNames}",
@@ -5544,7 +7084,29 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		network_debug_logs_title = "Võrgu silumine sisse/välja lülitatud",
 		network_debug_logs_details_on = "${consoleName} lülitas oma võrgu silumise sisse.",
-		network_debug_logs_details_off = "${consoleName} lülitas oma võrgu silumise välja."
+		network_debug_logs_details_off = "${consoleName} lülitas oma võrgu silumise välja.",
+
+		debug_info_failed = "Ei õnnestunud koguda silumisandmeid.",
+		close = "Sulge",
+		import = "Impordi",
+		export = "Ekspordi",
+		copied = "Kopeeritud!",
+		invalid_data = "Kehtetu andmed.",
+		invalid_json = "Kehtetu JSON.",
+
+		street_found = "Leid \"${name}\", selle keskpunkt on märgitud teie kaardil.",
+		street_not_found = "Tänavat ei leitud, mis sobiks teie otsinguga.",
+
+		only_super_admins_can_turn_on = "Seda saavad sisse lülitada ainult süsteemi administraatorid. Serverihaldur saab selle vajadusel käsitsi sisse lülitada. Peale seda saab selle käsuga välja lülitada.",
+		deep_logging_enabled = "Põhjalik logimine on lubatud.",
+		deep_logging_disabled = "Sügav logimine on välja lülitatud.",
+		deep_logging_active = "Sügav logimine on aktiivne.",
+
+		find_native_toggles_enabled = "'Leia native lülitid' on lubatud.",
+		find_native_toggles_disabled = "'Leia native lülitid' on keelatud.",
+
+		showing_cancelled_vehicles_enabled = "Tühistatud sõidukite kuvamine.",
+		showing_cancelled_vehicles_disabled = "Tühistatud sõidukite kuvamine on lõpetatud."
 	},
 
 	debug_menu = {
@@ -5553,7 +7115,13 @@ OP.Global.Locales.Languages["et-EE"] = {
 		timecycles = "Ajatsüklid",
 		weather = "Ilm",
 		reset = "Reset",
-		refresh_interior = "Uuenda sisemust"
+		refresh_interior = "Uuenda sisemust",
+		camera_shakes = "Kaamera värinad"
+	},
+
+	development = {
+		developer_ambience_on = "Arendaja taustamüra sisse lülitatud.",
+		developer_ambience_off = "Arendaja taustamüra välja lülitatud."
 	},
 
 	dna_evidence = {
@@ -5565,7 +7133,26 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		evidence_failed = "Ebaõnnestus DNA tõendite võtmine.",
 
-		evidence_text = "Tõendi tüüp: DNA Tõendid\nDNA on kogutud mängijalt ${fullName} #${characterId}\n\nLisainfo:\n • Kogumise aeg: ${time}"
+		evidence_text = "DNA tõend: Proov vastas isikule ${name} (#${cid}) (võetud ${time})."
+	},
+
+	docks = {
+		press_to_access_spawner = "Vajuta ~INPUT_CONTEXT~, et avada sõidukite looja.",
+		boat_dock = "Paadisild",
+		emergency_vehicles = "Hädaolukorra sõidukid",
+		vehicle_list = "Sõidukiloend",
+		park_boat = "Paadi parkla",
+		close_menu = "Sulge menüü",
+		main_menu = "Peamenüü",
+		deposit = "$${amount} Hoius",
+		no_deposit = "Hoius puudub",
+		area_not_clear = "Ala ei ole puhas.",
+		no_vehicle_park = "Parkimiseks ei ole sõidukit.",
+		failed_park = "Paadi parkimine ebaõnnestus.",
+		deposit_not_enough_money = "Teil pole piisavalt raha tagatise maksmiseks.",
+		failed_spawn = "Paadi ilmumise ebaõnnestumine.",
+		vehicle_anchor = "Teie paat on ilmunud ja ankrusse pandud, saate kasutada /anchor, et tõsta ankur.",
+		too_shallow = "Failed to automatically generate translation."
 	},
 
 	doors = {
@@ -5581,11 +7168,23 @@ OP.Global.Locales.Languages["et-EE"] = {
 		failed_to_sync_doors = "Uste sünkroniseerimine ebaõnnestus. Midagi läks vist valesti. Palun proovige uuesti.",
 		saved_doors_to_file = "Salvestatud ${amount} uksed faili serveris.",
 		no_nearby_doors = "Läheduses pole uksi, mida salvestada.",
-		lockpicking_door = "Ukse lukustamise murdmine",
+		copied_doors = "Failed to automatically generate translation.",
+		adding_doors = "Failed to automatically generate translation.",
+		stop_adding_doors = "Failed to automatically generate translation.",
 
 		debug_doors_on = "Uste silumine lülitatud sisse.",
 		debug_doors_off = "Uste silumine lülitatud välja.",
-		doors_no_job = "Puudub"
+		doors_no_job = "Puudub",
+		disabled_doors = "Failed to automatically generate translation.",
+		enabled_doors = "Failed to automatically generate translation.",
+
+		unlocks = "Lukustused: <i>${cluster}</i>."
+	},
+
+	effect_zones = {
+		in_zones = "Mõjutsoonid: ~g~${zones}",
+		not_in_zones = "Ei ole üheski mõjutsoonis.",
+		effects = "Efektid: ${effects}"
 	},
 
 	elevators = {
@@ -5600,12 +7199,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		elevator_toggle_failed = "Lifti vahetus ebaõnnestus.",
 		elevator_enabled_all = "Kõik liftid on edukalt aktiveeritud.",
 
+		current_floor = "Praegune",
+
 		out_of_service = "Hoolduses",
 		out_of_service_help = "See lift on hetkel hoolduses.",
-
-		current = "Praegune",
-		up = "Üles",
-		down = "Alla",
 
 		floor_tunnel_entrance = "Tunneli sissepääs",
 		floor_underground_tunnel = "Maa-alune tunnel",
@@ -5616,6 +7213,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		floor_lobby = "Peahoone",
 		floor_roof = "Katus",
 		floor_helipad = "Helikopteri maandumisplats",
+		floor_tower = "Torn",
 
 		floor_shop = "Pood",
 
@@ -5624,7 +7222,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		floor_loading_bay = "Laadimisala",
 		floor_vault = "Tresooriruum",
 
-		floor_second_floor = "Teine korrus",
+		floor_second_floor = "Failed to automatically generate translation.",
 		floor_icu = "Intensiivravi",
 		floor_ground = "Esimene korrus",
 		floor_surgery = "Kirurgia",
@@ -5643,9 +7241,12 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		floor_fourth_floor = "4. korrus",
 		floor_third_floor = "3. korrus",
+		floor_second_floor = "Failed to automatically generate translation.",
+		floor_first_floor = "Failed to automatically generate translation.",
 
-		floor_obelisk = "Obelisk",
-		floor_hangout = "Kohtumispaik",
+		floor_gangway = "Failed to automatically generate translation.",
+
+		floor_hangout = "Torn",
 		floor_penthouse = "Luksus korter",
 		floor_theatre_office = "Teatri büroo",
 		floor_psychiatrists_office = "Psühhiaatri büroo",
@@ -5658,14 +7259,16 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		floor_showroom = "Näidistuba",
 		floor_office = "Kontor",
-		floor_doj_office = "Õigusministeeriumi kantselei",
 
 		floor_penthouse_top = "Penthouse (Ülemine korrus)",
 		floor_penthouse_entrance = "Penthouse (Sissepääs)",
 
 		floor_containment = "Tõkestusruum",
 
-		doj_office = "Õigusministeeriumi kantselei"
+		doj_office = "Õigusministeeriumi kantselei",
+
+		used_elevator_logs_title = "Kasutatud lift",
+		used_elevator_logs_details = "${consoleName} kasutas lifti ${elevatorId}, et minna korrusele `${floor}`."
 	},
 
 	emails = {
@@ -5713,18 +7316,40 @@ OP.Global.Locales.Languages["et-EE"] = {
 		give_item_failed = "Mängijale ${itemName} andmine ebaõnnestus."
 	},
 
+	emote_menu = {
+		menu_title = "OP-FW Emotes",
+
+		dance_emotes = "🕺 Tantsi emotsioonid",
+		dance_emotes_description = "Kõikide tantsu emotsioonide loend.",
+		shared_emotes = "👫 Ühised emotsioonid",
+		shared_emotes_description = "Kõigi ühiste emotsioonide loend.",
+		prop_emotes = "📦 Rekvisiitidega emotsioonid",
+		prop_emotes_description = "Kõigi rekvisiitidega emotsioonide loend.",
+		animal_emotes = "🐻 Loomaemotsioonid",
+		animal_emotes_description = "Kõigi loomaemotsioonide loend.",
+		pegi_emotes = "🔞 Pegi emotsioonid",
+		pegi_emotes_description = "Kõigi Pegi emotsioonide loend.",
+		racing_emotes = "🏁 Võidusõidu emotsioonid",
+		racing_emotes_description = "Kõigi võidusõidu emotsioonide loend.",
+
+		emotes = "Emotsioonid",
+		emotes_description = "Kõigi emotsioonide loend.",
+		moods = "Ilmed / Tuju",
+		moods_description = "Muuda oma ilmet / tuju.",
+		walkstyles = "Kõnnistiilid",
+		walkstyles_description = "Muuda oma kõnnistiili.",
+		cancel_emote = "Tühista žest",
+		cancel_emote_description = "Tühista hetkel mängitav žest."
+	},
+
 	exclusive_dealership = {
-		marker_label = "${label} | $${price}",
-		marker_label_purchase = "[${SeatEjectKey}] Osta ${label} hinnaga $${price}",
+		cost_money = "${price} eurot",
+		cost_points = "${points} OP punktid",
 
-		confirm_purchase = "Kinnita Ost",
-		confirm_purchase_label = "${label} | $${price}",
+		marker_label = "${label} | ${cost}",
+		marker_label_purchase = "[${SeatEjectKey}] Osta ${label} summas ${cost}",
 
-		deny_purchase = "Mõtlesin ümber, ei soovi seda osta",
-		accept_purchase = "Jah, ma soovin seda osta",
-		accept_purchase_info = "Kas olete kindel, et soovite selle sõiduki osta? Seda toimingut ei saa tagasi võtta.",
-
-		purchased_vehicle = "Osteti ${label} hinnaga $${price}.",
+		purchased_vehicle = "Ostetud ${label} summas ${cost}.",
 		insufficient_funds = "Ebapiisav raha.",
 		area_not_clear = "Sünnitusala pole selge.",
 		invalid_package = "Vale toetaja lubadus.",
@@ -5737,7 +7362,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		exclusive_dealership_blip = "Eksklusiivne Deluxe Motorsport",
 
 		log_title = "EDM Ost",
-		log_description = "Ostetud `${label}` hinnaga $${price}."
+		log_description = "Ostetud `${label}` summas ${cost}."
 	},
 
 	failures = {
@@ -5764,6 +7389,49 @@ OP.Global.Locales.Languages["et-EE"] = {
 		purchase_success = "Võlts-ID ost edukalt sooritatud, hinnaks oli $3,000."
 	},
 
+	farming = {
+		milk_cow_interact = "[${InteractionKey}] Lüpsa lehma",
+		milking_cow = "Lehma lüpsmine",
+		milking_cow_moved = "Lehm tundub eemaldunud olevat.",
+		milking_cow_failed = "Lehma lüpsemine ebaõnnestus."
+	},
+
+	fentanyl = {
+		you_are_overdosing = "Te üledoseerite fentanüüli.",
+		overdose = "Fentanüüli üledoos",
+
+		grind_painkillers = "[${InteractionKey}] Jahvata valuvaigisteid",
+		grinding_painkillers = "Valuvaigistite jahvatamine",
+		mix_acetone = "[${InteractionKey}] Sega atsetooniga",
+		mixing_acetone = "Segamine atsetooniga",
+		add_hydrogen_peroxide = "[${InteractionKey}] Lisa vesinikperoksiid",
+		adding_hydrogen_peroxide = "Vesinikperoksiidi lisamine",
+		boil = "[${InteractionKey}] Keeda koostisosi",
+		boiling = "Koostisainete keetmine",
+		cool_down = "[${InteractionKey}] Jahuta maha",
+		cooling_down = "Jahutamine",
+		fill_ampules = "[${InteractionKey}] Täida ampullid",
+		filling_ampules = "Ampullide täitmine",
+
+		selling_fentanyl = "Fentanüüli müümine",
+		press_to_sell_fentanyl = "Vajuta ~INPUT_CONTEXT~, et müüa fentanüüli.",
+		local_not_interested = "Kohalik ei paista praegu huvitatud olevat.",
+
+		something_went_wrong = "Tekkis viga.",
+		made_fentanyl_logs_title = "Valmistas Fentanüüli",
+		made_fentanyl_logs_details = "${consoleName} valmistas ${amount}x fentanüüli.",
+		sold_fentanyl_logs_title = "Müüs Fentanüüli",
+		sold_fentanyl_logs_details = "${consoleName} müüs 1x ampulli fentanüüli eest $${reward}."
+	},
+
+	fields = {
+		pick_weed = "Failed to automatically generate translation.",
+		picking_weed = "Failed to automatically generate translation.",
+
+		pick_tobacco = "Failed to automatically generate translation.",
+		picking_tobacco = "Failed to automatically generate translation."
+	},
+
 	fingerprint = {
 		taking_fingerprint = "Võetakse sõrmejälge",
 		already_fingerprinting = "Sa juba võtad mängija sõrmejälge.",
@@ -5780,25 +7448,59 @@ OP.Global.Locales.Languages["et-EE"] = {
 		fire_firework = "[${InteractionKey}] Lase ilutulestikku"
 	},
 
+	flag_swap = {
+		toggled_flag_swap_on = "Vahetuslippude lülitamine sisse.",
+		toggled_flag_swap_off = "Põrandaaluse lipu vahetus välja lülitatud.",
+
+		showing_flags = "Näitan lippe.",
+		not_showing_flags = "Lippude näitamine lõpetatud.",
+
+		flag = "Lipp ${flagId}",
+
+		flag_swap_leaderboard = "Lippude vahetuse edetabel",
+		ongoing = "Toimub",
+		not_ongoing = "Ei toimu",
+		position_and_name = "${position}. ${name}",
+		flag_count_one = "1 lipp",
+		flag_count = "${flags} lippu",
+		players_with_most_flags_will_show_here = "Mängijad, kellel on kõige rohkem lippe, ilmuvad siia.",
+		flags_on_ground = "Lipud maas: ${flagsOnGround}"
+	},
+
+	flight_radar = {
+		callsign_invalid = "Sinu kutsung peab olema 3 kuni 10 tähemärki pikk.",
+		callsign_set = "Kutsungi edukalt värskendatud kujule `${callsign}`.",
+		callsign_reset = "Kutsung edukalt lähtestatud.",
+		callsign_set_failed = "Kutsungi uuendamine ebaõnnestus.",
+
+		emergency_type_1 = "PD",
+		emergency_type_2 = "Kiirabi"
+	},
+
 	forcefields = {
 		invalid_radius = "Vigane raadius (peab olema vahemikus 1–200).",
 		failed_create = "Tugevuskilbi loomine ebaõnnestus.",
 		forcefield_marker = "ID: ${id}",
 		invalid_forcefield_id = "Vigane tõkkevälja ID.",
-		failed_destroy = "Tõkkevälja hävitamine ebaõnnestus.",
-
-		create_forcefield_no_permissions = "Mängija üritas luua tõkkevälja, kuid tal polnud selleks vajalikke õigusi.",
-		destroy_forcefield_no_permissions = "Mängija üritas hävitada tõkkevälja, kuid tal polnud selleks vajalikke õigusi."
+		failed_destroy = "Tõkkevälja hävitamine ebaõnnestus."
 	},
 
 	fortnite = {
-		add_building_no_permissions = "Mängija üritas lisada Fortnite'i ehitis, kuid tal polnud selleks vajalikke õigusi.",
-		wipe_buildings_no_permissions = "Mängija üritas kustutada Fortnite hooned, kuid tal pole selle tegemiseks vajalikke õigusi.",
-
 		no_buildings_in_radius = "Raadiusega ${radius} ei leitud hooneid.",
 		no_buildings = "Hooneid ei leitud.",
 		wiped_buildings_in_radius = "Kustutati ${removedBuildings} hoonet raadiusega ${radius}.",
 		wiped_buildings = "Kustutati ${removedBuildings} hoonet."
+	},
+
+	fortune_cookies = {
+		opened_cookie_logs_title = "Avatud õnnepisar",
+		opened_cookie_logs_details = "${consoleName} avas õnnepisara ja sai `${fortune}`.",
+		created_cookie_logs_title = "Loodi Õnnekuul",
+		created_cookie_logs_details = "${consoleName} lõi õnnekuuli sõnumiga `${fortune}`.",
+
+		missing_fortune = "Puuduv sõnum.",
+		failed_create_cookie = "Õnnekuuli loomine ebaõnnestus.",
+		failed_open = "Õnnepisara avamine ebaõnnestus."
 	},
 
 	freecam = {
@@ -5806,15 +7508,11 @@ OP.Global.Locales.Languages["et-EE"] = {
 		disabled_freecam = "Vaba kaamera on keelatud.",
 		freecam_failed = "Vaba kaamera lubamine ebaõnnestus. Kas teil on noclip või midagi sarnast lubatud?",
 
+		freecam_no_dead = "Sa ei saa vabakambrit lubada, kui sa oled maha kukkunud.",
+
 		freecam_logs_title = "Vabakäigu režiim lülitatud sisse",
 		freecam_on_logs_details = "${consoleName} lülitas sisse vabakäigu režiimi.",
 		freecam_off_logs_details = "${consoleName} lülitas välja vabakäigu režiimi.",
-
-		track_player_logs_title = "Jälgimine",
-		track_player_logs_details = "${consoleName} seadis jälgimise sihtmärgiks ${targetName} kasutades ringkäigu režiimi.",
-
-		freecam_no_permission = "Prooviti lülitada vabakäigu režiimi ilma vajalike lubadeta.",
-		track_player_no_permission = "Prooviti jälgida mängijat kasutades vabakäigu režiimi ilma vajalike lubadeta.",
 
 		freecam_inactive = "Te ei ole praegu vaba kaamera režiimis.",
 		added_point = "Lisati kaamera punkt indeksiga ${index} (Üleminek: ${transition}ms).",
@@ -5847,6 +7545,12 @@ OP.Global.Locales.Languages["et-EE"] = {
 		shake_tree = "Vajuta ~INPUT_CONTEXT~, et puud raputada.",
 		shaking_tree = "Puud raputan...",
 
+		extract_rubber = "Vajuta ~INPUT_CONTEXT~, et kummipuu tüvest kummi ekstraheerida.",
+		extracting_rubber = "Kummi ekstraheerimine",
+
+		pick_oranges = "Failed to automatically generate translation.",
+		picking_oranges = "Apelsinide korjamine",
+
 		tree_klonk = "Midagi kukkus puult ja tabas sind peaga."
 	},
 
@@ -5857,6 +7561,11 @@ OP.Global.Locales.Languages["et-EE"] = {
 		gas_time_left = "Sul on gaasimaski jaoks ${gasTime} sekundit jäänud.",
 		hold_to_take_gas_mask_off = "Hoia alla ~INPUT_VEH_HEADLIGHT~, et võtta gaasimask ära.",
 		hold_to_take_gas_mask_off_holding = "Jätka hoidmist, et võtta gaasimask ära."
+	},
+
+	gift_boxes = {
+		failed_seal_box = "Kingituskasti sulgemine ebaõnnestus.",
+		failed_open_box = "Kingituskasti avamine ebaõnnestus."
 	},
 
 	gps = {
@@ -5891,7 +7600,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		gravity_success_off = "Lülitasin gravitatsiooni tagasi sisse ${consoleName}-i jaoks.",
 		gravity_client_failed = "Ebaõnnestus gravitatsiooni lülitamine ${consoleName} jaoks.",
 		gravity_failed = "Midagi läks gravitatsiooni lülitamisel valesti.",
-		invalid_server_id = "Vigane serveri ID.",
 		yourself = "iseenda"
 	},
 
@@ -5917,22 +7625,28 @@ OP.Global.Locales.Languages["et-EE"] = {
 		flavor = "Närimiskumm (${flavor})"
 	},
 
+	gun_crafting = {
+		menu_title = "Relva komplekteerimine",
+		close_menu = "Sulge menüü",
+		assemble_gun = "Kokku pane relv",
+		press_assemble_gun = "[${SeatEjectKey}] Kokku pane relv",
+		assembling_gun = "Kokkupanek: ${weapon}",
+		crafting_success = "Õnnestus valmistada ${weapon}.",
+		crafting_failed = "Relva valmistamine ebaõnnestus.",
+
+		crafted_gun_logs_title = "Valmistatud Relv",
+		crafted_gun_logs_details = "${consoleName} valmistas 1x `${weapon}` relva relva valmistamise lauas."
+	},
+
 	gun_running = {
 		insert_key = "Sisesta võti: ${key}",
 		wrong_key = "Sisestasid vale võtme.",
 		decrypting = "Dekodeerimine",
 		guns_disabled = "Relvakaubandus on praegu keelatud.",
 		high_level_cooldown = "FIB serveriga ühenduse loomine ebaõnnestus, proovi hiljem uuesti.",
+		timeout_cooldown = "FIB tulemüür blokeeris ühenduse, proovi hiljem uuesti.",
 		failed_start_run = "Relvatehingu alustamine ebaõnnestus.",
 		hack_timeout = "Ühendus serveriga kaotas ühenduse, proovi uuesti.",
-
-		drop_blip = "Relvade mahalaadimise konteiner",
-
-		drill_container = "Vajuta ~INPUT_CONTEXT~, et avada konteiner puurimisega.",
-
-		drilling_container = "Konteineri puurimine käib",
-		failed_drill = "Ei õnnestunud konteinerit puurida.",
-		drill_success = "Konteiner on edukalt avatud ja leitud 1x ${item}.",
 
 		started_run_logs_title = "Relvarun",
 		started_run_logs_details = "${consoleName} alustas relvarunni häkkimist.",
@@ -5944,11 +7658,21 @@ OP.Global.Locales.Languages["et-EE"] = {
 		press_e_to_talk = "Vajuta ~INPUT_CONTEXT~, et rääkida Jimiga.",
 		trader_closed = "Jim'i pood on praegu suletud.",
 
+		sorry_closed = "Vabandust, pood on suletud.",
+		sorry_closed_hug = "Tänan kallistuse eest :)",
+		sorry_closed_finger = "Mis asja, see on ebaviisakas!",
+		sorry_closed_kiss = "Woah, sõber, ma pole sellest huvitatud...",
+		sorry_closed_dab = "Dab hatersite peale, tõsiselt, ausalt, jumala eest!",
+		sorry_closed_fight = "Rahune maha, sõber, ma pole midagi teinud.",
+
 		trader_locked = "Jim vajab paar asja sinult enne, kui ta on nõus oma poodi avama.",
 		unlock_trader = "Anna ese Jimile.",
 
+		trader_duty = "Tere, ametnik. Vabandust pettumuse pärast, kuid ma just sulgesin poe. Tulge tagasi teine ​​kord!",
+
 		purchase = "Osta",
 		out_of_stock = "Läbimüüdud",
+		special_offer = "Eripakkumine!",
 
 		failed_trader_closed = "Ei õnnestunud relva osta, Jim'i pood on suletud.",
 		failed_no_stock = "Ei õnnestunud relva osta, enam pole kaupa.",
@@ -5969,7 +7693,13 @@ OP.Global.Locales.Languages["et-EE"] = {
 		slogan_3 = "Kui kahtled ... võta see välja!",
 		slogan_4 = "Relv käes on parem kui korrarikkumisest politsei teavitamine.",
 
-		copyright = "Autoriõigus © 2009-2016 Jim'i Relvapood NC. Kõik õigused kaitstud."
+		copyright = "Autoriõigus © 2009-2016 Jim'i Relvapood NC. Kõik õigused kaitstud.",
+
+		remaining_messages = "Jäänud sõnumid: ${messages}",
+		no_messages_left = "Piiksujas ei ole enam sõnumeid.",
+		just_used_pager = "Sa kasutasid piiksujat hiljuti, oota enne selle uuesti kasutamist.",
+		page_trader_closed = "Jim ei vasta, ta peab olema suletud.",
+		page_success = "Jim saatis märguande oma asukoha ligikaudsest piirkonnast."
 	},
 
 	hacking = {
@@ -5999,7 +7729,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		press_to_exit_locker = "Vajuta ~INPUT_CONTEXT~, et kapist väljuda.",
 		failed_to_start_escape_room = "Escape tuba käivitamine ebaõnnestus.",
 		started_escape_room = "Alustati escape tuba ${playerAmount} mängijaga.",
-		start_escape_room_missing_permissions = "Mängija üritas käivitada escape tuba, kuid tal polnud selleks vajalikke õigusi.",
 		escape_instructions = "Kui olete valmis, uksed avanevad ja saate hoone lahkuda.",
 		answer_the_phone = "Vastake telefonile.",
 
@@ -6013,8 +7742,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		successfully_revived_everyone = "Kõigile edukalt elustatud.",
 		successfully_revived_everyone_removed_injuries = "Kõik on edukalt elustatud ja nende vigastused eemaldatud.",
 		failed_to_revive = "Ei õnnestunud korrektselt täita '/revive' käsku.",
-		revive_player_not_staff = "Mängija üritas teist mängijat ellu äratada, kuid tal polnud selleks vajalikke õigusi.",
-		revive_self_not_staff = "Mängija üritas iseennast ellu äratada, kuid tal polnud selleks vajalikke õigusi.",
 		revived_self_removed_injuries_title = "Elu äratatud ja vigastused eemaldatud",
 		revived_self_removed_injuries_details = "${consoleName} tõmbas ennast tagasi ja eemaldas oma vigastused.",
 		revived_self_title = "Elustas ennast",
@@ -6027,18 +7754,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		revived_player_removed_injuries_details = "${consoleName} elustas ${targetConsoleName} ja eemaldas nende vigastused.",
 		revived_player_title = "Elustatud mängija",
 		revived_player_details = "${consoleName} elustas ${targetConsoleName}.",
-		get_recent_deaths_not_staff = "Mängija üritas vaadata hiljutisi surmi, kuid tal polnud vastavaid õiguseid selleks.",
-		get_player_last_death_not_staff = "Mängija üritas vaadata teise mängija viimast surma, kuid tal polnud vastavaid õiguseid selleks.",
-		recent_deaths = "Hiljutised surmad",
-		no_recent_deaths = "Hiljutisi surmajuhtumeid ei ole.",
-		recent_deaths_list_entry = "${recentDeathId}. ${consoleName} suri ${timer} sekundit tagasi.",
-		target_user_not_found = "Määratud kasutajat ei leitud.",
-		no_server_id_sent = "Serveri ID-d ei saadetud.",
-		no_permissions = "Õigusi pole.",
-		user_not_found = "Kasutajat ei leitud.",
-		player_death = "Mängija surm",
-		player_death_recent = "${consoleName} suri viimati ${timer} sekundit tagasi.",
-		no_recent_death = "${consoleName} ei ole hiljuti surnud.",
+		revived_range_self_title = "Taaselustas Vahemiku Ja Iseenda",
+		revived_range_self_details = "${consoleName} taaselustas kõik ${radius}m raadiuses, kaasa arvatud iseenda.",
+		revived_range_title = "Taaselustatud Piirkond",
+		revived_range_details = "${consoleName} taaselustas kõik ${raadius}m raadiuses.",
 		death_alcohol_poisoning = "Sa jäid alkoholimürgitusse.",
 		character_has_hardcore_died = "${fullName} on surnud. Sa saad valida uue tegelaskuju.",
 
@@ -6048,11 +7767,23 @@ OP.Global.Locales.Languages["et-EE"] = {
 		death_timer_override_removed = "Surmaaja eiramine eemaldatud.",
 		no_death_timer_override_set = "Surmaaja eirangut pole määratud.",
 
+		no_nearby_ped = "Läheduses ei ole pedi.",
+		ped_not_dead = "Ped pole surnud.",
+		performing_cpr = "Elustamistööde tegemine",
+
 		invalid_distance = "Vigane elustamiskaugus (peab olema vahemikus 1 kuni 50).",
 		no_players_in_range = "Elustatavaid mängijaid ${distance} m raadiuses pole.",
 		successfully_revived_range = "Edukalt elustatud ${amount} mängijat ${distance} m raadiuses.",
 		failed_revive_range = "Mängijate elustamine ebaõnnestus.",
-		range_revive_not_staff = "Mängija üritas teatud vahemikus mängijaid elustada, kuid tal ei olnud selleks vajalikke õigusi."
+
+		cpr_ped_logs_title = "Elustatud ped",
+		cpr_ped_logs_details = "${consoleName} tegi elustamistöid pedile ja teenis ${money} dollarit.",
+		cpr_player_logs_title = "Elustatud mängija",
+		cpr_player_logs_details = "${consoleName} tegi elustamistöid mängija ${targetConsoleName} ja sai raha."
+	},
+
+	heated_seats = {
+		hint = "Kasuta ~INPUT_CHARACTER_WHEEL~ ja ~INPUT_CELLPHONE_UP~ / ~INPUT_CELLPHONE_DOWN~ soojendatavate istmete jaoks."
 	},
 
 	hitmarkers = {
@@ -6061,18 +7792,23 @@ OP.Global.Locales.Languages["et-EE"] = {
 	},
 
 	hud = {
-		mph = "miili tunnis",
-		kmh = "km tunnis",
 		knots = "sõlme",
 		ft = "jalg",
 		m = "meeter",
 		belt = "TURVAVÖÖ",
-		limiter = "KIIRUSEPIIRAJA",
+		oil = "ÕLI",
+		megaphone = "AK",
+		heat = "KUUM",
+		manual = "Retiro de Ahorros",
+		cruise_control = "KK",
+		speed_limiter = "KL",
+		gear_uc = "KÄIGU",
 		fuel = "kütus",
 		nitro = "lämmastik",
 		battery = "aku",
 		fps = "FPS",
 		ping = "PING",
+		tps = "TPS",
 		autopilot = "autopiloot",
 		ground_asl = "Maapinna kõrgus (${unit})",
 		heading = "SUUND",
@@ -6080,20 +7816,29 @@ OP.Global.Locales.Languages["et-EE"] = {
 		rpm = "p/min",
 		degrees = "°C",
 		degrees_f = "°F",
+		npc_kills = "${consoleName} retiró $${amount} de la cuenta de ahorros ${accountId}.",
 		steps_walked_deaths = "${stepsWalked} sammu ~t~/~w~ ${deaths} maha jooksu",
 		altitude_temperature = "${altitude} ${unit} ~t~/~w~ ${temperature}${degrees}",
 		scuba_timer = "Jäänud hapnik: ${timer}",
 
+		alignment_warning_title = "HUD-i seadistus",
+		alignment_warning = "Depósito de Ahorros",
+
 		muted = "Vaigistatud",
+		tx = "Edastamine",
+		rx = "Vastuvõtmine",
 
 		fps_unit = "kaadrit/sekundis",
 		ping_unit = "ms",
+		tps_unit = "tps",
+		fps_1percent_unit = "kaadrit sekundis 1%",
 
 		smart_warnings = "Hoiatus: ${warnings}!",
 		dehydrated = "vedelikupuudus",
 		starving = "nälg",
 		injured = "vigastatud",
 		seriously_injured = "raskesti vigastatud",
+		how_are_you_alive = "${consoleName} depositó $${amount} en la cuenta de ahorros ${accountId}.",
 		incapacitated = "võimetu",
 		stressed = "stressis",
 
@@ -6112,13 +7857,24 @@ OP.Global.Locales.Languages["et-EE"] = {
 	hunting = {
 		hold_to_skin = "[${InteractionKey}] Hoia nahastamiseks",
 		skinning_animal = "Surnud looma nahk välja võetud",
-		meat_too_damaged = "Selle looma liha on liiga kahjustatud.",
-		animal_is_being_skinned = "Looma nahka võetakse välja."
+		animal_is_being_skinned = "Looma nahka võetakse välja.",
+
+		hold_to_remove = "[${InteractionKey}] Hoia all, et eemaldada surnukeha",
+		removing_carcass = "Eemaldatakse vigastatud surnukeha",
+		carcass_damaged = "Surnukeha on liiga vigastatud naha eemaldamiseks.",
+
+		meat_too_damaged = "Looma liha oli liiga rikutud, et seda koristada.",
+
+		skinned_logs_title = "Kooritud loom",
+		skinned_logs_details = "${consoleName} kooris looma (${modelName}) ja sai ${skinnedItems}.",
+		received_nothing = "mitte midagi"
 	},
 
 	identification = {
 		los_santos = "Los Santos",
 		citizen_card = "Kodaniku Kaart",
+		driver_license = "Juhi Load",
+		press_pass = "Pressipääse",
 		first_name = "Eesnimi",
 		last_name = "Perekonnanimi",
 		gender = "Sugu",
@@ -6126,6 +7882,17 @@ OP.Global.Locales.Languages["et-EE"] = {
 		gender_female = "Naine",
 		date_of_birth = "Sünnikuupäev",
 		citizen_id = "Isikukood",
+
+		dl_no = "DL NR.",
+		class = "KLASS",
+
+		fn = "EESNIMI",
+		cid = "CID",
+		dob = "SÜNNIKUUPÄEV",
+		sex = "SOO",
+		iss = "EMISS",
+		cls = "KLASS",
+		["end"] = "END",
 
 		citizenship = "Kodakondsus",
 		citizenship_value = "USA",
@@ -6148,7 +7915,13 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		citizen_card_details = "${firstName} ${lastName} | Sünnikuupäev: ${dateOfBirth} | Sugu: ${gender} | Isikukood: ${characterId}",
 		just_showed_citizen_card = "Teie kodaniku kaarti vaadati. Palun oodake pisut.",
+		driver_license_details = "${eesnimi} ${perekonnanimi} | Sünnikuupäev: ${sunnikuupaev} | Sugu: ${soo} | Kodaniku ID: ${tegelaskujuId}",
+		just_showed_driver_license = "Näitasid just juhiluba. Palun oota hetk.",
+		press_pass_details = "${firstName} ${lastName} | Sugu: ${gender} | Kodaniku ID: ${characterId}",
+		just_showed_press_pass = "Sa just näitasid Pressipääset. Palun oota natuke.",
 
+		boat_license = "Paadiluba",
+		boat_license_details = "Paadiluba | ${firstName} ${lastName} | Isikukood: ${characterId}",
 		hunting_license = "Jahiluba",
 		hunting_license_details = "Jahiluba | ${firstName} ${lastName} | Kodaniku ID: ${characterId}",
 		fishing_license = "Kalastusluba",
@@ -6157,6 +7930,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		pilot_license_details = "Piloodiluba | ${firstName} ${lastName} | Kodaniku ID: ${characterId}",
 		weapon_license = "Relvaluba",
 		weapon_license_details = "Relvaluba | ${firstName} ${lastName} | Kodaniku ID: ${characterId}",
+		mining_license = "Kaevandamisload",
+		mining_license_details = "Kaevandamisload | ${firstName} ${lastName} | Isikutunnistuse number: ${characterId}",
+		bar_license = "Baari/Õiguse litsents",
+		bar_license_details = "Baari/Õiguse litsents | ${firstName} ${lastName} | Isiku ID: ${characterId}",
 		just_showed_license = "Te näitasite just litsentsit. Palun oodake veidi.",
 
 		just_showed_badge = "Te näitasite just silti. Palun oodake veidi.",
@@ -6174,16 +7951,22 @@ OP.Global.Locales.Languages["et-EE"] = {
 		swat_badge_details = "SWAT | ${firstName} ${lastName} | Positsioon: ${positionName}",
 		management_badge = "Juhtkonna tähis",
 		management_badge_details = "Juhtkond | ${firstName} ${lastName} | Positsioon: ${positionName}",
+		ftp_badge = "FTP märk",
+		ftp_badge_details = "FTP | ${firstName} ${lastName} | Positsioon: ${positionName}",
 		ems_badge = "EMS isikutunnistus",
 		ems_badge_details = "EMS | ${firstName} ${lastName} | Positsioon: ${positionName}",
 		doctor_badge = "Arsti isikutunnistus",
 		doctor_badge_details = "Arst | ${firstName} ${lastName} | Positsioon: ${positionName}",
 		bcfd_badge = "BCFD märk",
 		bcfd_badge_details = "BCFD | ${firstName} ${lastName} | Positsioon: ${positionName}",
+		state_badge = "Osaühingu ID",
+		state_badge_details = "Osaühing | ${firstName} ${lastName} | Ametikoht: ${positionName}",
 		state_security_badge = "Riigi Julgeoleku ID",
 		state_security_badge_details = "Riigi Julgeoleku Departemang | ${firstName} ${lastName}",
 		doj_badge = "DOJ ID",
 		doj_badge_details = "DOJ | ${firstName} ${lastName} | Positsioon: ${positionName}",
+		doc_badge = "DOK Tunnus",
+		doc_badge_details = "DOK | ${firstName} ${lastName} | Ametikoht: ${positionName}",
 
 		badge_type_sasp = "San Andrease Riigi Politsia",
 		badge_type_bcso = "Blaine'i Maakonna Sheriffi Amet",
@@ -6192,11 +7975,14 @@ OP.Global.Locales.Languages["et-EE"] = {
 		badge_type_fib = "Föderaalne Uurimisbüroo",
 		badge_type_swat = "Erivahendid ja Taktika",
 		badge_type_management = "SASP Juhtimine",
+		badge_type_ftp = "Väljaõppe programm väljas",
 		badge_type_ems = "Kiirabi",
 		badge_type_doctor = "Meditsiiniline residentuur",
 		badge_type_bcfd = "Blaine'i Maakonna Tuletõrje",
+		badge_type_state = "San Andrease osaühing",
 		badge_type_state_security = "Riigi Julgeolekuamet",
 		badge_type_doj = "Justiitsministeerium",
+		badge_type_doc = "Korrektsioonide Osakond",
 
 		badge_type_short_sasp = "SASP",
 		badge_type_short_bcso = "BCSO",
@@ -6205,17 +7991,19 @@ OP.Global.Locales.Languages["et-EE"] = {
 		badge_type_short_fib = "FIB",
 		badge_type_short_swat = "SWAT",
 		badge_type_short_management = "Juhtimine",
+		badge_type_short_ftp = "FTP",
 		badge_type_short_ems = "Kiirabi",
 		badge_type_short_doctor = "Arst",
 		badge_type_short_bcfd = "BCFD",
-		badge_type_short_state_security = "SSD"
+		badge_type_short_state = "Osaühing",
+		badge_type_short_state_security = "SSD",
+		badge_type_short_doc = "DOK"
 	},
 
 	import_export = {
 		press_to_access = "Vajuta ~INPUT_CONTEXT~, et pääseda Import/Ekspordi menüüsse.",
 
-		pound = "nael",
-		pounds = "naela",
+		storage_units = "Tubería Rota",
 		minutes = "minutit",
 
 		total = "Kokku",
@@ -6236,7 +8024,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		no_items = "Pole ühtegi kaupa saadaval.",
 
-		confirm_dialog = "Kas oled kindel, et soovid saata ${total} naela kaupa hinnaga $${price}? Seda saadetist ei saa tühistada.",
+		confirm_dialog = "~b~Dr. Nancy",
 		confirm = "Jah",
 
 		no_active_order = "Sul ei ole hetkel ühtegi saadetist.",
@@ -6252,12 +8040,17 @@ OP.Global.Locales.Languages["et-EE"] = {
 		order_success = "Teie saadetis on teel! See saabub ${minutes} minuti jooksul.",
 
 		created_shipment_title = "Saadetis loodud",
-		created_shipment_details = "${consoleName} on loonud ${weight} naela kaaluva saadetise $${price} eest ettevõttele ${company}.",
+		created_shipment_details = "${consoleName} ha creado un envío de ${weight}su por $${price} con ${company}.",
 
 		claimed_shipment_title = "Saadetis kätte saadud",
-		claimed_shipment_details = "${consoleName} on nõudnud saatetise, mille kaal on ${weight} naela ettevõttelt ${company}.",
+		claimed_shipment_details = "${consoleName} ha reclamado un envío de ${weight}su con ${company}.",
 
 		blip_label = "Sisse- / Väljaveo kaup"
+	},
+
+	indestructibility = {
+		indestructibility_on = "Lülitasid vastupidavuse sisse.",
+		indestructibility_off = "Lülitasid vastupidavuse välja."
 	},
 
 	injuries = {
@@ -6267,7 +8060,14 @@ OP.Global.Locales.Languages["et-EE"] = {
 		inspecting = "Mängija uurimine",
 		no_injuries = "Vigastusi ega verejookse pole",
 		patient_bleeding = "Patsient veritseb.",
-		injury = "${label} vigastus"
+		patient_bite_wounds = "Patsiendil on purehaavad.",
+		injury = "${label} vigastus",
+		performing_autopsy = "Teostan lahangut",
+		already_performing_autopsy = "Oled juba lahangut teostamas.",
+		autopsy_no_player = "Läheduses ei ole mängijat, kellele saate lahangut teha.",
+		autopsy_result = "Paistab, et patsient suri `${label}` järgi umbes ${time}.",
+		autopsy_no_result = "Lahangu tulemus näib olevat ebatäpne.",
+		autopsy_failed = "Lahingu läbiviimine ebaõnnestus."
 	},
 
 	instances = {
@@ -6277,7 +8077,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		instance_destroyed = "Hävita eksemplar ID-ga `${instanceId}`.",
 		instance_destruction_failed = "Eksemplari hävitamine ebaõnnestus.",
 		instance_id_parameter_invalid = "Eksemplari ID parameeter on vigane.",
-		added_player_to_instance = "Lisatud ${consoleName} eksemplari ID-ga `${instanceId}.`",
+		added_player_to_instance = "Lisati ${consoleName} instantsi ID-ga `${instanceId}`.",
 		failed_to_add_player_to_instance = "Mängija lisamine eksemplari ebaõnnestus.",
 		server_id_parameter_invalid = "Serveri ID parameeter on vigane.",
 		removed_player_from_instance = "Eemaldati mängija ${consoleName} eksemplarist ID-ga `${instanceId}`.",
@@ -6286,13 +8086,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		failed_to_get_instance_players = "Ei õnnestunud eksemplari mängijaid hankida.",
 		no_players = "Mängijaid ei ole.",
 
-		instance_hud = "Eksemplari ID: ${instanceId}",
-
-		create_instance_not_developer = "Mängija üritas luua eksemplari, kuid ei olnud arendaja.",
-		destroy_instance_not_developer = "Mängija üritas hävitada eksemplari, kuid ta ei ole arendaja.",
-		add_player_to_instance_not_developer = "Mängija üritas lisada mängijat eksemplarile, kuid ta ei ole arendaja.",
-		remove_player_from_instance_not_developer = "Mängija üritas eksemplarilt eemaldada mängijat, kuid ta ei ole arendaja.",
-		get_players_from_instance_not_developer = "Mängija üritas saada mängijaid eksemplarilt, kuid ta ei ole arendaja."
+		instance_hud = "Eksemplari ID: ${instanceId}"
 	},
 
 	interiors = {
@@ -6308,44 +8102,59 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		used = "Kasutatud",
 		added = "Lisatud",
+		received = "Recibido",
 
-		pounds = "nael",
+		storage_units = "su",
+		storage_unit_description = "su = unidad de almacenamiento",
 
 		store = "Salvesta",
 		gas_station = "Bensiinijaam",
 		gas_station_backdoor = "Bensiinijaama tagauks",
 		cleaning_station = "Puhastusjaam",
 		grocery_store = "Toidupood",
+		dons_country_store = "Doni maapood",
+		cigar_store = "Sigaripood",
 		penthouse_fridge = "Külmkapp",
 		mug_shots = "Mug Shot'id",
 		prison_store = "Vangla pood",
 		fruit_vendor = "Puuvilja müüja",
-		supermarket = "Supermarket",
+		fruit_market = "Alamo Puuviljaturg",
+		super_market = "Toidupood",
 		island_store = "Saare pood",
 		travel_agency = "Reisibüroo",
 		island_bar = "Saare baar",
 		burger_bar = "Burgeribaar",
 		tool_store = "Tööriistapood",
 		gun_store = "Relvapood",
+		locksmith = "Lukksepp",
+		the_chemist = "Apteeker",
 		discount_store = "Allahindlus pood",
+		skater_store = "Uisupood",
 		gun_store_with_shooting_range = "Relvapood lasketiiruga",
 		green_wonderland = "Roheline Imedemaa",
+		copy_shop = "Kopeeri pood",
+		electronics_store = "Elektroonikapood",
+		submarine_locker = "Casillero de Submarino",
+		astrology_stand = "Astroloogiaputka",
 		irish_pub = "Iiri Pubi",
 		bar = "Baar",
 		midnight = "Kesköö Tunershop",
 		cinema = "Kino",
 		strip_club = "Tantsuklubi",
 		police_store = "Politsei kauplus",
+		utility_crate = "Kasulik kast",
 		fib_store = "FIB kauplus",
-		police_badge_store = "Politsei märgi laud",
+		deputy_madison = "Staar Madison",
+		sergeant_harris = "Sergeant Harris",
+		dr_thompson = "Dr. Thompson",
 		flower_store = "Stacey lillepood",
 		gift_store = "Del Perro kingitused",
 		ems_store = "Kiirabi kauplus",
 		drug_store = "Ravimikapp",
 		ems_badge_store = "Kiirabi märgi laud",
 		doj_badge_store = "DOJ märgi laud",
-		state_security_store = "Riigi julgeoleku kauplus",
-		pharmacy = "Apteek",
+		state_store = "Osaühingu pood",
+		pharmacy_store = "Apteek",
 		chop_shop = "Autovahetus",
 		courthouse = "Kohtumaja",
 		burger_shot = "Burger Shot",
@@ -6353,13 +8162,16 @@ OP.Global.Locales.Languages["et-EE"] = {
 		erp_shop = "ERP Pood",
 		pet_shop = "Lemmikloomapood",
 		bean_machine = "Oa Masin",
+		bean_machine_fridge = "Bean Machine külmik",
 		hunting_store = "Jahipood",
 		fishing_store = "Kalapood",
+		furniture_store = "Mööblipood",
 		los_santos_golf_club = "Los Santos Golfiklubi",
 		arcade_bar = "Mängutuba Baar",
 		japanese_restaurant = "Jaapani Restoran",
+		japanese_restaurant_kitchen = "Jaapani restorani köök",
+		pizza_restaurant = "Pitsarestoran",
 		["945_studios"] = "945 Studios",
-		grain_mill = "Teraviljamuuseum",
 		pd_prefix = "PD",
 		ems_prefix = "EMS",
 		government_prefix = "Valitsus",
@@ -6367,18 +8179,40 @@ OP.Global.Locales.Languages["et-EE"] = {
 		br_prefix = "BR",
 		inventory_overweight = "Sinu inventar on ülekoormatud!",
 		vehicle_locked = "Sõiduk on lukus.",
+		press_to_talk_to = "Vajuta ~INPUT_REPLAY_SHOWHOTKEY~, et rääkida ${name}-ga.",
 		press_to_access_store = "Vajuta ~INPUT_REPLAY_SHOWHOTKEY~, et pääseda poe juurde.",
 		press_to_access_locker = "Vajuta ~INPUT_REPLAY_SHOWHOTKEY~, et pääseda oma eraprivaatsesse kappi.",
 		press_to_access_shared_storage = "Vajuta ~INPUT_REPLAY_SHOWHOTKEY~, et pääseda jagatud salvestusse.",
+		device_printout_details = "<b>Tüüp:</b> <i>${type}</i>, <b>Tekst:</b> <i>${text}</i>",
+		copy_serial_number = "Kopeeri seerianumber",
+		serial_number_copied = "${itemName}, Seerianumber: ${serialNumber}",
+		copy_fingerprint = "Kopeeri sõrmejälg",
+		copy_evidence = "Kopeeri tõendid",
+
+		failed_give = "No se pudo entregar el/los objeto(s) al jugador.",
+		character_too_far = "El jugador está demasiado lejos.",
+		target_inventory_full = "El inventario del jugador está lleno.",
+		received_item = "${consoleName} ha creado un envío de ${weight}su por $${price} con ${company}.",
+
+		inspecting_item = "Esme vaatamine",
 
 		inspect_weapon = "Selle ${itemName} seerianumber tundub olevat `${itemId}`.",
 		inspect_weapon_broken = "Selle ${itemName} seerianumber tundub olevat `${itemId}`, kuid see tundub täiesti katki.",
+		inspect_bank_property = "${consoleName} ha reclamado un envío de ${weight}su con ${company}.",
+		inspect_bank_property_cid = "See ${item} on märgistatud ${bank} panga omandiks. Selle võttis välja konto number #${characterId}.",
+		inspect_no_property = "Recibido",
+
+		gift_box_normal = "See kingituskarp näeb täiesti tavaline välja.",
+		gift_box_suspicious = "See kingituskarbis näeb veidi kahtlane välja.",
+		gift_box_residue = "Sellel kingituskarbil on hallikas pulbri jääk.",
 
 		searching_dumpster = "Prügikasti otsimine",
+		searching_homeless_tent = "Otsin kodutu telki",
 
 		nameable_title = "Nimetatava eseme nimi:",
 
-		locker_restricted = "See ese ei tundu sobivat sinu lukustuskappi.",
+		inventory_restricted = "Sa ei saa seda eset sellesse inventari liigutada.",
+		inventory_no_more_items = "Sa ei saa rohkem esemeid sellele inventarile lisada.",
 
 		press_to_access_shredder = "[${InteractionKey}] Juurdepääs hävitajale.",
 
@@ -6386,12 +8220,28 @@ OP.Global.Locales.Languages["et-EE"] = {
 		item_not_found = "Ei leitud eset ID-ga `${itemId}`.",
 		item_lookup = "${label} (${itemId}) hetkel asukohas ${inventoryName}:${inventorySlot}.",
 
+		invalid_evidence_id = "Vale tõendi ID.",
+		not_near_evidence_locker = "Sa ei ole tõendite kapis.",
+		clear_evidence_success = "Tõend edukalt kustutatud ID-ga `${evidenceId}`.",
+		clear_evidence_failed = "Tõendi kustutamine ebaõnnestus.",
+
+		clear_evidence_logs_title = "Tõendite kustutamine",
+		clear_evidence_logs_details = "${consoleName} kustutas tõendi ID-ga `${evidenceId}`. Kustutati ${deleted} objekti ja hoiti alles ${kept}.",
+
 		big_inventory_disabled = "Taasta tegelase inventari pesad vaikeseadetele.",
 		big_inventory_enabled = "Suurendatud sinu tegelase inventari pesasid ajutiselt.",
 
 		press_to_open_public_inventory = "~INPUT_REPLAY_SHOWHOTKEY~ Avage ${label}",
 
 		burgershot_counter = "Burgershot Lugeja",
+		arcade_counter = "Mänguautomaadi leti",
+		tequilala_counter = "Tequi-la-la leti",
+		prison_counter = "Vangla loendur",
+		kissaki_counter = "Kissaki arvestaja",
+		underground_bar_counter = "Maa-alune baari arvestaja",
+		pizza_this_counter = "See pitsa arvestaja",
+		yellow_jack_counter = "Kollane Jacki arvestaja",
+		bean_machine_counter = "Oaautomaadi loendur",
 
 		inventory_name_missing = "Puudu on inventari nime parameeter.",
 
@@ -6406,6 +8256,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		missing_job = "Teil pole vajalikku töökohta, et kasutada seda inventari.",
 
+		inventory_active = "Inventari kasutab hetkel keegi teine.",
 		item_is_broken = "See ese on katki.",
 		battle_royale_item = "Seda eset saab kasutada ainult lahingurojalisse mängus.",
 		battle_royale_item_disallowed = "Seda eset pole lahingurojalises mängus lubatud kasutada.",
@@ -6413,15 +8264,45 @@ OP.Global.Locales.Languages["et-EE"] = {
 		broken_food = "See ese on rikutud.",
 		broken_drugs = "See ese on aegunud.",
 		vape_empty = "See vape on tühi.",
+		pen_empty = "See dab pliiats on tühi.",
 
 		craft_combine = "Valmistage <i>${output}</i>",
 		combining = "Valmistamine",
+
+		inspect = "Kontrolli",
+		attachments = "Manused",
+		fill_paper_bag = "Täida paberikott",
+		rename = "Nimeta ümber",
+
+		item_renamed = "Toote nimi edukalt muudetud.",
+		item_failed_rename = "Toote ümbernimetamine ebaõnnestus.",
+
+		file_serial = "su",
+		filing_off_serial_number = "su = unidad de almacenamiento",
+		filed_serial_number = "Casillero de Submarino",
+		failed_file_serial_number = "No se pudo entregar el/los objeto(s) al jugador.",
 
 		carve_jack_o_lantern = "Pange välja <i>Jack-o-latern</i>",
 		crush_cocoa_beans = "Purusta <i>kakaooad</i>",
 		mix_hot_chocolate = "Sega <i>kuum šokolaad</i>",
 		crush_raw_ruby = "Purusta <i>toore rubiin</i>",
 		crush_raw_sapphire = "Purusta <i>toore safiir</i>",
+		break_apart_weed = "El jugador está demasiado lejos.",
+		brine_meat = "Marinaad <i>toorkala</i>",
+		prepare_sandwich = "Valmista <i>BBQ võileiv</i>",
+		pickle_cucumbers = "Marinaad <i>kurgid</i>",
+		melt_chocolate = "Sulata <i>tume šokolaad</i>",
+		craft_torch = "Valmista <i>torch</i>",
+		prepare_beans_toast = "Valmista <i>Oad röstsaiaga</i>",
+		mix_pancake_batter = "Sega <i>Pannkoogitainas</i>",
+		disassemble_bandages = "Lahuta <i>sidemeid</i>",
+		craft_tourniquet = "Valmista <i>tourniquet</i>",
+		mix_pilk = "Sega <i>Pepsi ja Piim</i>",
+		break_apart_battery = "Lõhu lahti <i>Aku</i>",
+		mix_gunpowder = "Sega <i>Püssirohi</i>",
+		roll_cigar = "Jahvata <i>Sigar</i>",
+		squeeze_orange_juice = "Pigista <i>apelsinimahl</i>",
+		make_apple_juice = "Tee <i>õunamahl</i>",
 
 		search = "Otsi",
 		amount = "Kogus",
@@ -6445,6 +8326,8 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		logs_item_moved_title = "Ese liigutatud",
 		logs_item_moved_details = "${consoleName} liigutas ${moveAmount}x ${itemLabel} asukohta inventuuris ${startInventory}:${startSlot} asukohale ${endInventory}:${endSlot}.",
+		logs_item_given_title = "Eseme antud",
+		logs_item_given_details = "${consoleName} andis ${amount}x ${label} kasutajale ${targetConsoleName}.",
 
 		logs_item_purchased_title = "Ese(d) ostetud",
 		logs_item_purchased_no_tax_details = "${consoleName} ostis ${purchaseAmount}x `${itemLabel}` ${purchaseCost} dollariga.",
@@ -6457,19 +8340,22 @@ OP.Global.Locales.Languages["et-EE"] = {
 		no_ground_inventories = "Maapõhja inventare ei leitud.",
 		no_ground_inventories_within_radius = "Maapõhja inventare ei leitud raadiusega ${radius}.",
 
-		wipe_inventories_not_staff = "Mängija üritas tühjendada inventare, kuid tal pole õiguseid selle tegemiseks.",
-
 		logs_wiped_all_ground_inventories_title = "Tühistati kõik maapõhja inventarid",
 		logs_wiped_all_ground_inventories_details = "${consoleName} tühjendas kõik maapõhja inventarid.",
 
 		logs_wiped_nearby_ground_inventories_title = "Kustutati Lähedalasuvad Maas Tarned",
 		logs_wiped_nearby_ground_inventories_details = "${consoleName} kustutas raadiusega `${radius}` kõik lähedalasuvad maatsed tarned.",
 
-		logs_combined_title = "Kombineeritud Esemed",
-		logs_combined_details = "${consoleName} kombineeris ${inputs}, et saada 1x ${output}.",
+		inventory_crafting_logs_title = "El inventario del jugador está lleno.",
+		inventory_crafting_logs_details = "${consoleName} kasutas ${inputs}, et luua ${output}.",
 
 		press_use_campfire = "[${InteractionKey}] Kasuta Lõkkekohta",
 		use_campfire = "Kasuta Lõkkekohta",
+
+		inventory_not_loaded = "Inventari pole laaditud.",
+		invalid_inventory_name = "Vigane inventari nimi.",
+		inventory_refresh_success = "Inventar värskendati edukalt.",
+		inventory_refresh_failed = "Inventari värskendamine ebaõnnestus.",
 
 		dumpster_sandwich = "Hallitanud Võileib",
 		dumpster_beer = "Suletud Õlu",
@@ -6479,6 +8365,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		dumpster_brownies = "Kuivanud pruunid koogid",
 		dumpster_pizza_slice = "Hallitanud pitsatükk",
 		dumpster_banana = "Karvane banaan (vesine)",
+		dumpster_pepsi = "Lame Pepsi",
+		dumpster_almond_milk = "Katkine mandlipiim",
+		dumpster_capri_sun = "Pooltühja Capri Sun",
+		dumpster_knife = "${consoleName} ha reclamado un envío de ${weight}su con ${company}.",
 
 		-- items & item descriptions
 		body_armor = "Kere rüü",
@@ -6487,6 +8377,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		first_aid_kit_description = "Loo iseenda arsti komplekt.",
 		bandages = "Sidemed",
 		bandages_description = "Kõigeks, mis valus ja haiget teeb.",
+		tourniquet = "Tourniquet",
+		tourniquet_description = "Elupäästev vahend kriitilistes olukordades, tourniquet on mõeldud tõsise verejooksu kiireks peatamiseks. Kuigi see pakub minimaalset paranemist võrreldes põhjalikumate esmaabivõimalustega, võib selle võime verekaotuse peatamiseks olla määrava tähtsusega erakorralistes olukordades.",
+		gauze = "Side",
+		gauze_description = "Kriitiline igale esmaabikomplektile, see side on pehme, imav ja ideaalne haavade sidumiseks. See pakub haavahoolduse põhialust, aidates haldada verejooksu ja kaitsta nakkuste eest.",
 		oxygen_tank = "Hapnikupaak",
 		oxygen_tank_description = "Kopsude laienduspakett.",
 		ifak = "IFAK",
@@ -6494,6 +8388,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		citizen_card = "Kodaniku kaart",
 		citizen_card_description = "Toimib identifitseerimis-, tulirelvade kasutus- ja juhilubadena.",
+		driver_license = "Juhi load",
+		driver_license_description = "Ametlik juhiluba. Üldse mitte hommikuhelvestepaki tagant pärit.",
+		press_pass = "Pressipass",
+		press_pass_description = "See ametlik pressipass tuvastab teid reporteri või ajakirjanikuna, pakkudes juurdepääsu piiratud aladele ja sündmustele. Kandke seda uhkusega, kui jälitate lugusid ja paljastate tõe.",
 		phone = "Telefon",
 		phone_description = "never:tm:",
 		radio = "Raadio",
@@ -6502,6 +8400,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		smart_watch_description = "Viha, kui pead kõikjal sularaha maksma? Lihtsalt kasuta oma nutikella! Lisaks on olemas sisseehitatud kompass, kell, GPS ja sammulugeja! Lihtsalt ärge jookske kell 2 öösel.",
 		tablet = "Tahvelarvuti",
 		tablet_description = "Väga suur telefon.",
+		wallet = "Recibido",
+		wallet_description = "Valmistatud patriotismi silmas pidades, see rahakott mitte ainult ei hoia teie olulisi asju nagu ID-kaardid ja sularaha, vaid teeb seda ka rahvusliku uhkuse hõnguga. Elav Ameerika lipu ja kotkaembleem teeb iga kord seda välja tõmmates avalduse. Ideaalne neile, kes kannavad mitte ainult oma väärtasju, vaid ka uhkuse tunnet.",
+		folder = "Kaust",
+		folder_description = "See tugev sinine kaust on kvintessentsiaalne korraldaja kõigile sinu olulistele paberitele. Ideaalne dokumentide, ID-kaartide ja fotode korrashoidmiseks ning hõlpsaks ligipääsuks. Olgu tegemist äri- või isikliku kasutusega, see on usaldusväärne valvur su paberivaradele.",
 
 		gps = "GPS",
 		gps_description = "Rahuldage kõik oma vidinavajadused.",
@@ -6512,6 +8414,8 @@ OP.Global.Locales.Languages["et-EE"] = {
 		boosting_tablet = "Boostamise Tahvelarvuti",
 		boosting_tablet_description = "Kasutatakse täiesti seaduslike lepingute saamiseks.",
 
+		boat_license = "Paadiluba",
+		boat_license_description = "Luba paatide kasutamiseks.",
 		hunting_license = "Jahiluba",
 		hunting_license_description = "Jahiluba jahtimiseks.",
 		fishing_license = "Kalastusluba",
@@ -6520,6 +8424,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		pilot_license_description = "Piloodiluba lennukite ja muude lendavate seadmete lennutamiseks.",
 		weapon_license = "Relvaluba",
 		weapon_license_description = "Relvaluba kõrgema kategooria relvade omamiseks ja kandmiseks.",
+		mining_license = "Kaevandamisload",
+		mining_license_description = "Kaevandamiseks mõeldud luba.",
+		bar_license = "Baari/Õiguse litsents",
+		bar_license_description = "Sertifitseeritud tõend, et olete läbinud advokatuuri eksami ja teil on ametlik luba praktiseerida õigust San Andrease osariigis. Näidake seda uhkusega, teades, et olete valdanud õigussüsteemi ning nüüd saate kaitsta süütuid või süüdistada süüdlast.",
 
 		sasp_badge = "SASP märk",
 		sasp_badge_description = "Märk San Andrease politsei osakonna ametnikele.",
@@ -6535,16 +8443,22 @@ OP.Global.Locales.Languages["et-EE"] = {
 		swat_badge_description = "Märk eri relvade ja taktika osakonna ohvitseridele.",
 		management_badge = "Juhtimise märk",
 		management_badge_description = "Märk SASP juhtimisüksuse agentidele.",
+		ftp_badge = "FTP märk",
+		ftp_badge_description = "Märk väljaõppe programmi treeneritele.",
 		ems_badge = "EMS isikutunnistus",
 		ems_badge_description = "Isikutunnistus EMS parameedikutele.",
 		doctor_badge = "Doktori isikutunnistus",
 		doctor_badge_description = "Isikutunnistus arstidele.",
 		bcfd_badge = "BCFD märk",
 		bcfd_badge_description = "Märk Blaini maakonna tuletõrjeosakonna tuletõrjujatele.",
+		state_badge = "Osariigi ID",
+		state_badge_description = "ID osariigi San Andrease töötajatele.",
 		state_security_badge = "Riigi Julgeoleku ID-kaart",
 		state_security_badge_description = "ID-kaart Riigi Julgeoleku agentidele.",
 		doj_badge = "DOJ Teenistusmärk",
 		doj_badge_description = "Teenistusmärk Justiitsministeeriumi töötajatele.",
+		doc_badge = "DOK Tunnus",
+		doc_badge_description = "Tunnus Korrektsioonide Osakonna töötajatele.",
 
 		radio_chop_shop = "Demonteerimiskoha raadio",
 		radio_chop_shop_description = "Kasutatakse teabe saamiseks 'kuumadest' sõidukitest mitteeksisteerivate inimeste käest, kes töötavad demonteerimiskohas.",
@@ -6573,14 +8487,39 @@ OP.Global.Locales.Languages["et-EE"] = {
 		compass_description = "43,3068 N 0,7668 W",
 		map = "Kaart",
 		map_description = "Näitab, kuhu sa lähed ja kus oled käinud. Või ehk olid sa seal?",
+		bus_map = "Bussikaart",
+		bus_map_description = "Kaart Los Santose bussiliinidest. Näitab kõiki peatusi, kus saab bussi peale võtta.",
+		flight_radar = "Lennu Radar",
+		flight_radar_description = "See arenenud Lennu Radar vastuvõtja on sinu aken taevasse, pakkudes reaalajas ülevaate lennukite liikumistest, kuni nad on radarjaama vahetus läheduses. Täiuslik lennundushuvilistele ja professionaalidele, see pakub põhjalikku ülevaadet õhulendude maastikust, tagades, et oled alati ühendatud ülemise maailmaga.",
 		glass_breaker = "Hädaolukorra aknalõhkuja",
 		glass_breaker_description = "Kasutatakse autoakende purustamiseks hädaolukorras.",
 
 		picture = "Pilt",
-		picture_description = "Koguge kõik mälestused enda ja sõpradega.",
+		picture_description = "Koguge kõik mälestused teie ja teie sõprade kohta. (Suurus: 1x1)",
+		picture_wide = "Pilt",
+		picture_wide_description = "Koguge kõik mälestused teist ja teie sõpradest. (Suurus: 14x8,5)",
+		printed_card = "Trükitud Kaart",
+		printed_card_description = "Väike trükitud kaart, äkki visiitkaart? (Suurus: 9x5)",
+		printed_document = "su = unidad de almacenamiento",
+		printed_document_description = "Casillero de Submarino",
+		paper = "Foto paber (1x1)",
+		paper_description = "Tühi paber nelinurksete fotode printimiseks. (Suurus: 1x1)",
+		paper_wide = "Foto paber (14x8.5)",
+		paper_wide_description = "Tühi paber laiade fotode printimiseks. (Suurus: 14x8.5)",
+		card_paper = "Kaardipaber (9x5)",
+		card_paper_description = "El jugador está demasiado lejos.",
+		document_paper = "Dokumendipaber (21x28)",
+		document_paper_description = "Fucking used for sawing shit off of other shitty things.",
+		printer = "Printer",
+		printer_description = "Ei faxi, ainult printer.",
+
+		label_printer = "Sildiprinter",
+		label_printer_description = "Kohanda oma varustust stiilselt selle sildiprinteriga! Lihtsalt pane ese sisse ja prindi sellele särav uus kate või ümbris, et anda sellele värsket isikupärastatud välimust. Ideaalne igapäevaste asjade vürtsitamiseks!",
 
 		brochure = "Brošüür",
 		brochure_description = "Abiks olev brošüür linna tutvumisel.",
+		bus_ticket = "Bussipilet",
+		bus_ticket_description = "Sinu ühekordne pilet <b>${route}</b>-le! See pilet on ideaalne neile, kes soovivad reisilt pisikest suveniiri kaasa võtta. Kehtib üheks sõiduks alates <b>${date}</b>, seega hoia kindlalt kinni ja naudi sõitu. Pidage meeles, et see pilet kehtib vaid üheks reisiks, seega kasuta seda nutikalt!",
 
 		basic_repair_kit = "Põhiline paranduskomplekt",
 		basic_repair_kit_description = "Muudab asjad töökorras, kuid vaevalt.",
@@ -6592,6 +8531,17 @@ OP.Global.Locales.Languages["et-EE"] = {
 		advanced_lockpick_description = "Peidad oma lapsed ja naise",
 		cleaning_kit = "Puhastuskomplekt",
 		cleaning_kit_description = "Täiuslik oma sõiduki või vereplekkide eemaldamiseks taga istmel.",
+		scratch_remover = "Kriimude eemaldaja",
+		scratch_remover_description = "Kasutatakse sõidukite mõlkide ja kriimude eemaldamiseks.",
+		motor_oil = "Mootori õli",
+		motor_oil_description = "Kasutatakse mootori sujuvaks töötamiseks.",
+		color_measurer = "Värvi mõõtja",
+		color_measurer_description = "Kasutatakse mistahes sõiduki värvi täpseks mõõtmiseks.",
+		tint_meter = "Toonikatemeeter",
+		tint_meter_description = "Tähtis tööriist õiguskaitseorganitele, et kontrollida sõiduki aknakilede läbipaistvust vastavalt ohutusnõuetele ja nähtavuse standarditele.",
+
+		multi_tool = "Mitmeotstarbeline tööriist",
+		multi_tool_description = "Tööriist, mida saab kasutada erinevateks otstarveteks.",
 
 		microphone_bug = "Mikrofoniputukas",
 		microphone_bug_description = "Kasutatakse vestluste salvestamiseks.",
@@ -6602,58 +8552,152 @@ OP.Global.Locales.Languages["et-EE"] = {
 		radio_decryptor = "Raadio dekrüpteerija",
 		radio_decryptor_description = "Dekrüpteerib raadio sagedused, kui on ühendatud raadioga.",
 
+		drill_large = "Suur puur",
+		drill_large_description = "Rasketeks töödeks mõeldud tugev tööriist. Võimeline töödeldama suuri objekte... kui teate, mida teete.",
+		drill_small = "Väike puur",
+		drill_small_description = "Kompaktne ja täpne tööriist, mis on ideaalne ligipääsu saamiseks raskesti ligipääsetavatesse kohtadesse. Mõned sellised võiksid kasulikud olla.",
+
 		paper_bag = "Paberkott",
 		paper_bag_description = "Ideaalne toidukaupade säilitamiseks või mõne inimese pea ladustamiseks, kas siis elus- või surnuna.",
+		closed_paper_bag = "Suletud paberikott",
+		closed_paper_bag_description = "Klassikaline pruun paberist kott, mis peidab endas salapäraseid sisu. Kas seal on lõunasöök? Salajane varu? Ainult üks viis sellest teada saada – rebida see lahti ja vaadata, mis seal sees on!",
 		burger_shot_delivery = "Burger Shoti söök",
 		burger_shot_delivery_description = "Suurepärane kogum märgade lihapallide, saiade ja muude hõrgutiste näol, mida pakutakse Burger Shotis.",
 		bean_machine_delivery = "Bean Machine'i tellimine",
 		bean_machine_delivery_description = "Kott täis imelisi maiuseid ühest pisikesest kohvikust kesklinnas.",
+		kissaki_delivery = "Kissaki einelaud",
+		kissaki_delivery_description = "Maitsvat valikut sushi ja teisi Jaapani hõrgutisi.",
+		green_wonderland_delivery = "Roheline Imedemaa Kott",
+		green_wonderland_delivery_description = "Seljakott täis sinu lemmik rohelisi maiustusi. #420blazeit",
+		pizza_this_delivery = "Pizza This Kohaletoimetamine",
+		pizza_this_delivery_description = "Kanna oma kuum ja maitsvalt pizza stiilselt Pizza This kohaletoimetamisega kastis, tagades, et iga viil jõuab kohale täpselt samasugusena nagu see ahjust lahkus.",
+
+		lunch_box = "Lõunasöögikarp",
+		lunch_box_description = "Vastupidav pisike karp, kus hoitakse sinu lootusi, unistusi ja eilset jääktoitu. Ideaalne snackide turvaliseks hoidmiseks, su lõunasöögi purunemata hoidmiseks ning krõpsude veidi vähem purustamiseks kui tavaliselt. Hoiatus: ei garanteeri paremat lõunasöögi ajalist sotsiaalset staatust.",
+
+		empty_box = "Tühi karp",
+		empty_box_description = "Alusta selle lihtsa ja vastupidava karpiga isikupäraste kingituste loomist. Täida see mittekäitlevate aaretega ja see on valmis muundamiseks mõtlikuks kingituseks. Ideaalne kõige pakendamiseks, mis sümboliseerib kiindumust, välja arvatud riknevad toiduained ja relvad.",
+		gift_box = "Kinkekarp",
+		gift_box_description = "See elegantse paelaga pitseeritud kinkekarp kaunistatud piduliku paelaga on ilus viis esitada hoolikalt valitud esemeid. Ideaalne erilisteks sündmusteks, see edastab soojust ja mõtlikkust, tagades, et teie kingiavaldus on sama meeldiv kui kingitus karbis.",
+		gift_box_bomb = "Kingituskarp",
+		gift_box_bomb_description = "See elegantse pitseerimisega kingituskarp, mida kaunistab pidulik pael, on suurepärane viis hoolikalt valitud esemete esitlemiseks. Ideaalne erilisteks sündmusteks, see väljendab soojust ja mõtlikkust, tagades, et teie kingituse žest jääb kauaks meelde.",
 
 		ear_defenders = "Kõrvaklapid",
 		ear_defenders_description = "Kasutatakse kõrvade kaitsmiseks valjude helide eest.",
 
+		skateboard = "Tõukeratas",
+		skateboard_description = "Meil oli tõukeratas GTA V-s enne Skate 4.",
+		deck_arcade = "Arcade Attack Deck",
+		deck_arcade_description = "Tõsta oma tõukerattamäng järgmisele tasemele Arcade Attack Deckiga. Kaunid pikslit kunstiga kaetud laud viib sind tagasi klassikalise mängumaailma juurde, muutes selle ideaalseks valikuks mängude fännidele. Tõmba tänavatele natuke nostalgiat ja jahmata neid relsi kriimustama nagu lööd kõrgeid tulemusi!",
+		deck_cats = "Kasside Fantaasia Deck",
+		deck_cats_description = "Näita oma armastust kasside vastu Kasside Fantaasia Deckiga. Mänguliste kassigraafikatega kaetud laud on suurepärane valik kassihuvilistele, kes soovivad oma sõitudele lisada natuke lõbu. Sõida stiilselt ja iga trikk olgu täiuslik nagu nurrrrr!",
+		deck_flowers = "Troopilised Vibed Deck",
+		deck_flowers_description = "Tooge rannarõõm tänavatele Troopiliste Vibede Dekiga. Kaetud lopsaka lillelise mustriga, see deck on ideaalne neile, kes soovivad sõita igaveses suve seisundis. Tunne tuult ja sõida linnametsa lainetel!",
+		deck_weed = "Kõrge Kiiruse Deck",
+		deck_weed_description = "Omaks tõelist chilli Kõrge Kiiruse dekiga. Ideaalne neile sõitjatele, kes armastavad hoida asju rahulikult, samal ajal õhku kogudes.",
+		deck_blossom = "Kirsilillede Dekk",
+		deck_blossom_description = "Leia enda sisemine rahu kirsipuude õitega. See laud on ideaalne neile, kes soovivad tuua oma rula sessioonidesse natuke rahu.",
+		deck_peace = "Psühhedeelne Serenity Deck",
+		deck_peace_description = "Sukeldu psühhedeelse rahutunde seisundisse. See laud on ideaalne neile, kes armastavad rulatamist säravate vibratsioonide saatel.",
+		deck_simpsons = "Barti Meelemuutusekõlbulik Laud",
+		deck_simpsons_description = "Kanna oma sisemine pahandustekülvaja Barti Meelemuutusekõlbuliku Lauaga. Ideaalne Simpsonite fännidele, kes soovivad tuua veidi Springfieldi kaost oma rulatamise rutiini.",
+		deck_police = "Sinise joone laud",
+		deck_police_description = "Näita oma toetust seaduskaitsjatele Sinise joone lauaga. Ideaalne valik ohvitseridele, kes soovivad sõita stiilselt ja esindada ametit.",
+		deck_ems = "Punase joone laud",
+		deck_ems_description = "Austa kiirabiteenistuse töötajaid Punase joone lauaga. Ideaalne valik kiirabipersonalile, kes soovivad sõita uhkusega ja austada nende kangelaslikku tööd.",
+		deck_usa = "Vabaduse laud",
+		deck_usa_description = "Yeehaw! Sõida uhkusega Tähtede ja Triipude laual, see on vabaduse ja Ameerika unistuse sümbol. Loodud tõelistele patriotidele, see laud laseb sul sõita punase, valge ja sinise vaimus. Jumal õnnistagu Ameerikat!",
+
+		paper_straw = "Paberist joogikõrs",
+		paper_straw_description = "Joo jätkusuutlikult selle öko-päritolu paberist joogikõrrega. Disainitud vähendama plastprügi ja aitab säästa kilpkonni, pakkudes samal ajal unikaalset joomise kogemust. Kõrs lahustub järk-järgult joogis, meenutades selle ökoloogilist eesmärki ja muutes selle ideaalseks ühekordseks kasutamiseks.",
+
 		clothing_bag = "Riiete kott",
 		clothing_bag_description = "Ära kunagi enam muretse riietuskriiside pärast! Riiete kotiga saad hoiustada oma lemmikrõivaid ja varustada end nendega koheselt ükskõik kus sa ka ei viibiks. See kott on nagu võluväeloomine ilma bibbidi-bobbidi-boo'ta.",
 
+		tnt_block = "TNT plokk",
+		tnt_block_description = "Äärmiselt plahvatusohtlik Minecrafti TNT plokk, valmis maailma plahvatama - lisage vaid säde ja jookske varju!",
+
+		magnifying_glass = "Luup",
+		magnifying_glass_description = "Luup kõigi teie detektiivivajaduste jaoks. Ehk leiad nelja lehega ristiku murult või väikese konnakese mudast?",
+
+		clover = "Nelja Lehega Ristik",
+		clover_description = "Haruldane nelja lehega ristik hea õnne jaoks. Sa saad neid leida murult, kui piisavalt hästi otsid.",
+		clover_mk2 = "4-leheline ristikhein MK2",
+		clover_mk2_description = "Haruldane ja salapärane 5-leheline ristikhein, mis peaks tooma väljapaistvat õnne – kui sa suudad selle murus peidus ära tunda!",
+		small_frog = "Väike Konn",
+		small_frog_description = "Lihtsalt väike konnake. Vaata, kui armas ta on!",
+		seashell = "Merikarp",
+		seashell_description = "Merikarp rannast. Kui paned selle kõrva juurde, kuuled ookeani.",
+		lucky_penny = "Õnnemünt",
+		lucky_penny_description = "Leia teel olles õnnemärk - Õnnemünt, haruldane leid teel, mis lubab veidi õnne. Hoia seda lähedal ja lase õnnel oma teed juhtida.",
+		small_frog_mk2 = "Väike Konn MK2",
+		small_frog_mk2_description = "Mudast leiad väikse elava kaaslase: Väike Konn MK2, mida iseloomustab selle miniaturne sõjaväe kiiver ja pisike AK relv seemnema. Neid uurides läbi suurendusklaasi mudast leida on haruldane ning lõbus auavaldus, tunnistus looduse imepärastest imedest.",
+		caterpillar = "Röövik",
+		caterpillar_description = "Aia pärliks on see silmapaistev röövik nähtav vaid neile, kellel on luup ja terav uudishimu. Selle erksad triibud ja õrnad liigutused on loodusesõbra rõõm.",
+
+		keys = "Võtmed",
+		keys_description = "Paar võtmeid mõne ukse jaoks kuskil.",
+		car_keys = "Autovõtmed",
+		car_keys_description = "Maagiline võtmekomplekt, mis suudab avada uksi, käivitada mootoreid ja tekitada sulle kohe tunde, et oled teel peremees. Ükski võtmepaar pole päris sarnane, kuid neil kõigil on üks eesmärk - anda sulle ligipääs sellest vingedast sõidukist, kust nad pärinevad. Lihtsalt ära lase neid kanalis alla või laena neid \"sõbrale\".",
+
+		raw_diamond = "Tooriktene",
+		raw_diamond_description = "Haruldane ja töötlemata teemant, toores ja puutumatu, sära oma tahkudelt ootab avastamist. Ideaalne neile, kes leiavad ilu toores potentsiaalis, ootab see kalliskivi meistri puudutust, et vallandada täielik hiilgus.",
 		raw_morganite = "Toores morganiit",
-		raw_morganite_description = "Morganiidi loomulik vorm, otse kaevandusest.",
+		raw_morganite_description = "Hele roosa vääriskivi oma looduslikus olekus, toores morganiit on haruldane ja hinnatud oma õrna varjundite tõttu. Lubab rafineeritud ilu veetlust, kui seda lõikab ja poleerib eksperdikäsi.",
 		raw_ruby = "Toores rubiin",
-		raw_ruby_description = "Rubiini loomulik vorm, otse kaevandusest.",
+		raw_ruby_description = "Rikas ja sügav värvilt see toorelt rubiin peidab endas rabavat ilu oma robustse välispinna all. Kalliskivi, mis sümboliseerib kirge ja võimu, ootab muundumist tükiks, mis tõeliselt köidab tähelepanu.",
 		raw_sapphire = "Toores safiir",
-		raw_sapphire_description = "Safiiri loomulik vorm, otse kaevandusest.",
+		raw_sapphire_description = "See töötlemata safiir oma intensiivsete siniste toonidega räägib sügavusest ja müsteeriumist. Nii vastupidav kui ka kaunis, on see valmis valmistamiseks ehte, mis peegeldab taevast.",
 		raw_emerald = "Toores smaragd",
-		raw_emerald_description = "Smaragdi loomulik vorm, otse kaevandusest.",
+		raw_emerald_description = "Elaav, töötlemata smaragd, mis haarab endasse lopsakate maastike ja sügavate metsade olemuse. Tavaline, ent lummav, see omab potentsiaali lilleks iluks peale viimistlust.",
+		raw_opal = "Toores opaal",
+		raw_opal_description = "See tooor kivi on rabav leid, peegeldades valgust püüdes värvide paletti. Maapõuest leituna oma loomulikus vormis on see aare, mis ootab lõikamist ja poleerimist millegi erakordseks.",
+		raw_onyx = "Toor-oonüks",
+		raw_onyx_description = "See sügav, müstiline vääriskivi leitakse maa sügavustest, varjates oma tõelist potentsiaali tumedas läikivas koore all. Toores ja töötlemata - see on tugevuse ja müsteeriumi sümbol.",
 
 		ruby_dust = "Rubiini tolm",
-		ruby_dust_description = "Tolm rubiinist.",
+		ruby_dust_description = "Erksavärviline punane pulber, valmistatud peenelt purustatud rubiinidest, mida hinnatakse nende rikkaliku sügava värvi eest. See luksuslik pigment on ideaalne julge ja silmapaistva varjundi lisamiseks igasse projekti, eriti kui see on kombineeritud teiste patriootlike toonidega, luues välimuse, mis kindlasti meelitab tähelepanu ja inspireerib rahvuslikku uhkust.",
 		sapphire_dust = "Safiiri tolm",
-		sapphire_dust_description = "Safiiri tolm.",
+		sapphire_dust_description = "Uimastav sinine pulber, mis on loodud kõrgekvaliteediliste safiiride peenestamisega peeneks tolmus. Selle pigmendi sügavsinine värv on lummav ja meenutab pilvitus taevast ning suursuguseid ookeane, muutes selle ideaalseks valikuks projektide jaoks, mis nõuavad kuninglikku ja kaasahaaravat puudutust. Kui seda kasutada koos teiste värvidega, mis kutsub esile teatud lipuvärava hinge, on tulemus tõeliselt hingemattev.",
 
 		morganite = "Morganit",
-		morganite_description = "Lõigatud ja poleeritud morganit.",
+		morganite_description = "Soe virsiku tooniga poleeritud morganite võlub südame oma õrna, kuid kaasahaarava säraga. Haruldust ja romantilist külgetõmmet ühendav pärl, ideaalne luksuslike ja kaunite ehetega.",
 		ruby = "Rubiin",
-		ruby_description = "Lõigatud ja poleeritud rubiin.",
+		ruby_description = "Nikerdatud täiuslikkuseni, see rubiin sädeleb sügava punase valgusega. Selle erksavärviline toon ja läikiv sära teevad sellest ihaldusväärse kivi esinduslike ehetega kaunistamiseks.",
 		sapphire = "Safiir",
-		sapphire_description = "Lõigatud ja poleeritud safiir.",
+		sapphire_description = "Tarkuse ja aadli sümbol, see poleeritud safiir pimestab oma kuningliku sinise säraga. Selle vastupidavus ja läige teevad sellest lemmikkivi nii igapäevaseks kandmiseks kui ka pidulikeks üritusteks.",
 		emerald = "Smaragd",
-		emerald_description = "Lõigatud ja poleeritud smaragd.",
+		emerald_description = "Poleeritud, et paljastada kevade elujõudu meenutav särav roheline, on see smaragd looduse hiilguse tunnistus. Hindame selle rikkalikku värvi ja selgust, mistõttu on see mistahes vääriskivikollektsiooni alustala.",
+		opal = "Opaal",
+		opal_description = "Hoolikalt vormitud, kiirgab see opaal võluvat värvimängu. Briljantne tükk, täiuslik neile, kes soovivad endaga kaasas kanda looduse ilu.",
+		onyx = "Onüks",
+		onyx_description = "Viimistletud täiuslikkuseni, see must kalliskivi kiirgab elegantset ja julget võlu, pakkudes teravat kontrasti elavamatele kividele. Ideaalne neile, kellele meeldib draamatiline elegants.",
 
 		ring = "Sõrmus",
-		ring_description = "Tavaline sõrmus.",
+		ring_description = "Lihtne, kuid elegantne alus isiklikuks loominguks - see tühi sõrmus on valmistatud kvaliteetsest metallist ning valmis kaunistamiseks igasuguse vääriskiviga. Sellele saab graveerida sõnumi, muutes sõrmuse sama unikaalseks nagu kandja enda lugu.",
 
-		morganite_ring = "Morganit-sõrmus",
-		morganite_ring_description = "Kaunis sõrmus, mille keskel on suur morganit. Ideaalne pulmadeks, parimatele sõpradele või täiesti võõrastele.",
-		ruby_ring = "Rubrikkidega sõrmus",
-		ruby_ring_description = "Väga ilus sõrmus suure rubiiniga keskel. Ideaalne pulmadeks, parimatele sõpradele või täiesti võõrastele.",
-		sapphire_ring = "Safiiriga sõrmus",
-		sapphire_ring_description = "Väga ilus sõrmus suure safiiriga keskel. Ideaalne pulmadeks, parimatele sõpradele või täiesti võõrastele.",
-		emerald_ring = "Smaragdiga sõrmus",
-		emerald_ring_description = "Väga ilus sõrmus suure smaragdiga keskel. Ideaalne pulmadeks, parimatele sõpradele või täiesti võõrastele.",
 		diamond_ring = "Teemantsõrmus",
-		diamond_ring_description = "Kena sõrmus suure teemanti keskel. Ideaalne pulmadeks, parimatele sõpradele või täiesti võõrastele.",
+		diamond_ring_description = "See väljavalitud teemantidega sõrmus sisaldab vääriskivi, millel on sädelev lõige, mis on paigutatud elegantse hõbedase sõrmuse sisse, mille ümber on paigutatud pisemad teemandid. Selle ajatu elegants ja läikiv sära teevad sellest lõputu armastuse ja pühendumuse sümboli.",
+		morganite_ring = "Morganit-sõrmus",
+		morganite_ring_description = "Pehme ja peen, see morganiitrõngas sädeleb sooja virsikuroosa varjundiga. Kalliskivi on paigutatud roosakuldsesse raami, mis rõhutab selle õrna värvi, pakkudes kaasaegset ja romantilist ehet, mis paistab silma oma naiseliku võluga.",
+		ruby_ring = "Rubrikkidega sõrmus",
+		ruby_ring_description = "Jõuline ja võluv, see rubiinirõngas kiidab heaks sügavpunase kalliskivi südames. Asudes klassikalises hõbedases sõrmuses keeruliste detailidega, sümboliseerib see kirge ja armastuse püsimatu tugevust.",
+		sapphire_ring = "Safiiriga sõrmus",
+		sapphire_ring_description = "Pidulik ja silmapaistev, see safiirirõngas sisaldab sügavsinist kalliskivi, meenutades kesköötaevas. Hõbese sõrmusega elegantsete küljakividega, pakub see kõrgemat elegantsi puudutust ja kuninglikku aurat igale, kes seda kannab.",
+		emerald_ring = "Smaragdiga sõrmus",
+		emerald_ring_description = "Esmalt intensiivset ja elurõõmu täis, see smargi sõrmus näitab rikkalikku rohelist kivi, mis on paigutatud õrnalt valmistatud hõbedasse sõrmusesse. See on looduse lopsaka ilu tähistamine, ideaalne neile, kes hindavad kasvu ja uuendust.",
+		opal_ring = "Opaalrõngas",
+		opal_ring_description = "Klassikaline roosakullast rõngas, millele on seatud eredavärviline opaalikivi. Metalli peen sära koos kalaidoskoopilise opaaliga loob elegantse ja ajatu aksessuaari.",
+		onyx_ring = "Onüksrõngas",
+		onyx_ring_description = "Valmistatud täielikult tahkest onüksist, see rõngas on nii tugev kui ka lööv. Vastupidavuse ja elegantsi sümbol, see on neile, kes hindavad minimalistlikku servaga stiili.",
+
+		pearl = "Pärl",
+		pearl_description = "Leitud meresügavustest peidetuna, see sile ja läikiv pärlike on ajatu vääriskivi. Looduslikult moodustunud karpides, see on hinnatud aare, mis sära pehme, kreemise helendusega.",
+		pearl_ring = "Pärli sõrmus",
+		pearl_ring_description = "Klassikaline kuldne sõrmus kaunistatud veatult valge pärliga. See elegantne sõrmus kiirgab elegantsi ja graatsiat, mis muudab selle ideaalseks aksessuaariks igaks sündmuseks.",
 
 		gemstone_scanner = "Kalliskivide skanner",
-		gemstone_scanner_description = "Kasulik kalliskivide skannimiseks.",
+		gemstone_scanner_description = "Iga kaevuri jaoks oluline tööriist, Gemstone Scanner on loodud hindama kividesse mattunud vääriskivide stabiilsust. Hindamaks iga kivi struktuurilist terviklikkust, aitab see seade kaevuritel kindlaks teha ohutu lähenemisviisi ekstraktsioonile, vähendades ohtlike plahvatuste tekitamise riski. Hädavajalik, et säilitada nii vääriskivide väärtus kui ka kaevandamisoperatsiooni ohutus.",
 
 		extended_clip = "Laadimiskiiruse suurendaja",
 		extended_clip_description = "Vähem laadimist.",
@@ -6678,63 +8722,140 @@ OP.Global.Locales.Languages["et-EE"] = {
 		pistol_sight = "Püstolitäht",
 		pistol_sight_description = "Kuidas parandada halba täpsust.",
 
+		tungsten_ore = "Volframimaak",
+		tungsten_ore_description = "Ehk mitte kõige lihtsam leida, kuid sellel kivil on potentsiaali! Väikeses, kuid väärtuslikus volframikontsentratsioonis peitub kaevuri aare, ootamas rafineerimist.",
+		tungsten_nugget = "Volframiklomp",
+		tungsten_nugget_description = "Rafineeri see maagiline ja saad selle väikese kalliskivi. Kuigi suuruse poolest pisike, on selle väärtus suur. Iga klomp on märk puhta volframi eraldamise vaevast tema alandlikest algusaegadest.",
+		tungsten_bar = "Volframipulk",
+		tungsten_bar_description = "Sulata piisavalt neid raske vaevaga teenitud klompe ja sul ongi endale soliidne volframipulk. Kõva kui nael ja valmis vastu võtma igasugust väljakutset, mida tema teele heidad.",
+
+		titanium_ore = "Titaaniohv",
+		titanium_ore_description = "Sädelev ja hõbedane titaaniohv, millel on aimu müstikast, on mitmekülgne ja väga ihaldatud materjal, mis leitakse maa all sügaval. See pole ülemäära haruldane, kuid selle tegelik väärtus peitub rafineerimisprotsessis.",
+		titanium_nugget = "Titaaniumklomp",
+		titanium_nugget_description = "Orest eraldatud väike titaaniumklomp esindab titaaniumi kontsentreeritud vormi. Iga klomp on väike tunnistus titaaniumi puhtusest ja tugevusest.",
+		titanium_bar = "Titaanribaar",
+		titanium_bar_description = "Valmistatud mitmest titaaninugist, see baar on tugev metallitükk. Selle kergekaaluline ja vastupidav loomus teeb selle ideaalseks kvaliteetsete komponentide valmistamiseks.",
+
+		titanium_rod = "Titaanvard",
+		titanium_rod_description = "Valmistatud titaanribadest, see varras on uskumatult tugev ja vastupidav. Selle kergekaalulised omadused koos ülima vastupidavusega muudavad selle oluliseks komponendiks kõrgjõudlusega rakendustes.",
 		aluminium_plate = "Alumiiniumplaat",
 		aluminium_plate_description = "Hoiatus: Ei kaitse kuulide eest... narkar.",
 		aluminium_rod = "Alumiiniumvars",
 		aluminium_rod_description = "Proovi mitte liiga tugevalt oma sõpru peaga lüüa sellega.",
-		copper_nugget = "Vaskpilliroog",
-		copper_nugget_description = "Väikest tükikest magusast kuldmustrilisest asjast.",
+		steel_tube = "Terastoru",
+		steel_tube_description = "Mitmekülgne ja vastupidav terastoru, ideaalne erinevate käsitööprojektide jaoks. Olgu sul ehitamise, parandamise või leiutamisega tegemist, see toru on sinu kindel valik tugevuse ja usaldusväärsuse tagamiseks.",
+		hardened_steel_plate = "Kõvastatud terasplaat",
+		hardened_steel_plate_description = "See kõvastatud terasplaat on loodud vastu pidama kõige raskematele tingimustele, pakkudes ülimat tugevust ja vastupidavust igasugusele rasketele projektidele. Ideaalne struktuuride tugevdamiseks, keerukate komponentide valmistamiseks või tagamaks, et su loomingu püsib ajaproovile vastu.",
 		copper_wire = "Vasktraat",
 		copper_wire_description = "Mitmekülgne juhe, mida saab kasutada peaaegu kõigi elektrooniliste seadmete jaoks.",
 		lens = "Objektiiv",
 		lens_description = "Kasutatakse prillides ja mikroskoopides, sa friik.",
 		polymer_resin = "Polümeervaik",
 		polymer_resin_description = "Ei ole suitsetatav liiki, aga ikka lahe.",
+		fibreglass_resin = "Kiudplastvaik",
+		fibreglass_resin_description = "See mitmekülgne liim on hädavajalik tugevdamiseks ja parandamiseks, luues tugevaid, kergkaalulisi komponente. Lihtne peale kanda ja kõva, vastupidava lõppviimistlusega, see on ideaalne nii käsitööprojektide kui ka professionaalse kasutamise jaoks.",
 		screws = "Kruvid",
 		screws_description = "Mida sa kruvid?",
 		spring = "Võru",
 		spring_description = "Ma ei tea miks, aga inimesed armastavad neid puhastada?",
+		high_tensile_spring = "Suure pinge vedru",
+		high_tensile_spring_description = "Optimaalse jõudluse saavutamiseks kavandatud suure pingega vedru, mis pakub erakordset tugevust ja elastsust. Ideaalne kõrge stressi rakenduste jaoks, see vedru tagab usaldusväärse funktsionaalsuse ja pikaajalise vastupidavuse, muutes selle oluliseks komponendiks edasijõudnute käsitöö- ja inseneriprojektides.",
+		tungsten_plate = "Volframplaat",
+		tungsten_plate_description = "Sepistatud kahest tugevast volframvardast, see plaat on vastupidav, vastupidav ja valmis taluma kõiki kuumuse või surve tagajärgi. Tõeline tugevuse ja vastupidavuse tunnistus.",
+		reinforced_steel_tube = "Tugevdatud terastoru",
+		reinforced_steel_tube_description = "Maksimaalse vastupidavuse saavutamiseks konstrueeritud see tugevdatud terastoru on ehitatud vastu pidama kõige raskemates tingimustes. Selle tugev ehitus tagab erakordse tugevuse ja vastupidavuse.",
+		muzzle_brake = "Suunajamuhahuti",
+		muzzle_brake_description = "Disainitud tõrjuma tugevat tagasihoidu ja püssitoru tõusu, see oluline komponent suunab põlemisgaasid ümber, et hoida sinu tähelepanu kindlana ja lasud sihtmärgile. Valmistatud täpsusega, tagab see sujuvama töö ja parema täpsuse, olles hädavajalik iga tõsise lasuasjatundja jaoks.",
+
+		trigger = "Päästik",
+		trigger_description = "Otsustav komponent igale tulirelva ehitusele, olgu selleks kas SMG, püss või pumppüss. Täpselt valmistatud krõbeda, usaldusväärse päästikutiiru tagamiseks iga kord.",
+		smg_lower_receiver = "Püstolkuulipilduja alumine vastuvõtja",
+		smg_lower_receiver_description = "Sinu püstolkuulipilduja alustala, alumine vastuvõtja on koht, kust kõik algab. Oluline osa tulistaseme hoidmiseks ja teiste komponentide ühendamiseks, see tükk on esimene samm kiirreageerimisvõimega jõuallika loomisel.",
+		smg_lower_receiver_mk2 = "Püstolkuulipilduja alumine vastuvõtja MK2",
+		smg_lower_receiver_mk2_description = "Standardse alumise vastuvõtja täiustatud versioon, MK2 pakub suuremat vastupidavust ja täpsust. Ideaalne neile, kes soovivad ehitada usaldusväärsema ja tugevama püstolkuulipilduja intensiivseteks olukordadeks.",
+		smg_upper_receiver = "SMG ülemine vastuvõtja",
+		smg_upper_receiver_description = "SMG aluse olulise raami täiendamine muudab ülemise vastuvõtja oluliseks, et kinnitada toru ja muud ülemised komponendid. See on loodud tagamaks sujuvat tööd ja järjekindlat jõudlust.",
+		smg_upper_receiver_mk2 = "SMG ülemine vastuvõtja MK2",
+		smg_upper_receiver_mk2_description = "SMG ülemise vastuvõtja MK2 variant on täiustatud versioon parema täpsuse ja stabiilsuse saavutamiseks. See on valik neile, kes nõuavad tipptasemel jõudlust oma tulirelvast.",
+		rifle_lower_receiver = "Püssi alumine vastuvõtja",
+		rifle_lower_receiver_description = "Sinu püssi selgroog, alumine vastuvõtja hoiab päästikurühma ja ajakirja hoolikut. See oluline komponent tagab, et su püssi vundament on kindel ja valmis edasiseks kokkupanemiseks.",
+		rifle_lower_receiver_mk2 = "Püssi alumine vastuvõtja MK2",
+		rifle_lower_receiver_mk2_description = "Parandatud versioon tavapärasest püssi alumisest vastuvõtjast, MK2 pakub paremat tugevust ja usaldusväärsust, tehes selle ideaalseks kõrge jõudlusega püsside jaoks.",
+		rifle_upper_receiver = "Püssi ülemine vastuvõtja",
+		rifle_upper_receiver_description = "Ühendades püssitoru ja sulguri rühma, on ülemine vastuvõtja oluline teie püssi täpsuse ja töö valdkonnas. See osa tagab, et teie püss saab täpselt hakkama igasuguse ülesandega.",
+		rifle_upper_receiver_mk2 = "Püssi ülemine vastuvõtja MK2",
+		rifle_upper_receiver_mk2_description = "MK2 ülemine vastuvõtja püssidele pakub suurepärast inseneritööd suurendatud täpsuse ja vastupidavuse jaoks, muutes teie püssi valmis kõige nõudlikumateks tingimusteks.",
+		shotgun_lower_receiver = "Püssirohu alumine vastuvõtja",
+		shotgun_lower_receiver_description = "Püssirohu süda, alumine vastuvõtja on hädavajalik päästiku kogumi hoidmiseks ja baasi pakkumiseks ülejäänud relvale. Alusta oma püssirohu ehitamist selle tugeva komponendiga.",
+		shotgun_lower_receiver_mk2 = "Püssirohu alumine vastuvõtja MK2",
+		shotgun_lower_receiver_mk2_description = "Üleminek MK2 versioonile annab sulle lisatugevuse ja eluea, täiuslik püssirohu ehitamiseks, mis suudab taluda sagedase kasutamise raskusi.",
+		shotgun_upper_receiver = "Pumplukuga hagikere ülemine osa",
+		shotgun_upper_receiver_description = "Mõeldud toru paigaldamiseks ja padrunite sujuvaks tsükliliseks liikumise tagamiseks, on ülemine osa teie hagikere funktsionaalsuse seisukohalt oluline osa. Ehitage oma ultimate hagikere selle võtmetähtsusega komponendiga.",
+
+		copper_nugget = "Vaskpilliroog",
+		copper_nugget_description = "Väikest tükikest magusast kuldmustrilisest asjast.",
+		zinc = "Tsink",
+		zinc_description = "Patareidest ekstraheeritud tsink on teie valik metallitöö ja tööstuslike vajaduste jaoks. Olgu tegu asjade parandamisega või selle kombinatsiooniga midagi veel lahedamat loomisega, on see mitmekülgne element teie tööriistakomplektis peidetud pärl.",
+		brass = "Messing",
+		brass_description = "Vask ja tsinki oskusliku ühendamisega saate messingi - vastupidava metalli, mis on ideaalne ammopulkade valmistamiseks. See on nagu alkeemia kaasaegses võtmes, muutes lihtsad elemendid teie Arsenali võtmeteguriteks.",
 
 		grenade_shell = "Granaadi koorik",
-		grenade_shell_description = "Shell granaadile.",
+		grenade_shell_description = "See tühi granaadikoore on oluline komponent spetsialiseeritud granaatide valmistamisel, näiteks suitsu- või gaasitüüpide puhul. Selle tugev karp on kavandatud erinevate ainete turvaliseks sisaldamiseks ja vabastamiseks, kui seda kasutatakse koos õige käivitusmehhanismiga.",
 		grenade_pin = "Granaadi nõel",
-		grenade_pin_description = "Nõel granaadi jaoks.",
+		grenade_pin_description = "Oluline turvaliseks käsitlemiseks ja granaatide kasutamiseks, see varras toimib turvalukuna. Kui see ühendatakse granaadikoorega, võimaldab see täpset kontrolli ja ajastust, mida vajatakse efektiivsete suitsu- või gaasilevitusseadmete loomisel taktikaliste olukordade jaoks.",
 
 		paint = "Värv",
-		paint_description = "Kasulik piirdeaedade ja majade jaoks, lihtsalt ärge hakake seda nuusutama.",
+		paint_description = "Purgi premiumklassi relvavärviga, saadaval mitmesugustes klassikalistes toonides. Anna oma ustavale kõrvalrelvale stiilimiseks värskendav kiht, mis paneb sõbrad imestama ja vastased hirmu tundma. Üks purk on piisav relva täielikuks ümberehitamiseks, lihtsalt ära hakka seda sisse hingama.",
 		paint_brush = "Värvipintsel",
-		paint_brush_description = "Kasulik värvimiseks.",
+		paint_brush_description = "Kvaliteetne hari peente harjastega, loodud täpseks ja ühtlaseks värvikandmiseks igale relva pinnale. Koos meie premiumvärviga aitab see hari sul osavalt kujundada oma relva uue välimuse, kas soovid julget kamuflaaži või elegantselt stiilseid disaine.",
 
 		skin_patriotic = "Patriootiline nahk",
-		skin_patriotic_description = "Kõigile teile, kes armastate oma riiki.",
+		skin_patriotic_description = "Näita oma armastust punase, valge ja sinise vastu selle patriootliku relvakattega. Ideaalne kõigile tõelistele ameerika patriootidele, kes soovivad väljendada oma rahvuslikku uhkust, olles relvastatud. See muudab sinu relva silmapaistvamaks, kui võitled vabaduse eest.",
 		skin_brushstroke = "Pintsli löögi nahk",
-		skin_brushstroke_description = "Kõigile teile, kes armastate kunsti.",
+		skin_brushstroke_description = "Ole loominguline oma relvastusega, kasutades seda abstraktset pintslitõmbe kujundusega katet. See on nagu omada kaasaegse kunsti tükki, mis võib ka teie vaenlastel auke tekitada.",
 		skin_skull = "Kolju nahk",
-		skin_skull_description = "Kõigile teile, kes olete natuke ekstravagantsed.",
+		skin_skull_description = "Külvata hirmu oma vaenlaste südames selle ägeda kolju-motiiviga kujundusega. Midagi ei ütle \"ära torgi mind\" päris nii hästi kui ähvardava kolju motiiv sinu valitud relval.",
 		skin_leopard = "Leopardi nahk",
-		skin_leopard_description = "Kõigile loomasõpradele.",
+		skin_leopard_description = "Vabasta oma metsik pool ja mine jahtima selle ägeda leopardimustriga nahaga. See on täiuslik viis lisada oma varustusele looma magnetismi.",
 		skin_zebra = "Sebra nahk",
-		skin_zebra_description = "Kõigile loomasõpradele.",
+		skin_zebra_description = "Teenige oma triibud karmidel tänavatel selle pilkupüüdva sebramustriga nahaga. Must ja valge ning loe kõik üle... teie ohvri surmateated, see on.",
 		skin_geometric = "Geomeetriline nahk",
-		skin_geometric_description = "Kõigile matemaatika fanaatikutele.",
+		skin_geometric_description = "Matemaatiliselt kaldu shooteritele lisab see geomeetriline nahk teie relvale mõningast läbimõeldud stiili. Tõestage, et olete võrdselt osav nii trigonomeetrias kui ka päästikunomeetrias.",
 
 		refillable_bottle = "Taastäidetav pudel",
-		refillable_bottle_description = "Päästa kilpkonnad, tõsiselt!",
+		refillable_bottle_description = "Tõstke oma vedeliku tarbimine uuele tasemele selle elegantse ja taaskasutatava pudeliga. Mõeldud keskkonnateadlikele inimestele ja stiilitundlikele, selle vastupidav konstruktsioon ja minimalistlik disain teevad sellest ideaalse kaaslase, et püsida kogu päeva jooksul hüdreeritud. Täitke see enda valitud joogiga ja hoidke janu eemal olgu teil siis tööl, jõusaalis treenimas või maailma avastamas.",
 
 		capri_sun = "Capri Sun",
-		capri_sun_description = "Maitsva mälestus lapsepõlvest.",
+		capri_sun_description = "Võta iga lonksuga tagasi oma lapsepõlve rõõmud koos Capri Suniga! See ikooniline kotti on täis apelsini värsket maitset, pakkudes särtsakat värskendust, mis meenutab päikesepaistelisi päevi ja lustakaid pärastlõunasid. Ideaalne seiklusteks või nostalgiliseks maiustuseks, see on sinu väike päikesekarp, mis kustutab janu ja äratab mälestusi.",
 
 		gumball = "Nätsupall",
-		gumball_description = "Nätsupall, mida muud ma öelda saan?",
+		gumball_description = "Naudi iga värvilise kommi puhul ootamatut maitseplahvatust. Lihtsalt olge ettevaatlik, et mitte liiale minna - pea meeles närida, mitte alla neelata! Iga tükk pakub rõõmustavat üllatust, muutes igast närimisest lõbusa ja maitseka seikluse.",
+
+		chorus_fruit = "Koorusvili",
+		chorus_fruit_description = "Paljastage Koorusevilja saladused, haruldane botaaniline ime, mida alternatiivmeditsiini entusiastid austavad selle erakordsete omaduste pärast. Kui seda vilja tarbitakse, pakub see ootamatut ja ergutavat asukoha muutust - üllatav kõrvalmõju, mille paljud omistavad selle müstilisele energiale. Ideaalne neile, kes otsivad kiiret turgutust või spontaanset keskkonnavaidlust. Omaks uusi võimalusi ja laske Kooruseviljal teid uutesse kohtadesse viia.",
 
 		water = "Vesi",
 		water_description = "Oht! Dihüdrogeenmonooksiid on värvitu ja lõhnatu. Juhuslik sissehingamine DHMO-st võib olla surmav. Pikaajaline kokkupuude selle tahke olekuga põhjustab tõsist kudede kahjustust. DHMO neelamise sümptomite hulka võivad kuuluda liigne higistamine ja urineerimine, ja võimalik kõhupuhitus, iiveldus, oksendamine ja keha elektrolüütide tasakaalutus.",
 		hamburger = "Hamburger",
 		hamburger_description = "Ameerika maitse!",
+		bacon_burger = "Bekonijuustuburger",
+		bacon_burger_description = "Klassikaline lemmik, see bekonijuustuburger ühendab maheda grillitud veise, krõbeda peekoni ja sulava juustu. Iga amps pakub täiuslikku maitsekombinatsiooni, muutes selle ajatu valiku burgerifännidele.",
+		bne_burger = "Bekoni- ja munaburger",
+		bne_burger_description = "Tõsta oma burgerielamust selle krõbeda peekoni, täpselt grillitud munakoore ja rikkaliku sulanud juustuga täidetud, maitseka veisepihviga kombinatsiooniga. See on tugev, rahuldust pakkuv eine, mis suurepäraselt ühendab hommiku- ja lõunasöögi.",
+		veggie_burger = "Taimne Burger",
+		veggie_burger_description = "See kerge ja värskendav taimne burger sisaldab nelja krõbedat jääsalatilehte pehmete kuklite vahel, kus on kerge ketchupi puudutus, et anda kerge hapukas maitse. Lihtne, roheline pööre klassikalisele burgerile, ideaalne neile, kes otsivad kergemat einevalikut.",
 		belgian_fries = "Belgia friikartulid",
 		belgian_fries_description = "Maitse parandamiseks kirjutage DM @Giv3n#0753-le ja saatke talle ainult \"fritas\".",
 		coke = "Koola",
 		coke_description = "Pablo?",
+		pepsi = "Steel Fucking File",
+		pepsi_description = "Used for fucking filing things. Not your goddamn taxes though.",
+		fanta_light = "Fanta Light",
+		fanta_light_description = "Naudi haruldast ja värskendavat Fanta Light maitset. Ideaalne kui soovid jooki, mis paneb sind mõtlema: \"Kas ma saaksin Fanta Light, sõber?\" Naudi selle ikoonilise joogi kergeid ja värskendavaid maitseid.",
+		sprite = "Sprite",
+		sprite_description = "Värskenda end pudelis Spritedega, sidruni-laimi limonaadiga, mis pakub lööki. Selles on mullivett, mis kipub kihelust tekitama ja mõnikord isegi valulikkust, kuid see on igati seda väärt. Meeleheitel magususest pakatav Sprite on sinu valik magusa ja mullilise kihiseva elamuse jaoks!",
+		pilk = "Pilk",
+		pilk_description = "Uudishimulik segu Pepsiist ja piimast, käsitsi valmistatud Pilk pakub kihisevat värskendust ja kreemjat siledust. Enne joomist sega korralikult, sest piim asetub loomulikult põhja ja loob unikaalse ning seiklusliku maitseelamuse.",
 		wonder_waffle = "Imevahvel",
 		wonder_waffle_description = "Vegan, laktoosivaba, piimavaba, munavaba, gluteenivaba, orgaaniline, antibiootikumide vaba, sojavaba, ilma fruktoosita, pähklivaba, mitte-GMO, suhkruvaba, rasvavaba ja madala süsivesikusisaldusega",
 		cheeseburger = "Juustuburger",
@@ -6743,18 +8864,18 @@ OP.Global.Locales.Languages["et-EE"] = {
 		donut_description = "Miks on sõõriku keskel auk bwo",
 		green_apple = "Roheline õun",
 		green_apple_description = "See on nagu Red Bull, kuid mängus ei olnud ühtegi eset, mis meenutaks Red Bulli purki.",
-		sandwich = "Vegan võileib",
-		sandwich_description = "See on vegan.",
+		sandwich = "Sink võileib",
+		sandwich_description = "Maitsvat võileiba singi ja juustuga.",
+		vegan_sandwich = "Taimetoitlane võileib",
+		vegan_sandwich_description = "Jah, see on tegelikult lihtsalt üks lehtsalat ja mõned tomatid kahe täisteraleiva vahel. (Ma ei tea, miks keegi seda kunagi sööks)",
 		taco = "Taco",
 		taco_description = "El Brayan'i eripära.",
 		smores = "S'mores",
-		smores_description = "jah",
+		smores_description = "Meeldiv magustoit, mis ühendab kleepuva vahukoore, sulanud šokolaadi ja krõbeda grahama krõpsu klassikalise lõkkekompositsiooniga. Serveeritakse Bean Machine'is ja erinevates baarides ning pubides, need S'mores pakuvad magusat põgenemist nostalgiasse ja mugavusse iga ampsuga. Ideaalne jagamiseks või naudingu hetkeks.",
 		tic_tac = "Tic Tac",
 		tic_tac_description = "Oxy? Pole midagi, ma söön lihtsalt tic tace!",
-		pizza_slice = "Pizza viil",
-		pizza_slice_description = "Veidi pitsat sinu jaoks.",
 		hot_dog = "Hot Dog",
-		hot_dog_description = "Söö seda glizzyt, nagu see oleks sinu viimane.",
+		hot_dog_description = "Naudi seda glizzit nagu see oleks su viimane.",
 		nachos = "Nachod",
 		nachos_description = "Nachod, mis on head isegi Encarnacióni jaoks!!",
 		vanilla_ice_cream = "Vaniljejäätis",
@@ -6765,6 +8886,91 @@ OP.Global.Locales.Languages["et-EE"] = {
 		vanilla_milkshake_description = "Klassikaline võimalus söögikohas, suurepärane lisandiks burgerile ja friikatele!",
 		chocolate_milkshake = "Šokolaadi Milkshake",
 		chocolate_milkshake_description = "Imekaunis šokolaadi-maitseline shake, lihtsalt loodame, et CIA pole teid jahtimas enne, kui maitset proovida jõuate...",
+
+		pizza_dough = "Pitsapõhi",
+		pizza_dough_description = "See kvaliteetne pitsapõhi on valmis Sinu kokakunsti jaoks. Elastne ja painduv, ideaalne vormimiseks Sinu unistuste põhjaks igasuguste katetega. Rulli see välja, kata ja küpseta krõbedaks, kuldpruuniks põhjaks, mis on maitsva koduse pitsa alus.",
+		black_olives = "Mustad oliivid",
+		black_olives_description = "Need mustad oliivid toovad rikkaliku mullase maitse igale roale. Viilutatult ja valmis, et neid pitsadele hajutada, lisavad nad Vahemere vürtsi, mis sobib nii liha- kui taimetoidukatele.",
+		bell_pepper = "Paprika",
+		bell_pepper_description = "Erksavärviline ja magus, see terve punane paprika lisab igale roale värviplärtsu ja krõmpsu. Ideaalne täitmiseks, viilutamiseks või näksimiseks, see on mitmekülgne köögilemmik.",
+		bell_pepper_sliced = "Viilutatud paprika",
+		bell_pepper_sliced_description = "Värskelt viilutatud punane paprika, valmis lisamiseks salatitesse, wokiroogadesse või võileibadesse. Mugavalt ettevalmistatud kõigi teie kulinaarsete seikluste jaoks.",
+		pepperoni = "Pepperoni",
+		pepperoni_description = "Vürtsikas ja maitsev, pepperoni on hädavajalik pitsaarmastajatele. Selle tugev maitse ja rõõmus krõbedus küpsetamisel muudavad selle populaarseks valikuks, lisades iga ampsu täiendava vürtsika maigu.",
+		jalapeno = "Jalapeno",
+		jalapeno_description = "Värsked jalapenod annavad igale pitsale tuleva tagasilöögi. Õhukesteks viiludeks lõigatult tutvustavad need paprikad tulist musket ja erksat taimset nooti, mis lõikab rikkamatest maitsetest läbi, ideaalne neile, kes hindavad vürtsikat serva.",
+		mozarella = "Mozarella",
+		mozarella_description = "Kreemjas ja maitsvaks, mozzarella on pizza kõige iseloomulikum juust. See sulab venivaks ja kleepuvaks kihiks, mis seob ideaalselt kõik kattetükid kokku, luues armastatud pizza tõmbe iga viilu korral.",
+		ham = "Sink",
+		ham_description = "Magus ja soolane sink lisab pizzale rikkaliku maitsetaseme. Selle õrnad, mahedad ampsud pakuvad suurepärast kontrasti koos sulanud juustu kreemja tekstuuriga, muutes selle paljude lemmikuks.",
+		salami = "Salaam",
+		salami_description = "Salami toob pitsadesse robustset ja küüslaugust maitset koos suitsuse alatooniga. Selle tugev tekstuur ja rikkalik maitse pakuvad tugevat hammustust, mis paistab silma teiste katteainete seas.",
+		tomato_sauce = "Tomati kaste",
+		tomato_sauce_description = "See erk tomatikaste on valmistatud küpsetest tomatitest, keedetud ürtide ja vürtsidega, et arendada rikkalikku, sügavat maitset. See toimib alusena, mis täiustab iga pitsa magusaid ja vürtsikaid noote.",
+		flour = "Jahu",
+		flour_description = "Kvaliteetne jahu on hädavajalik täiusliku pitsataigna valmistamiseks. See annab struktuuri ja närimise, mida pitsaarmastajad hindavad, muutes selle põhikoostisosaks pitsade valmistamisel.",
+		olive_oil = "Oliiviõli",
+		olive_oil_description = "Oliiviõli on rikas ja aromaatne, seda niristatakse pizzale lisamaitsekihiks. See lisab kergelt puuviljase noodi ning aitab saavutada kuldse ja krõbeda põhja, mis on vastupandamatu.",
+		pizza_cheese = "Pitsa Juust",
+		pizza_cheese_description = "Tehke oma kodused pitsad veel paremaks selle rikkaliku ja veniva pitsajuustuga, mis sulab kaunilt ja lisab igale maitsvale ampsule kreemja ja veniva tekstuuriga.",
+		pineapple_slices = "Ananassiviilud",
+		pineapple_slices_description = "Magusad, hapukad ja mahlad, need ananassiviilud on ideaalsed, et lisada teie roogadele troopiline noot. Olgu te siis ananassi-pitsa usku või eelistate seda eraldi snäkina, need viilud toovad sära ja maitset igasse kulinaarsesse loomellusse.",
+		pizza_saver = "Pizza päästja",
+		pizza_saver_description = "Selle eesmärk on hoida juust karbist eemal, kuid kui olid laps, arvasid, et seda on mõeldud Barbie'le ja mänguasjafiguuridele istumiseks.",
+		bread_sticks = "Saiapulgad",
+		bread_sticks_description = "Kuldpruunid ja krõbedad väljast ning pehmed ja sitked seest, need saiapulgad on valmistatud pizzataignast. Ideaalne kastmes kastmiseks või nautimiseks iseseisvalt - need on maitsvad ja mitmekülgsed suupisted.",
+
+		pizza_margherita_raw = "Toor Margherita pitsa",
+		pizza_margherita_raw_description = "See Margherita pitsa on värske tomatikastme, värske mozzarella ja aromaatse basiilikuga ideaalselt küpsenud tainal valmistatud, valmis ahju libistamiseks ja täiuslikuks küpsetamiseks.",
+		pizza_salami_raw = "Toores salami pitsa",
+		pizza_salami_raw_description = "Värskelt valmistatud salami pitsa, millel on rikkalik tomatikastmepõhi, kihiti vürtsika salami viilude ja rikkaliku mozzarella peal koduse tainaga, valmis küpsetamiseks krõbedaks ja lihaks headuseks.",
+		pizza_diavola_raw = "Toores Diavola pitsa",
+		pizza_diavola_raw_description = "See Diavola pizza on ekspertlikult valmistatud toores tainas, millele on lisatud vürtsikat pepperonit, tulist jalapenot ja rikkalikult juustu, oodates ahju kuumust, et vabastada oma täielik maitse.",
+		pizza_ham_raw = "Toores sinkpitsa",
+		pizza_ham_raw_description = "See singipitsa on käsitsi valmistatud koduse tainaga, millele on peale pandud maitsvad sinkiviilud, siidine mozzarella ja tomatikaste, kõik korralikult paigutatult ja valmis küpsetamiseks, et luua lohutav ja maitsev einestus.",
+		pizza_hawaiian_raw = "Havai pitsa toores",
+		pizza_hawaiian_raw_description = "See töötlemata Hawai pitsa on ahju jaoks ette valmistatud, rikkaliku kattega, magusa ananassi, maitseka sinki ja veniva mozzarella koos kastmega baasil - valmis iga maitsev hammustusega aastatega kestva vaidluse lõpetamiseks.",
+		pizza_pepperoni_raw = "Toores pepperoni pitsa",
+		pizza_pepperoni_raw_description = "Valmistuge tulise pidu jaoks! See toore vürtsika pepperoni pitsa on täidetud tulise pepperoni viiludega ja vürtsika kastmega, oodates ahjus küpsetamist. Ideaalne neile, kes armastavad oma viilu juurde mõnda kipitust.",
+		pizza_vegetarian_raw = "Toore taimne pizza",
+		pizza_vegetarian_raw_description = "Valmistuge ahjus küpsetama aed-värsket pidusööki selle toore taimse pizza abil. Kuhjatud värskeid köögivilju ja sulavat juustu, see on tervislik nauding, mis ootab ahju.",
+		pizza_margherita = "Margherita pizza",
+		pizza_margherita_description = "Nautige klassikalise Margherita pizza lihtsust kuldse põhjaga, mille peal on rikkalik tomatikaste, kreemine mozzarella ja pisut värsket basiilikut. See ajatu lemmik pakub Itaalia maitset iga maitsva viiluga.",
+		pizza_salami = "Salami Pizza",
+		pizza_salami_description = "Naudi värske Salami pitsa robustseid maitseid, heldelt kaetud vürtsika salami viiludega, mis segunevad kaunilt tulise mozzarella ja tangy tomatikastmega.",
+		pizza_diavola = "Diavola Pizza",
+		pizza_diavola_description = "Koge Diavola pitsa tulesid, millel on vürtsikas pepperoni, jalapenod ja rikkalik tomatikaste, kõik üle ujutatud sulanud juustukihiga, täiuslikult krõbedaks küpsetatud rõõmuks.",
+		pizza_ham = "Sink Pizza",
+		pizza_ham_description = "See Sink pizza tõuseb ahjust, millel on krõbe koorik, millel on mahlaste sinki viilud, kreemjas mozzarella ja tangy tomatikaste, luues meeldiva tasakaalu magusate ja soolaste maitsete vahel.",
+		pizza_hawaiian = "Hawaii pitsa",
+		pizza_hawaiian_description = "Värskelt ahjust võetud Hawaii pitsa ühendab endas vastuolulise, kuid armastatud koosluse mahlastest ananassist ja soolasest singist kuldse kooriku peal. Sukeldu sellesse troopilisse keerdkäiku, mis jätkuvalt tekitab vaidlusi ja rõõmustab maitsemeeli.",
+		pizza_pepperoni = "Pepperoni pitsa",
+		pizza_pepperoni_description = "Tulistav keerdkäik klassikalisele lemmikule! See vürtsikas pepperoni pitsa on küpsetatud täiuslikkuseni, pakkudes krõbedat koorikut, sulavat juustu ja pepperonit tulise tõukega. Mitte nõrganärvilistele, see pitsa toob kuumust!",
+		pizza_vegetarian = "Taimetoidupitsa",
+		pizza_vegetarian_description = "Naudi maitsvat taimetoidupitsat, mis on täis värvikaid köögivilju, kreemjat juustu ja täiuslikku põhja - see on maitsenüansside pidu otse aiast.",
+		pizza_slice = "Margherita pitsaviil",
+		pizza_slice_description = "Naudi klassikalise Margherita pitsaviilu rõõmu, mis koosneb mullitavast mozzarellast, aromaatsest basiilikust ja rikkalikust tomatikastmest krõbedal põhjal. Ideaalne kiireks ja maitsevaks ampsuks.",
+		pizza_slice_salami = "Salami pitsaviil",
+		pizza_slice_salami_description = "Naudi viilukest Salami pitsat, kus vürtsikas salami sulandub sulanud mozzarella ja hapuka tomatikastme peal ideaalselt küpsetatud põhjal. Ideaalne neile, kes ihkavad teravamat maitset.",
+		pizza_slice_diavola = "Diavola Pitsa Viil",
+		pizza_slice_diavola_description = "Sukeldu julgetesse maitsetesse, nautides viilu Diavola pitsat, milles leidub vürtsikat pepperonit, tuld purskavat jalapenot ja sulatatud juustu krõbedal põhjal. Terav maiuspala kuumalembelistele.",
+		pizza_slice_ham = "Sink Pitsa Viil",
+		pizza_slice_ham_description = "Naudi viilukest sink-pitsat, kus magus sink seguneb kreemja mozzarella ja maitsva tomatikastmega kuldsele põhjale. Rahuldustpakkuv segu magusast ja soolasest iga ampsu juures.",
+		pizza_slice_hawaiian = "Havai Pitsaviil",
+		pizza_slice_hawaiian_description = "Naudi üks viil havai pitsat, kus magus ananass kohtub soolase singiga mõnusa mozzarella ja hapuka tomatikastme peal. See võrratu kombinatsioon paneb kahtluse alla tavad ja raputab maitsemeeli, tõestades, et mõnikord teeb kõige meeldejäävama eine ootamatu paaritus.",
+		pizza_slice_pepperoni = "Pepperoni Pitsaviil",
+		pizza_slice_pepperoni_description = "Üks viil vürtsikust headust! Naudi särisevat pepperonit ja sulanud juustu igal ampsul. See viil pakub vürtsikat virinat, täiuslik kiireks vürtsikaks vahepalaks!",
+		pizza_slice_vegetarian = "Taimetoidu pitsaviil",
+		pizza_slice_vegetarian_description = "Üks taimetoiduga pitsaviil, mis on täis värskeid köögivilju ja sulanud juustu. Ideaalne kergus, kuid rahuldustpakkuv amps täis aiamaitselist headust.",
+
+		burrito = "Burrito",
+		burrito_description = "Burrito on Mehhiko ja Tex-Mex köögis tortilla jahust koos mitmesuguste muude koostisosadega valmistatud roog.",
+		tostada = "Tostada",
+		tostada_description = "Tostada on maisitortilla, mis on sügavalt praetud või röstitud.",
+		quesadilla = "Kesadilla",
+		quesadilla_description = "Kesadilla on mehhiko roog ja taco tüüp, mis koosneb tortillast, mida täidetakse peamiselt juustu, mõnikord liha, ubade ja vürtsidega ning seejärel küpsetatakse pannil.",
+		pineapple_cake = "Ananassikook",
+		pineapple_cake_description = "Ananassikook on magustoit, mida tarbitakse Taiwani piirkonnas. Tüüpilise Taiwani ananassikoogi täidiseks on paks ananassimoos, mis maitseb väga magusalt ja hapult.",
 
 		dog_food = "Koera Toit",
 		dog_food_description = "Koeratoit on spetsiaalselt koerte ja teiste sellega seotud kiskjate toitumisvajaduste jaoks formuleeritud ja mõeldud toit.",
@@ -6789,6 +8995,14 @@ OP.Global.Locales.Languages["et-EE"] = {
 		raw_fries_description = "Põhimõtteliselt lihtsalt kartul, aga keegi ei viitsinud sellest midagi enamat teha.",
 		raw_patty = "Toores kotlet",
 		raw_patty_description = "90% päris liha, teine 10% kaotas tõlke käigus pakendis ära.",
+		chicken_nuggets_raw = "Toored kananuggetsid",
+		chicken_nuggets_raw_description = "Valmistatud õrnast kanarinnalihast ning ümbritsetud riivsaiaga, need toored kananuggetsid on valmis küpsetamiseks kuldseks täiuslikkuseks. Ideaalne koduseks ja maitsvaks suupisteks või eineks.",
+		breadcrumbs = "Puruplaadid",
+		breadcrumbs_description = "Need lihtsad puruplaadid on ideaalsed krõbeda, kuldse katte lisamiseks teie lemmik praetud või küpsetatud roogadele. Valmistatud rikastatud leivast, tagavad need igal ajal maitsva krõbeduse.",
+		chicken_breast = "Kanarind",
+		chicken_breast_description = "Värsked ja õrnad, need toored kanarinnad on mitmekülgne koostisosa, mis ootab teie kulinaarset loomingulisust. Ideaalne grillimiseks, küpsetamiseks või praadimiseks, pakuvad need kvaliteetse valguallika mis tahes eine jaoks.",
+		chicken_nuggets = "Kanatükid",
+		chicken_nuggets_description = "Need värskelt valmistatud kanatükid on kuldpruunid ja krõbedad väljast, õrnad ja mahedad seest. Ideaalselt maitsestatud ja praetud täiuslikkuseni, nad on suurepärane vahepala või eine.",
 
 		apple = "Õun",
 		apple_description = "Hoiab kurjad arstid eemal!",
@@ -6812,6 +9026,13 @@ OP.Global.Locales.Languages["et-EE"] = {
 		strawberry_description = "Tavaliselt leitakse väljadel... igavesti.",
 		watermelon = "Arbuus",
 		watermelon_description = "Kas vesi või melon? Me võib-olla kunagi ei tea.",
+		lemon = "Sidrun",
+		lemon_description = "Elav ja mahlane sidrun, mis pulbitseb värskendava maitse ja erksa kollase värviga. Ideaalne lisand lemmiktoiduile ja jookidele värsket pööret lisamiseks. Iga amps annab tsitruselise hoobi, mis äratavad üles teie maitsmispungad.",
+
+		orange_juice = "Apelsinimahl",
+		orange_juice_description = "Värskelt pressitud ja täis tsitrusemagusust - see apelsinimahl on puhas päikesepaiste klaasis, ilma lisanditeta - lihtsalt käsitsi pressitud apelsinide headus.",
+		apple_juice = "Õunamahl",
+		apple_juice_description = "Käsitsi pressitud krõbedatest õuntest, see mahl on värskendavalt puhas loodusliku õuna maitsega ja puudutus aia magususega.",
 
 		banana_peel = "Banaanikoore koor",
 		banana_peel_description = "Päris libe, hoidke ette, kui astute selle peale.",
@@ -6848,6 +9069,9 @@ OP.Global.Locales.Languages["et-EE"] = {
 		cabbage = "Kapsas",
 		cabbage_description = "Täiuslik koduse kimchi valmistamiseks.",
 
+		cabbage_seeds = "Kapsaseemned",
+		cabbage_seeds_description = "Need tugevad kapsaseemned on esimene samm sinu teel krõbeda ja lehtsa kapsa kasvatamiseni. Istuta need kuhugi viljakasse mulda ning vaata, kuidas nad kasvavad tugevateks kapsasteks, mis sobivad mitmesugusteks kulinaarseteks naudinguteks. Alates värskest salatist kuni vürtsika kimchini on need kapsad valmis muutma sinu köögiseiklusi.",
+
 		smoothie = "Smuuti",
 		smoothie_description = "Täiuslik segu puuviljadest, köögiviljadest ja elektrolüütidest, mis aitab ravida isegi kõige hullemat mängudest põhjustatud pohmelli.",
 		blender = "Segisti",
@@ -6864,10 +9088,32 @@ OP.Global.Locales.Languages["et-EE"] = {
 		jack_o_lantern_description = "Kõrvits, millel on nägu sisse lõigatud.",
 
 		cigarette = "Sigaret",
-		cigarette_description = "Kui te ei suitseta, siis olete tühikargaja sõber",
+		cigarette_description = "Kui sa ei suitseta, siis oled sitapea! Tõmba suitsu ja näe välja kõige lahedam tüüp linnas—vähemalt nii öeldakse. Sinu kopsud võivad sellega ehk mitte nõustuda, aga hei, stiili jaoks tuleb teha ohverdusi, eks?",
 		cigarette_pack = "Sigaretipakk",
-		cigarette_pack_description = "Sinu isale, kellel on sigareti sõltuvus (loodetavasti tuleb ta pärast nende saamist tagasi).",
+		cigarette_pack_description = "Klassikaline suitsupakk - sest ilmselgelt ei ütle miski \"Ma tulen tagasi 5 minuti pärast\" quite like these. Ideaalne oma sisemise saladusliku isa väljendamiseks, kes läks sigarette ostma ja... noh, sa tead ülejäänu.",
+		cigarette_carton = "Sigarettide karp",
+		cigarette_carton_description = "Vaja terve karp sigarette? Siin on su lahendus! Karp sigarette, mis on sinu pühendumuse tunnistus (või su isa oma, kui ta neid jätkuvalt toob). 8 pakki sees tähendab, et sul on piisavalt, et toita oma halba harjumust ja jääb paar alles ka jagamiseks... või mitte.",
+		snus_pack = "Snus purk",
+		snus_pack_description = "See purk on nagu minu isiklik rõõmu varu. Ava see, võta üks kotike, ja tunne seda tõuget. Mul peab alati üks kaasas olema - ei saa ilma minu Zyni fixita hakkama!",
+		snus = "Snus",
+		snus_description = "Need väikesed kotikesed on nagu päästjad, mees. Lihtsalt viska üks oma huule alla ja boom - kohe on kerge joovastus ilma suitsuta. Kõik keerleb selle aeglase põlemise ümber ja ärrituse eemal hoidmisest. Ei saa neist küllalt!",
 
+		cigar_olivia = "Oliva Serie G",
+		cigar_olivia_description = "Oliva Serie G pakub unikaalset ja tasakaalustatud maitset, segades rikkalikku kohvi ja seedri noote kerge pähklise magususe vihjega. Selle keskmine keha ja sile lõppmaitse muudavad selle ideaalseks valikuks neile, kes soovivad rafineeritud ent kättesaadavat suitsu.",
+		cigar_romeo = "Romeo y Julieta 1875",
+		cigar_romeo_description = "Otsid midagi mahedat ja ligipääsetavat? Romeo y Julieta 1875 pakub maitsvat ja maalähedast maitset koos röstitud mandlite ja kerge magususe hõnguga. Ideaalne lõõgastavaks õhtuks ilma tugeva löögita.",
+		cigar_arturo = "Arturo Fuente Gran Reserva",
+		cigar_arturo_description = "Arturo Fuente Gran Reserva sujuva tõmbega ja tasakaalustatud seguga pakub magusa puidu ja pisut muskaadipähkli noote. Keskmise kehaga, kuid rikka maitsega, sobib see ideaalselt kõigile, kes naudivad klassikalist suitsu ilma jõulise laksuta.",
+		cigar_cohiba = "Cohiba",
+		cigar_cohiba_description = "Rafineeritud maitse eelistajatele pakub Cohiba Robusto rikkalikku ja kreemjat suitsu, segades peent vürtsi ja seedripuu vihjeid. See on sile, keskmise täidlusega sigar, mis räägib elegantsist, kartmata üle jõu käia.",
+
+		tobacco_leaf = "Tubaka Leht",
+		tobacco_leaf_description = "See värske roheline tubaka leht on alles oma teekonna alguses. Järgmise viie päeva jooksul kuivab see välja, muutudes sügavpruuniks, ideaalseks sigarite keerde keeramiseks. Jälgige selle muundumist tähelepanelikult!",
+		cigar_homemade = "Sigaar (käsitsi rullitud)",
+		cigar_homemade_description = "See käsitsi rullitud sigaar pakub rikkalikku, mullast maitset kerge vürtsiga. Hoole ja täpsusega valmistatud, see on täiuslik reward kogu protsessi iga sammu jaoks tehtud aja ja vaeva eest.",
+
+		crack = "Kräkk",
+		crack_description = "Tuntud oma kiire, intensiivse kõrguse poolest, see kivitaoline aine on tänavaversioon kokaiinist, mis on kokku keedetud. See võib pakkuda eufoorilist tõuget, kuid ettevaatust: see on sama kurikuulus oma ohtlikkuse kui ka tõmbe poolest. Ole ettevaatlik—esimesest tõukest kõva kukkumiseni on see libe nõlv.",
 		cocaine_bag = "Kokaiini kott",
 		cocaine_bag_description = "Väiksemad tükid Colombia ajaloost.",
 		cocaine_brick = "Kokaiini telliskivi",
@@ -6877,21 +9123,28 @@ OP.Global.Locales.Languages["et-EE"] = {
 		oxy = "Oksü",
 		oxy_description = "Kas sul on mõned ravimid? Aitab seljavalude vastu.",
 		antibiotics = "Antibiootikumid",
-		antibiotics_description = "Aidates vabaneda nakkustest ja parasiitidest.",
-		pain_killers = "Valuvaigistid",
-		pain_killers_description = "Nüüd on tipplahenduse müügiaeg, vaja oma ravimeid.",
+		antibiotics_description = "Need väikesed elupäästjad lükkavad parasiidid ukse taha, eriti kui olete natuke liiga palju söönud kahtlast alaküpsetatud liha. Võtke üks neist ja te tunnete end vähem nagu putukatele mürgise einulaud lühikese aja jooksul.",
+		pain_killers = "Ibuprofeen",
+		pain_killers_description = "Ibuprofeen on teie valik peavalude, lihasvalude või nende kordade korral, kui tegite jõusaalis liiga palju. Tuntud valu, põletiku ja palaviku vähendamisega, on tegu väikese tabletiga, mis lööb suure löögi. Lihtsalt pidage meeles, et mõõdukus on võtmesõnaks – see pole kompvek, hoolimata sellest, kui palju teie selg valutab.",
 		weed_seeds = "Kanepiseemned",
 		weed_seeds_description = "Kasvatab 420, sõber.",
 		weed_1q = "Weed 1q",
 		weed_1q_description = "420 sõber",
 		weed_1oz = "Weed 1oz",
 		weed_1oz_description = "1680 sõber",
+		weed_bud = "Murula",
+		weed_bud_description = "Eepiline 420, sõber!",
 
 		oxy_prescription = "Oksü retsept",
 		oxy_prescription_description = "Kahtlane oksü retsept.",
 
+		generic_prescription = "Geneeriline retsept",
+		generic_prescription_description = "Retsept mõne ravimi jaoks. Peaks olema sobiv järeltäitmiseks.",
+
 		brownies = "Pähklid",
 		brownies_description = "Kleepuvad, vahtu ja kahekordse kogusega šokolaadi vaid natukene ekstra laksu, mis paneb sind tagasi tõmbuma ja elu küsimusi küsima.",
+		weed_gummies = "Murula kommid",
+		weed_gummies_description = "Maitsvad viis kõrgust saavutada.",
 
 		ejector_seat = "Väljutustool",
 		ejector_seat_description = "Ejecto Seato, sest miks mitte!",
@@ -6906,6 +9159,9 @@ OP.Global.Locales.Languages["et-EE"] = {
 		decryption_key_green_description = "KAS SA TEADSID? Coca-Cola oli algselt roheline.",
 		decryption_key_blue = "Sinine krüpteerimisvõti",
 		decryption_key_blue_description = "KAS SA TEADSID? On olemas siniste jalgadega lind nimega suula?",
+
+		pager = "Piipar",
+		pager_description = "Piipar. Näib, et sellel on ainult üks kontakt ja ettemakstud kaart, mis võimaldab vaid mõningaid sõnumeid.",
 
 		ballistic_shield = "Ballistiline kilp",
 		ballistic_shield_description = "Seda kilpi tuleks kasutada RP jõukondade territooriumidele minnes.",
@@ -6926,19 +9182,118 @@ OP.Global.Locales.Languages["et-EE"] = {
 		pet_mouse_description = "See ümmargune ja kohev tšintšilja on ideaalne kaaslane igaks seikluseks. Selle pehme karv ja mänguline isiksus teevad sellest ideaalse kaisulooma, ning ta rõõmuga istub su õlal kui käid oma päeva toimetusi ajamas.",
 		pet_raccoon = "Rõõmsameelne Pesukaru Röövel",
 		pet_raccoon_description = "Tutvustame Röövlit, kohevat pesukarud, kes on alati valmis seiklema. Plümpfiga keha ja kelmikas isiksusega, ta rõõmuga istub su õlal ja aitab sul aaret otsida. Kas oled valmis tema seiklustega kaasa minema?",
+		pet_pingu = "Pingviin",
+		pet_pingu_description = "See armas väike pingviin on ideaalne kaaslane igas seikluses. Selle pehme karvkatte ja mängulise iseloomu tõttu saab ta õnnelikult sinu õlale istuda, kui sa oma päeva jooksul toimetad.",
+		pet_banana_cat = "Banaanikass",
+		pet_banana_cat_description = "Teie puuviljaline kass-sõber! Banaanikass istub teie õlal, lisades teie päevale mängulise võluri. See on täiuslik aksessuaar teie elusse kapriisse puudutuse lisamiseks.",
+		pet_snowman = "$200 Shitty Savings Bond",
+		pet_snowman_description = "A shitty $200 savings bond that represents your fucking commitment to financial security. This shit can be cashed in at participating banks, providing you with a fucking boost to your savings and a fucking step closer to your fucking financial goals.",
+		pet_owl = "Hooty",
+		pet_owl_description = "Hooty, teie tark ja valvas kaaslane, istub elegantelt teie õlal. Oma teravate silmade ja pehme sulestikuga lisab see võluv öökull teie seiklustele pisut maagiat. Alati valmis jagama tarkuse hõiget on Hooty ideaalne kaaslaseks igal rännakul.",
+		pet_pig = "Porkchop",
+		pet_pig_description = "Väike põrsas suure iseloomuga, õnnelikult õlal istumas. Alati valmis ergutama omapärase nuuskamisega või hindama sinu eluvalikuid võluva silmavaatega. Olgu sa siis seiklusi ette võtmas või lihtsalt jalutuskäigul, see tilluke kaaslane on täiuslik segu võlust ja sassi.",
 
 		hotwheels_mcqueen = "Vilkuv välk McQueen",
 		hotwheels_mcqueen_description = "Kiirus, ma olen kiirus. Ujun nagu Cadillac, pistelise nagu Beemer. KATCHOW KATCHOW KATCHOW",
 		hotwheels_towmater = "Kraanamasin",
 		hotwheels_towmater_description = "Minu nimi on Mater, nagu tomat ilma T-ta",
 
+		kinder_surprise = "Kinder Üllatusmuna",
+		kinder_surprise_description = "See pole tavaline muna! Murra see lahti ja avasta imede maailm ning üks kaisuloom ootamas, et saada sinu sõbraks. Kes sind seal ootab? Kas see võiks olla energiline Särav McPaelips, tark Kapten Vurrnägu või isegi stiilne Härra Kena Püksid? Üllatus on pool naudingut!",
+		plush_green = "Sammas McHairface",
+		plush_green_description = "Sellel pehmosel on tõsine voodipeanu, kuid ära muretse, nad on alati valmis seiklusteks (isegi kui neil pole aimugi, mis ootab).",
+		plush_red = "Superstaar Silmatuled",
+		plush_red_description = "See pehmos on alati lahe, rahulik ja kogutud. Ehkki nad ei saa ilma päikeseprillideta näha, tunnevad nad kindlasti rütmi.",
+		plush_pink = "Härra Kena Püksid",
+		plush_pink_description = "See pehmos on elegantselt riietuv, kes näeb alati välja parim. Ehkki nad võivad veidi peenutsevad olla, on nad alati maapealsed (noh, nii maapealsed kui pehmos võib olla tipplipsuga).",
+		plush_blue = "Sädelev McPael",
+		plush_blue_description = "See väike sõber on saanud elektrilise välimuse täielikult selgeks, tema juuksed krõbisevad energiast ja lips püsib alati korralikult. Ära lase sädemetel end segada, sest Sädelev McPael on kõik kallistused ja hubased õhtud sisse. Lihtsalt ära puuduta tema juukseid, kui ta laeb end uneloo jaoks!",
+		plush_white = "Kapten Nurri",
+		plush_white_description = "See pehme mänguasi on tark vana hing, kelle habe pajatab lugusid. Ehkki nad ei räägi, on neil alati kuulav kõrv (või peaks ütlema, kuulav õmblus?).",
+		plush_yellow = "Päikeselise õuduse hirm",
+		plush_yellow_description = "See mängukaru on kõik head vibreerimised ja positiivne energia. Nad võivad olla veidi jahedad, kuid nad on alati valmis head aega veetma.",
+		plush_orange = "Tangi avastaja",
+		plush_orange_description = "See mängukaru on alati uute seikluste otsingul. Nad võivad olla veidi segased, kuid nad on alati valmis väljakutseteks.",
+		plush_wasabi = "Wasabi äss",
+		plush_wasabi_description = "See pisike on tõeline haruldus, täpselt nagu värskendav Wasabi plahvatus! Nende särav roheline karv kindlasti püüab pilke. Ära alahinda nende väikest suurust - nad on täis isikupära ja alati valmis seiklusteks.",
+
+		cat_0 = "Triibuline kass",
+		cat_0_description = "See triibuline pätakas on alati millegi kallal, olgu see siis hiilimine sinu sülle või maailma vallutamise plaani seadmine ühe uinumise kaupa. Ta uhkeldab enesekindlusega nagu kass, kes teab, et ta on peategelane.",
+		cat_1 = "Must Kass",
+		cat_1_description = "Elegantne, varjundlik ja võib-olla isegi maagiline, see musta kasukaga kass teab, kuidas end tähelepanu keskpunktiks seada või varastada sinu suupisted. Ta on võrdselt stiilne ja armas, omades annust draamatilisust ning pikki, hindavaid pilke.",
+		cat_2 = "Pruun Kass",
+		cat_2_description = "Sooja ja maalähedase olemisega see pruun iludus on nagu kassiline kuum šokolaadikruus, väljendatuna kassi kehakeeles - kui kuum šokolaad aeg-ajalt su laualt asju maha lükkaks. Ta on rahulik, kiinduv ja üllatavalt hea sinu kutsetele mitte reageerimises.",
+
+		dog_0 = "Lääne-Highlandi terjer",
+		dog_0_description = "See karvane pisike pall on ühtaegu truu kaaslane ja jalutav mop. Alati valmis seiklusteks, isegi kui see tähendab vaid oma saba taga ajamist tundide kaupa. Suurepärane kaisutaja, aga küsitava puhtusega.",
+		dog_1 = "Mops",
+		dog_1_description = "Uhke mops oma näoga, mida armastaks ainult ema — või tegelikult keegi, ikkagi armastaks. Jalgadelt lühike, aga isikupära suur, see kõhukas sõber hiilib end sinu südamesse ja tõenäoliselt ka su näksidesse.",
+		dog_2 = "Pudel",
+		dog_2_description = "Täiuslikult hoolitsetud puudel, kes teab, et ta on kõige fantaasiarikkam koer ruumis. Võluv, elegantne ja aeg-ajalt täielik draama kuninganna, nad toovad glamuuri igasse keskkonda - olgu see siis punane vaip või teie elutuba.",
+
+		hen_0 = "Kana",
+		hen_0_description = "Jõuline kanapoeg, kes käib ringi nagu ta valdaks kogu linnukoori - ja ausalt öeldes ta tõenäoliselt teebki seda. Alati nokkimas, kiretades ja andes sulle seda kõrvalpilku, see suleline diiva on võrdselt armas ja veidi hirmuäratav.",
+		rat_0 = "Rott",
+		rat_0_description = "Salakaval pisike näriline tänavasilmadega ja oskus leida snäkke sealt, kus te seda kõige vähem ootate. Olgu see siis kriuksuvaid purukesti kogudes või maailma vallutamist plaanides, see rott on alati millegi kallal.",
+
+		rabbit_0 = "Tumepruun jänes",
+		rabbit_0_description = "Rikas tumepruun jänes, kelle energiatase sobib ideaalselt tema nimega. Alati ärkvel, alati valmis sprindiks ja ilmselt mõistab sind hukka, et oled temast aeglasem.",
+		rabbit_1 = "Helepruun jänes",
+		rabbit_1_description = "Helepruun jänes, kes näeb välja nagu otse pagarikojast hüpanud. Magus, rabedalt vaimustuses ja just õige kogus kaost sinu päeva jaoks.",
+		rabbit_2 = "Liivakarva jänes",
+		rabbit_2_description = "Liivakarva jänes, kellel on võikalt sile kasukas ja anne hüpata kõige ebamugavamatesse kohtadesse. Ta on võrdselt võluv ja kergelt ärritav.",
+		rabbit_3 = "Hall Härjasilm",
+		rabbit_3_description = "Elegantne hall jänes, kes liigub nagu suitsupilv tuules. Pilguta silma, ja ta on kadunud - kuid mitte enne kui ta on varastanud su südame (ja võib-olla sinu salati).",
+
 		boxing_gloves = "Boksi kindad",
 		boxing_gloves_description = "Muudab teid Rocky'ks, kuid tõenäoliselt ei saa järge...",
 		leash = "Koera rihm",
-		leash_description = "Keegi ei tea, miks sa selle ostsid, kuid sa kindlasti saad selle eest hukkamõistu.",
+		leash_description = "\"Olgu nõrk või tugev, rihma otsas on kõik, kes sinna kuuluvad.\" - Tiquon Cox",
 
 		shrooms = "Seened",
 		shrooms_description = "Keegi ütles, et neid võiks pitsale panna, kuid nüüd on pitsa ise minu peal... oodata, kes ma üldse olen?",
+
+		lean = "Lean",
+		lean_description = "Sippin nats sizzurpi, siip, sippin natsi, siip.",
+
+		fentanyl = "Fentanüül",
+		fentanyl_description = "Hüüdnimega \"hiiliv uinutaja\", on fentanüül võimas väike eliksiir, mis pakib hoobi. Vaid selle aine õhukese sosina abil saate isegi kõige tulisemad unne saata. Kuid olge ettevaatlik! See on nii tugev, et kui uned oleksid raha, oleksite ühes annuses miljardär. Ideaalne suurte probleemide unes lahendamiseks.",
+		narcan = "Narcan",
+		narcan_description = "See elupäästev antidoot on teie kiire reageering fentanüüli mürgistusele. Kiiresti manustatava tableti kujul pöörab Narcan fentanüüli toimeid tagasi, tuues teid piirilt tagasi märkimisväärse kiirusega. Hoidke seda alati käepärast - see on teie taskus olev kaitseingel, valmis kiireks tegutsemiseks, kui seda kõige enam vajate.",
+
+		grimace_shake = "grimass raputus",
+		grimace_shake_description = "Hullumeelne? Olin kunagi hull. Panid mind tuppa. Kummist tuppa. Kummist tuppa rottidega. Ja rotid ajavad mind hulluks. Hullumeelne? Olin kunagi hull. Panid mind tuppa. Kummist tuppa. Kummist tuppa rottidega. Ja rotid ajavad mind hulluks. Hullumeelne? Olin kunagi hull. Panid mind tuppa. Kummist tuppa. Kummist tuppa rottidega. Ja rotid ajavad mind hulluks. Hullumeelne? Olin kunagi hull. Panid mind tuppa. Kummist tuppa. Kummist tuppa rottidega. Ja rotid ajavad mind hulluks. Hullumeelne? Olin kunagi hull.....",
+
+		hydrogen_peroxide = "Vesinikperoksiid",
+		hydrogen_peroxide_description = "See mulisev jook, tuntud oma mullitamise ja puhtuse poolest, on laborites ja mujal laialt levinud. Kuigi see on kuulus lõikude ja pindade laitmatuks muutmise eest, on sellel ka oskus seguneda teiste koostisosadega, et \"unistuste\" mõttes valmistada üsna võimsaid segusid. Käsitlege valgustuse ja pisut ettevaatlikkusega.",
+
+		jolly_ranchers = "Jolly Ranchers",
+		jolly_ranchers_description = "Naudi magusaid ja hapukaid Jolly Ranchersi maitseid, mis on klassikalised kõvakommid ja plahvatavad puuviljase headusega.",
+		jolly_rancher_watermelon = "Arbuusi maitsega Jolly Rancher",
+		jolly_rancher_watermelon_description = "Koge veini mõnusat maitset nende võrratute Jolly Rancheri kõvade kommidena.",
+		jolly_rancher_raspberry = "Vaarika maitsega Jolly Rancher",
+		jolly_rancher_raspberry_description = "Naudi magusa ja hapuka vaarika maitse suussulavat segu nende Jolly Rancheri kõvade kommidega.",
+		jolly_rancher_apple = "Õuna maitsega Jolly Rancher",
+		jolly_rancher_apple_description = "Naudi õuna krõmpsuva ja hapukat maitset nende maitsvate Jolly Rancheri kõvade kommidega.",
+		jolly_rancher_cherry = "Kirssi Jolly Rancher",
+		jolly_rancher_cherry_description = "Nauti korvaamatonta kirssin makua näissä vastustamattomissa Jolly Rancher -karamelleissa.",
+		jolly_rancher_grape = "Viinirypäle Jolly Rancher",
+		jolly_rancher_grape_description = "Koe mehukkaan ja herkullisen viinirypäleen maku näiden suussa sulavien Jolly Rancher -karamellien kanssa.",
+
+		lollipop_pack = "Lutsupakk",
+		lollipop_pack_description = "Sukeldu müstilisse maitsemeelte virvarri koos selle lutsupakiga. Iga üks on magus üllatus, pakkudes meie võrratute ja puuviljaste sortide juhuslikku segu. Rõõm maitsemeeltele igas värviküllases pakendis!",
+		lollipop_apple = "Õunaluts",
+		lollipop_apple_description = "Magus koos hapuka pöördega - see õunalõhnaline luts on nagu jalutuskäik sügistesse õunaaedadesse, püüdes kinni krõbedate, mahlaste õunte olemuse igas limpsis.",
+		lollipop_coke = "Koola luts",
+		lollipop_coke_description = "Klassikaline koolamaigu lõhn ja maitse on püütud lollipopis. See on mullivaba, värskendav maiustus, mis pakub tuntud maitset soolavees piruetis karamellina.",
+		lollipop_grape = "Viinamarjalollipop",
+		lollipop_grape_description = "Täis rikkalikku ja mahlast viinamarjavärsket maitset, on see lollipop lilla nauding, mis viib sind otse päikesepaistelistele väljadele.",
+		lollipop_raspberry = "Vaarikalollipop",
+		lollipop_raspberry_description = "See vaarikalollipop pakub marjamaitsest plahvatust, ühendades magususe kerge hapukusega, sarnaselt suvisele viljale, mille järgi see on nime saanud.",
+		lollipop_strawberry = "Maasika lutsukomm",
+		lollipop_strawberry_description = "Küpsenud päikeses maasikate essents on selle lutsukommi sisse imbunud, pakkudes magusat marjarohket kogemust, mis on sama võluv kui päikesepaisteline päev.",
+		lollipop_watermelon = "Arbuusi lutsukomm",
+		lollipop_watermelon_description = "Värskendav tükk suve, see arbuusi lutsukomm on täis magusust ja mitte ühtegi seemet, tehes sellest mahlast ja niisutavast maiusest ajatu mõnusa hõrgutise.",
 
 		bucket = "Ämber",
 		bucket_description = "Võib kasutada ajutise kiivrina.",
@@ -6949,34 +9304,67 @@ OP.Global.Locales.Languages["et-EE"] = {
 		aluminium_powder_description = "Mituotstarbeline pulber, mida laialdaselt kasutatakse tööstus- ja keemiatööstuses. Kui see segatakse teatud koostisosadega, võib see põhjustada tugevaid termilisi reaktsioone, mis tekitavad intensiivseid kuumuse ja valguse allikaid.",
 		iron_oxide = "Raudoksiidipulber",
 		iron_oxide_description = "Tavaline pulber, mis koosneb raua- ja hapnikumolekulidest, mida kasutatakse erinevates tööstusprotsessides. Kui seda segatakse teatud ainetega, võib see osaleda väga eksotermilistes reaktsioonides, vabastades soojust ja energiat.",
+		steel_filings = "$500 Shitty Savings Bond",
+		steel_filings_description = "A fucking $500 savings bond that serves as a substantial investment in your fucking future. When the fucking time is right, redeem it at a bank to unlock its full fucking value and take a significant goddamn stride toward your financial aspirations.",
 
+		gold_ore = "Kulda",
+		gold_ore_description = "Avage looduse aare see kulda! Toore ja töötlemata, see on teie läbipääs selle sädeleva ilu avastamiseks, mis on peidus maa sees.",
+		gold_nugget = "Kuldnugget",
+		gold_nugget_description = "Väike, sädelev õnnepala! See kuldnugget on kõva töö ja püsivuse rafineeritud tulemus, ideaalne käsitööks või kauplemiseks.",
 		gold_bar = "Kuldmünt",
-		gold_bar_description = "Kasutatakse remondiks ja käsitööks.",
+		gold_bar_description = "See massiivne kuldbaar on rikkuse ja võimaluste sümbol, säramas potentsiaaliga. Avastamise ja nutikate pingutuste kaudu leituna saab selle maha müüa märkimisväärse summa eest, muutes selle hinnatud varaks neile, kes soovivad oma finantsseisu tõsta. Iga baar on tunnistus kulla püsiväärtusest igas turul.",
+
+		ancient_ring = "Muistne sõrmus",
+		ancient_ring_description = "Tuule ja aja poolt kahjustatud kullast sõrmus, mille keerulised graveeringud on kulunud minevikuaegadel armastuse ja truuduse sosistusteks. Kunagi igavese sideme sümbolina, kutsub see nüüd esile lugude ja kadunud tsivilisatsioonide võlumaailma.",
+		ancient_coin = "Muistne münt",
+		ancient_coin_description = "See münt kannab endas muistsete kauplemiste märke, mille kuldne pind on mere soolade ja liiva poolt tuhmunud, kandes disainis sajandite raskust. Sellele graveeritud sümbol räägib ühest impeeriumi haardest ja ajaloo voolavast käest, mis toob rikkust käest kätte.",
 
 		aluminium = "Toore alumiinium",
-		aluminium_description = "Kasutatakse remondiks ja käsitööks.",
+		aluminium_description = "Alumiinium on toore ja töötlemata alumiiniumi vorm, mida tavaliselt leidub vähem töödeldud olekus. See on ideaalne põhiliste paranduste ja käsitöö jaoks, pakkudes oma kergekaalulisi, kuid tugevaid omadusi erinevateks rakendusteks.",
 		glass = "Kare klaas",
-		glass_description = "Kasutatakse remondiks ja käsitööks.",
+		glass_description = "See põhiliste klaasi vorm, kuigi poleerimata ja ebatäiuslik, on mitmekülgne erinevate käsitöövajaduste ja põhiliste paranduste jaoks, pakkudes olulist läbipaistvust ja kaitset.",
 		rubber = "Toore kummi",
-		rubber_description = "Kasutatakse remondiks ja käsitööks.",
+		rubber_description = "See paindlik ja vormitav toore kumm on hädavajalik käsitöö ja põhiliste sõidukiparanduste jaoks. Selle kohandatavus muudab selle sobilikuks erinevateks kasutusotstarveteks, alates isoleerimisest kuni põrutuste neelamiseni.",
 		scrap_metal = "Vanametall",
-		scrap_metal_description = "Kasutatakse remondiks ja käsitööks.",
+		scrap_metal_description = "Kogumik erinevaid metalle nende kõige elementaarsemas vormis, sageli taaskasutatud ja uuesti kasutatud. Ideaalne käsitööks ja elementaarseteks parandusteks, see kehastab ressursitõhususe põhimõtet inseneritöös.",
 		steel = "Toor teras",
-		steel_description = "Kasutatakse remondiks ja käsitööks.",
+		steel_description = "Tugev ja vastupidav, toor teras on käsitöö ja parandustööde jaoks põhiline materjal. Selle tugev loomus teeb selle hädavajalikuks nii lihtsate kui ka keerukate projektide struktuurse terviklikkuse jaoks.",
+
+		aluminium_ore = "Alumiiniumi malv",
+		aluminium_ore_description = "Boksiidirohke tükk alumiiniumimaaki, mis ootab ümberkujundamist kergeks ja mitmekülgseks alumiiniumiks. Sulatage see maha, et toota metall, mis on ideaalne kõige alates lennukitest kuni joogikarbideni käsitööks. Oluline ressurss kaasaegseks inseneriks ja igapäevaseks mugavuseks.",
+		iron_ore = "Rauamaagi",
+		iron_ore_description = "Toor tükk rauamaaki, valmis sulatamiseks tugevaks ja vastupidavaks teraseks. See malm on arvukate tööriistade, masinate ja ehitiste alus. Eemalda metalliline headus ja sepista sellest midagi uskumatut.",
+
+		rusty_tank_shell = "Roostes tankikoor",
+		rusty_tank_shell_description = "See siin roostes vana tankikoor on läbinud rohkem mustust ja sodi kui ükski redneck'i veoauto! Kaevatud ajaloo sügavustest, see on hea vana mineviku tükk, sõbrad. Ideaalne istumiseks rõdul ja sõja lugude jagamiseks poistega!",
+		rusty_cannon_ball = "Rohke pärase kuul",
+		rusty_cannon_ball_description = "Armas sõber! Siin on vana kanuunikuul, mis on uppu nõretanud piraadilaevast. Rostes ja tuuletud soolane sügavus on selle vana reliikvia pealejäänutest karestamist. Pidage silmas, kuidas ma armatseks selle tuimast hingest, mis kannab endas tormiseid merelahinguid ja maetud aardeid. Valmistuge, armsad sõbrad, käsitlege hoolikalt, et ei äratataks tema tuld!",
+		rusty_gear = "Rostes hammasratas",
+		rusty_gear_description = "See vana hammasratas, nüüd roostes ja kulunud, mängis kunagi olulist rolli minevikupäevade masinavärgis. Ehkki selle hambad võivad olla tuhmid, hoiab see endas paljude pöörete kaja ajaloolises vormis.",
+		rusty_diving_helmet = "Roostetanud sukeldumiskiiver",
+		rusty_diving_helmet_description = "See iidne sukeldumiskiiver, paksu roostekihiga kaetud, vallutas kunagi ookeani sügavused. Nüüd seisab see veealase uurimise reliikviana, kajastades jutustusi uppunud aaretest ja mereavastustest.",
 
 		purified_aluminium = "Puhastatud alumiinium",
-		purified_aluminium_description = "Kasutatakse professionaalsete remonditööde jaoks.",
+		purified_aluminium_description = "See kõrgema klassi alumiinium on hoolikalt rafineeritud ülima kvaliteedi ja jõudluse tagamiseks. Peamiselt mehaanikute poolt kasutatavaks täiustatud sõidukite parandusteks tagab see vastupidavuse ja usaldusväärsuse nõudlikes rakendustes.",
 		tempered_glass = "Karastatud klaas",
-		tempered_glass_description = "Kasutatakse professionaalsete remonditööde jaoks.",
+		tempered_glass_description = "Tugevdatud vastupidavuse ja ohutuse tagamiseks läbib karastatud klaas kontrollitud termilisi töötlusi. Ideaalne kvaliteetsete sõidukite remonditööde jaoks, tagades optimaalse selguse ja vastupidavuse.",
 		vulcanized_rubber = "Vulkaniseeritud kumm",
-		vulcanized_rubber_description = "Kasutatakse professionaalsete remonditööde jaoks.",
+		vulcanized_rubber_description = "Vulcanisatsiooniprotsessi kaudu töödeldud, et suurendada vastupidavust ja elastsust, seda kummi kasutatakse kvaliteetsetes remonditöödes. See pakub paremat jõudlust ja pikkaajalist vastupidavust, ideaalne oluliste sõidukikomponentide jaoks.",
 		processed_metal = "Töödeldud metall",
-		processed_metal_description = "Kasutatakse professionaalsetel parandustöödel.",
+		processed_metal_description = "See metall on rafineeritud ja töödeldud kõrgemate kvaliteedinõuete täitmiseks. Kuigi see pole käsitöö jaoks sobiv, on see sõidukite remonditöödes suurepärane, pakkudes paremat tugevust ja vastupanu kulumisele.",
 		refined_steel = "Töödeldud teras",
-		refined_steel_description = "Kasutatakse professionaalsetel parandustöödel.",
+		refined_steel_description = "Elegantne ja kvaliteetne teras on eksklusiivselt kasutatud mehaanikute poolt sõidukite esmaklassilisteks remontideks. Selle ülim tugevus ja korrosioonikindlus tagavad maksimaalse jõudluse.",
 
-		power_saw = "Elektriline saag",
-		power_saw_description = "Kasutatakse läbilõikamiseks.",
+		power_saw = "Saag",
+		power_saw_description = "Mitmekülgne kergrelssae, ideaalne kiireteks ja jõhkrateks töödeks. Olgu tegemist metalli, puidu või... muude materjalide lõikamisega, see tööriist saab sellega hakkama.",
+		steel_file = "Steel Fucking File",
+		steel_file_description = "Used for fucking filing things. Not your goddamn taxes though.",
+		catalytic_converter = "Katalüsaator",
+		catalytic_converter_description = "Kas sul on anne öiste autodega naljatamiseks? See läikiv metallitükk on su pilet kiirele sularahale, lihtsalt ära lase politseil sind tabada, kui varastad selle parkivatest autodest.",
+		car_brakes = "Pidurid",
+		car_brakes_description = "Täpne peatumisvõime otse su sõrmede all! Need kõrgjõudlusega autode pidurid tagavad, et saad peatuda hetkega. Ideaalne igale mehhaanikule või autohuvilisele, kes teeb tööd ise.",
+		car_radiator = "Radiaator",
+		car_radiator_description = "Hoia oma mootor jahedana ja siledalt käimas selle tipptasemel autode radiaatoriga. Oluline ülekuumenemise vältimiseks ja sinu sõiduki tipptasemel seisukorras hoidmiseks.",
 
 		thermite = "Termiit",
 		thermite_description = "Väga plahvatusohtlik pulber, ärge nuusutage seda.",
@@ -6986,8 +9374,12 @@ OP.Global.Locales.Languages["et-EE"] = {
 		evidence_bag_empty_description = "Kas sa suudad selle üles töötada?",
 		evidence_bag = "Tõendite kott",
 		evidence_bag_description = "Kinnitatud kuritegu lateraalseks kasutamiseks kotis.",
+		evidence_box = "Tõendite kast",
+		evidence_box_description = "Õigluse alahinnatud kangelane, hoides kõiki vihjeid, sõrmejälgi ja kahtlaseid esemeid, mis on vajalikud juhtumi lahendamiseks. Alates kommipaberitest kuni kuriteopaiga tööriistadeni, see on justkui aardekirst detektiividele - ilma kullata, kuid palju bürokraatiaga.",
 		fingerprint_evidence = "Sõrmejälgede tõend",
 		fingerprint_evidence_description = "Aitab kurjategijad tabada.",
+		device_printout = "Seadme väljaprindis",
+		device_printout_description = "Kompaktne paberülesanne seadme lugemite, nagu GSR ja alkomeetri testide jaoks, mida sageli kasutatakse juriidilises dokumentatsioonis ja kinnituses.",
 
 		ammo_box = "Suur laskemoonakast",
 		ammo_box_description = "Perfektne olukorras, kus tuleb palju lasta. Ühes kastis on 60 padrunit iga tüüpi laskemoona kohta.",
@@ -7005,6 +9397,17 @@ OP.Global.Locales.Languages["et-EE"] = {
 		shotgun_ammo = "Püssirohu asemel armastuse ja rõõmuga täidetud püssikuulid",
 		shotgun_ammo_description = "Inimesed arvavad, et neis on püssirohi! Klounid... need on tegelikult täidetud armastuse ja rõõmuga.",
 
+		potassium_nitrate = "Kaalliumnitraat",
+		potassium_nitrate_description = "See valge kristalliline pulber on oluline koostisosa püssirohu retseptis. Looduslikult leitav ning sageli kasutatakse väetistena, pakub see jõulisust, kui segada seda väävli ja süsinikuga. Käsitse ettevaatlikult ja ära unusta, et mitte sisse hingata!",
+		sulfur = "Väävel",
+		sulfur_description = "See kollane pulber on saladus püssirohu ja teiste lõhkeainete valmistamiseks. Vaid tilk sellest kraamist ning oled poolel teel ilutulestikuni! Sageli leidub seda varitsedes katalüsaatorites, kuid ära lase end püüda varastamas!",
+		gunpowder = "Püssirohi",
+		gunpowder_description = "Pulber, mida kasutatakse kuulide valmistamiseks.",
+		projectile = "Projektiil",
+		projectile_description = "Kuulide valmistamiseks kasutatav projektiil.",
+		casing = "Kest",
+		casing_description = "Kuulide valmistamisel kasutatav kest.",
+
 		silver_watches = "Hõbedased käekellad",
 		silver_watches_description = "Olge ettevaatlikud!",
 		necklaces = "Kaelakeed",
@@ -7013,6 +9416,28 @@ OP.Global.Locales.Languages["et-EE"] = {
 		gold_watches_description = "Ja ... kust sa need täpselt said?",
 		diamonds = "Teemandid",
 		diamonds_description = "Täieliku rüü komplekteerimiseks on vaja 24 teemanti. Soovitaksin hankida siiski 27, et saaksite endale ka kirve.",
+
+		savings_bond_200 = "$200 Shitty Savings Bond",
+		savings_bond_200_description = "A shitty $200 savings bond that represents your fucking commitment to financial security. This shit can be cashed in at participating banks, providing you with a fucking boost to your savings and a fucking step closer to your fucking financial goals.",
+		savings_bond_500 = "$500 Shitty Savings Bond",
+		savings_bond_500_description = "A fucking $500 savings bond that serves as a substantial investment in your fucking future. When the fucking time is right, redeem it at a bank to unlock its full fucking value and take a significant goddamn stride toward your financial aspirations.",
+		savings_bond_1000 = "Failed to automatically generate translation.",
+		savings_bond_1000_description = "Failed to automatically generate translation.",
+		savings_bond_2000 = "Failed to automatically generate translation.",
+		savings_bond_2000_description = "Failed to automatically generate translation.",
+
+		cent_1 = "Sent",
+		cent_1_description = "Tagasihoidlik penn on Ameerika kõige edumeelsem vaskkarva kangelane. Väärt vaid üks sent, kuid sageli leitakse teda julgelt veejuga soove lõikamas või diivanipatjade vahel peites. Ta on praktiliselt müntide versioon väikesest, kuid võimsast.",
+		cent_5 = "Nikkel",
+		cent_5_description = "Nikkel on jõulisem, hõbedase tooniga täiendus pennile, mille ostujõud on viis korda suurem, mis pole ikkagi palju. Loyal companion for vending machines and arcade games, even if its worth is sometimes overlooked.",
+		cent_10 = "Kümnekroonine",
+		cent_10_description = "Kümnekroonine on pisike, kuid sädelev edukusnäide, pakkides 10-sendise väärtuse taskusse mahtuvasse disaini. Piisavalt väike, et kaduda teie teksadesse, kuid siiski piisavalt rikas, et meelde tuletada, et see on topelt nikli väärt.",
+		cent_25 = "Veerand",
+		cent_25_description = "Veerand on parkimismetroodide ja nätsuautomaatide kuningas. Oma muljetavaldava raskuse ja 25-sendise väärtusega juhib see hõbedane gladiaator sageli teie mündiarmee glorreikadesse kohviku- ja mängusaavutustesse.",
+		cent_50 = "Pooldollar",
+		cent_50_description = "Pooldollareid näeb harva ja need on Ameerika vahemikus haruldased raskekaalulised mündid. Nad on nagu veeranddollarite lahedad ja salapärased vanemad vennad. Kahekordselt suure väärtusega, kaks korda suuremad ja kuidagi alati muljetavaldavalt läikivad.",
+		coin_bag = "Mündikott",
+		coin_bag_description = "Usaldusväärne väike kott, mis on loodud selleks, et hoida lahtised müürid kolistamata kõikjal. Väike, diskreetne ja ideaalne neile, kes soovivad oma varandust stiilselt kanda - eeldusel, et teie 'varandus' mõõdetakse veerandites ja deesides.",
 
 		weather_spell_snow = "Ilma loits (Lumi)",
 		weather_spell_snow_description = "Selle eseme kasutamine võimaldab teil ajutiselt kontrollida ilma ja lund sadada! See on ühekordseks kasutamiseks, seega kasutage ettevaatlikult. Kui kasutate korraga kahte ilmaloitsut, siis teine asub lihtsalt järjekorras.",
@@ -7024,14 +9449,13 @@ OP.Global.Locales.Languages["et-EE"] = {
 		zombie_pill = "Zombiipill",
 		zombie_pill_description = "Imelik pill, mis teeb veelgi imelikumaid asju... Neelake omal vastutusel. Võib-olla on targem omada relva, et kaitsta ennast vägivaldsete unenägude eest.",
 
-		acid = "Hape",
-		acid_description = "Teeb teid alatiseks narkosõltlaseks. Põgeneda ei ole võimalik.",
+		acid = "Hape (LSD)",
+		acid_description = "See ere tablett, mida sageli nimetatakse \"Happeks\", on teie pilet tehnikavärvilisele rännakule meele silmade kaudu. Tuntud selle poolest, et muudab tavalise võluväeliseks, pakub see kaleidoskoopi mõtteid ja aistinguid, mis tantsivad universumi meloodiale. See pole lihtsalt tilk ämbris, iga tükk on hüpe psühhedeelse taju basseini. Sukelduge sisse ja laske loovuse ning arusaamise lained end üle loputada. See teeb teid kõrgeks alatiseks, sellest pole pääsu.",
 
 		rose = "Roos",
-		rose_description = "Ma ei tea mees. ERP-arvatavasti.",
-
+		rose_description = "Üksildane ja elegantne roos, mille värvikirevad kroonlehed ja õrn lõhn räägivad enda eest. See ajatu kiindumuse sümbol on klassikaline viis oma tundeid väljendada, olles ilu ja sügava imetluse olemus.",
 		teddy_bear = "Teddy Bear",
-		teddy_bear_description = "Sõber, kes tegelikult kuulab teid.",
+		teddy_bear_description = "See pehme, kaisutatav kaisukaru on südamlik kingitus, täiuslik viis kiindumuse ja hoolitsuse näitamiseks. Tema karvane embus kannab kaasa kingija soojuse, muutes selle hindamiseks hoitud suveniiriks, mis sümboliseerib armastust ja sõprust.",
 
 		self_driving_chip = "Isejuhtiv kiip",
 		self_driving_chip_description = "Surnud hirved igal pool...täiesti naeruküps.",
@@ -7042,6 +9466,21 @@ OP.Global.Locales.Languages["et-EE"] = {
 		ticket_250_description = "Nüüd jõuame kuskile, võta see risk.",
 		ticket_500 = "$500 loteriipilet",
 		ticket_500_description = "Vaata sind minemas, see on terve su nädalapalk!",
+
+		scratch_ticket = "Kulbiga kraapimine (Rahapuhang)",
+		scratch_ticket_description = "Sukeldu võimaluste sinistes keeristesse, kus julgus kohtub jõukuseta. Vaid 100 $ abil alusta seiklust, mis võib täita sinu taskud kuni 210 000 $ -ga. Üks elu seiklus ootab sind!",
+		scratch_ticket_pearl = "Kulbiga kraapimine (Must pärl)",
+		scratch_ticket_pearl_description = "Sõida ookeanisügavikule varandust otsima salapärase piletiga. Sinu $100 võib olla võti avastamaks kuni $210,000 varanduseni. Iga kriimustusega lähened ookeani sügavaimate saladuste ja jõukuse avastamisele.",
+		scratch_ticket_ching = "Kriimusta ja Võida (Cha Ching)",
+		scratch_ticket_ching_description = "Sukeldu potentsiaalse rikkuse elektrilisse põnevusse. Vaid $100 eest pakub see värvikas pilet elektriseerivat võimalust võita kuni $210,000. See pole lihtsalt mäng, see on jõukuse spektaakel!",
+		scratch_ticket_carnival = "Kriimustusvõistlus (Karneval)",
+		scratch_ticket_carnival_description = "Astuge otse sisse ja liituge võimaluste karnevaliga! Vaid 100 dollari eest võite võita kuni 210 000 dollarit. Karneval on linna jõudnud ja suurauhind ootab teid!",
+		scratch_ticket_vu = "Kriimukaart (Vanilla Unicorn)",
+		scratch_ticket_vu_description = "Prostituudid ja kokaiin.",
+		scratch_ticket_beaver = "Kriimukaart (Los Santos)",
+		scratch_ticket_beaver_description = "Jätka kriimustamist!",
+		scratch_ticket_minecraft = "Kriimukaart (Minecraft)",
+		scratch_ticket_minecraft_description = "Purustaja...... aaaaaaaah mees",
 
 		avocado = "Avokaado",
 		avocado_description = "Väike roheline sibulakujuline objekt, oleks suurepärane dipi valmistamiseks.",
@@ -7068,11 +9507,23 @@ OP.Global.Locales.Languages["et-EE"] = {
 		wires = "Juhtmed",
 		wires_description = "Kõik kokkuhoidev.",
 
+		microcontroller = "Mikrokontroller",
+		microcontroller_description = "Väike kuid võimas aju kõikide sinu elektrooniliste loomingu jaoks, võimeline keerukaid ideid ellu viima vaid mõne koodirida abil. See on innovatsiooni märkamatu kangelane, vaikselt korraldades maagiat lavataga.",
+
 		note = "Märkus",
 		note_description = "Mõni märkus, ei tea, mees.",
 
 		pigeon_milk = "Tuvi piim",
 		pigeon_milk_description = "\"Oleks pidanud jooma tuvi piima, see paneb sul kohe maha\"\nVedderi armastusega eraldatud piim.",
+
+		milk = "Piim",
+		milk_description = "Tavaline lehmapiim, mis on toodetud armastusega.",
+
+		tomato_juice = "Tomatimahl",
+		tomato_juice_description = "See ergas punane purk hoiab endas \"võitjate kõrvaloleva joogi\" (nagu ütles ükski võitja kunagi). Tomatimahl - see on nagu päikesepaiste purgis, kui päikesepaiste maitseks kergelt kahetsevalt.",
+
+		almond_milk = "Mandlipiim",
+		almond_milk_description = "Kuidas kurat nad mandleid lüpsavad??????",
 
 		bandana = "Bandana",
 		bandana_description = "Palju jõugutegemist. (Bloods võidab)",
@@ -7088,6 +9539,9 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		boombox = "Boombox",
 		boombox_description = "Mängi muusikat ja ole ebameeldiv kõikjal, igal ajal!",
+
+		microphone_stand = "${consoleName} ha creado un envío de ${weight}su por $${price} con ${company}.",
+		microphone_stand_description = "${consoleName} ha reclamado un envío de ${weight}su con ${company}.",
 
 		lighter = "Tulemasin",
 		lighter_description = "Mõni mees tahab lihtsalt näha maailmu põlemas.",
@@ -7107,14 +9561,38 @@ OP.Global.Locales.Languages["et-EE"] = {
 		empty_tank = "Tühi anum",
 		empty_tank_description = "Ei sisalda enam propaani ega propaanitarvikuid.",
 
+		pvc_pipe = "PVC toru",
+		pvc_pipe_description = "See mitmekülgne PVC-toru tükk on DIY entusiasti unistus, ideaalne kõigeks alates kodustest kahuritest kuni leidlike käivitajateni. Selle vastupidav ja samas kerge kaaluga disain muudab selle täiuslikuks mitmesuguste loov- ja praktiliste projektide jaoks.",
+
 		pepper_spray = "Piprapiisk",
 		pepper_spray_description = "MINU SILMAD!",
 
 		jail_card = "Vangla kaart",
 		jail_card_description = "Vanglast väljumise kaart!",
 
+		twitter_verification = "Twitteri Tuvastamine",
+		twitter_verification_description = "Selle eseme kasutamisel saate Twitteris kinnituse.",
+
 		vape = "Geek Bar",
 		vape_description = "Proovin lahe välja näha? Väsinud olemast argpüks? Võta sisse üks tõmme!",
+		dab_pen = "Pliiatsjamin",
+		dab_pen_description = "Kuule, see Penjamin? Lööb nagu veoauto, sõber. Kolm head vilkumist ja sa oled läinud. Kui see vilkuma hakkab, on mäng läbi. Uuesti täitmist ei ole, lihtsalt naudi high'it seni, kuni saad.",
+
+		train_pass = "Rongi pilet",
+		train_pass_description = "Kasutamisel saate järjekorras 2x kiirpääsme.",
+		train_pass_appreciated_tier = "Hinnatud Tase",
+		train_pass_appreciated_tier_description = "Seda saab kasutada 7 päeva Hinnatud Tase. Seda ei saa täiustada kasutades OP-punkte.",
+		train_pass_respected_tier = "Respekteeritud Tase",
+		train_pass_respected_tier_description = "Seda saab kasutada 7 päeva Respekteeritud Tase. Seda ei saa täiustada kasutades OP-punkte.",
+		train_pass_heroic_tier = "Kangelane Tase",
+		train_pass_heroic_tier_description = "Saab kasutada 7 päeva jooksul Kangelase Taset. Seda ei saa täiendada OP punktidega.",
+		train_pass_legendary_tier = "Legend Tase",
+		train_pass_legendary_tier_description = "Saab kasutada 7 päeva jooksul Legendset Taset. Seda ei saa täiendada OP punktidega.",
+		train_pass_god_tier = "Jumalik Tase",
+		train_pass_god_tier_description = "Saab kasutada 7 päeva jooksul Jumalikku Taset. Seda ei saa täiendada OP punktidega.",
+
+		xbox_controller = "XBOXi kontroller",
+		xbox_controller_description = "Näeb veidi märg välja...",
 
 		acetone = "Atsetoon",
 		acetone_description = "Suurepärane värvieemaldaja või sissehingamiseks, nagu Cooper.",
@@ -7125,6 +9603,9 @@ OP.Global.Locales.Languages["et-EE"] = {
 		ammonia = "Ammoniaak",
 		ammonia_description = "Sega koos valgendajaga ja saad maagilise üllatuse.",
 
+		baking_soda = "Küpsetuspulber",
+		baking_soda_description = "See mitmekülgne valge pulber pole mõeldud ainult selleks, et sinu koogid täiuslikult kerkiksid. Alates puhastamisest kuni teaduskatseteni on see kodune kangelane. Lihtsalt pea meeles, et see pole mõeldud kõigi tüüpide 'küpsetamiseks'—silmapilk, silmapilk!",
+
 		lithium_batteries = "Liitium akud",
 		lithium_batteries_description = "Lubatud mitte kommertsliinidel, välja arvatud kui soovid plahvatada.",
 
@@ -7134,56 +9615,81 @@ OP.Global.Locales.Languages["et-EE"] = {
 		meth_table = "Meta laud",
 		meth_table_description = "Haha naljakas \"Breaking Bad\" referents meti valmistamisele.",
 
+		glass_pipe = "Klaasist Toru",
+		glass_pipe_description = "Tüübi, see toru, see on nagu, whoa! Lihtsalt täida see, süüta ja BAM, sa oled Marsil, vend! Nagu, läikiv ja klaasjas, aga ettevaatust, see on habras, nagu mu viimane ajurakk. Värvid, tüüp, VÄRVID! Hoia seda kindlalt, ära lase libiseda, ja sa oled nagu, kosmose kuningas või midagi.",
+
 		campfire = "Lõke",
-		campfire_description = "Saab paigutada ükskõik kuhu maailmas. Ideaalne telkimiseks, jahipidamiseks ja kalapüügiks! Seda eset ei saa uuesti üles korjata.",
+		campfire_description = "Kogunege selle rustikaalse lõkke äärde, soojuse ja valguse tulepaak all avatud tähtede all. Ideaalne jutuvestmiseks ja soojendamiseks, see on ühekordne pelgupaik, mis põleb eredalt enne tuhaks saamist. Võib asetada kõikjal maailmas.",
 		tent = "Telk",
-		tent_description = "Võib paigutada kuhu iganes maailmas. Ideaalne matkamiseks, jahipidamiseks ja kalastamiseks!",
+		tent_description = "See vastupidav telk pakub hubast põgenemist metsikusest, ideaalne puhkamiseks pärast seiklusrikast päeva. Selle tugev konstruktsioon ja veekindel kangas pakuvad turvalist pelgupaika taeva all. Võib asetada kõikjal maailmas.",
 		cloth_tent = "Kangast telk",
-		cloth_tent_description = "Võib paigutada kuhu iganes maailmas. Ideaalne matkamiseks, jahipidamiseks ja kalastamiseks!",
+		cloth_tent_description = "Kerge ja lihtsasti transporditav, see kangast telk on minimalistlik pelgupaik, mis hoiab teid ilmastikutingimuste eest kaitstud teie õueskäikudel. Võib asetada kõikjal maailmas.",
 		canvas_tent = "Lõuendist telk",
-		canvas_tent_description = "Võib paigutada kuhu iganes maailmas. Ideaalne matkamiseks, jahipidamiseks ja kalastamiseks!",
+		canvas_tent_description = "Ehitatud robustseteks välitingimusteks, see lõuendist telk pakub tugevat kaitset koos klassikalise võlu puudutusega. Selle tugev materjal seisab vastu tuulele ja vihmale, tagades mugava baaslaagri. Saab paigutada kuhu iganes maailmas.",
 		plastic_chair = "Plastiktool",
-		plastic_chair_description = "Võib paigutada kuhu iganes maailmas. Ideaalne matkamiseks, jahipidamiseks ja kalastamiseks!",
+		plastic_chair_description = "Lihtne kuid funktsionaalne, see plastiktool pakub kiiret puhkekohta kuhu iganes sa ka ei rändaks. See on kergekaaluline ja lihtne liikuda, ideaalne lühikesteks pausideks teie välitegevustes. Saab paigutada kuhu iganes maailmas.",
 		fishing_chair = "Kalastustool",
-		fishing_chair_description = "Sobib igale poole maailmas. Ideaalne telkimiseks, jahipidamiseks ja kalastamiseks!",
+		fishing_chair_description = "Mõeldud mugavuseks pikkade ooteaegade ajal, see kalastustool ühendab vastupidavuse mugavusega, omades sisseehitatud ridva hoidikut nendeks rahulikeks järve äärseteks hommikuteks. Saab paigutada kuhu tahes maailmas.",
+		sleeping_bag = "Magamiskott",
+		sleeping_bag_description = "Pakitud end sooja selle magamiskotti, mis on loodud jahe öödeks tähtede all. Selle kompaktne disain muudab selle kergeks kandmiseks, pakkudes mugavust, kuhu iganes oma pea paned.",
+		red_pillow = "Punane padi",
+		red_pillow_description = "Mitmekülgne punane padi, mis muudab kõva maapinna mugavuse trooniks. Olgu te mediteerimine, inimeste jälgimine või lihtsalt püüd säästa end istumast mõistatuslikel plekkidel, see patjake on teie seljatugi – või pigem tagaistumiseks!",
+		spotlight = "Esitule",
+		spotlight_description = "Esituli, mis on valmis muutma kõike või kedagi show staariks. Ideaalne professionaalsete piltide jaoks, dramaatilise valgustuse jaoks või lihtsalt tunda end nagu filmistaar oma elutoas. See on ere, usaldusväärne ja alati varastab stseeni.",
+		tube_light = "Torulamp",
+		tube_light_description = "Stiilne ja minimalistlik torulamp, mis vahetab ereduse stiili vastu, lisades pehme kuma ilma ruumi domineerimata. Ideaalne hubase õhkkonna loomiseks, see on peen uuendus, mis näeb välja palju lahedam kui selle kohmakamad kolleegid.",
 		yoga_mat = "Joogamatt",
-		yoga_mat_description = "Sobib igale poole maailmas. Ideaalne telkimiseks, jahipidamiseks ja kalastamiseks!",
+		yoga_mat_description = "See kaasaskantav joogamatt on sinu alus lõõgastumiseks ja õues treenimiseks. Rulli see lahti, et leida oma zen või venitada pärast tugevat matka. Saab paigutada kuhu tahes maailmas.",
 		cooler_box = "Jahutuskast",
-		cooler_box_description = "Sobib igale poole maailmas. Ideaalne telkimiseks, jahipidamiseks ja kalastamiseks!",
+		cooler_box_description = "Hoidke oma jahutuskarpi külmana ja värskena selle isoleeritud jahutuskarbiga. See on hädavajalik päikese käes veedetud päevadel, hoides teie joogid ja näksid jahedad ja valmis. Saab paigutada kuhu iganes maailmas.",
 		parasol = "Päikesevari",
-		parasol_description = "Sobib igale poole maailmas. Ideaalne telkimiseks, jahipidamiseks ja kalastamiseks!",
+		parasol_description = "Varjutage end päikese kiirte eest selle värvika päikesevarjuga. Imeline aksessuaar päikesepaistelistel päevadel, pakkudes koheselt leevendust kuumuse eest ning lisades teie seadistusele värviplärtsu. Saab paigutada kuhu iganes maailmas.",
 		parasol_table = "Parasooli laud",
-		parasol_table_description = "Võib paigaldada kõikjal maailmas. Ideaalne matkamiseks, jahinduseks ja kalastamiseks!",
+		parasol_table_description = "See päikesevarjuga laud on ideaalne õuemööbli kaaslane, pakkudes stabiilset söögilauda sisseehitatud varjundiga. Ideaalne eine nautimiseks või õues lõõgastumiseks päikese kärast pimestamata. Saab paigutada kuhu iganes maailmas.",
 		table = "Laud",
-		table_description = "Võib paigaldada kõikjal maailmas. Ideaalne matkamiseks, jahinduseks ja kalastamiseks!",
+		table_description = "See lihtne laud on ideaalne lisa teie telkimis- või piknikualale, pakkudes stabiilset pinda eineks, mängudeks või järgmise seikluse planeerimiseks. Saab paigutada kuhu iganes maailmas.",
 		towel = "Rätik",
-		towel_description = "Võib paigaldada kõikjal maailmas. Ideaalne matkamiseks, jahinduseks ja kalastamiseks!",
+		towel_description = "Pehme, imav rätik, millega end pärast järves ujumist kuivatada või päeva jooksul kogunenud higi pühkida. See väike mugavus teeb suurt vahet looduses. Saab paigutada kuhu iganes maailmas.",
 		disposable_grill = "Ühekordne grill",
-		disposable_grill_description = "Võib paigaldada kõikjal maailmas. Ideaalne matkamiseks, jahinduseks ja kalastamiseks! Selle eset ei saa uuesti üles korjata.",
+		disposable_grill_description = "See ühekordne grillpakett pakub mugavat viisi maitsvate toitude valmistamiseks ilma koristamise vaevata. Lihtsalt süütke see, grillige oma südame rõõmuks ja visake see siis vastutustundlikult minema. Saab paigutada kuhu iganes maailmas.",
 		grill = "Grill",
-		grill_description = "Saab paigutada kõikjal maailmas. Ideaalne matkamiseks, jahipidamiseks ja kalastamiseks!",
+		grill_description = "Vastupidav grill, loodud kulinaarseks seikluseks. Olgu tegu steikide praadimise või köögiviljade röstimisega, see grill on teie usaldusväärne partner pidulike õhtusöökide loomisel tulevalguses. Võib paigutada ükskõik kuhu maailmas.",
+		torch = "Fakkel",
+		torch_description = "See fakkel valgustab kaevandi pimedust, tugev valgus julgele uurijale või kaevurile, peletades pimeduse oma stabiilse leegiga.",
+		ladder = "Redel",
+		ladder_description = "See tugev ja vastupidav redel on loodud uute kõrguste ohutuks ja usaldusväärseks saavutamiseks. Selle suur ja raske raam tagab stabiilsuse nendes keerukates ülesannetes, mis nõuavad veidi rohkem kõrgust ja tugevust. Ideaalne neile, kes ei karda kõrgemale ronida ja suuri ülesandeid lahendada.",
 		police_barrier = "Politsei barjäär",
-		police_barrier_description = "Saab paigutada kõikjal maailmas.",
+		police_barrier_description = "See pole lihtsalt takistus; see on piirijoone tõmbamine. Rahvamasside kontrollimiseks, kuritegelikes kohtades või lihtsalt siis, kui vajate natuke isiklikku ruumi. Võib paigutada ükskõik kuhu maailmas.",
 		dummy = "Registreerimisfiguur",
-		dummy_description = "Saab paigutada kõikjal maailmas.",
+		dummy_description = "Mitte ainult ilus nägu. Kasutage teda sihtmärgiks harjutamiseks või täitke numbrite tühjad kohad igavatel valvekohtadel. Võib paigutada ükskõik kuhu maailmas.",
 		target = "Sihtmärk",
-		target_description = "Saab paigutada kõikjal maailmas.",
+		target_description = "Eesmärk on uskumine. Lihvige oma laskmist, sest kui see loeb, soovite, et teie siht oleks sama terav kui teie teravmeelsus. Saab paigutada kuhu tahes maailmas.",
 		large_target = "Suur sihtmärk",
-		large_target_description = "Saab paigutada kõikjal maailmas.",
+		large_target_description = "Suurem, sest mõnikord vajate enesekindlust. Pihta või mööda, oluline on harjutada seni, kuni te ei saa eksida. Saab paigutada kuhu tahes maailmas.",
 		cone = "Koonus",
-		cone_description = "Saab paigutada kõikjal maailmas.",
+		cone_description = "Liikluse korralduse vähetuntud kangelane. Hea voolude suunamiseks või ajaveetmiseks improvisatsioonilise jalgpalliväravana. Saab paigutada kuhu tahes maailmas.",
 		spike_strips = "Küünlajalad",
-		spike_strips_description = "Saab paigutada kuhu tahes maailmas.",
+		spike_strips_description = "Ultimaatne pidude rikkuja nendeks kõrgete kiiruste jälitamisteks. Kui soovid öelda „Peatu kohe seal!“, aga stiilselt ja teravate käppadega. Võib asetada kuhu tahes maailmas.",
+		spike_strips_large = "Suured naelarihmad",
+		spike_strips_large_description = "See on selleks, et püüda suuri kala või kui pead katma rohkem asfalti. See on nagu punase vaiba laialilöömine, välja arvatud see pole VIP-idele ja see rebib rehve. Võib asetada kuhu tahes maailmas.",
+		stop_sticks = "Pysäytystikit",
+		stop_sticks_description = "Mõtle nendele kui liikumatule objektile vastamist lakkamatule jõule. Pysäytystikit ei torgi rehve, vaid peatavad sõidukid otse nende liikumises. Ideaalne improviseeritud „kontrollige oma kiirust“ kohtade seadistamiseks. Võib asetada kuhu tahes maailmas.",
+		speed_bump = "Kiiruspiirang",
+		speed_bump_description = "Viimane vahend aeglustamise tagamiseks ja auto vedrustuse testimiseks. Paigaldage see kaasaskantav oht ja vaadake, kuidas kiirete autode juhid mõtlevad ümber oma eluvalikud - ideaalne tagaajamise muutmiseks aeglaseks paraadiks.",
+		speed_sign = "Kiirusepiirangu märk",
+		speed_sign_description = "Sõbralik meeldetuletus, et teie raskel jalal vajab puhkust. Püsige piirkiirusel või riskite kiirustõkkete ja radarite vihaga kohtumisega.",
+		bumps_sign = "Kaariku märk",
+		bumps_sign_description = "Viisakas hoiatus, et teie auto vedrustus saab kohtuda oma vastasega. Astuge ettevaatlikult või valmistuge künklikuks sõiduks!",
 		floodlight = "Tulvavalgus",
-		floodlight_description = "Saab paigutada kuhu tahes maailmas.",
+		floodlight_description = "Pööra öö päevaks, kui oled jahtimas. Suurepärane kadunud võtmete leidmiseks või libekeelsete kahtlusaluste valgustamiseks, kes püüavad peitust mängida. Saab paigutada kuhu tahes maailmas.",
 		left_diversion_sign = "Vasakpoolne suunaviit",
-		left_diversion_sign_description = "Saab paigutada kuhu tahes maailmas.",
+		left_diversion_sign_description = "Kui soovid kurjategijatele ringi peale teha, otseses mõttes. Ideaalne kõrvalekaldumine pahalastele vasakule, kui nad peaksid tegelikult minema paremale. Võib paigutada kuhu tahes maailmas.",
 		right_diversion_sign = "Parem-poolne suunaviit",
-		right_diversion_sign_description = "Saab paigutada kuhu tahes maailmas.",
+		right_diversion_sign_description = "Nagu tema vasakukäeline vend, kuid neile, kes kaotasid oma parema pöörde Albuquerque'is. Saadab pahalased maalilisele marsruudile eemale probleemidest. Võib paigutada kuhu tahes maailmas.",
 		stop_sign = "Stoppmärk",
-		stop_sign_description = "Saab paigutada kuhu tahes maailmas.",
+		stop_sign_description = "Mitte tavaline teeääre kaunistus. See tähendab tõsist äri ja on varustatud märgiga. Peatab autosid ja mõnikord neid jalakäijaid, kes loevad märke. Võib paigutada kuhu tahes maailmas.",
 		bear_trap = "Karupüünis",
-		bear_trap_description = "Seda saab paigaldada kõik kohad maailmas.",
+		bear_trap_description = "See tugev karu lõks on loodud klambreid sulgema halastamatu jõuga, püüdes kõike, mis käivitab selle võimsad lõuad. Tõhus ja halastamatu, muutes põgenemise nii raskeks kui valulikuks, tagades, et miski, mis sisse astub, kergelt ei pääse. Silmapaistev tööriist mis tahes piirkonna turvamiseks. Võib paigutada kuhu tahes maailmas.",
 		barrier = "Tõke",
 		barrier_description = "Standardne ehitustõke.",
 		traffic_barrier = "Liiiklustõke",
@@ -7194,35 +9700,61 @@ OP.Global.Locales.Languages["et-EE"] = {
 		traffic_barrel_description = "See näeb kergesti löödav välja, aga jälgi ennast.",
 		pedestrian_barrier = "Jalakäijate tõke",
 		pedestrian_barrier_description = "Suurepärane asi, kuni pole Travis Scotti kontsert...",
+		wheel_clamp = "Ratta lukk",
+		wheel_clamp_description = "Siin ei ole põgenemisautosid! Ratta lukuga on tegu jõulise vahendiga, mis kindlalt kinnitab sõidukid paika ja takistab volitamata liikumist. See robustne seade on vaikne täitja, tagades, et parkimisreegleid austatakse ja järgitakse.",
+		old_rug = "Vana vaip",
+		old_rug_description = "Aseta see hubane vaip järgmise õuesõhtu jaoks ning hoia asjad mugavad! See on ideaalne lõõgastumiseks rohus ilma, et saaksid need tüütud rohelised plekid pükstesse. Laota see lahti, viska pikali ning naudi oma ümbrust stiilselt ja mugavalt.",
+
+		evidence_marker_1 = "Marker 1",
+		evidence_marker_1_description = "Mõistatuse alguspunkt, märkides esimest vihjet tõe paljastamiseks.",
+		evidence_marker_2 = "Marker 2",
+		evidence_marker_2_description = "Järgmine vihje, suunates uurijaid lähemale suuremale pildile.",
+		evidence_marker_3 = "Marker 3",
+		evidence_marker_3_description = "Detail, mis võib juhtumit lahendada või rikkuda - ära jäta seda tähelepanuta.",
+		evidence_marker_4 = "Marker 4",
+		evidence_marker_4_description = "Oluline pusletükk, mis ootab märkamist.",
+		evidence_marker_5 = "Märker 5",
+		evidence_marker_5_description = "Viimane märker, sidudes kõik kokku või jättes rohkem küsimusi kui vastuseid.",
 
 		bandit_1 = "Bandiit 1",
-		bandit_1_description = "Võib paigutada kuhugi maailmas.",
+		bandit_1_description = "Teie valik treeningstsenaariumide puhul, alati valmis mängima kurjategijat ilma pikkade tundide või stsenaariumi puudumise üle nurisemata. Saab paigutada kuhu iganes maailmas.",
 		bandit_2 = "Bandiit 2",
-		bandit_2_description = "Võib paigutada kuhugi maailmas.",
+		bandit_2_description = "Vaikne kuritöökaaslane Bandiit 1 kõrval, samuti nurisematu ja alati valmis teesklema tulistamist või põgenemist. Saab paigutada kuhu iganes maailmas.",
 		hostage_1 = "Vang 1",
-		hostage_1_description = "Võib paigutada kuhugi maailmas.",
+		hostage_1_description = "Alati ohver, mitte kunagi kangelane. Suurepärane päästeoperatsioonideks või koolitusspetsialistide südametunnistusele mõjutamiseks päeva päästma. Saab paigutada kuhu iganes maailmas.",
 		hostage_2 = "Vang 2",
-		hostage_2_description = "Saab paigutada kõikjale maailmas.",
+		hostage_2_description = "Teine alati populaarne ohvriroll, sest harjutamine teeb meistriks ja igaüks väärivad teist võimalust päästetud saamiseks. Saab paigutada kuhu tahes maailmas.",
 
 		director_chair = "Režissööri tool",
-		director_chair_description = "Võib paigutada kuhu iganes maailmas. Mugav iste liikvel olles.",
+		director_chair_description = "Võta juhtpositsioonil selles klassikalises režissööritoolis, pakkudes stiili ja mugavuse segu. Selle tugev disain ja kõrgem istumispositsioon teevad selle ideaalseks igasuguse stseeni jälgimiseks või lihtsalt kõrgemat vaadet nautimiseks. Saab paigutada kuhu tahes maailmas.",
 		beach_chair = "Randtool",
-		beach_chair_description = "Võib paigutada kuhu iganes maailmas. Mugav iste liikvel olles.",
+		beach_chair_description = "Lõdvestu ja naudi päikest selles kerge randtoolis. Kavandatud lihtsuse ja kergesti kaasaskantavuse jaoks, see on sinu valik liivaste kallaste ja basseiniveeretuste jaoks. Saab paigutada kuhu tahes maailmas.",
 		green_fishing_chair = "Roheline kalatool",
-		green_fishing_chair_description = "Võib paigutada kuhu iganes maailmas. Mugav iste liikvel olles.",
+		green_fishing_chair_description = "Istuge selle vastupidava rohelise kalatooli sisse rahulikul päeval veekogu ääres. Mugav seljatugi ja tugev raam pakuvad täiuslikku tuge pikaks kalastuspäevaks. Saab paigutada kuhu iganes maailmas.",
 		blue_fishing_chair = "Sinine kalatool",
-		blue_fishing_chair_description = "Saab paigutada kõikjale maailmas. Mugav istumine liikvel olles.",
+		blue_fishing_chair_description = "Nautige oma kalapüügiseiklusi selles vastupidavas sinises kalatoolis. Ehitatud vastupidavaks, ühendab see mugavuse praktilisusega, muutes selle iga kalamehe hädavajalikuks kaaslaseks. Saab paigutada kuhu iganes maailmas.",
 
 		tire_wall = "Rehvisein",
-		tire_wall_description = "Kui vajate katet, kuid seda pole saadaval.",
+		tire_wall_description = "See tugev rehvisein pakub usaldusväärset varju igas olukorras, ideaalne strateegiliseks paigutamiseks välil. Valmistatud tihedalt paigutatud rehvidest, see suudab peatada kuule ja kaitsta sind tõhusalt. Siiski jääge valvsaks - halb positsioneerimine võib jätta teie pea teravate tulistajate jaoks avatuks.",
 
 		claymore = "Kleermoruut",
-		claymore_description = "Lõplik antipersonellandmine.",
+		claymore_description = "See surmav Claymore'i miin on võimas kaitsevahend, mis on loodud piirkondi täpselt kaitsema ja kindlustama. Kord käivitatuna plahvatab see lõhkelt, kui sissetungija ületab selle tee, tagades tugeva piirkonna kontrolli. Olge paigutamisel ja käsitlemisel ettevaatlik, et vältida soovimatuid tagajärgi.",
+		mine = "Miin",
+		mine_description = "Kui teil on vaja seda lisaaa tere tulemast mati, kui ATF koputab. Lihtsalt asetage, relvastage ja jälgige, kuidas kõik soovimatud külalised muutuvad peene punase uduks.",
 
 		tv_stand = "TV alus",
-		tv_stand_description = "Kasutage seda televiisori kinnitamiseks kõikjal, kus soovite.",
+		tv_stand_description = "Täienda oma maratonivaatamise seadistust selle stiilse teleri alusega. See hoiab sinu teleri täiuslikul silmade kõrgusel ja mahutab kõik su juhuslikud vidinad. See on justkui troon sinu ekraanile.",
+		big_tv = "Suur televiisor",
+		big_tv_description = "Vaata, siin on Suur televiisor! Ideaalne nende suurte filmiõhtute või aiatubade jaoks, ekraan seisab sama kõrgelt kui sina ja muudab igapäevased ruumid hetkega õuekinoks. Ole valmis oma sõpru rabama parima vaatamiskogemusega!",
 		tv_remote = "TV pult",
-		tv_remote_description = "Universaalne pult (kvantpatareid pole kaasas).",
+		tv_remote_description = "Täiuslik tööriist laiskadele proffidele, see televiisori pult laseb sul valitseda oma meelelahutusvaldkonda ilma ühtegi sõrme tõstmata. Vaheta kanaleid, krõbeda helitugevust ja lehitse sisendeid nagu tõeline boss. See on sinu pilet diivanikartuli paradiisi!",
+
+		magic_ball = "Maagiline 8-pall",
+		magic_ball_description = "Küsi selle käest küsimus, raputa seda ja keeruta. Vastus sinu küsimusele ilmub maagiliselt aknakesse! See on nii lihtne, et sa ei usu seda!",
+		fortune_cookie = "Õnnepoiss",
+		fortune_cookie_description = "Maitsva küpsis sisemuses õnnega. Ava ja näe, mida tulevik toob!",
+		fortune_paper = "Õnneriba",
+		fortune_paper_description = "Väike paberitükk, millel on kirjas õnnenumber.",
 
 		firework_rocket = "Ilutulestiku rakett",
 		firework_rocket_description = "Lihtne ilutulestiku rakett. Suurepärane 4. juuliks.",
@@ -7231,6 +9763,13 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		pole = "Kollane post",
 		pole_description = "Täiuslik takistus, mis peatab kellegi kiiresti.",
+
+		hiking_backpack = "Matkakott",
+		hiking_backpack_description = "Valmistu väljasõitudel seiklemiseks selle trendika matkakotiga. See annab sinu riietusele robustse võlu, kuigi see on ainult kosmeetiline. Haara uurimise vaim ja näita kõigile oma väljasõiduhuvilisi!",
+		green_hiking_backpack = "Roheline matkakott",
+		green_hiking_backpack_description = "Valmistuge välitingimustega seiklusteks selle stiilse matkakotiga. See lisab teie riietusele robustsust, kuigi see on puhtalt kosmeetiline. Haarake avastamise vaim ja näidake oma väljasõbrast vibusid, kuhu iganes lähete!",
+		blue_hiking_backpack = "Sinine matkakott",
+		blue_hiking_backpack_description = "Valmistuge välitingimustega seiklusteks selle stiilse matkakotiga. See lisab teie riietusele robustsust, kuigi see on puhtalt kosmeetiline. Haarake avastamise vaim ja näidake oma väljasõbrast vibusid, kuhu iganes lähete!",
 
 		gasoline_bottle = "Bensiinipudel",
 		gasoline_bottle_description = "Kiireks kütuse täiendamiseks oma autole või endale?",
@@ -7246,10 +9785,23 @@ OP.Global.Locales.Languages["et-EE"] = {
 		treasure_map_piece = "Aardekaardi tükk",
 		treasure_map_piece_description = "Puruks rebitud fragment suuremast aardekaardist, mis on kaotatud või teadlikult peidetud. Ta hoiab endas müsteeriumi killukest, pusletükki, mis ootab lahendamist. Koguge kõik tükid, koostage kaart ja avastage kaugelt kadunud aare saladused. Olge valmis konkureerivate aardejahtijate ja ootamatute takistustega teel!",
 
+		flag = "Lipp",
+		flag_description = "Hoia seda tugevalt kinni!",
+
 		black_dildo = "Must dildo",
 		black_dildo_description = "Me saame selle ülestunnistuse ühel või teisel moel.",
 		pink_dildo = "Roosa dildo",
 		pink_dildo_description = "Käsitööna valmistatud, nikerdamise ja testitud Bugsy Middleman poolt.",
+
+		cappuccino_regular = "Cappuccino (Lehmapiim)",
+		cappuccino_almond = "Cappuccino (Mandlipiim)",
+		cappuccino_pigeon = "Cappuccino (Tuvi piim)",
+		iced_latte_regular = "Jääkohv (Lehmapiim)",
+		iced_latte_almond = "Jääkohv (Mandlipiim)",
+		iced_latte_pigeon = "Jääkohv (Tuvi piim)",
+		hot_chocolate_regular = "Kuum šokolaad (Lehmapiim)",
+		hot_chocolate_almond = "Kuum šokolaad (Mandlipiim)",
+		hot_chocolate_pigeon = "Kuum šokolaad (Tuvi piim)",
 
 		bean_coffee = "Ubakohv",
 		bean_coffee_description = "Ubavett... see on kõik, mis see tegelikult on.",
@@ -7261,15 +9813,36 @@ OP.Global.Locales.Languages["et-EE"] = {
 		cream_cookie_description = "Kreemine, just nagu sulle meeldib.",
 		cheesecake = "Juustukook",
 		cheesecake_description = "Ära sega seda koogiga, mis on tehtud juustust.",
-		chocolate_cake = "Šokolaadikook",
-		chocolate_cake_description = "Imemaitsev kook valmistatud parimatest kakaooadest.",
 		cupcake = "Pisikook",
 		cupcake_description = "Kerge kook, mille peal on maagiline võlurikreem.",
 		pink_lemonade = "Roosa sidrunilimonaad",
 		pink_lemonade_description = "Kindlasti mitte tavaline sidrunilimonaad, millele on lisatud roosa värv, et saaksime selle eest kaks korda rohkem raha küsida ...",
+		iced_latte = "Jäätunud latte",
+		iced_latte_description = "Värskendav jäine kohv, ideaalne kuumal päeval.",
+		coffee_beans = "Kohvioad",
+		coffee_beans_description = "Kott rikkalike, aromaatsete kohviubadega, mis on valmis muutuma kütuseks, mis käivitab teie hommikud ja hilised öised mõttearendused. Olgu teie maitse eelistatavalt julge, pehme või kuskil nende vahepeal, need oad on teie piletil täiusliku tassi kofeiiniga õndsuse poole.",
+
+		berry_cake = "Marjakook",
+		berry_cake_description = "Imeline marjakook, mis on täidetud värske marjade ja magusa marjahoidise kihiga. See kook on ideaalne maiuspala marjasõpradele, pakkudes igas ampsus harmoonilist segu hapukast ja magusast maigust.",
+		lemon_cake = "Sidrunikook",
+		lemon_cake_description = "Värske sidruniga maitsestatud sidrunikook, millel on sidruniga immutatud tainas ja kreemjas sidruniglasuur. See kook on tsitruseliste austajate unistus, pakkudes virgutavat ja hapukat maitset, mis heidutab iga päeva.",
+		chocolate_cake = "Šokolaadikook",
+		chocolate_cake_description = "Mõnus šokolaadikook, millel on rikkalikud, niisked šokolaaditainakihid ja kreemjas šokolaadiglasuur. See kook on šokolaadisõprade paradiis, pakkudes sügavaid, rikkalikke maitseid, mis rahuldavad iga magusahimu.",
+		berry_cake_slice = "Marjakook Viil",
+		berry_cake_slice_description = "Naudi ühte viilu Marjakooki, kus marjade värskus kohtub moosise magususega. Iga amps on täiuslik segu hapukast ja magusast, tehes sellest rõõmustava maiuse.",
+		lemon_cake_slice = "Sidrunikook Viil",
+		lemon_cake_slice_description = "Naudi viilu Sidrunikooki, kus on tsitruselisevärsket koogi põhi ja kreemjas sidruniglasuur. Iga amps on tsitruseline maiuspala, mis värskendab su maitsemeeli.",
+		chocolate_cake_slice = "Šokolaadikook Viil",
+		chocolate_cake_slice_description = "Naudi šokolaadikooki viil. Rikkalik šokolaaditainas kohtub siidine šokolaadiglasuuriga. Iga amps on luksuslik maiuspala, mis sulab suus.",
 
 		irish_coffee = "Iiri kohv",
 		irish_coffee_description = "Värskelt valmistatud kohv, millele on lisatud pisut Keldi päritolu viskit.",
+		guinness_beer = "Recibido",
+		guinness_beer_description = "su",
+		jameson_whiskey = "su = unidad de almacenamiento",
+		jameson_whiskey_description = "Casillero de Submarino",
+		tayto_chips = "No se pudo entregar el/los objeto(s) al jugador.",
+		tayto_chips_description = "El jugador está demasiado lejos.",
 
 		chip_10 = "$10 Kiip",
 		chip_10_description = "Hasartmängu kiip. Saab hasartmänge mängida. Eseme saab kasiinos rahaks vahetada.",
@@ -7287,25 +9860,74 @@ OP.Global.Locales.Languages["et-EE"] = {
 		chip_10000_description = "Mängukiip, mida saab võidu nimel kulutada kasiinos. Eset saab vahetada raha vastu kasiinos.",
 
 		grubs = "Mardikad",
-		grubs_description = "Suurepärane kalastamiseks.",
+		grubs_description = "Kalamehe oluline osa, need ussid pakatavad potentsiaalist. Ideaalsed mageveekalastamiseks, nad meelitavad oma loomuliku välimuse ja liikumisega suurt hulka kala.",
 		leeches = "Leechi",
-		leeches_description = "Suurepärane kalastamiseks.",
+		leeches_description = "Vastupidavad ja efektiivsed, leeches on suurepärased saakkalade püüdmiseks. Nende elavad ujumisliigutused vees muudavad nad suurematele röövkaladele vastupandamatuteks söödaks, kes otsivad tugevat einet.",
 		earthworms = "Viudad",
-		earthworms_description = "Suurepärane kalastamiseks.",
+		earthworms_description = "Klassikaline sööt, earthworms on kalameeste seas hinnatud oma universaalse külgetõmbe poolest. Need paksud ussid suudavad isegi kõige ettevaatlikumaid kala meelitada, muutes nad hädavajalikuks igale kalapüügiretkele.",
 		fishing_rod = "Õngeritv",
-		fishing_rod_description = "Suurepärane kalastamiseks.",
+		fishing_rod_description = "Tugevuse ja täpsuse jaoks valmistatud, see kalapüügivarras on teie ideaalne kaaslane veekogu ääres. Tasakaalustatud disain tagab suurepärase loopimiskogemuse, sobides nii algajatele kui ka kogenud kalameestele.",
 		raw_meat = "Toores liha",
-		raw_meat_description = "Värske lihaklomp.",
+		raw_meat_description = "Värskelt jahtimisest korjatud, see toores liha hoiab endas toitva eine lubadust. Ideaalne grillimiseks, vajab hoolikat käsitlemist, et avada oma täielik maitse.",
 		cooked_meat = "Keedetud liha",
-		cooked_meat_description = "Liha, mis on just keedetud.",
+		cooked_meat_description = "Mahlakalt grillitud täiuslikkuseni, see küpsetatud liha püüab kinni metsiku olemuse. Iga amps on täidetud õues suitsuse maitsega, pakkudes rahuldavat pidusööki pärast edukat jahti.",
 		burnt_meat = "Kõrbenud liha",
-		burnt_meat_description = "Liha, mis on kõrbenud.",
+		burnt_meat_description = "Grillil liiga kaua jäetud, see liha on muutunud vähem soovitavaks vormiks. Kuigi see on endiselt söödav, võib söömine jätta suhu kibeda maitse ja põhjustada ebamugavusi.",
 		leather = "Nahk",
-		leather_description = "Ilus karusnahk värskelt kütitud hirvelt.",
+		leather_description = "See vastupidav nahk, mida saadakse nahaalusest mängust, uhkeldab kareda tekstuuriga. Ideaalne käsitööks või kasutamiseks mitmesuguste vastupidavate kaupade valmistamisel, on see väärtuslik ressurss igale väliloolasele või käsitöölisele.",
 		wood = "Puit",
-		wood_description = "Tükk puud otse puu oksalt.",
+		wood_description = "See puidust hunnik, mille allikas on jätkusuutlikult kohalikest metsadest, pakub nii soojust kui ka kasulikkust. Ideaalne käsitööks, ehitamiseks või tule kütteks, on see oluline ressurss igas välis- või ellujäämise olukorras.",
 		charcoal = "Süsi",
-		charcoal_description = "Normaalsüsiest parem.",
+		charcoal_description = "See söepulk on valmistatud puidu grillil põletamisel ning on kõrge efektiivsusega kütus, mis parandab grillimiskogemust. See põleb kuumemalt ja puhtamalt kui toore puit, muutes selle ideaalseks toiduvalmistamiseks ja välistingimustes kulinaarsetest tegevustest rõõmu tundmiseks.",
+		canine_tooth = "Mägilõvi hammas",
+		canine_tooth_description = "Haruldane ja võimas metsaline reliikvia, see mägilõvi hammas sümboliseerib jahi toores olulisus. Haruldane saak igale jahimehele.",
+		antlers = "Hirve sarved",
+		antlers_description = "Harva leitav, need sarved on jahimehe graatsiline austusavaldus metsiku vaikivale tantsule. Haruldane ja elegantne leid.",
+		pancake_mix = "Pannkoogi segu",
+		pancake_mix_description = "Mitmekülgne segu, mis on esimene samm ideaalse hommiku poole. See pannkoogi segu ootab ärkamist piimaseguga, valmis muutuma sujuvaks tainaks teie toidunaudinguks.",
+		beef_sausages = "Veiselihavorstid",
+		beef_sausages_description = "Valmistatud parimatest lihatükkidest, need veiselihavorstid on tunnistus jahimehe oskusest ja lihuniku käsitööst. Grilli jaoks valmis, lubavad need särisevad roogad metsikusest otse teie taldrikule.",
+		raw_bacon = "Toores peekon",
+		raw_bacon_description = "See esmaklassiline peekon, viilutatud parimatest lõikudest ja täiuslikult marineeritud, on valmis muutma igasuguse eine mahlakaks meistriteoseks. Ideaalne grilli jaoks, ootab see krõbedaks küpsemist suupaisutavaks naudinguks.",
+
+		carrot = "Porgand",
+		carrot_description = "Kriuksuv, oranž näks, mida armastavad tervisesõltlased ja... jänkud. Olge ettevaatlik, et jänes teid ei võidaks!",
+		liquid_smoke = "Vedel suits",
+		liquid_smoke_description = "See pudel vedel suits on kulinaarse alkeemia saladus, kontsentreeritud essents, mis lisab toores lihale tule ja puidu iidsete sosinate. ",
+		raw_brined_meat = "Toore soolatud liha",
+		raw_brined_meat_description = "See toorelt suitsutatud liha kannab tulevaste pidusöökide lubadust. Grillimisel muutub see veiselihahakklihaks, maitsev tunnistus kannatlikkusest ja käsitööst.",
+		bread_loaf = "Leivakänts",
+		bread_loaf_description = "Leivakänts, värske ahjust. Ideaalne võileibade, röstsaia ja tugevate söökide jaoks.",
+		bbq_sauce = "BBQ kaste",
+		bbq_sauce_description = "Rikas ja vürtsikas kaste, mis lisab igale roale plahvatusliku maitse. Ideaalne grillimiseks, marineerimiseks ja kastmeks.",
+		bbq_sandwich = "BBQ võileib",
+		bbq_sandwich_description = "Maitsvast võileivast tulvil mahlakat suitsust liha ja vürtsikat BBQ kastet. Täidlane eine, mis rahuldab hinge.",
+		cucumber = "Kurk",
+		cucumber_description = "Krõmps ja värskendav kurk, ideaalne salatitele, näksimiseks või kodus marineeritud kurgi valmistamiseks.",
+		salt = "Sool",
+		salt_description = "Kuhjaga sool võib igat rooga muuta, rõhutades maitseid ja lisades sügavust teie kulinaarsetele loometele.",
+		pickles = "Kurgid",
+		pickles_description = "Purk vürtsikaid ja krõmpse kurgikesi, täiuslik suupiste, võileivade ja toitudele värsket maitset lisamiseks.",
+		pickle = "Kurgiviil",
+		pickle_description = "Värskelt marineeritud, mahlane ja krõbe kurgiviil otse purgist. Ideaalne vürtsikas suupiste või lisandina toidule.",
+		pickle_juice = "Kurgimahl",
+		pickle_juice_description = "Värskendav ja vürtsikas kurgimahl on elav vedel kuld, mis jääb alles kui valid kurgile. Ideaalne maitselöögi andmiseks suupistetele või nautimiseks omaette soolase maiusena!",
+		dark_chocolate = "Tume šokolaad",
+		dark_chocolate_description = "Rikas ja luksuslik maiustus, tume šokolaad on täiuslik suhkruisu rahuldamiseks ning kakaoo sügavate ja keerukate maitsete nautimiseks.",
+		beans = "Oad",
+		beans_description = "Vaata! Püha Graal! Jumalate ambrosia, suletud plekist anumas! See pole lihtsalt Heinz'i ahjus küpsetatud oad, mu kallis härra, vaid värav puhta, puutumatult õnnistatud OAAKLUSESSE! Iga uba, mekk hääd, leotatud toidus nii rikkalikus, mis sosistab tundmatute maitsete saladusi. See pole lihtsalt toidusegu; see on elu eliksiir ise, ümbritsetud metallkandikuga, mis ootab oma hiilgust su maitsemeeltele kinkida. Võta oa osaks! Kummarda oad! Luba igal ampsul sind viia maailma, kus oad valitsevad ja iga lusikatäis on samm lähemale oaõnnele.",
+		beans_toast = "Oad röstsaial",
+		beans_toast_description = "Traditsiooniline Briti roog, oad röstsaial on lihtne ja rahuldust pakkuv eine, mis sobib suurepäraselt hommiku-, lõuna- või õhtusöögiks. Oade rikkalikud ja sügavad maitsed sobivad ideaalselt sooja, võise röstsaia juurde, luues lohutava ja toitva eine, mis on kiire ja lihtne valmistada.",
+		pancake_batter = "Pannkoogi tainas",
+		pancake_batter_description = "See rikkalik ja siidine pannkoogi tainas, valmistatud meie esmaklassilisest pannkoogisegust ja värskest piimast, on hommikueine meistriteose alus. Valmis grillimiseks ja puhumiseks kuldseteks, maitsvateks pannkookideks.",
+		pancakes = "Pannkoogid",
+		pancakes_description = "Õhulised ja kuldpruunid, koheva tekstuuriga, need Ameerika pannkoogid on maitsvalt luksuslik viis päeva alustamiseks. Maitsvad, ehkki mitte kõige tervislikum valik - mõtle neile kui vabaduse taldrikul, kus vabadus hõlmab igat siirupileotatud ampsu nautimist!",
+		grilled_sausages = "Grillvorstid",
+		grilled_sausages_description = "Naudi nende värskelt grillitud vorstide suitsust aroomi, mida kulinaarne vaevanägija teeb. Mahlased, maitsekad ja täiuslikult küpsetatud, nad on maakondlik nauding, mis tähistab jahti vaimuga igal ampsul.",
+		grilled_bacon = "Grillitud peekon",
+		grilled_bacon_description = "Krõbe, kuldne ja vastupandamatult suitsune, see grillitud peekon on lõplik nauding neile, kes hindavad elu peenemaid asju. Värskelt grillilt võetud, see on maitsepidu, valmis nautimiseks.",
+		fried_egg = "Muna praetud",
+		fried_egg_description = "Päikesepaisteline pool ja krõbedaks küpsetatud kuldkollaseks, see munapraad uhkeldab rõõmsama jumega kollase kollasega ja karge söe servadega. See on lihtne, kuid suurepärane valik igaks söögikorraks, demonstreerides, et mõnikord tulevad parimad maitsed lihtsimatest meetoditest.",
 
 		beef_jerky = "Suitsutatud veiselihaviilud",
 		beef_jerky_description = "Mõned mõnusad suitsutatud veiselihaviilud.",
@@ -7321,9 +9943,19 @@ OP.Global.Locales.Languages["et-EE"] = {
 		cheetos_description = "Parim suupiste teie mänguistungite jaoks.",
 		peanuts = "Soola pähklid",
 		peanuts_description = "Purgitäis soolapähkleid, täiuslik suupiste.",
+		olives = "Oliivid",
+		olives_description = "Väike kauss oliive, täiuslik suupiste peole.",
+		popcorn = "Popkorn",
+		popcorn_description = "Kott popkorni, ideaalne filmiõhtuks.",
+		rice_krispies = "Riisihelbed",
+		rice_krispies_description = "Magusad, krõbedad ja veidi nostalgilised need paisunud riisihelbed teevad iga ampsuga mõnusat prõksumist ja prõksatamist. Ideaalsed kiireks näksimiseks või koduste moosipulkade jaoks!",
+		almond_joy = "Mandelirõõm",
+		almond_joy_description = "Kookos- ja mandlijuppidega ümbritsetud kreemja piimašokolaadikattega. Magus, pähkline ja rahuldustpakkuv - see maiustusriba meenutab sulle, et paradiis võib mahtuda otse sinu taskusse.",
 
-		rice = "Puitliis",
-		rice_description = "See on paks ja kohev terad.",
+		uncooked_rice = "Toores riis",
+		uncooked_rice_description = "See põhitoit, toore riis, on lõuend lugematutele kulinaarsetele meistriteostele. Toores ja valmis muundamiseks lubab see imendada maitseid ja rikastada igat rooga, tugevatest risottodest õrnade sushi-rullideni.",
+		rice = "Keedetud riis",
+		rice_description = "Õhuline ja pehme, see keedetud riis on mitmekülgne alus, valmis sobituma igasuguse einega. Täiuslikult aurutatud, et püüda kinni oma peen, pähkline olemus, on see lohutav alustass toitudele üle maailma, lisades nii sisu kui ka tekstuuri Teie einamõttele.",
 		nori = "Nori vetikas",
 		nori_description = "See on merevetikas, kuid kena.",
 		soy_sauce = "Sojakaste",
@@ -7336,6 +9968,47 @@ OP.Global.Locales.Languages["et-EE"] = {
 		coconut_description = "Magus ja kreemjas, kookospähkel rikastab magustoite, karriroogasid ja smuutisid. Lihtsalt kasuta mõõdukalt.",
 		sugar = "Suhkur",
 		sugar_description = "See on nagu kokaiin, kuid mitte ebaseaduslik ja annab sulle diabeedi.",
+		chili = "Tšillipipar",
+		chili_description = "Need tulised tillukesed piprad pakuvad hoogu! Kas lisad natuke vürtsi oma salsa sisse või keerad kuumuse oma lemmiktoidus üles, siis need erksad tšillid on sinu valik terava laksu jaoks. Käitle ettevaatlikult, kui sa ei soovi, et su sõrmed kipitaksid ja su maitsemeel tantsiks!",
+		fish_filets = "Kalafilee",
+		fish_filets_description = "Need eksperdi poolt viilutatud kalafilee on gurmeeloomingute alus, eriti sobivad nad suurepärase sushi valmistamiseks. Vahetult püügi järel lõigatakse iga filee täpsusega, et tagada ideaalne tekstuur ja maitse, tehes neist lahutamatu osa igale sushi gurmaanile köögis. Sukeldu kulinaarsesse kunsti nende ookeani saagi laitmatute tükkidega.",
+		sushi = "Sushi",
+		sushi_description = "Osavalt valmistatud see sushi maki pakub värsket kalafileed, täiuslikult auruks keedetud riisi ja krõbedat norit. Iga rull on maitsete ja tekstuuride harmooniline segu, pakkudes iga ampsuga traditsioonilise Jaapani köögi võrratut maitset. Naudi selle suurepärase sushi rafineeritud lihtsust.",
+		nigiri = "Nigiri",
+		nigiri_description = "See elegantne nigiri sushi näitab õhukeselt viilutatud kala peenelt maitsestatud riisi peal. Iga tükk on lihtsuse ja maitse tunnistus, hoolikalt tasakaalustatud, et rõhutada mereanni värsket, õrna maitset. Klassikaline valik sushi huvilistele, see on visuaalselt meeldiv sama palju kui maitsev.",
+		miso_soup = "Miso supp",
+		miso_soup_description = "See lohutav kauss miso suppi on soe, hõrgutav segu rikkalikust miso puljongist, siidise tofu ja värskelt hakitud rohelistest sibulatest. Iga lusikatäis pakub rahustavat maitset ja õrna umami maitset, muutes selle ideaalseks eelroaks või kergeks eineks omaette. Naudi traditsiooniliste koostisosade õrna tasakaalu, mis toidavad hinge.",
+		spring_onions = "Sibulad",
+		spring_onions_description = "Krispsed ja elavad, need rohelised sibulad toovad igale roale värske maitseplahvatuse. Tuntud oma maheda vürtsika häälega ja mitmekülgsuse poolest, võib neid kasutada tervelt grillimiseks või hautamiseks või tükeldada, et lisada salatitesse ja suppidesse peene teravuse.",
+		spring_onions_cut = "Hakitud rohelised sibulad",
+		spring_onions_cut_description = "Need värskeid hakitud rohelised sibulad on valmis täiustama teie kulinaarseid loominguotsi. Ideaalne nii kaunistamiseks kui ka roogade segamiseks, nende erksad, piprased noodid lisavad nii maitset kui ka värviplärtsu, muutes iga eine maitsvamaks ja visuaalselt ahvatlevamaks.",
+		tofu = "Tofu",
+		tofu_description = "See mitmekülgne tofu plokk on tervisliku ja loova toiduvalmistamise alustala. Valmistatud sojaoast, on see maheda maitsega lemmik, mis imab suurepäraselt maitseid, muutes selle ideaalseks kõigeks alates wokiroogadest kuni smuutideni.",
+		tofu_cubes = "Tofukuubikud",
+		tofu_cubes_description = "Eelnevalt tükeldatud täiuslikesse kuubikutesse, see tofu on valmis sukelduma järgmisesse köögiseiklusse. Ideaalne kiireteks eineks, need tofukuubikud saab visata suppidesse, salatitesse või kuumadele pannidele, lisades toitaineterikast tõuget ja suurepärast tekstuuri teie roogadesse.",
+		uncooked_ramen = "Keetmata Ramen",
+		uncooked_ramen_description = "Teie DIY ramenikomplekt, valmis muutmiseks auruavaks maitsvaks kaussiks. Lisage lihtsalt kuuma vett ja oma lemmikkatteid ning teil on kiire ja maitsev eine käes vaid hetkega!",
+		ramen = "Ramen",
+		ramen_description = "Kauss täis puhtat lohutust, pakitud nuudlite, maitsva puljongi ja kõigi sinu lemmiklisanditega. Olgu sa liugled kodus või liikvel olles, see ramen on kui kallistus kausis.",
+		spicy_ramen = "Vürtsikas Ramen",
+		spicy_ramen_description = "Neile, kes armastavad elada äärel, toob Vürtsikas Ramen tule! Sukeldu tulise puljongi, nuudlite ja vürtsikate lisandite sisse, mis panevad su maitsemeeli tantsima. Kas suudad sellega hakkama saada?",
+		bento_box = "Bento karp",
+		bento_box_description = "Maitsete ja tekstuuride võluv segu, see Bento karp on sinu valik tasakaalustatud eine jaoks. Pakitud mitmesuguste heade asjadega, see on nagu piknik karbis. Ideaalne lõunaks või kergeks õhtusöögiks!",
+		mochi_mango = "Mango Mochi",
+		mochi_mango_description = "Troopiline mangomochi, mis pulbitseb küpsete mangode magusa ja mahla maitsega. Ümbritsetud pehme, kleepuva kestaga, see on väike puhkus teie maitsemeeltele.",
+		mochi_strawberry = "Maasika Mochi",
+		mochi_strawberry_description = "Lummav maasika mochi, mis ühendab puuviljase, marjaselt magusa täidise pehme, veniva välispinnaga. Nagu hammustaks väikesesse päikesepilve ja magususse.",
+		mochi_green_tea = "Roheline Tee Mochi",
+		mochi_green_tea_description = "Värskendav rohelise tee mochi, mis sulandab maa-alune matcha maitse sileda, nätske tekstuuriga. Ideaalne zenilaadne magustoit kogemuse jaoks, milles on õige tasakaal magususe ja kibeduse vahel.",
+		mochi_chocolate = "Šokolaadimochi",
+		mochi_chocolate_description = "Rikkaliku kakaotäidisega mochi, mis on mässitud nätske, pehmesse väliskesta. Ideaalne magusaisu kiireks rahuldamiseks koos tilga suussulava naudinguga.",
+		green_tea_bag = "Roheline Tee",
+		green_tea_bag_description = "Kott rohelise tee kvaliteetsetest lahtistest lehtedest, valmis sind sukeldama maalähedase, värskendava maitse maailma. Ideaalne tee entusiastidele, kes eelistavad harrastuste valmistamise kunsti mugavamate eeltäidetud kottide asemel. Üks lonks sellest ja tunned rahu.",
+
+		asahi_beer = "Asahi õlu",
+		asahi_beer_description = "Nautige Asahi õlle värsket, puhtsat maitset, mis on kvaliteetne Jaapani lager, tuntud oma sileda ja värskendava maitse poolest. See kuldne jook on professionaalselt valmistatud, et tõsta esile igat sündmust, muutes selle ideaalseks valikuks nii juhuslikuks lonksuks kui ka peene söömise jaoks.",
+		green_tea = "Roheline Tee",
+		green_tea_description = "Soojendav, rahustav tass värskelt pruulitud rohelist teed, mis ümbritseb sind oma maalähedase aroomi ja õrna maitsega. Ideaalne hetkedeks rahulikkuseks või õrnaks ergutuseks, see on nagu kallistus tassis su hingele.",
 
 		golf_ball = "Golfipall",
 		golf_ball_description = "Kasutatakse golfimängus.",
@@ -7350,28 +10023,36 @@ OP.Global.Locales.Languages["et-EE"] = {
 		gas_mask_description = "päästab sind igasuguse gaasi eest, isegi vanaema pahvaka eest.",
 		nv_goggles = "Öövaatlusprillid",
 		nv_goggles_description = "aitavad sul pimedas näha.",
-		thermal_goggles = "Termokaameraga prillid",
-		thermal_goggles_description = "aitavad sul läbi seinte näha (tegelikkuses mitte xD).",
+		vision_goggles = "Visionary Pro prillid",
+		vision_goggles_description = "Astuge tulevikku koos Visionary Pro prillidega, mis on lõikekanti kuuluv silmariie. Ühendades sileda disaini kaasaegse funktsionaalsusega, pakuvad need prillid erakordset kogemust nagu ükski teine. Pange need pähe ja muutke oma maailma vaade!",
+		skate_helmet = "Rula Kiiver",
+		skate_helmet_description = "Hoidke oma pead ohutult, näidates stiilset välimust selle usaldusväärse rula kiivriga. Ideaalne soovimatute peapõrutuste vältimiseks ja oma stiili esitlemiseks, see on igale sõitjale hädavajalik. Ohutus ennekõike, rõõm teiseks!",
 
 		green_rolls = "Rohtu sisaldavad rullid",
 		green_rolls_description = "nendeks, kes vajavad rohkem kui keskmine kogus.",
 		rolling_paper = "Tubakapaber",
 		rolling_paper_description = "kiire paber, millega saad oma mured maha suitsetada.",
+		bong = "Bong",
+		bong_description = "Tõstke oma suitsetamismäng uuele tasemele selle kvaliteetse klaasbongiga. Disainitud sujuvateks, jahedateks tõmmeteks, filtreerib see suitsu vee kaudu puhtama ja nauditavama kogemuse saamiseks. Ideaalne kasutamiseks üksi või sõpradega jagamiseks, lihtsalt täitke, pakkige, süütage ja nautige!",
+		bong_water = "Bongivee",
+		bong_water_description = "\"Kas ma võin juua sinu bongivett?\"",
 
 		arena_pill = "Arenapill",
 		arena_pill_description = "Imelik pill, mis teeb veel imelikumaid asju... \"Swallow\" omal vastutusel. Võib-olla oleks targem kaasas kanda relva, et kaitsta end vägivaldsete unenägude eest.",
 
 		shovel = "Labidas",
 		shovel_description = "Kindel kaevamisriist varjatud aarete väljakaevamiseks ja saladuste avastamiseks igal pool, muutes selle suurepäraseks abivahendiks pühendunud aardejahtijatele.",
+		pickaxe = "Rehv",
+		pickaxe_description = "See usaldusväärne rehv aitab teil lammutada kõik plokid, mida olete paigutanud, tehes tee uute loomiste jaoks. Vastupidav ja tõhus, see on käepärane tööriist iga ehitaja jaoks, kes on valmis maailma ümber kujundama.",
 
 		electric_fuse = "Elektriline sulavkaitse",
 		electric_fuse_description = "Elektriline sulavkaitse on vajalik esemeks rööveltoas. See tuleb paigutada sulavkaitsekarpi, et toita kõvaketta lukku.",
 		keycard_green = "Roheline võtmekaart",
-		keycard_green_description = "Kasutatakse meditsiinivarustusega täidetud ladude avamiseks.",
+		keycard_green_description = "Kasutatakse meditsiinitarvete täis hoidlatega avamiseks. Kuulub Los Santose Fleeca pangale.",
 		keycard_blue = "Sinine võtmekaart",
-		keycard_blue_description = "Kasutatakse tehnoloogiavarustusega täidetud ladude avamiseks.",
+		keycard_blue_description = "Kasutatakse tehniliste tarvete täis hoidlatega avamiseks. Kuulub Los Santose Fleeca pangale.",
 		keycard_red = "Punane võtmekaart",
-		keycard_red_description = "Kasutatakse relvalao avamiseks.",
+		keycard_red_description = "Kasutatakse relvahoidla avamiseks. Kuulub Los Santose Fleeca pangale.",
 
 		magazine = "Ajakiri",
 		magazine_description = "Ajakiri.",
@@ -7517,6 +10198,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		weapon_poolcue = "Biljardikepp",
 		weapon_stone_hatchet = "Kivine kirves",
 		weapon_candycane = "Kommi kepp",
+		weapon_stunrod = "Sähvatus",
 
 		weapon_pistol = "Püstol",
 		weapon_pistol_mk2 = "Püstol Mk II",
@@ -7539,6 +10221,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		weapon_gadgetpistol = "Perico püstol",
 		weapon_stungun_mp = "Stungun (MP)",
 		weapon_pistolxm3 = "WM 29 püstol",
+		weapon_tecpistol = "Taktikaline SMG",
 
 		weapon_microsmg = "Väikekuulipilduja",
 		weapon_smg = "Kuulipilduja",
@@ -7573,6 +10256,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		weapon_militaryrifle = "Sõjaväe vintpüss",
 		weapon_heavyrifle = "Raske vintpüss",
 		weapon_tacticalrifle = "Taktikaline vintpüss",
+		weapon_battlerifle = "Võitlusvintpüss",
 
 		weapon_mg = "Kergekuulipilduja",
 		weapon_combatmg = "Võitluskino",
@@ -7598,6 +10282,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		weapon_emplauncher = "Väike EMP väljasaatja",
 		weapon_stinger = "RPG",
 		weapon_railgunxm3 = "Coil Railgun",
+		weapon_snowlauncher = "Lumepallipilduja",
 
 		weapon_grenade = "Käsigranaat",
 		weapon_bzgas = "BZ Gaas",
@@ -7611,12 +10296,15 @@ OP.Global.Locales.Languages["et-EE"] = {
 		weapon_flare = "Lohutuli",
 		weapon_acidpackage = "Happepakend",
 
-		weapon_petrolcan = "Jerry kanister",
-		gadget_parachute = "Langevari",
 		weapon_fireextinguisher = "Tulekustuti",
 		weapon_hazardcan = "Ohutu kütusekanister",
 		weapon_fertilizercan = "Väetisekanister",
+		weapon_hackingdevice = "Häkkeriseade",
 
+		weapon_petrolcan = "Jerry kanister",
+		ev_battery = "Elektriauto aku",
+
+		gadget_parachute = "Langevari",
 		red_parachute = "Punane langevari",
 		blue_parachute = "Sinine langevari",
 		black_parachute = "Must langevari",
@@ -7640,6 +10328,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		weapon_poolcue_description = "Ah, pole midagi rahuldustpakkuvamat kui täiusliku murdmise ragin, eriti kui see on teise inimese selgroog.",
 		weapon_stone_hatchet_description = "2,5 miljonit aastat uurimistööd ja me oleme endiselt siin.",
 		weapon_candycane_description = "Pidulik kommid, mis on veidi kleepuvad.",
+		weapon_stunrod_description = "Kui lihtne jõhkrus pole piisav, kaalu oma lähenemisviisi mitmekesistamist raskendatud rünnakuga annuses 30 000 volti.",
 
 		weapon_pistol_description = "Standardne käsi relv. .45 kaliibriga võitluspiistol, mille mahutavus on 12 padrunit ja mida saab pikendada kuni 16 padrunit.",
 		weapon_pistol_mk2_description = "Tasakaal, lihtsus, täpsus: pole midagi paremat kui pikendatud toruga püstol kellegi suus.",
@@ -7662,6 +10351,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		weapon_gadgetpistol_description = "Tapva täpsusega tulistav relv. Ära ole kartlik. Sa ei kriimusta titaannitriidkatet.",
 		weapon_stungun_mp_description = "Sähviv lõbu tervele perele!",
 		weapon_pistolxm3_description = "Kompaktne ja kergekaaluline püstol, mis tulistab 9mm kaliibrilisi laskemoone. Väga efektiivne lähivõitluses.",
+		weapon_tecpistol_description = "Täisautomaatne käsituli suure padrunite mahutavuse ja kõrge tulekiirusega. Mahutab 33 padrunit 9mm padrunit.",
 
 		weapon_microsmg_description = "Ühendab kompaktse disaini ja kõrge tulekiiruse, umbkaudu 700-900 lasu minutis.",
 		weapon_smg_description = "Tegemist on tugeva algtaseme kuulipildujaga. Kergekaaluline, täpne sihikuga ja 30 lasku mahutava magasiniga.",
@@ -7696,6 +10386,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		weapon_militaryrifle_description = "See tohutu võimsusega rünnakpüss oli mõeldud kõrgelt kvalifitseeritud ja erakordselt osavatele sõduritele. Jah, sa saad selle osta.",
 		weapon_heavyrifle_description = "Raskem tähendab paremat, eks? Jah, lähme sellega.",
 		weapon_tacticalrifle_description = "Selle hooaja must-have riistvara õiguskaitseametnikele, sõjaväelastele ja kõigile, kes on kinni võitluses surmavalt kas õiguskaitse- või sõjaväelastega.",
+		weapon_battlerifle_description = "Kohtuge Võitlusvintpüssiga, FN FAL-i usaldusväärsuse ja Heckler & Koch G3 täpsuse fusion. Vepr 7.62x54r relvaga sarnase salvestiga, on see teie valik jõu ja täpsuse saavutamiseks lahinguväljal.",
 
 		weapon_mg_description = "Üldotstarbeline kuulipilduja, mis ühendab vastupidava disaini usaldusväärse jõudlusega. Suur ulatuslik läbitungiv jõud. Väga efektiivne suurte gruppide vastu.",
 		weapon_combatmg_description = "Kerge, kompaktne kuulipilduja, mis ühendab suurepärase manööverdamisvõime kõrge tulekiirusega ja hävitavate tagajärgedega.",
@@ -7721,6 +10412,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		weapon_emplauncher_description = "Lase seda droonidele ja helikopteritele, et neid uniseks teha.",
 		weapon_stinger_description = "Õlal kantav pinnalt-õhku raketiheitja vaenulike lennukite hävitamiseks.",
 		weapon_railgunxm3_description = "Kõik, mida pead teadma - magnetid ja see teeb kohutavaid asju, millele see suunatud on.",
+		weapon_snowlauncher_description = "Lumepallide laskur: Talv muutub lumepallide lahinguks. Inspiratsiooni on saadud M79 granaadiheitjast, mida on mänguliselt muudetud jõulupidude jaoks mõeldud lumepallide tulistamiseks. Valmistu lumiste seikluste jaoks!",
 
 		weapon_grenade_description = "Standardne killustatud granaat. Tõmba pulk välja, viska ja leia varjupaik. Ideaalne sissetungijate rühmatest vabanemiseks.",
 		weapon_bzgas_description = "Kasuta inimestele, keda sa ei salli, ruumis suitsutamiseks.",
@@ -7734,12 +10426,15 @@ OP.Global.Locales.Languages["et-EE"] = {
 		weapon_flare_description = "Viska õhukasteks.",
 		weapon_acidpackage_description = "Hapepakend. Kasuta seda segaduse tekitamiseks.",
 
-		weapon_petrolcan_description = "Jätab järel endast bensiiniraja, mida saab süüdata.<br><br>Bensiini kogus järele jäänud: ${petrolAmount}%.",
-		gadget_parachute_description = "See nailonsportlaskäimistega langevari on varustatud ram-air parafooliga, mis tagab suurema suuna- ja kiirusekontrolli.",
 		weapon_fireextinguisher_description = "Tulekustuti ehk \"Suitsemasin\".",
 		weapon_hazardcan_description = "Gaasikanistri moodi asi, kuid kasutu.",
 		weapon_fertilizercan_description = "Vana hea sõnnikuplekk, midagi paremat teie põllukultuuride jaoks pole.",
+		weapon_hackingdevice_description = "See on väike käes hoitav seade, mis põhineb tugevalt metalliotsijal, kuid millel on ka antenn ja asendatud nupud.",
 
+		weapon_petrolcan_description = "Jätab järel endast bensiiniraja, mida saab süüdata.<br><br>Bensiini kogus järele jäänud: ${petrolAmount}%.",
+		ev_battery_description = "Kõrgepinge lahendus teie elektriautole, see suur aku on nagu kanister, kuid elektriaja jaoks - valmis andma teie sõidukile tõuke energiat siis, kui seda kõige rohkem vajate.<br><br>Laetud protsent: ${chargeAmount}%.",
+
+		gadget_parachute_description = "See nailonsportlaskäimistega langevari on varustatud ram-air parafooliga, mis tagab suurema suuna- ja kiirusekontrolli.",
 		red_parachute_description = "Nagu tavaline langevari, kuid punane.",
 		blue_parachute_description = "Nagu tavaline langevari, kuid sinine.",
 		black_parachute_description = "Nagu tavaline langevari, kuid must.",
@@ -7769,7 +10464,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		weapon_addon_sentinelbbshotgun = "Sipelgashotgun",
 		weapon_addon_sentinelbbshotgun_description = "Kotte täis lõbu.",
 
-		-- TODO: Add a description for this one
 		weapon_addon_stungun = "Poolkontakte taser",
 		weapon_addon_stungun_description = "Põnev lõbu kogu perele!",
 
@@ -7779,8 +10473,8 @@ OP.Global.Locales.Languages["et-EE"] = {
 		weapon_addon_rc4 = "Remington R4-C",
 		weapon_addon_rc4_description = "Vägivaldne ja kiire, ideaalne partner oma rühmas. Niikaua kui seda ei hoia punapea.",
 
-		weapon_addon_pp19 = "PP-19 Vityaz",
-		weapon_addon_pp19_description = "Venemaa tipptase, ideaalne \"raid\"-ideks.",
+		weapon_addon_mcx = "SIG MCX",
+		weapon_addon_mcx_description = "Tuntud oma kohanemisvõime ja täpsuse poolest, SIG MCX on mitmekülgne tulirelva, mis pakub enneolematut usaldusväärsust ja jõudlust igas olukorras.",
 
 		weapon_addon_m9a3 = "Beretta M9A3",
 		weapon_addon_m9a3_description = "Kõik, mida vajad oma mustade tegude saavutamiseks odavalt.",
@@ -7791,9 +10485,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		weapon_addon_m870 = "Remington M870",
 		weapon_addon_m870_description = "Ideaalne spordi- ja jahipüss, kuigi Dannyste laskmine pole tegelikult sport... või on?",
 
-		weapon_addon_rpk16 = "RPK-16",
-		weapon_addon_rpk16_description = "Kõige täiuslikum kuulipilduja, mis kunagi olemas olnud, lihtsalt ära unusta dressipükse.",
-
 		weapon_addon_tacknife = "Ultimate taktikaline nuga",
 		weapon_addon_tacknife_description = "Lõpuks jõudsite tasemele 100. Krahv oleks uhke.",
 
@@ -7802,9 +10493,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		weapon_addon_berserker = "Berserker",
 		weapon_addon_berserker_description = "Laheda kirvega.",
-
-		weapon_addon_katana = "Katana",
-		weapon_addon_katana_description = "Ninja stiilis, mhm.",
 
 		weapon_addon_stidvc = "STI DVC 2011",
 		weapon_addon_stidvc_description = "Tulevik on nüüd siin, vanamees! Lihtsalt väiksema kaliibriga.",
@@ -7824,8 +10512,11 @@ OP.Global.Locales.Languages["et-EE"] = {
 		weapon_addon_mk18 = "MK18",
 		weapon_addon_mk18_description = "\"Hoia end relvastatuna või saad lüüa\" - George Washington (tõenäoliselt)",
 
-		weapon_addon_glock = "Glock 17",
-		weapon_addon_glock_description = "Maailma populaarseim käsiase.",
+		weapon_addon_ddm4v7 = "DDM4V7",
+		weapon_addon_ddm4v7_description = "Tere tulemast riisipõldudele.",
+
+		weapon_addon_glock = "Glock 19",
+		weapon_addon_glock_description = "See kompaktne ja usaldusväärne Glock 19 kannab uhkelt Ameerika lipu slaidil, sest miski ei väljenda vabadust nii nagu tähed, triibud ja 9 mm. Ideaalne patriootidele, kes armastavad oma relvi sama julgelt kui armastavad oma riiki.",
 
 		weapon_addon_colt = "Colt 1851 Navy",
 		weapon_addon_colt_description = "Algupärane revolver, see, mis kõik alguse sai.",
@@ -7837,31 +10528,112 @@ OP.Global.Locales.Languages["et-EE"] = {
 		weapon_addon_m6ic_description = "Täiuslik relv täiuslikule inimesele, lihtsalt ära unusta dressipükse.",
 
 		weapon_addon_hk416 = "H&K 416",
-		weapon_addon_hk416_description = "H&K 416, tulirelvade Ferrari - terav, võimsa ja garanteeritud tähelepanu äratav. See on justkui isiklik treener sinu päästikusõrmes, pakkudes tulemusi, mis muudavad su vaenlased kadedaks. Tere tulemast oma uue BFF-i (Parima Tulerelva Sõbra) juurde!"
+		weapon_addon_hk416_description = "H&K 416, tulirelvade Ferrari - terav, võimsa ja garanteeritud tähelepanu äratav. See on justkui isiklik treener sinu päästikusõrmes, pakkudes tulemusi, mis muudavad su vaenlased kadedaks. Tere tulemast oma uue BFF-i (Parima Tulerelva Sõbra) juurde!",
+
+		weapon_addon_680 = "Remington 680",
+		weapon_addon_680_description = "Remington 680 on pumpputoiminen haulikko, joka kehitettiin Remington Arms-yrityksessä vuonna 1950.",
+
+		weapon_addon_honey = "Meemäger",
+		weapon_addon_honey_description = "AAC Honey Badger PDW on isikukaitse relv, mida sageli kasutatakse summutiga konfiguratsioonis ning see põhineb AR-15-l. Selle kaliiber on .300 AAC Blackout ja seda toodeti algselt ettevõtte Advanced Armament Corporation (AAC) poolt.",
+
+		weapon_addon_glock18c = "El inventario del jugador está lleno.",
+		weapon_addon_glock18c_description = "Fucking used for sawing shit off of other shitty things.",
+
+		weapon_addon_1911 = "1911 Kimber Tactical",
+		weapon_addon_1911_description = "1911 Kimber Tactical: Kus stiil kohtub sisuga. Usaldatud entusiastide poolt kõikjal, see on sinu valik kaitsmiseks ja laheduseks!",
+
+		weapon_addon_svd = "SVD Dragunov",
+		weapon_addon_svd_description = "Täpsus ja võimsus, SVD Dragunov on poolautomaatne snaiperivintpüss, mis on olnud aastakümneid sõjaväe- ja õiguskaitseüksuste lahutamatu osa. See on ideaalne valik pikaulatuslike lahingute jaoks ning garanteerib, et su vaenlased mõtlevad kaks korda, enne kui sind konflikti astuvad.",
+
+		weapon_addon_axmc = "AXMC",
+		weapon_addon_axmc_description = "AXMC on snaiferrelva tipptasemel insenerimeistriteos, pakkudes erakordset pikaulatuslikku täpsust ning mudulaarset disaini, mis seatakse täpsuslaske standardiks.",
+
+		weapon_addon_6kh4 = "6KH4",
+		weapon_addon_6kh4_description = "Kaasaegsele jahimehele loodud see 6KH4 bajonettnuga ühendab ajatu disaini tugeva funktsionaalsusega, täiuslik täpsuse nõuetele vastav looduslikus keskkonnas.",
+
+		weapon_addon_jericho = "Jericho 941",
+		weapon_addon_jericho_description = "Jericho 941 eristub oma usaldusväärsuse, täpsuse ja ergonoomilise disaini poolest, pakkudes laskuritele ülimat kogemust nii sooritusvõime kui mugavuse osas.",
+
+		weapon_addon_fn509 = "FN-509",
+		weapon_addon_fn509_description = "FN-509 on tasakaalu ja täpsuse meistriklass, varustatud 15 padrungiga, tagamaks usaldusväärsust ja täpsust igas lasus. Usaldusväärne kaaslane kaitse ja teenistuse jaoks.",
+
+		weapon_addon_garand = "M1 Garand",
+		weapon_addon_garand_description = "Kohtu M1 Garand, relv, mis praktiliselt võitis Teise maailmasõja üksinda (või vähemalt väidab seda igal veteranide kokkutulekul). See ajalooline klassikaline relv teeb eristuva „ping“ heli, mis teatab kõigile - sõber või vaenlane - et sul on just lõppenud laskemoon. Ideaalne neile, kes hindavad oma tulirelvadele veidi dramaatilist stiili, see usaldusväärne kaaslane on sama usaldusväärne kui su vanaisa sõjamälestused ja vähemalt sama legendaarne.",
+
+		weapon_addon_multitool = "Mitmekülgne tööriist",
+		weapon_addon_multitool_description = "Nagu tavaline mitmekülgne tööriist, kuid ilma liialdusteta.",
+
+		weapon_addon_ar15 = "AR-15",
+		weapon_addon_ar15_description = "Kohtu AR-15-ga, usaldusväärse relvaga, mis on nagu püsside alahinnatud kangelane. See on justkui carbine rifle veider sugulane - samad sisikonnad, erinev maitse. Ideaalne olukordadeks, kus soovid asju vürtsitada ilma liialdusteta. Usaldusväärne, täpne ja just piisaval määral \"pauh pauh\" igas tagasihoidlikus olukorras.",
+
+		weapon_addon_tennisball = "Tennisepall",
+		weapon_addon_tennisball_description = "Perfektne kiireks mänguks, koera tähelepanu hajutamiseks või kaootiliseks viskeks ruumi teises otsas. Lihtsalt võta eesmärk, viska ja jälgi seda pööraselt põrkamas – boonuspunktid, kui see ei tule tagasi!"
+	},
+
+	invisibility = {
+		invisibility_on = "Lülitati nähtamatus sisse.",
+		invisibility_off = "Lülitati nähtamatus välja.",
+		invalid_invisibility_mode = "Vigane nähtamatuse režiim. Peab olema 'täis' või 'tavaline'.",
+		invisibility_mode_full = "Nähtamatusrežiim on seatud 'täis'. Tavalised töötajad ei näe sind.",
+		invisibility_mode_normal = "Nähtamatusrežiim on seatud 'tavaline'. Tavalised töötajad näevad sind nüüd.",
+		current_invisibility_mode = "Praegune nähtamatusrežiim on seadistatud '${mode}'ks.",
+
+		toggled_invisibility = "Nähtamatus on edukalt lülitatud kasutajale ${displayName}.",
+		failed_invisibility = "Ei õnnestunud kasutaja ${displayName} nähtamatust lülitada.",
+
+		invisibility_logs_title = "Lülitati nähtamatus",
+		invisibility_on_logs_details = "${consoleName} lülitas oma nähtamatuse sisse.",
+		invisibility_off_logs_details = "${consoleName} lülitas oma nähtamatuse välja.",
+		invisibility_other_logs_details = "${consoleName} lülitas kasutaja ${targetConsoleName} nähtamatuse."
+	},
+
+	isolation = {
+		failed_isolate = "Mängija eraldamine ebaõnnestus.",
+		isolate_success_on = "Mängija ${consoleName} edukalt eraldatud.",
+		isolate_success_off = "Mängija ${consoleName} eraldamine edukalt peatatud.",
+
+		isolated_logs_title = "Mängija isoleerimine",
+		isolated_off_logs_details = "${consoleName} lülitas 'Player Isolation' funktsiooni välja mängijale ${targetName}.",
+		isolated_on_logs_details = "${consoleName} lülitas 'Player Isolation' funktsiooni sisse mängijale ${targetName}.",
+		isolated = "Sa oled isoleeritud."
 	},
 
 	items = {
 		move_to_repair = "Liiguta siia, et parandada sõidukit.",
 		repairing_vehicle = "Parandan sõidukit",
+		fix_visual_damage = "Parandan visuaalset kahjustust",
+		no_vehicle_nearby = "Ühtegi lähedal asuvat sõidukit pole.",
+		no_vehicle_seat_nearby = "Sa ei ole sõiduki istme lähedal.",
+		bleaching_vehicle_seat = "Pleegitamine sõiduki istmel",
+		vehicle_seat_bleached = "Istme edukas pleegitamine.",
+		measuring_color = "Värvi mõõtmine",
+		color_measurement = "Värvimõõtmine",
+		color_measurer_result = "**${primary}** (*${primaryId}*) esmane värv, **${secondary}** (*${secondaryId}*) teisene värv, **${pearlescent}** (*${pearlescentId}*) pärlivärv ning **${wheel}** (*${wheelId}*) velje värv.",
+		no_vehicle_in_front = "Sinu ees pole ühtegi sõidukit.",
 		using_first_aid_kit = "Kasutan Esmaabikomplekti",
 		using_bandages = "Kasutan Sidemeid",
+		using_tourniquet = "Tourniqueti kasutamine",
 		using_ifak = "Kasutan IFAK'i",
 		move_to_wash = "Liiguta siia, et pesta sõidukit",
 		vehicle_too_clean = "Sõiduk on liiga puhas, et seda pesta.",
 		move_to_put_fake_plate = "Liigutage siia, et panna vale numbrimärk.",
-		unable_to_repair = "Te ei saa sõidukit parandada, kui sees on mängijaid.",
 		failed_lockpicking = "Lukuharjutus ebaõnnestus.",
 		lockpicking_succeeded = "Lukuharjutus õnnestus.",
 		hotwiring_vehicle = "Süütelukklahti rakendamine.",
 		lockpick_broke = "Lukk ei avanenud.",
-		failed_hotwire = "Süütelukklahti rakendamine ebaõnnestus.",
+		failed_hotwire = "Sõiduki kuumustamine ebaõnnestus, proovi paremate tööriistadega?",
+		no_meth_bag = "Sul ei ole metamfetamiinikotti.",
+		no_weed_1q = "Sul pole 1q narkootikume.",
 		unpacking_green_rolls = "Pakkides lahti rohelisi rolle.",
 		you_do_not_have_enough_rolling_paper = "Teil pole piisavalt rullpaberit.",
 		rolling_joint = "Sigareti keeramine.",
 		rolling_joints = "Sigaretirullimine",
 		changing_license_plate = "Numbrimärgi vahetus",
 		equipping_parachute = "Langevarju varustamine: ${itemName}",
+		no_lighter = "Sul pole tuld.",
 		lockpicking_vehicle = "Auto lukustuse avamine",
+		printout_title = "${type} väljatrükk",
+		printout_text = "*${text}*",
 		illegal_weather_name = "Ilmaprognoosi muutmine ebaseadusliku ilmanimega.",
 		equipping_body_armor = "Kehaplaadi varustamine",
 		illegal_burger_shot_delivery_item_id = "Burger Shot tellimuse esitamisel vale tootenimega.",
@@ -7869,20 +10641,44 @@ OP.Global.Locales.Languages["et-EE"] = {
 		unable_to_use_lighter_in_vehicle = "Te ei saa sõidukisse süütevedelikku kasutada.",
 		not_possible_in_a_vehicle = "See tegevus pole sõidukis võimalik.",
 		just_used_bandage = "Kasutasid just esmaabipakki, oota enne teise kasutamist.",
+		just_used_tourniquet = "Kasutasid hiljuti tourniqueti, oota enne teise kasutamist veidi aega.",
 		drank_gasoline_death = "Bensiinimürgitus",
+		refilling_lighter = "Tulemasina täitmine",
 		drank_bleach_death = "Valgendimürgitus",
+		finished_joint = "Sa lõpetasid oma joint'i.",
+		cant_place_here = "Sa ei saa seda siia panna.",
+		failed_slice_pizza = "Ei õnnestunud pitsat lõigata.",
+		failed_slice_cake = "Ei õnnestunud kooki lõigata.",
+		straw_no_drinks = "Sul pole jooki, mida selle kõrrega juua.",
+		failed_use_straw = "Ei õnnestunud kasutada paberist kõrt.",
+
+		using_cuffs = "Kasutab käeraudu",
+		you_moved_too_fast = "Liikusid liiga kiiresti.",
 
 		failed_burger_shot_delivery = "Ei õnnestunud Burgershoti eine avada.",
 		failed_bean_machine_delivery = "Ei õnnestunud Bean Machine'i kohaletoimetamist avada.",
+		failed_kissaki_delivery = "Kissaki eine avamine ebaõnnestus.",
+		failed_green_wonderland_delivery = "Ebaõnnestus rohelise imedemaa koti avamine.",
+		failed_pizza_this_delivery = "Ei õnnestunud pitsakarpi avada.",
+		failed_closed_paper_bag = "Paberkoti avamine ebaõnnestus.",
 
+		closed_paper_bag_empty = "See paberikott on tühi.",
 		burger_shot_delivery_empty = "Tundub, et see Burgershot'i eine oli tühi.",
 		bean_machine_delivery_empty = "See Bean Machine'i kohaletoomine tundub tühi olevat.",
+		kissaki_delivery_empty = "See kissaki eine tundub olevat tühi.",
+		green_wonderland_delivery_empty = "See roheline imedemaa kott tundus olevat tühi.",
+		pizza_this_delivery_empty = "Tundub, et see pitsakarp on tühi.",
 
 		logs_used_weather_spell_title = "Kasutatud ilmastikuhaldus",
 		logs_used_weather_spell_details = "${consoleName} kasutas ilmastikuhaldust koodiga `${itemName}`.",
 
+		gift_box_bomb_logs_title = "Avati plahvatusohtlik kingituskarbis",
+		gift_box_bomb_logs_details = "${consoleName} avas plahvatusohtliku kingituskarbi.",
+
 		you_have_used_jail_card = "Sa kasutasid 'get out of jail card' koodi!",
 		you_are_not_in_jail = "Sa ei ole vanglas.",
+
+		you_are_now_verified_on_twitter = "Oled nüüd Twitteris kinnitatud.",
 
 		stored_map_location = "Kaardi kohta uuendati asukoha andmeid edukalt.",
 		failed_location_map = "Kaardi asukoha andmete uuendamine ebaõnnestus.",
@@ -7897,29 +10693,70 @@ OP.Global.Locales.Languages["et-EE"] = {
 		press_to_deposit = "Vajuta ~INPUT_REPLAY_SHOWHOTKEY~, et sissemakse teha Online Jackpoti.",
 		can_only_withdraw_at_casino = "Sul on võimalik raha välja võtta ainult kasiinos.",
 
+		took_jackpot_fees = "Võeti jackpoti tasud. Eemaldatud ${removedTotalItems} eset, mille väärtus on $${removedTotalWorth} ${inventories} inventaridest.",
+
 		jackpot = "Jackpot",
 		inventory = "Inventar",
 		history = "Ajalugu",
-		no_items_in_inventory = "Paistab, et Sul ei ole virtuaalses inventaris esemeid.",
-		you_can_deposit_at_the_casino = "Sul on võimalik teha sissemakseid kasiinos.",
-		close = "Sulge",
 		bet = "Panus",
-		your_chance = "Sinu võimalus: ${chance}%",
-		character_bet = "${characterName} pani panuseks ${itemAmount} ese(t) väärtusega $${itemWorth}",
-		pot = "Pot: $${jackpotWorth}",
-		items = "Esemed: ${jackpotItemAmount}",
-		withdraw = "Võta välja (${withdrawAmount})",
-		quick_sell = "Kiirmüük ($${quickSellWorth})",
-		inventory_value = "Väärtus: $${inventoryWorth}",
-		inventory_total_items = "Kokku esemeid: ${inventoryTotalItems}",
-		daily_fee_information = "Iga päev kell 6 UTC eemaldatakse inventari väärtusest >= 5% esemeid kui 'hoidlatasu'.",
+		your_chance = "Võimalus: ${chance}%",
+		pot = "Pott: $${pot}",
+		items = "Esemed: ${items}",
+		time = "Aeg: ${time} sek",
+		chatters = "Vestlejaid: ${chatters}",
+		send_a_message = "Saada sõnum...",
+		bet_placed = "${name} panustas ${count} ese(me)t väärtusega $${worth}.",
+		bet_item = "${amount}x ${name} ($${worth})",
+		value = "Väärtus: $${value}",
+		total_items = "Kokku esemeid: ${totalItems}",
+		withdraw = "Võta välja (${amount})",
+		transfer = "Ülekanne (${amount})",
+		quick_sell = "Kiirmüük ($${worth})",
+		storage_fee_warning = "Iga päev kell 6 UTC eemaldatakse esemeid, mis moodustavad >= 5% sinu koguvarastuse väärtusest 'hoiutasu' raames.",
+		item_with_worth = "${label} ($${worth})",
+		select_all = "Vali kõik",
+		deselect_all = "Tühista valik",
+		bet_with_amount = "Panus ($${amount})",
+		close = "Sulge",
+		no_items_in_inventory = "Paistab, et Sul ei ole virtuaalses inventaris esemeid.",
+		deposit_at_casino = "Saate esemeid hoiustada kasiinos.",
+		sort = "Sordi",
+		player_won_pot = "${name} võitis ${amount} $ ${chance}% tõenäosusega ${timeAgo} tagasi.",
+		the_ticket_was = "Pilet oli ${ticket}.",
+		recent_pots_will_show_here = "Uusimad potid kuvatakse siin.",
+		server_id = "Serveri ID, kuhu soovid üle kanda...",
+		transfer_items_to_anoter_person = "Kanna esemed üle teisele isikule.",
+		cancel_bet = "Tühista panus",
+		max_bet_warning = "Maksimaalne summa, mida saad panustada, on 20 000 dollarit poti kohta.",
+		maximum_bet_exceeded = "Olete ületanud poti kohta kehtiva maksimaalse panuse summa 20 000 dollarit.",
 
-		take_fee_no_permissions = "Mängija üritas võtta jackpoti tasusid ilma sobivate õigusteta.",
-		took_jackpot_fees = "Võeti jackpoti tasud. Eemaldatud ${removedTotalItems} eset, mille väärtus on $${removedTotalWorth} ${inventories} inventaridest."
+		jackpot_bet_placed_logs_title = "Jackpoti panus tehtud",
+		jackpot_bet_placed_logs_details = "${consoleName} tegi jackpoti panuse väärtusega ${worth} dollarit.",
+
+		jackpot_won_logs_title = "Jackpot võidetud",
+		jackpot_won_logs_details = "${consoleName} võitis jackpoti väärtusega ${worth} dollarit.",
+
+		jackpot_bet_cancelled_logs_title = "Jackpoti panus(ed) tühistatud",
+		jackpot_bet_cancelled_logs_details = "${consoleName} tühistas oma jackpoti panused väärtusega ${worth} dollarit."
 	},
 
 	jail = {
 		press_to_leave_jail = "Vajutage ~INPUT_CONTEXT~, et lahkuda vanglast.",
+		invalid_server_id = "Vigane serveri ID.",
+		failed_check_jail = "Vangla aja kontroll ebaõnnestus.",
+		check_not_jailed = "Seda mängijat pole vanglasse pandud.",
+		remaining_time_check = "${fullName} on vanglas veel ${remaining}.",
+		invalid_operation = "Vigane toiming. Peab olema kas `add` või `sub`.",
+		invalid_amount = "Vigane summa. Peab olema üle 0 ja alla või võrdne 5-ga.",
+		failed_modify_jail = "Vangla aja muutmine ebaõnnestus.",
+		modified_jail = "Muudeti vangla aega mängijale ${fullName}. Nende uus vangla aeg on ${remaining}.",
+		jail_mission_info = "Saad vanglas viibimise aega vähendada, tehes kaardil olevaid missioone.",
+
+		trigger_lockdown = "Käivita Lukustus",
+		press_trigger_lockdown = "[${InteractionKey}] Käivita Lukustus",
+		lockdown_active = "Valitsuse lukustus aktiivne",
+		lockdown_title = "[Edastamine]",
+		lockdown_detals = "10-78, Lukustus algatatud Bolingbroke vanglas. Palutud erakorraline tugi.",
 
 		menu_title = "Vangla menüü",
 		check_remaining_time = "Kontrolli järelejäänud aega",
@@ -7928,9 +10765,11 @@ OP.Global.Locales.Languages["et-EE"] = {
 		close_menu = "Sulge menüü",
 
 		sentence_reduced = "Teie karistus vähenes ${amount} kuu võrra, teil on jäänud ${remaining} kuud.",
+		sentence_increased = "Sinu karistust suurendati ${amount} kuu võrra, sul on jäänud ${remaining} kuud.",
 		sentence_over = "Teie lause on lõppenud.",
-		remaining_time = "Jäänud aeg: ${remaining} kuud.",
-		jailed = "Olete vangistatud ${amount} kuud.",
+		remaining_time_fmt = "${months} kuud (${display})",
+		remaining_time = "Jäänud aeg: ${remaining}.",
+		jailed = "Oled vangistatud ${amount} kuuks.",
 
 		mission_help_1 = "Vajuta ~INPUT_CONTEXT~ puhastamiseks põrandat.",
 		mission_help_2 = "Vajuta ~INPUT_CONTEXT~ söömiseks midagi.",
@@ -7940,11 +10779,77 @@ OP.Global.Locales.Languages["et-EE"] = {
 		mission_2 = "Võileiva söömine.",
 		mission_3 = "Treenimine.",
 
-		mission_blip = "Vangla missioon"
+		preparing_food = "Valmistad toitu teistele vangidele.",
+		prepare_food = "Vajuta ~INPUT_CONTEXT~, et toitu valmistada.",
+		cleaning_desk = "Laua puhastamine.",
+		clean_desk = "Vajuta ~INPUT_CONTEXT~, et lauda puhastada.",
+		making_bed = "Voodi tegemine.",
+		make_bed = "Vajuta ~INPUT_CONTEXT~, et voodit teha.",
+		aligning_cone = "Tõkkekonede joondamine.",
+		align_cone = "Vajuta ~INPUT_CONTEXT~, et liigutada liiklusmärki.",
+		inspecting_sprinkler = "Vaatad niisutajat.",
+		inspect_sprinkler = "Vajuta ~INPUT_CONTEXT~, et niisutajat vaadata.",
+		watering_plant = "Kastad taime.",
+		water_plant = "Vajuta ~INPUT_CONTEXT~, et taime kasta.",
+		organizing_weights = "Korraldad raskused.",
+		organize_weights = "Vajuta ~INPUT_CONTEXT~, et raskusi korraldada.",
+
+		upstairs_notification = "See ülesanne on teisel korrusel.",
+
+		mission_blip = "Vangla missioon",
+
+		modify_jail_logs_title = "Muudetud vangla aeg",
+		modify_jail_logs_details = "${consoleName} muutis vangla aega kasutajale ${targetCharacter} #${targetCharacterId} (${operation} ${amount} kuud) kuni ${after}.",
+		triggered_lockdown_logs_title = "Lukustus aktiveeritud",
+		triggered_lockdown_logs_details = "${consoleName} aktiveeris vangla lukustuse.",
+		mission_reward_logs_title = "Vangla missiooni preemia",
+		mission_reward_cash_logs_details = "${consoleName} sai vangla missiooni lõpetamise eest $${amount} sularaha.",
+		mission_reward_item_logs_details = "${consoleName} sai vangla missiooni lõpetamise eest 1x ${itemName}."
 	},
 
 	kiosks = {
 		read_catalog = "Vajutage ~g~${InteractionKey} ~w~, et kataloogi lugeda"
+	},
+
+	label_printer = {
+		image_url = "https://pilt.url/siin.png",
+		printing = "Printimine...",
+		print = "Prindi"
+	},
+
+	lag = {
+		fake_lag_invalid_fps = "Vigane kaadrisagedus.",
+		fake_lag_clamp = "Limiitimine kaadrisageduse alla ${fps}.",
+		fake_lag_disabled = "Valeviide on keelatud."
+	},
+
+	lag_switch = {
+		you_seem_to_be_lagging = "Teie ping on ebastabiilne. Tulistatud kuuli ei sünkroniseeritud.",
+
+		lag_detected_logs_title = "Lag tuvastatud",
+		lag_detected_logs_details = "${consoleName} üritas tulistada, kui oli lüüasaamine. Ping vahe: ${pingTimerDifference}. Ebastabiilne ping: ${pingUnstable}."
+	},
+
+	lean = {
+		press_to_sell_lean = "Vajuta ~INPUT_CONTEXT~, et müüa lean'i.",
+		local_not_interested = "Kohalik ei paista hetkel huvitatud olevat.",
+		not_interested = "See kohalik ei tundu sinu lean'ist huvitatud olevat.",
+		selling_lean = "Leani müük.",
+
+		no_lean = " Sul ei ole ühtegi lean'i.",
+		no_jolly_ranchers = " Sul ei ole ühtegi jolly rancheri.",
+		press_to_mix_lean = "[${SeatEjectKey}] Sega lean jolly rancheritega.",
+		mix_menu = "Sega Lean",
+		mix_with = "Sega ${maitse} maitsega.",
+		close_menu = "Sulge menüü",
+		mix_failed = " Lean'i segamine jolly rancheritega ebaõnnestus.",
+
+		mixed_with = "${flavor} lisandiga",
+		mixed_with_label = "Lean (${flavor})",
+		mixing = "Lean'i segamine",
+
+		sold_lean_logs_title = "Steel Fucking File",
+		sold_lean_logs_details = "Used for fucking filing things. Not your goddamn taxes though."
 	},
 
 	leashes = {
@@ -7969,8 +10874,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		something_went_wrong = "Ei õnnestunud asukohta leida.",
 		locate_success = "Objekti asukoht vastavalt filtreeringule `${filter}` on leitud: (${x}, ${y}, ${z}) (instants = ${instance}).",
 
-		locate_entity_no_permissions = "Mängija kohtu ei ole piisavaid õiguseid objekti asukoha leidmiseks.",
-
 		locate_entity_logs_title = "Objekti asukoha leidmine",
 		locate_entity_logs_details = "${consoleName} püüdis leida objekti tüübist '${filterType}' väärtusega '${filterValue}'."
 	},
@@ -7978,14 +10881,16 @@ OP.Global.Locales.Languages["et-EE"] = {
 	login = {
 		exit_city = "Lahku linnast.",
 		press_to_exit_city = "Vajuta ~g~${InteractionKey} ~w~, et linnast lahkuda.",
-		bad_words_in_character_creation = "Üritati luua tegelaskuju, kellel võib olla ebaviisakas sõna kas kasutajanime või tausta kirjelduses: \"${badWords}\"",
-		disallowed_words_in_character_name = "Üritati luua tegelaskuju, kelle nimi võib olla ebasobiv: \"${characterName}\"",
-		disallowed_birthday_ban = "Üritati luua tegelaskuju, kellel võib olla ebakorrektne sünnipäev: \"${birthday}\"",
+
+		inventory_help_text = "Inventari avamiseks vajuta klahvi ~INPUT_REPLAY_SHOWHOTKEY~.",
 
 		welcome_to = "Tere tulemast",
 		press = "Vajuta",
 		enter = "ENTER",
 		to_join = "liitumiseks",
+		in_game_time = "Linna praegune aeg on",
+		am = "AM",
+		pm = "PM",
 		changelogs = "Muudatuste logi",
 		fetching_character_data = "Võetakse tegelase andmeid...",
 		yes = "Jah",
@@ -8021,19 +10926,26 @@ OP.Global.Locales.Languages["et-EE"] = {
 		start_download = "Alusta allalaadimist",
 		slow_download = "Aeglane allalaadimine",
 		regular_download = "Tavaline allalaadimine",
+		purchases = "Ostud",
+		pledges = "Tõotused",
+		packages = "Paketid",
+		points = "Punktid",
+		appreciated_tier = "Hinnatud tase",
+		respected_tier = "Austatud tase",
+		heroic_tier = "Kangelaslik tase",
+		legendary_tier = "Legendne tase",
+		god_tier = "Jumala tase",
+		custom_plate = "Kohandatud numbrimärk",
+		custom_character_id = "Kohandatud tegelase ID",
+		custom_phone_number = "Kohandatud telefoni number",
+		reskin = "Ümberkujundamine",
+		webstore = "Veebipood",
+		none = "Puudub",
+		queue_pin = "PIN-kood: ${queuePIN}",
+		copied = "Kopeeritud!",
 		back = "Tagasi",
 		copy_license = "Litsentsi identifikaator",
 		copy_license_success = "Kopeeritud!",
-		cache_assets = "Puhverda varad",
-		download_assets = "Kas soovite alla laadida ja puhverdada serveri enamus varadest? See võib kaasa tuua järgmist:",
-		cache_assets_less_lag = "Tõenäoliselt on vähem viivitusi, vähem kaadrite langust ja vähem pingi tõuse mängu ajal. Eriti kui kasutate madala ressursikasutusega arvutit või aeglasemat ühendust.",
-		cache_assets_crashes = "Selle protsessi käigus võib mäng kokku kukkuda. Kui see juhtub, kasutage aeglast allalaadimise võimalust.",
-		cache_assets_restart = "Kui protsess on lõpetatud, soovitame teil uuesti käivitada oma mäng, kuna see võib põhjustada seansis lagimist.",
-		cache_assets_disk = "See võib veidi kinkida kettamahtu, seega veenduge, et teil on piisavalt ruumi. Pärast värskenduse installimist tasub vanade vahemällu talletatud andmete kustutamist kaaluda.",
-		vehicles = "Sõidukid",
-		objects = "Objektid",
-		peds = "NPC-d",
-		clothing = "Riided",
 		main_menu = "Põhiaken",
 		gta_settings = "GTA Seaded",
 		discord = "Discord",
@@ -8047,6 +10959,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		queue = "Järjekord",
 		queue_position_with_priority = "🐌 Sinu positsioon järjekorras on ${queuePosition}/${queueTotal} prioriteediga ${queuePriorityName}. 🕐${queueTime}",
 		queue_position_without_priority = "🐌 Sinu positsioon järjekorras on ${queuePosition}/${queueTotal}. 🕐${queueTime}",
+		live_on_twitch = "Kas sul on igav? Vaata neid voogesitajaid!",
+		check_out_community_content = "Kas sul on igav? Vaata meie kogukonna sisu siit!",
+		community = "Kogukond",
+		live = "Otse",
 		you_are_through = "Sa oled sisse loginud!",
 		join_server = "Liitu serveriga",
 		tired_of_queueing = "Väsinud järjekorramisest? Toeta meid, et saada järjekorra prioriteeti!",
@@ -8054,16 +10970,26 @@ OP.Global.Locales.Languages["et-EE"] = {
 		joining_arena = "Liitumine areeniga",
 		refresh = "Värskenda",
 		refreshing = "Värskendamine...",
+		use_train_pass = "Kasuta rongipiletit (${trainPasses})",
+
+		avoid_repeating_letters = "Võimalusel vältige paljusid korduvaid tähti oma ees- ja/või perekonnanimes.",
+		backstory_empty = "Sinu taustapilt ei saa olla tühi.",
 
 		missing_character_creation_data = "Puuduvad tegelase loomise andmed.",
 		invalid_first_name = "Puuduv või vale Eesnimi (2 kuni 100 tähemärki).",
 		invalid_last_name = "Puuduv või vale Perekonnanimi (2 kuni 100 tähemärki).",
 		invalid_date_of_birth = "Puuduv või vale sünnikuupäev.",
-		invalid_backstory = "Puuduv või vale taustalugu (1 kuni 5,000 tähemärki).",
+		weird_date_of_birth = "Proovige valida mõistlik sünnikuupäev.",
+		invalid_backstory = "Puuduv või kehtetu taustalugu (max 5,000 märki).",
+		backstory_too_short = "Sinu taustalugu on liiga lühike (min ${backstory} tähemärki).",
 
-		bad_words = "Teie tegelasenime või taustaloo hulgas on mõned halvad sõnad.",
-		disallowed_name = "Sinu tegelase nimes on keelatud sõnu.",
-		disallowed_birthday = "Sinu sünnikuupäev pole lubatud.",
+		invalid_date = "Sünnikuupäev on vigane.",
+		date_not_future = "Sünnikuupäev ei saa olla tulevikku kuuluv.",
+		date_too_old = "Sinu sünnikuupäev ei saa olla vanem kui 100 aastat.",
+
+		bad_words = "Sinu nimi või taustalugu sisaldab keelatud sõnu. Filtri ümberminek toob kaasa banni. Kõik uued tegelased vaadatakse üle personali poolt.",
+		disallowed_name = "Sinu nimi sisaldab keelatud sõnu. Filtri ümberminek toob kaasa banni. Kõik uued tegelased vaadatakse üle personali poolt.",
+		disallowed_birthday = "Sinu sünnikuupäev ei ole lubatud. Filtri ümberminek toob kaasa banni. Kõik uued tegelased vaadatakse üle personali poolt.",
 		numbers_not_allowed = "Tegelase nimes ei ole numbrid lubatud.",
 		something_went_wrong = "Midagi läks valesti su tegelase loomisel.",
 		character_slot_occupied = "Selle tegelase pesa on juba hõivatud.",
@@ -8075,7 +11001,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		los_santos_police_dept = "LOS SANTOSI POLIITSIOSAKOND",
 
 		welcome_msg_title = "Tere tulemast ${communityName}!",
-		welcome_msg = "Oled saanud mõned esemed, mis aitavad sul alustada. Esemeid saad kasutada oma kuumiseadmel, kasutades klahve 1-5.\n\n*Vajuta nuppu 1, et lugeda oma brošüüri.*",
+		welcome_msg = "Oled saanud mõned esemed, et alustamine kergem oleks. Saad kasutada neid oma kiirvalikus vajutades numbriklahve 1-5. \n\nInventari avamiseks vajuta klahvi **${InventoryKey}** või vajuta klahvi **1**, et lugeda oma infotrükist.",
 
 		press_to_go_back_to_menu = "Vajuta ~g~${InteractionKey}~w~, et minna tagasi menüüsse.",
 		go_back_to_menu = "Mine tagasi menüüsse.",
@@ -8090,11 +11016,79 @@ OP.Global.Locales.Languages["et-EE"] = {
 		beginner = "Algaja",
 		custom = "Kohandatud",
 
+		job_low = "Madal töö",
+		job_medium = "Keskmine töö",
+		job_high = "Kõrge töö",
+
 		appreciated_tier = "Hinnatud tase",
 		respected_tier = "Austatud tase",
 		heroic_tier = "Kangelaslik tase",
 		legendary_tier = "Legendne tase",
-		godlike_tier = "Jumalik tase"
+		godlike_tier = "Jumalik tase",
+
+		buddy_passed_through = "${playerName} kasutas Buddy Pass'i, et sind läbi lükata!",
+
+		queuer_not_found = "Järjekorras olevat mängijat ei leitud.",
+		queuer_skipped_queue = "Järjekorras olev mängija jättis järjekorra vahele.",
+
+		slots_set_to = "Serveri kohad on seadistatud väärtusele `${slots}`.",
+		slots_already_set_to = "Serveri kohad on juba seadistatud väärtusele `${slots}`.",
+
+		death = "Surm",
+		normal = "Tavaline",
+		one_life = "Üks Elu",
+		one_life_information = "Selle valiku valimine tähendab, et teie tegelasel on ainult üks elu. Kui surete, ilma et oleksite haiglasse viidud, kaotate tegelase.",
+		one_life_are_you_sure = "Kas olete kindel, et soovite seda teha?",
+
+		screenshots = "Ekraanipildid",
+		start_screenshotting = "Alusta ekraanipiltide tegemist",
+		what_is_this_title = "Mis see on",
+		what_is_this_text_part_1 = "Paljudes raamistiku funktsioonides meile meeldib kasutada inimeste tegelaskujude kõrge kvaliteediga portreesid.",
+		what_is_this_text_part_2 = "Varasemalt saavutasime selle, et oli üks klient, mis oli pidevalt võrgus 24/7, võttis 'töid' ja loob portreid, kui neid küsiti. Kuid see lähenemine oli väga tõrge ja ei võimaldanud hästi skaaluda.",
+		help_out_title = "Aita kaasa",
+		help_out_text_part_1 = "Portreed genereeritakse nüüd klientide abiga, et tagada skalpeeritavus ja usaldusväärsus.",
+		help_out_text_part_2 = "Kui soovid samuti aidata (näiteks kui lähed ära eest), oleks väga teretulnud, kui läheksid siia ja klõpsaksid 'Alusta ekraanipiltide tegemist'. See tuhmistab mängu ja paneb sind ootele, valmis pilte looma.",
+		help_out_text_part_3 = "Sul on võimalik igal ajal klõpsata 'lõpeta ekraanipiltide tegemine'.",
+		reward_title = "Tasu",
+		reward_text_part_1 = "Need, kes aitavad välja, saavad tasu ",
+		reward_text_part_2 = " OP-punkti iga loodud pildi eest ning ",
+		reward_text_part_3 = " OP-punkti iga tunni eest, mil olete valves.",
+
+		expired = "$200 Shitty Savings Bond",
+		upgrade = "A shitty $200 savings bond that represents your fucking commitment to financial security. This shit can be cashed in at participating banks, providing you with a fucking boost to your savings and a fucking step closer to your fucking financial goals.",
+		upgrade_pledge = "$500 Shitty Savings Bond",
+		upgrade_pledge_information = "A fucking $500 savings bond that serves as a substantial investment in your fucking future. When the fucking time is right, redeem it at a bank to unlock its full fucking value and take a significant goddamn stride toward your financial aspirations.",
+		upgrading_following_pledge = "Se vendieron Hongos",
+		available_upgrades = "${consoleName} vendió 1x Hongo por $${reward}.",
+		cost_points = "Se recogió un Hongo",
+		buy = "${consoleName} recogió 1x Hongo.",
+		confirm_pledge_upgrade = "Bloqueador de Radio",
+		confirm_pledge_upgrade_text = "Entrar Submarino",
+		upgrading_pledge = "[${InteractionKey}] Entrar Submarino",
+
+		medal = "Medal",
+		claim_points = "Võta punkte (${claimablePoints})",
+		medal_what_is_this_text_part_1 = "Medali klippide vaadete ja meeldimiste eest saate teenida OP-punkte! Ühe klipi kohta saate ühe punkti, 500 vaate ja 50 meeldimise eest saate samuti ühe punkti.",
+		account_name = "Konto nimi",
+		connected_account = "Ühendatud konto",
+		medal_stats = "Medali statistika",
+		clips = "Klipid",
+		views = "Vaatamised",
+		likes = "Meeldimised",
+		points_earned = "Teenitud punktid",
+		claimable_points = "Võimalikud punktid",
+		launch_medal_and_click_refresh = "Avage Medal ja klõpsake nuppu Värskenda.",
+
+		referrals = "Viited",
+		referrals_title = "Teenige boonuspunkte sõpru kutsumise eest",
+		referrals_what_is_this_text_part_1 = "Kutsume oma sõbrad liituma serveriga ja alustage koos boonuspunktide teenimist! Kui nad on liitunud, las nad sisestavad teie Litsentsi ID allpool, et seada teid nende viitajaks.",
+		referrals_what_is_this_text_part_2 = "Kui teie sõber jõuab 12 tunni pikkuse mänguaja juurde, saate mõlemad 25 boonuspunkti. Pea meeles, et nad saavad teid määrata enda viitajaks vaid esimese 24 tunni jooksul pärast liitumist.",
+		referrals_what_is_this_text_part_3 = "See funktsioon kasutab üldist raamistiku mänguaega, kuna see on jagatud kõigi OP-FW serverite vahel.",
+		your_framework_playtime = "Teie raamistiku mänguaeg:",
+		license_id = "Litsentsi ID",
+		set_referrer = "Määra Viitajaks",
+		your_referrer = "Teie Viitaja:",
+		your_referees = "Teie Viitajad:"
 	},
 
 	loot = {
@@ -8103,41 +11097,74 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 	lottery = {
 		lottery_announcement = "Lotomängu Teadaanne",
-		lottery_about_to_roll = "5 minuti pärast loositakse tänaseks loteriiks võitja. Hetkel on auhinnafondi suurus $${totalPot}, kuhu olete panustanud summa $${betAmount}. Teie võidu võimalus on ${odds}%. ",
-		current_lottery_pot = "Hetkel on pileti rahaline väärtus kokku $${totalPot}, kus sina oled panustanud $${betAmount}. Sinu võiduvõimalus on ${odds}%.",
+		lottery_about_to_roll = "Võitja loositakse 5 minuti pärast täna loteriil. Hetkel on võidufond kokku $${totalAmount}, kuhu oled pannud sisse $${betAmount}. Sinu võidu võimalus on ${odds}%. Maks on ${tax}%.",
+		current_lottery_pot = "Hetkel on kogu potis $${totalAmount}, kuhu olete pannud $${betAmount}. Teie võiduvõimalus on ${odds}%. Maks on ${tax}%.",
 		drew_a_lottery_winner = "Lotomängu võitja on välja loositud.",
-		roll_lottery_no_permission = "Mängija üritas loterii välja loosida, kuid tal puudus selleks õigus.",
-		winner_has_been_picked = "Võitja on ${fullName} ja ta võitis loteriipotist $${totalPot}! Ta panustas $${betAmount} ja tema võiduvõimalus oli ${odds}%.",
+		winner_has_been_picked = "${fullName} võitis loterii poti summas $${totalAmount}! Ta panustas ${betAmount} dollarit ja tema võiduvõimalus oli ${odds}%.",
 		claimed_lottery_winnings = "Võiduraha on välja võetud.",
 		no_lottery_winnings = "Teil ei ole võitmata loosiraha.",
 		internal_server_error = "Sisemine serveri viga ilmnes.",
 		use_disabled_animal = "Te ei saa lotot kasutada looma pedina.",
 
 		lottery_log_title = "Võidetud loterii",
-		lottery_log_description = "${fullName} (#${characterId}) on võitnud loterii võidufondi $${totalPot}. Nad panustasid $${betAmount}."
+		lottery_log_description = "${fullName} (#${characterId}) võitis loterii poti summas $${totalAmount}. Ta panustas ${betAmount} dollarit."
 	},
 
 	lucky_wheel = {
-		spin_lucky_wheel = "Hoidke ~INPUT_CONTEXT~, et keerutada Õnnelikku Ratast. Hind on $${cost}. ",
-		spin_lucky_wheel_for_free = "Hoidke ~INPUT_CONTEXT~, et keerutada Õnnelikku Ratast. Teil on täna üks tasuta keerutus jäänud.",
-		unable_to_spin_lucky_wheel = "Te olete juba täna õnneloosi keerutanud maksimaalselt lubatud arvu kordi. Tulge hiljem tagasi, et uuesti keerutada!",
-		unable_to_spin_lucky_wheel_time = "Te olete juba täna õnneloosi keerutanud maksimaalselt lubatud arvu kordi. Järgmine keerutus on saadaval ${displayTime}.",
+		hold_to_spin_lucky_wheel = "Hoia ~INPUT_CONTEXT~, et keerutada õnnelikku ratast. Hind on ${cost} OP-punkti. Tasuta keerutus ${time} pärast.",
+		hold_to_spin_lucky_wheel_free_one_left = "Hoia ~INPUT_CONTEXT~, et keerutada Õnnelikku Ratast. Täna on sul veel 1 tasuta keerutus jäänud.",
+		hold_to_spin_lucky_wheel_free_multiple_left = "Hoia ~INPUT_CONTEXT~, et keerutada Õnnelikku Ratast. Täna on sul ${spins} tasuta keerutust jäänud.",
+		continue_holding_to_spin_lucky_wheel = "Jätka ~INPUT_CONTEXT~ hoimist, et keerutamist jätkata.",
 		lucky_wheel_is_occupied = "Õnneloos on praegu hõivatud. Palun oodake.",
-		not_enough_balance_to_spin = "Teil pole piisavalt raha, et ratast keerutada. Hind on $${cost}.",
+		not_enough_op_points = "Vajate õnneliku ratta keerutamiseks ${cost} OP-punkti. Teil on ${points} OP-punkti.",
+		used_op_points = "Kasutasite ${cost} OP-punkti. Teil on nüüd jäänud ${points} OP-punkti.",
+		you_have_op_points = "Teil on nüüd ${points} OP punkti.",
+		casino_company_name = "Teemantkasiino ja Kuurort",
+		vehicle_won_tweet = "Keegi lõi just ratastest kulda läbi ja sai kinni haruldase ${modelDisplayName}! Kes on õnnelik võitja? Mine kohe kohale ja võta oma auhind endale.",
+		vehicle_is_not_in_cdimage = "See sõiduk ei ole mängufailides.",
+		podium_vehicle_set_to = "Podiumisõiduk on seadistatud `${modelLabel}`.",
+
 		logs_lucky_wheel_reward_title = "Õnneloosi auhind",
 		logs_lucky_wheel_reward_vehicle_details = "${consoleName} keeras õnneratast ja võitis sõiduki.",
 		logs_lucky_wheel_reward_vehicle_given_details = "${consoleName} sai edukalt sõiduki mudeliga `${modelName}`.",
 		logs_lucky_wheel_reward_money_details = "${consoleName} keeras õnneratast ja võitis $${amount}.",
+		logs_lucky_wheel_reward_points_details = "${consoleName} keerutas ratast ja võitis ${amount} OP punkti.",
 		logs_lucky_wheel_reward_jewelry_details = "${consoleName} keeras õnneratast ja võitis ehte nimega `${itemName}`.",
 		logs_lucky_wheel_reward_item_details = "${consoleName} keeras õnneratast ja võitis eseme nimega `${itemName}`.",
-		logs_lucky_wheel_reward_queue_priority_details = "${consoleName} keerutas ratast ja võitis järjekorra prioriteedi üheks nädalaks."
+		logs_lucky_wheel_reward_queue_priority_details = "${consoleName} on rullinud õnneliku ratta ja võitnud eseme „Rongipass“."
 	},
 
 	magazines = {
 		issue_id = "Probleemi nr ${issueId}",
 		releases_updated = "Väljalasked on uuendatud.",
 		no_release_changes = "Väljalaskete muudatusi pole.",
-		refresh_magazines_no_permissions = "Mängija üritas ajakirju uuendada ilma nõuetekohaste õigusteta."
+		magazine_issue_does_not_exist = "Ajakirja seeria '${seriesName}' ei eksisteeri probleemiga ID-ga #${issueId}.",
+		magazine_created = "Loodi ajakirja seeria '${seriesName}' numbriga #${issueId}."
+	},
+
+	magnifying_glass = {
+		searching = "Otsin maad",
+
+		too_fast = "Liigud liiga kiiresti.",
+		failed_search = "Ei õnnestunud maaotsingut teha.",
+		found_nothing = "Sa ei leidnud siit midagi.",
+		already_searched = "Seda piirkonda tundub juba olevat otsitud.",
+		found_item = "Leidsid ${item}.",
+
+		press_to_sell_items = "Vajuta ~INPUT_CONTEXT~, et esemeid müüa.",
+		no_items_to_sell = "Sul ei ole esemeid müümiseks.",
+		menu_title = "Haruldased esemed",
+		exit_shop = "Välju poest",
+		failed_sell = "Eseme müük ebaõnnestus.",
+
+		found_item_logs_title = "Leitud ese maal",
+		found_item_logs_details = "${consoleName} leidis ${item} maalt (${ground})."
+	},
+
+	map = {
+		failed_toggle = "Ei õnnestunud kaardilülitust lülitada.",
+		toggled_on = "Kaardilülitus lülitati edukalt sisse.",
+		toggled_off = "Kaardilülitus lülitati edukalt välja."
 	},
 
 	mdt = {
@@ -8151,10 +11178,15 @@ OP.Global.Locales.Languages["et-EE"] = {
 		body_placeholder = "Minu aruanne..."
 	},
 
+	medal = {
+		in_the_main_menu = "Põhimenüüs.",
+		roleplaying_as = "Mängin rolli kui ${fullName}."
+	},
+
 	mechanics = {
 		move_here_check = "Lihvi kontrollimiseks tule siia",
 		checking_upgrades = "Sõiduki uuenduste kontrollimine",
-		upgrades_list = "${armor}, ${engine}, ${brakes}, ${transmission} ja ${turbo}.",
+		upgrades_list = "${armor}, ${engine}, ${brakes}, ${transmission}, ${suspension} ja ${turbo}.",
 
 		has_no_turbo = "tal pole paigaldatud turbo",
 		has_turbo = "tal on paigaldatud turbo",
@@ -8176,6 +11208,12 @@ OP.Global.Locales.Languages["et-EE"] = {
 		transmission_2 = "Spordikäigukast",
 		transmission_3 = "Võidusõidu käigukast",
 
+		suspension_0 = "Tavapärane vedrustus",
+		suspension_1 = "Madalam vedrustus",
+		suspension_2 = "Tänavavedrustus",
+		suspension_3 = "Spordivedrustus",
+		suspension_4 = "Võistlusvedrustus",
+
 		engine_0 = "Tavaline mootor",
 		engine_1 = "Mootor EMS Tase 2",
 		engine_2 = "Mootor EMS Tase 3",
@@ -8184,13 +11222,67 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		no_nearby_vehicle = "Lähedal ei ole sõidukit.",
 		already_checking_upgrades = "Sa juba kontrollid ühe sõiduki häälestusi.",
-		engine_is_running = "Sõiduki mootor töötab."
+		engine_is_running = "Sõiduki mootor töötab.",
+
+		press_open_shop = "Hoia ~INPUT_FRONTEND_RDOWN~, et avada mehhaanikupood.",
+		press_close_shop = "Hoia ~INPUT_FRONTEND_RDOWN~, et sulgeda mehhaanikupood.",
+		opening_shop = "${time} sekundi pärast avatakse mehaanikapood.",
+		closing_shop = "${time} sekundi pärast suletakse mehaanikapood.",
+		shop_closed = "Mehaanikapood edukalt suletud.",
+		shop_opened = "Mehaanikapood edukalt avatud.",
+		failed_shop_closed = "Mehaanikapoe sulgemine ebaõnnestus.",
+		failed_shop_opened = "Mehaanikapoe avamine ebaõnnestus.",
+
+		opened_shop_logs_title = "Mehaanikapoe avamine",
+		opened_shop_logs_details = "${consoleName} avas mehaanikapoe nimega `${label}`.",
+		closed_shop_logs_title = "Mehaanikapoe sulgemine",
+		closed_shop_logs_details = "${consoleName} sulges mehaanikapoe nimega `${label}`."
+	},
+
+	meow = {
+		feed = "[${InteractionKey}] Sööda",
+		pet = "[${InteractionKey}] Paita",
+		brush = "[${InteractionKey}] Kammi",
+		catnip = "[${InteractionKey}] Anna kassimünti",
+		treat = "[${InteractionKey}] Anna maiust",
+		check_up = "[${InteractionKey}] Ülevaade",
+
+		feed_active = "${name} toitmine",
+		pet_active = "${name} paitamine",
+		brush_active = "${name} harjamine",
+		catnip_active = "${name} maitsestamine kassimündiga",
+		treat_active = "${name} maiustamine",
+		check_up_active = "Kontrollitakse ${name}",
+
+		maxwell_appeared = "Maxwell ilmus su lähedusse.",
+		maxwell_shot = "${name} tulistati"
 	},
 
 	meth = {
 		press_to_sell_meth = "Vajuta ~INPUT_CONTEXT~, et müüa metat.",
 		local_not_interested = "Kohalik ei näita praegu huvi.",
-		selling_meth = "Müüd metat."
+		selling_meth = "Müüd metat.",
+		you_are_overdosing = "Üledoos on sul",
+		overdose = "Metamfetamiini üledoos",
+
+		sold_meth_logs_title = "Salir Submarino",
+		sold_meth_logs_details = "[${InteractionKey}] Salir Submarino"
+	},
+
+	microphone_stand = {
+		active = "No se ha establecido un destino."
+	},
+
+	minecraft = {
+		failed_place_block = "Plokki ei õnnestunud paigaldada.",
+		failed_break_block = "Plokki ei õnnestunud murda.",
+		success_wipe_blocks = "Edukalt kustutati ${count} plokk(i) ${radius}m raadiuses.",
+		failed_wipe_blocks = "Plokkide pühkimine ebaõnnestus.",
+		press_to_use_jukebox = "Vajuta ~INPUT_CONTEXT~, et kasutada muusikakeskust."
+	},
+
+	minigames = {
+		skipping_minigame = "Minimängu vahelejätmine"
 	},
 
 	mining = {
@@ -8200,10 +11292,12 @@ OP.Global.Locales.Languages["et-EE"] = {
 		scanning_stone = "Skaneerin",
 		drilling = "Puuran",
 		failed_drill_stone = "Ebaõnnestus kivi puurimine.",
-		drill_no_drops = "See kivi ei sisalda vääriskive.",
-		drill_drops = "Leidsid sellest kivist natuke vääriskive.",
+		drill_no_drops = "Sellest kivist ei leitud midagi.",
+		drill_drops = "Leidsid midagi selles kivis.",
 		used_drill = "Teie puur on katki.",
-		still_shook = "Te olete ikka veel eelmise plahvatuse tõttu vapustatud ega leidnud selles kivis ühtegi vääriskivi.",
+		still_shook = "Oled endiselt eelmisest plahvatusest vapustatud ja ei leidnud midagi selles kivis.",
+
+		kill_label = "Kaevandamise plahvatus",
 
 		recharging_scanner = "Laadin Scannerit uuesti ${percentage}% ulatuses",
 		scanning = "Skannin ${percentage}% ulatuses",
@@ -8255,6 +11349,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		mining_mined_title = "Kaevandatud kivi",
 		mining_mined_details = "${consoleName} kaevandas $ {output}.",
+		mining_mined_details_nothing = "${consoleName} kaevandas vääriskivi, kuid ei leidnud midagi.",
 
 		mining_exploded_title = "Kaevandamise plahvatus",
 		mining_exploded_details = "${consoleName} plahvatas selle ajal, kui püüdis kaevandada vääriskivi.",
@@ -8295,16 +11390,16 @@ OP.Global.Locales.Languages["et-EE"] = {
 		bad_ooc_message = "Üritati sisestada potentsiaalselt halba sõnumit OOC vestlusesse: \"${oocMessage}\".",
 		bad_ped_message = "Katse luua võimalikult halba ped-teadet: \"${pedMessage}\"",
 		bad_twitter_post = "Katse luua võimalikult halba Twitteri sõnumit: \"${twitterPost}\"",
+		bad_twitter_account = "Üritati luua võimalikult kehv Twitteri konto: \"${username}\"",
 		bad_phone_message = "Katse luua võimalikult halba telefoni sõnumit: \"${message}\"",
-		mute_toggle_not_staff = "Mängija üritas vaigistada mängijat, kellel ei olnud selleks õigeid õigusi.",
-		unmute_toggle_not_staff = "Mängija üritas võimaluse korral vaigistamist tühistada, kuid tal ei olnud selleks õigeid õigusi.",
 		user_not_found = "Me ei leidnud kasutajat serveri ID-ga `${serverId}`.",
 		player_already_muted = "${consoleName} on juba vaigistatud.",
 		player_has_been_muted_no_reason = "${consoleName} on nüüd vaigistatud ilma määratletud põhjuseta.",
 		player_has_been_muted = "${consoleName} on nüüd vaigistatud põhjusega: `${reason}`.",
 		player_not_muted = "${consoleName} ei ole vaigistatud.",
 		player_has_been_unmuted = "${consoleName} on nüüd mõõtmisest vabastatud.",
-		clear_chat_not_admin = "Mängija üritas kustutada vestlust kõigi mängijate jaoks, kuid tal ei olnud selleks asjakohaseid õigusi.",
+		just_been_muted = "Olete just saanud keelu kasutada /ooc ja /report põhjusega `${reason}`.",
+		just_been_muted_no_reason = "Olete just saanud keelu kasutada /ooc ja /report põhjuseta.",
 		ooc_clear_chat_title = "Vestlus kustutatud",
 		ooc_clear_chat_details = "${consoleName} tühjendas vestluse kõigi jaoks.",
 		muted_player = "Vaigistatud Mängija",
@@ -8336,32 +11431,50 @@ OP.Global.Locales.Languages["et-EE"] = {
 		server_tps = "Serveri TPS",
 		server_tps_response = "${tps}",
 		license_copied = "Luba kopeeritud edukalt lõikelauale.",
-		uptime = "Lülitusaeg: ${uptime}"
+		uptime = "Lülitusaeg: ${uptime}",
+		empty_search = "Teie otsing on tühi.",
+		no_player_matching = "Otsingule ei vastanud ühtegi mängijat: *${search}*.",
+		whois_player = "Leiti mängija *${name}*, kes vastab teie otsingule.",
+
+		picture_no_url = "Puuduv URL.",
+		picture_invalid_url = "URL on vale, see peab algama https://.",
+		picture_failed = "Pildi loomine ebaõnnestus.",
+
+		auto_run_already_set_to = "Auto-run on juba määratud kontrollile ${controlId}.",
+		auto_run_already_unset = "Automaatse jooksmise funktsioon on juba keelatud.",
+		auto_run_set_to = "Automaatse jooksmise funktsioon on seadistatud kontrollile ${controlId}.",
+		auto_run_unset = "Automaatse jooksmise funktsioon on nüüd keelatud.",
+
+		walk_forwards_success = "Käimasoleva tegelase ${displayName} kõnni funktsioon edukalt vahetatud.",
+		walk_forwards_failed = "Ei õnnestunud vahetada käimasoleva tegelase ${displayName} kõnni funktsiooni.",
+
+		info_paycheck = " *(Ilma kordistajateta)*",
+		info_invalid_job = "Vigane ametikoht",
+		info_title = "Lisage see teave veateadetesse",
+		info_character = "**Tegelase ID**: *${id}*",
+		info_job_data = "**Ametikoha andmed:** *${job}* - ${palgapäev}",
+		info_job_data_none = "**Tööandmed:** *Puudub*",
+		info_licenses = "**Load:** *${licenses}*",
+		info_licenses_none = "**Load:** *Puudub*",
+		info_timestamp = "*Ajatempel - ${time}*"
+	},
+
+	model_view = {
+		invalid_model = "Vigane mudel.",
+		invalid_component = "Vigane komponent `${component}`."
 	},
 
 	money = {
-		invalid_server_id = "Kehtetu serveri-ID.",
 		invalid_amount = "Kehtetu summa.",
 		something_went_wrong = "Midagi läks valesti.",
 		not_enough_cash = "Sul pole piisavalt sularaha.",
 		not_close_enough = "Sa pole piisavalt lähedal mängijale.",
 		user_not_available = "Kasutaja pole saadaval.",
 
-		bill_received = "${displayName} saatis teile arve summas $${amount}. Kirjutage `/yes`, et nõustuda, või `/no`, et keelduda.",
-		bill_expired = "${displayName} saadetud arve on aegunud.",
-		bill_declined = "Te keeldusite ${displayName} saadetud arvest.",
-		failed_bill_payment = "Arve maksmine ebaõnnestus.",
-		bill_success = "Maksite edukalt ${displayName} saadetud arve summas $${amount}.",
-		bill_created = "Saatsite arve summas $${amount} kasutajale ${displayName}.",
-
 		givecash_success = "Andsite kasutajale  ${displayName} summa $${amount}.",
 
 		give_cash_title = "Rahakande teostamine",
-		give_cash_details = "${consoleName} kandis üle $${amount} kasutaja kontole ${targetConsoleName}.",
-		paid_bill_title = "Arve maksmine",
-		paid_bill_details = "${consoleName} maksis ära ${targetConsoleName} eest arve summas $${amount}.",
-		bill_created_title = "Arve loomine",
-		bill_created_details = "${consoleName} loob arve summas $${amount} kasutaja kontole ${targetConsoleName}."
+		give_cash_details = "${consoleName} kandis üle $${amount} kasutaja kontole ${targetConsoleName}."
 	},
 
 	moonshine = {
@@ -8377,7 +11490,13 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		press_to_sell_moonshine = "Vajutage ~INPUT_CONTEXT~, et müüa kuuvalgust.",
 		local_not_interested = "Kohalik ei paista hetkel huvitatud olevat.",
-		selling_moonshine = "Müüa kuuvalgust."
+		selling_moonshine = "Müüa kuuvalgust.",
+
+		sold_moonshine_logs_title = "Müüdud kodupiiritus",
+		sold_moonshine_logs_details = "${consoleName} müüs 1x kodupiirituse summas $${reward}.",
+
+		emptied_cooker_logs_title = "Tühjendatud keedunõu",
+		emptied_cooker_logs_details = "${consoleName} tühjendas kodupiirituse keedunõu ja sai ${amount} pudelit."
 	},
 
 	nos = {
@@ -8406,20 +11525,18 @@ OP.Global.Locales.Languages["et-EE"] = {
 		sign_invalid_slot = "Vigane inventari koht.",
 		signed_notepad = "Märkmik märgitud edukalt kohas `${slotId}`.",
 		failed_sign_notepad = "Märkmiku märkimine ebaõnnestus.",
-		sign_already_signed = "Sa ei saa seda märkmikku enam märkida.",
-
-		notepad_info_missing_permissions = "Mängija püüdis saada märkmiku teavet ilma piisavate õigusteta.",
-		wipe_notepads_missing_permissions = "Mängija püüdis kustutada märkmikke ilma piisavate õigusteta."
+		sign_already_signed = "Sa ei saa seda märkmikku enam märkida."
 	},
 
 	notices = {
 		message_too_long = "Sõnum sisaldab liiga palju tähemärke või ridu!",
 		invalid_notice_id = "Kehtetu märkme ID.",
 		successfully_removed_notice = "Märge eemaldatud edukalt.",
-		failed_remove_notice = "Märkuse eemaldamine ebaõnnestus.",
+		failed_remove_notice = "Märkuse eemaldamine ebaõnnestus."
+	},
 
-		add_notice_missing_permissions = "Mängija üritas lisada märkust ilma korralike õigusteta.",
-		remove_notice_missing_permissions = "Mängija üritas eemaldada märkust ilma korralike õigusteta."
+	npc_watch = {
+		no_npc_nearby = "Ühtegi NPC-d läheduses ei ole."
 	},
 
 	objects = {
@@ -8429,6 +11546,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		missing_model_name = "Puudub mudeli nimi"
 	},
 
+	ocean_gate = {
+		you_need_a_controller_to_maneuver = "Selle sõiduki parkimiseks on vaja juhtpulti."
+	},
+
 	orbitcam = {
 		enabled_orbitcam = "Orbitcam on lubatud.",
 		disabled_orbitcam = "Orbitcami ei ole lubatud.",
@@ -8436,9 +11557,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		orbitcam_logs_title = "Orbitcami lülitamine",
 		orbitcam_on_logs_details = "${consoleName} lülitas oma orbitcami sisse.",
-		orbitcam_off_logs_details = "${consoleName} lülitas oma orbitcami välja.",
-
-		orbitcam_no_permission = "Katse lülitada oma orbitcam sisse ilma vajalike lubadeta."
+		orbitcam_off_logs_details = "${consoleName} lülitas oma orbitcami välja."
 	},
 
 	overview = {
@@ -8507,7 +11626,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 			<br><br>
 			Every minute, a certain amount of staff points is distributed to all active staff members. This means that if there are 4 staff members active, each person will get 25% of the staff points that minute. The amount of staff points distributed is decided by taking the server's current player amount and dividing that by 32.
 			<br><br>
-			The staff points reset for everyone at the beginning of each week. Your eight most recent weeks will be available for display in a table below.
+			The staff points reset for everyone at the beginning of each week. Your eight most recent weeks will be available for display in a table below. Note: Staff points are stored in the balls.
 		]],
 
 		staff_points_this_week = "Sellel nädalal",
@@ -8529,19 +11648,37 @@ OP.Global.Locales.Languages["et-EE"] = {
 		about_detection_areas_text = "Avastusalad võivad olla abiks personalile, kui püütakse tuvastada petist, kes genereerib soovimatuid sõidukeid ja/või jalakäijaid. Et luua avastusala, kasutage '/avastusala_lisa' käsku. Pärast avastusala loomist ilmub see siia. Igas piirkonnas logitakse ainult viimased 100 tükki.",
 		detection_area_title = "Avastusala #${detectionAreaId}",
 
+		about_settings_title = "Sätted",
+		about_settings_text = "Need väljad võimaldavad teil muuta erinevaid sätteid, et kohandada oma kogemust.",
 		about_sound_effects_title = "Heliefektid",
-		about_sound_effects_text = "Need väljad võimaldavad muuta mõnda heliefekti. Nende korrektseks töötamiseks on vaja lingi .oog-failile. See peab olema https:// URL ja mitte http:// URL. Lihtsaim viis faili üleslaadimiseks on see üles laadida Discordi ja kopeerida seejärel faili link ning sisestada see siin olevatesse lahtritesse.",
+		about_sound_effects_text = "Need väljad võimaldavad teil sundida mõningaid heliefekte. Nende korrektseks toimimiseks on vajalik otseühendus .oog-failiga. URL-i aadress peab olema https:// ja mitte http://. Olge teadlikud sellest, et Discordi lingid võivad aeguda.",
+		about_staff_settings_title = "Personalivõtete seaded",
+		about_staff_settings_text = "Kui sul on personaliõigused, saad nende väljade abil muuta mõningaid personaliga seotud seadeid.",
 		radio_mic_click_on = "Raadio mikrofoni klõps (sisse lülitatud)",
 		radio_mic_click_off = "Raadio mikrofoni klõps (välja lülitatud)",
+		lean_cam_mode = "Lean-Nihe Kaamera",
+		lean_option_1 = "Hoia, et lülitada",
+		lean_option_2 = "Vajuta, et lülitada",
 		clipboard_animation = "Lohakas animatsioon",
+		chop_shop_sound = "Keela röövlitöökoda raadiomuusika",
+		seatbelt_sound = "Keela turvavöö märguanne",
+		eating_noises_sound = "Lülita söömise helid välja",
 		sound_effect_placeholder = "URL .oog failile...",
-		sound_effect_save = "Salvesta",
-		sound_effect_reset = "Lähtesta",
 
-		staff_notifications_reports = "Aruande teated",
-		staff_notifications_staff_chat = "Personal-vestlus teated",
-		staff_notifications_general = "Üldised teated",
-		staff_notifications_anti_cheat = "Cheati vastased teated",
+		button_save = "Salvesta",
+		button_reset = "Lähtesta",
+		value_off = "Väljas",
+		value_on = "Sees",
+		sound_off = "Helitaust väljas",
+		sound_on = "Helitaust sees",
+
+		reduce_epilepsy = "Vähenda vilkuvaid pilte (epilepsiavastane)",
+		pause_menu_emote = "Pausimenüü žest",
+		disable_tablet_animation = "Keela tahvelarvuti animatsioon",
+		staff_notifications_reports = "Teavitused aruannetest (Heli)",
+		staff_notifications_staff_chat = "Personalivestluse teavitused (Heli)",
+		staff_notifications_general = "Üldteated (Heli)",
+		staff_notifications_anti_cheat = "Petitarkvara teated (Heli)",
 
 		december_1 = "1. detsember",
 		december_2 = "2. detsember",
@@ -8572,6 +11709,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		hatch_claim = "VÕTA",
 		hatch_opened = "VÕETUD",
 		hatch_waiting = "OOTAMAS",
+		hatch_too_late = "LIIGA HILJA",
 
 		about_advent_calendar_title = "Advendikalendri kohta",
 
@@ -8583,7 +11721,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 			<br><br>
 			Next hatch unlocks in ${time}.
 			<br><br>
-			Opening a hatch on the day it was unlocked, gives you a bonus point. If you obtain enough bonus points, you will receive a special gift on the 24th of December. (The bonus gift must be claimed before the 26th.)
+			Opening a hatch on the day it was unlocked, gives you a bonus point. If you obtain enough bonus points, you will receive a special gift on the 24th of December. (The bonus gift must be claimed before the 31st.)
 			<br><br>
 			<div class="bonusPoints">
 				<div>Bonus Points: ${bonusPoints}/22</div>
@@ -8618,8 +11756,8 @@ OP.Global.Locales.Languages["et-EE"] = {
 		about_unusual_explosions = "Ebatavalised plahvatuse sündmused, mida tavaliselt ei esine.",
 		explosions_by_type_title = "Plahvatused tüübi järgi",
 		players_causing_explosions_title = "Mängijad, kes tekitavad plahvatusi",
-		show_common_events_off = "Näita tavapäraseid sündmusi: VÄLJAS",
-		show_common_events_on = "Näita tavapäraseid sündmusi: SEES",
+		include_common_events_off = "Kaasa üldised sündmused: VÄLJAS",
+		include_common_events_on = "Kaasa üldised sündmused: SEES",
 
 		explosion_events_type = "Tüüp",
 		explosion_events_amount = "Kogus",
@@ -8637,18 +11775,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		local_ped_models_title = "Kohalikud kehastused",
 		animal_ped_models_title = "Loomade ped mudelid",
 
-		fast_movement_title = "Kiire liikumine",
-		fast_movement_about = "Siit leiate loetletud mängijad, kes on märgistatud liiga kiiresti liikumise eest. See peaks aitama leida potentsiaalseid moode.",
-
-		damage_modifier_title = "Kahju muutujad",
-		damage_modifier_about = "Siin loetletakse kõik mängijad, kellel on avastatud muudetud kahju muutuja. See peaks aitama leida mängijaid, kes võivad olla modereerimisega seotud.",
-
-		bad_screen_word_title = "Halvad ekraanisõnad",
-		bad_screen_word_about = "Siin loetletakse kõik mängijad, kellel on avastatud teatud sõnad nende ekraanil. See peaks aitama leida mängijaid, kes võivad olla modereerimisega seotud.",
-
-		freecam_detections_title = "Vaba kaamera avastused",
-		freecam_detections_about = "Siin loetletakse kõik mängijad, kellel on avastatud vaba kaamera kasutamine. See peaks aitama leida mängijaid, kes võivad olla modereerimisega seotud.",
-
 		damage_modifier_name = "Mängija nimi",
 		damage_modifier_expected = "Oodatud",
 		damage_modifier_actual = "Tegelik",
@@ -8659,11 +11785,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		freecam_detections_name = "Mängija nimi",
 		freecam_detections_distance = "Maks. kaugus",
 
-		hotwire_driving_detections_name = "Mängija nimi",
-
 		model = "Mudel",
 		label = "Silt",
 		amount = "Summa",
+		time_ago = "Aeg tagasi",
 		console_name = "Mängija",
 		expected = "Oodatud",
 		actual = "Tegelik",
@@ -8680,6 +11805,8 @@ OP.Global.Locales.Languages["et-EE"] = {
 		press_to_talk_to_jc = "Vestlemiseks JC-ga vajuta ~g~${InteractionKey}~w~.",
 		tutorial_will_play_next_time = "Oksütutvustus mängitakse järgmisel käivitamisel.",
 		prescription_pick_up = "Retsepti väljavõtmine: ${label}",
+
+		suspicious_person_location = "${zone} aadressil ${address}",
 
 		pick_up_the_prescriptions = "Võta oma kaardil märgitud võltsitud retseptid.",
 		redeem_them_at_the_city = "Kui oled selle teinud, tuleb teil need lunastada linna juures.",
@@ -9195,6 +12322,9 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		taking_too_long_3_part_1 = "Kuule vend, sa kisud ikka liiga pikale juba, kas proovid mulle tööd varastada või?",
 
+		-- NOTE: ops looks like I originally clipped this twice or something
+		taking_too_long_4_part_1 = "Yoo sõber, sa võtad liiga kaua aega sõber, kas üritad mu tööd varastada või?",
+
 		taking_too_long_5_part_1 = "Kas sa arvad, et sa oled naljakas või? Kas sa arvad, et see on mingi nali suurem mees?",
 		taking_too_long_5_part_2 = "Kuule, tule kohe siia, näe, mis sinuga juhtub.",
 
@@ -9256,16 +12386,66 @@ OP.Global.Locales.Languages["et-EE"] = {
 		tutorial_3_part_10 = "Armastus vend, armastus."
 	},
 
+	pacific_bank = {
+		power_generator_disabled = "See voolugeneraator on välja lülitatud. See parandatakse ${time} jooksul.",
+
+		you_completed_the_hack = "Sa lõpetasid häkkimise. Voolugeneraator, mis hetkel varustab turvasüsteemi vooluga, on: ${outputData}",
+		you_completed_the_hack_no_more_generators = "Sa lõpetasid häkkimise. Ühtegi voolugeneraatorit, mis varustaks turvasüsteemi vooluga, ei ole.",
+		you_failed_the_hack = "Häkkimine ebaõnnestus.",
+		you_completed_the_hack_door_unlocked = "Teie häkkimine oli edukas. Uks on avatud.",
+
+		teller_door_hack_completed_logs_title = "Kassapidaja ukse häkkimine lõpule viidud",
+		teller_door_hack_completed_logs_details = "${consoleName} lõpetas kassapidaja ukse häkkimise Vaikse ookeani pangas.",
+
+		vault_door_hack_completed_logs_title = "Rahavaulti ukse häkkimine lõpule viidud",
+		vault_door_hack_completed_logs_details = "${consoleName} lõpetas rahavaulti ukse häkkimise Vaikse ookeani pangas.",
+
+		disabled_generators = "Keelatud ${disabledGeneratorsCount} generaatorit.",
+
+		drill_drilling = "Puurimine (${järelejäänudSekundid}s)",
+		drill_jammed = "[${Interaktsiooninupp}] Puur Kinni (${järelejäänudSekundid}s)",
+		search_safe = "[${InteractionKey}] Otsi seifi",
+		searching_safe = "Seifi otsimine",
+
+		close_up_bank = "Panga sulgemine",
+		press_to_close_up_bank = "[${InteractionKey}] Panga sulgemine",
+		closing_up_bank = "Pank suletakse",
+
+		not_enough_police = "Ei ole piisavalt aktiivseid politseinikke rööviga alustamiseks.",
+
+		dispatch = "[Häirekeskus]",
+		alarm_triggered = "10-90: Häire on aktiveeritud Pacific Bankis.",
+		pacific_bank_alarm = "Pacific Banki häire",
+
+		press_to_search = "[${InteractionKey}] Otsi",
+		search = "Otsi",
+		searching = "Otsin",
+		found_nothing = "Ei leidnud midagi.",
+
+		power_generator_disabled_title = "Voolugeneraator välja lülitatud",
+		power_generator_disabled_details = "${consoleName} lülitas välja voolugeneraatori nimega '${powerGeneratorName}'.",
+
+		pacific_bank_robbery_started_title = "Vaikse ookeani panga rööv algas",
+		pacific_bank_robbery_started_details = "${consoleName} alustas Vaikse ookeani panga röövi.",
+
+		pacific_bank_reward_logs_title = "Vaikse ookeani panga preemia",
+		pacific_bank_reward_saving_bonds_logs_details = "${consoleName} otsis seifi ja sai kokku hoiutähtedega väärtusega $${amount}.",
+		pacific_bank_reward_items_logs_details = "${consoleName} otsis seifi ja sai ${amount}x esemeid."
+	},
+
 	panel = {
 		loading_title = "Laadimine",
 		error_title = "Midagi läks valesti",
 
 		was_banned = "Bännitud",
 		loading = "Mängija andmete laadimine...",
+		loading_screenshot = "Laen pilti...",
+		screenshot_failed = "Ei õnnestunud pilti teha.",
+		player_no_character = "Mängijal puudub tegelane.",
 		no_warnings = "Hoiatusi pole",
 		not_shown_warnings = "${count} rohkem hoiatusi pole näidatud",
 		system_issuer = "Süsteem",
-		add_warning_title = "Lisa hoiatus",
+		add_note_title = "Märkme lisamine",
 		message_placeholder = "${playerName} tegi oopsie...",
 
 		type_note = "Märkus",
@@ -9276,14 +12456,16 @@ OP.Global.Locales.Languages["et-EE"] = {
 		button_cancel = "Tühista",
 		button_add = "Lisa",
 		button_close = "Sulge",
-		button_new = "Uus",
+		button_new = "Uus märge",
+		button_back = "Tagasi",
+		button_screenshot = "Pilt",
 
-		invalid_server_id = "Vigane serveri id.",
+		ping = "${ping}ms",
+		fps = "${fps}fps",
+		playtime = "${time} mängitud",
 
 		failed_load_player = "Mängija andmete laadimine ebaõnnestus. Kas sisestasid kehtiva serveri id?",
 		failed_add_warning = "Hoiatuse lisamine ebaõnnestus.",
-
-		get_info_no_permissions = "Mängija üritas saada teavet mängija kohta ilma õigete õigusteta.",
 
 		user_indefinitely_banned_warning_no_reason = "Ma keelasin selle isiku määramata ajaks ilma põhjenduseta. See hoiatus genereeriti automaatselt keelu tulemusena.",
 		user_indefinitely_banned_warning = "Ma keelasin selle isiku määramata ajaks põhjusega `${reason}`. See hoiatus genereeriti automaatselt keelu tulemusena.",
@@ -9292,7 +12474,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 	},
 
 	panic = {
-		press_panic_button = "Sa pead 5 sekundi jooksul vajutama paanikanuppu (X).",
+		press_panic_button = "Sul on 6 sekundit, et vajutada oma paanikanupp (X).",
 		panic_button_timeout = "Sa ei vajutanud paanikanuppu õigeaegselt.",
 
 		panic_button_title = "[Häirekeskus]",
@@ -9303,36 +12485,71 @@ OP.Global.Locales.Languages["et-EE"] = {
 		panic_blip = "10-14 ${lastName}",
 
 		label_officer = "politseinik",
-		label_paramedic = "kiirabiarst"
+		label_paramedic = "kiirabiarst",
+		label_firefighter = "tuletõrjuja"
 	},
 
 	paper_bags = {
-		fill_bag = "[${SeatEjectKey}] Täida Paberkott",
-		no_bags = " Sul ei ole ühtegi paberkotti.",
-		no_bag_items = " Sul ei ole ühtegi eset, mida saaksid paberkoti sisse panna.",
-		close_bag = "Sulge kott",
-		cancel_bag = "Tühista",
-		title = "Paberkott",
+		paper_bag_brand = "Sellel paberkotil on <b>${brand}</b> logo.",
+		paper_bag_no_brand = "See on lihtne paberist kott.",
+
+		burger_shot_delivery = "Burger Shot",
+		bean_machine_delivery = "Bean Machine",
+		kissaki_delivery = "Kissaki",
+		green_wonderland_delivery = "Green Wonderland",
+		pizza_this_delivery = "Pizza This",
+
 		failed_fill = "Ei õnnestunud paberkotti täita.",
-		filled_bag = "Paberkott täidetud edukalt."
+		filled_bag = "Paberkott täidetud edukalt.",
+
+		filled_bag_log_title = "Täidetud paberist kott",
+		filled_bag_log_details = "${consoleName} täitis paberkoti sisuga ${contents}."
 	},
 
 	parking_meters = {
 		not_paid = "Maksmata",
 		insert_dollar = "[${InteractionKey}] Sisesta $${amount}",
 
-		no_cash = " Sul pole ühtegi dollarit.",
+		no_cash = "Sul ei ole $4 sularahas.",
 		max_time = "See parkimisautomaat on juba maksimaalselt täis.",
-		failed_pay = "Parkimisautomaadi makse ebaõnnestus."
+		failed_pay = "Parkimisautomaadi makse ebaõnnestus.",
+
+		failed_lockpick = "Pargimeetri luku avamine ebaõnnestus.",
+		already_lockpicked = "See pargimeeter oli juba varem avatud.",
+
+		lockpicked_meter_logs_title = "Lukustatud pargimeeter",
+		lockpicked_meter_logs_details = "${consoleName} lõhkus parkimismetri ja sai ${items} ning ${money} sularahas."
+	},
+
+	pause_menu = {
+		sunday = "Pühapäev",
+		monday = "Esmaspäev",
+		tuesday = "Teisipäev",
+		wednesday = "Kolmapäev",
+		thursday = "Neljapäev",
+		friday = "Reede",
+		saturday = "Laupäev",
+
+		bank = "Pank",
+		cash = "Sularaha"
 	},
 
 	pawn_shops = {
-		sell_items = "Müü ${itemLabel}",
-		press_to_sell_items = "[${InteractionKey}] Müü ${itemLabel}",
-		sold_items = "Müüsid ${sellAmount}x ${itemLabel} eest $${sellPrice}.",
+		pawn_shop = "Pantipood",
+		pawn_shop_far = "Pääse pantipoodi",
+		pawn_shop_near = "[${InteractionKey}] Pääse pantipoodi",
 		no_items_to_sell = " Sul ei ole ${itemLabel} müümiseks midagi.",
+		close_menu = "Sulge menüü",
+
+		sell_vehicle_parts_far = "Müü sõiduki osad",
+		sell_vehicle_parts_near = "[${InteractionKey}] Müü sõiduki osi",
+
+		sell_items = "Müü ${itemLabel}",
+		press_to_sell_items = "[${InteractionKey}] Müü ${amount}x ${itemLabel}",
+		sold_items = "Müüsid ${sellAmount}x ${itemLabel} eest $${sellPrice}.",
 		daily_limit_reached = "Oled jõudnud päevase limiidini, müüja ei osta enam esemeid.",
 		illegal_pawn_shop_id = "Üritades edastada väärtuseid pandimajale, mis ei eksisteeri.",
+
 		used_pawn_shop_title = "Kasutatud pandimaja",
 		used_pawn_shop_details = "${consoleName} kasutas pandimaja ja müüs ${sellAmount} `${itemLabel}` ning teenis $${sellPrice}."
 	},
@@ -9342,7 +12559,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		attempt_failed = "katsetas ${attemptMessage}, kuid see ebaõnnestus",
 		dice_message = "veeretas täringut ja sai numbriks ${diceNumber}",
 		roll_message = "veeretas kohandatud täringut pakkumisega ${rolls}d${max} ja sai tulemuseks ${totalValue}",
+		rps_message = "mängis kivi-paber-käärid ja valis ${rps}",
 		citizen_card_message = "näitas isikut tõendavat dokumenti (${characterId})",
+		driver_license_message = "näitas ID-kaarti (${characterId})",
+		press_pass_message = "näitas pressikaarti (${characterId})",
 		badge_message = "näitas silti (${characterId})",
 		license_message = "${characterId} näitas litsentsi.",
 		ped_message_logs_title = "Ped sõnum",
@@ -9358,22 +12578,25 @@ OP.Global.Locales.Languages["et-EE"] = {
 		attempt_message_chat_title = "/katseta [${serverId}]",
 		dice_message_chat_title = "/täringud [${serverId}]",
 		roll_message_chat_title = "/veereta [${serverId}]",
+		rps_message_chat_title = "/rps [${serverId}]",
 		description_message_chat_title = "/kirjeldus [${serverId}]",
 		message_too_long = "Sõnum sisaldab liiga palju tähemärke või ridu!",
 		card_command_wait = "Sa just võtsid kaardi, oota hetk enne järgmise võtmist.",
-		ped_message_timeout = "Aeglusta, oota pisut enne järgmise sõnumi saatmist."
+		ped_message_duplicate = "Sa just saatsid selle sõnumi, oota veidi enne uuesti saatmist."
 	},
 
 	ped_objects = {
 		illegal_ped_object = "Üritad lisada jalakäijate objekti, mis pole 'lubatud' jalakäijate objektide loendis.",
-		illegal_ped_weapon_object = "Üritad lisada jalakäijate relvade objekti, mis pole relvade loendis."
+		illegal_ped_weapon_object = "Üritad lisada jalakäijate relvade objekti, mis pole relvade loendis.",
+		illegal_raw_ped_object = "Õigusteta käsu esitamine toormurmelpuuobjektide lisamiseks."
 	},
 
 	ped_task = {
 		network_id_invalid = "Võrgu-ID on kehtetu.",
 		ped_not_found = "Jalakäija võrgu-ID-ga `${networkId}` ei leitud.",
 		tracked_ped = "Jälgitav jalakäija",
-		tracked_ped_is = "Jalakäija (${entity}) on:"
+		tracked_ped_is = "Jalakäija (${entity}) on:",
+		ped_config_flags = "Ped Konfiguratsiooni Lipud"
 	},
 
 	ped_spawn = {
@@ -9381,46 +12604,30 @@ OP.Global.Locales.Languages["et-EE"] = {
 		ped_spawn_success = "Jalakäija edukalt loodud.",
 		ped_failed_spawn = "Ebaõnnestus pedi loomine.",
 		invalid_weapon = "Vigane relv.",
+		invalid_ped_model = "Vigane ped mudel.",
 		ped_remove_success = "Eemaldatud loodud pedit edukalt.",
 		ped_failed_remove = "Ei õnnestunud loodud pede eemaldada.",
-		ped_task_success = "Määrati '${task}' ülesanne loodud pedele edukalt.",
-		ped_failed_task = "Ei õnnestunud määrata '${task}' ülesannet loodud pedidele.",
+		ped_task_success = "Õnnestus määrata `${task}` ülesanne loodud pedidele.",
+		ped_failed_task = "Ei õnnestunud määrata `${task}` ülesannet loodud pedidele.",
 		invalid_target = "Vigane serveri ID.",
-		missing_task = "Puudub tööülesande parameeter.",
-		invalid_task = "Vigane pedi ülesanne '${task}'.",
-		target_required = "Selle pedi ülesande jaoks on vajalik kehtiv sihtmärk.",
-		ped_emote_success = "Loojangut mängisid '${emote}' emotsioone.",
-		ped_failed_emote = "Ei õnnestunud tekitatud pede mängida '${emote}' emotsioone.",
-		invalid_emote = "Kehtetu emotsioon '${emote}'.",
+		invalid_task = "Vigane või puuduv pedi ülesanne.",
+		no_nearby_ped = "Lähedal ei ole ühtegi jalakäijat.",
+		ped_attack_success = "Õnnestus panna ped ${networkId} ründama ${target}.",
+		ped_failed_attack = "Ei õnnestunud panna ped ${networkId} ründama ${target}.",
+		ped_emote_success = "Õnnestus teha loodud pedid mängima `${emote}` emotsiooni.",
+		ped_failed_emote = "Ei õnnestunud teha loodud pedid mängima `${emote}` emotsiooni.",
+		invalid_emote = "Vigane žest „${emote}“.",
 		missing_emote = "Puuduv emotsiooni parameeter.",
 
 		emote_list = "Saadaval pede emotsioonid: ${list}.",
-		task_list = "Saadaval pede ülesanded: ${list}.",
-
-		spawn_ped_missing_perms = "Üritati lubadeta tekitada pedi.",
-		remove_peds_missing_perms = "Üritati lubadeta eemaldada tekitatud pedid.",
-		ped_assign_task_missing_perms = "Üritati määrata ülesannet loodud pedidele ilma õigusteta."
+		task_list = "Saadaval pede ülesanded: ${list}."
 	},
 
 	ped_steal = {
 		ped_steal_reset = "Mängijate ped on lähtestatud.",
 		ped_steal_success = "Ped-i välimus varastati edukalt.",
 		ped_steal_failed = "Ped-i välimuse varastamine ebaõnnestus.",
-		ped_not_found = "Mängija pedi ei leitud.",
-		invalid_server_id = "Vigane serveri ID."
-	},
-
-	ped_takeover = {
-		failed_reset = "Ei õnnestunud naasta algse pediga.",
-		failed_reset_not_exist = "Teie algset pedi ei eksisteeri või see pole teie lähedal.",
-		failed_takeover = "Ped-i ülevõtmine ebaõnnestus.",
-		invalid_network_id = "Võrgu ID on sobimatu."
-	},
-
-	peds = {
-		ped_robbing_injection = "Liigne ped-rahakottimine! (Serveri ajalimiitide eiramine, ilmselt kasutades süstalt selleks.)",
-		robbed_ped_logs_title = "Röövitud ped",
-		robbed_ped_logs_details = "${consoleName} röövis pedi ja sai $${payout}."
+		ped_not_found = "Mängija pedi ei leitud."
 	},
 
 	pepper_spray = {
@@ -9447,16 +12654,55 @@ OP.Global.Locales.Languages["et-EE"] = {
 		api_error = "Meie tagapoolne API tagastas veateate.",
 		api_not_available = "Meie tagapoolne API pole saadaval.",
 		phone_number_is_available = "Telefoninumber ${phoneNumber} on saadaval.",
-		phone_number_is_not_available = "Telefoninumber ${phoneNumber} pole saadaval."
+		phone_number_is_not_available = "Telefoninumber ${phoneNumber} pole saadaval.",
+
+		no_phone = "Sul pole telefoni.",
+		nobody_nearby = "Kedagi piisavalt lähedal, et oma numbrit jagada, ei leidu.",
+		shared_number = "${fullName} jagas sinuga oma telefoninumbrit. Kasuta /yes selle vastuvõtmiseks ja uue kontakti loomiseks või /no tagasilükkamiseks.",
+		shared_number_expired = "Telefoninumbri jagamise päring on aegunud.",
+		shared_number_declined = "Sa keeldusid telefoninumbri jagamise päringust.",
+		failed_to_share = "Telefoninumbri jagamine ebaõnnestus.",
+		number_share_timeout = "Sa just jagasid oma telefoni numbrit. Palun oota hetk enne uuesti proovimist.",
+		phone_number_shared = "Teie telefoninumber on edukalt jagatud ${nearby} lähedalasuvale mängijale."
 	},
 
-	pictures = {
-		selfie_description = "${firstName} ${lastName} pilt."
+	plants = {
+		planting_seed = "Seemne istutamine",
+		seed_planted = "Seemne istutamine õnnestus.",
+		failed_plant = "Seemne istutamine ebaõnnestus.",
+		cant_plant_here = "Sa ei saa siin seemet istutada.",
+
+		press_water_plant = "[${InteractionKey}] Kasta",
+		press_harvest_plant = "[${InteractionKey}] Saagi",
+		press_destroy_plant = "[${SeatEjectKey}] Labidas",
+		press_fertilize_plant = "[${CoverKey}] Väetamine",
+		watering_plant = "Taime kastmine",
+		harvesting_plant = "Taime koristamine",
+		fertilizing_plant = "Taimeväetamine",
+		destroying_plant = "Taime hävitamine",
+
+		plant_weed = "Taime umbrohuks muutmine",
+		plant_cabbage = "Kapsataim",
+
+		planted_seed_logs_title = "Külvatud seeme",
+		planted_seed_logs_details = "${consoleName} külvati ${plant} (#${plantId}) materjalile ${material}.",
+		harvested_plant_logs_title = "Koristatud taim",
+		harvested_plant_logs_details = "${consoleName} koristas ${plant} (#${plantId}) ja sai ${items}.",
+		watered_plant_logs_title = "Kastetud taim",
+		watered_plant_logs_details = "${consoleName} kastis ${plant} (#${plantId}).",
+		ran_over_plant_logs_title = "Ületas taime",
+		ran_over_plant_logs_details = "${consoleName} ületas taime (#${plantId}).",
+		shoveled_plant_logs_title = "Labidaga üles kaevatud taim",
+		shoveled_plant_logs_details = "${consoleName} kaevas labidaga (hävitas) taime (#${plantId}).",
+		fertilized_plant_logs_title = "Väetati taim",
+		fertilized_plant_logs_details = "${consoleName} väetas taime (#${plantId}).",
+
+		total_plants = "Kokku taimi: ${count}",
+		nearby_plants = "Lähedal asuvad taimed: ${count}"
 	},
 
 	player_control = {
 		unable_to_drive_for_yourself = "Sa ei saa iseennast juhtida.",
-		drive_for_player_no_permissions = "Mängija üritas mängija jaoks sõita, kuid tal polnud selleks piisavalt õigusi.",
 		player_is_not_nearby = "Mängija serveri ID-ga ${serverId} ei ole läheduses.",
 		player_is_not_the_drive_of_a_vehicle = "Mängija serveri ID-ga ${serverId} ei ole sõiduki juht.",
 		press_to_stop_drive_for = "Vajuta ~INPUT_FRONTEND_CANCEL~, et lõpetada sõit mängijaga."
@@ -9467,7 +12713,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		set_player_scale_to_for = "Määra mängija suurus ${scale}-ks kasutajale ${consoleName}.",
 		reset_player_scale = "Lähtesta mängija suurus.",
 		set_player_scale_to = "Määra mängija suurus ${scale}-ks.",
-		set_player_scale_no_permission = "Mängijal ei olnud vajalikku luba mängija mastaabi muutmiseks.",
 		player_is_already_set_to_scale = "${consoleName} on juba seadistatud mastaabiks `${scale}`.",
 		you_are_already_set_to_scale = "Olete juba seadistatud mastaabiks `${scale}`.",
 		player_is_not_scaled = "${consoleName} ei ole skaalastatud.",
@@ -9477,14 +12722,15 @@ OP.Global.Locales.Languages["et-EE"] = {
 	player_stats = {
 		hp = "HP",
 		armor = "Armor",
-		toggle_player_stats_no_permissions = "Mängija üritas mängija statistikatümblereid sisse lülitada ilma vajalike lubadeta.",
 		updated_render_range = "Uuendatud renderdamiste vahemik ${renderRange}.",
 		turned_player_stats_on = "Mängija statistika sisse lülitatud.",
 		turned_player_stats_off = "Mängija statistika välja lülitatud."
 	},
 
 	players = {
-		player_left = "Mängija lahkus [${serverId}]"
+		player_left = "Mängija lahkus [${serverId}]",
+		player_exited = "Mängija lahkus [${serverId}]",
+		player_crashed = "Mängija kukkus välja [${serverId}]"
 	},
 
 	pole_dancing = {
@@ -9498,13 +12744,61 @@ OP.Global.Locales.Languages["et-EE"] = {
 		pole_dancing_offset = "Model '${modelName}': vector3(${x}, ${y}, ${z})"
 	},
 
+	police_calls = {
+		ped_robbing_injection = "Liigne pede röövimine! (Serveri ajalimiiti pole järgitud, ilmselt kasutatakse süstijat selleks.)",
+
+		robbed_ped_logs_title = "Röövitud jalakäija",
+		robbed_ped_logs_details = "${consoleName} röövis jalakäija ja sai $${payout}."
+	},
+
 	pools = {
 		pools_overflowing = "Basseinid ülevoolavad: ~r~${poolsOverflowing}"
 	},
 
+	prescriptions = {
+		redeem_prescription = "[${SeatEjectKey}] Retsepti lunastamine",
+
+		redeemed_prescription = "Retsepti edukalt lunastatud.",
+		failed_redeem = "Ei õnnestunud lunastada retsepti.",
+
+		remeeded_prescription_logs_title = "Lunastatud Retsept",
+		remeeded_prescription_logs_details = "${consoleName} lunastas retsepti ja sai 1x `${item}`."
+	},
+
+	printer = {
+		use_printer = "[${InteractionKey}] Kasuta Printerit",
+		failed_to_print = "Printimine ebaõnnestus.",
+
+		no_paper = " Sul ei ole paberit.",
+		invalid_url = "Vigane pildi URL.",
+		invalid_domain = "See domeen pole lubatud.",
+		print = "Prindi",
+		printing = "Printimine...",
+		document_title = "Minu lahe pealkiri",
+		image_url = "https://pilt.url.siin.png",
+
+		printed_logs_title = "Prinditud pilt",
+		printed_logs_details = "${consoleName} trükkis `${itemName}` kasutades `${paperType}` pildi URL-iga `${url}`, pealkiri: `${title}`, ülemine tekst: `${topText}` ja alumine tekst: `${bottomText}`."
+	},
+
+	prop_hide = {
+		no_model = "~r~Mudel puudub",
+		status_text = "Rekvisiidid: ~g~${label}"
+	},
+
+	properties = {
+		no_address_set = "Aadressi pole määratud.",
+		no_address_found = "Aadressi '${address}' ei leitud.",
+		marker_set = "Marker ja teekonnaleidja määratud aadressile ${address}.",
+		removed_marker = "Eemaldatud märker ${address} kohta.",
+		entrance = "Sissepääs",
+		back_entrance = "Tagaukse sissepääs",
+		garage = "Garaaž",
+		located_address = "Eliminar Cuenta de Ahorros"
+	},
+
 	props = {
 		illegal_prop_item_id = "Mängija üritas kasutada rekvireeritud esemega ebaseaduslikku eseme ID-d.",
-		spawn_prop_not_staff = "Mängija üritas eset tekitada, kuid tal polnud selleks vajalikke õigusi.",
 		managing_props_help = "Hetkel haldad sa ise esemeid. Astu eseme juurde ja vajuta ~INPUT_CONTEXT~, et see korjata.",
 		total_props = "Esemeid kokku: ${count}",
 		active_props = "Aktiivseid esemeid: ${count}",
@@ -9517,7 +12811,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		prop = "Objekt",
 		model_parameter_missing = "Puudub `model` parameeter.",
 		model_parameter_invalid = "`model` parameeter `${model}` on vigane.",
-		model_parameter_is_not_an_object = "`model` parameeter `${model}` ei ole objekt.",
 		spawned_prop_non_networked = "Loodi mittevõrgutoimeline objekt mudeliga `${model}`.",
 		spawned_prop_networked = "Loodi võrgutoimeline objekt mudeliga `${model}`.",
 		spawned_exact_prop = "Eseme täpne taaslavastus õnnestus.",
@@ -9527,18 +12820,33 @@ OP.Global.Locales.Languages["et-EE"] = {
 		not_able_to_spawn_while_moving = "Ese taaslavastamiseks tuleb seista paigal.",
 		stand_still_to_place_prop = "Ese paigutamiseks tuleb seista paigal.",
 		prop_no_interior = "Seda eset saab paigutada ainult õues.",
+		invalid_culling_value = "Vigane piiranguväärtus, peab olema vahemikus 10m kuni 2,500m.",
+		invalid_model = "Vigane/Tundmatu mudel `${name}` (${hash}).",
+		cancelled_positioning = "Tühistati rekvisiidi paigutamine.",
 
 		invalid_prop_id = "Vigane eseme id.",
 		prop_deleted = "Rekvisiidiga ${propId} seotud objekt on kustutatud.",
 
-		invalid_wipe_radius = "Kehtetu objektide kauguse määr (1 kuni 100).",
-		wipe_successful = "Objektide kustutamine õnnestus.",
-		wipe_props_missing_permissions = "Mängija üritas objekte kustutada, kuid tal polnud selleks vajalikke õigusi.",
+		invalid_wipe_radius = "Vigane pühkimisraadius (1 kuni 500 vahel).",
+		wipe_successful = "Edukalt pühiti ${amount} prop(i).",
+		wipe_failed = "Propide puhastamine ebaõnnestus.",
 
 		placing_prop = "Rekvisiidi paigutamine",
 		pickup_prop = "Rekvisiidi korjamine",
 		setting_up_tire_wall = "Rehvimüüri seadistamine",
-		destroying_tire_wall = "Rehvimüüri hävitamine"
+		destroying_tire_wall = "Rehvimüüri hävitamine",
+
+		placed_prop_logs_title = "Paigaldatud oma",
+		placed_prop_logs_details = "${consoleName} paigaldas eseme `${itemName}` asukohta ${coords} (ID: ${propId}).",
+		spawned_prop_logs_title = "Loodud ese",
+		spawned_prop_logs_details = "${consoleName} loob eseme mudeliga `${modelName}` asukohas ${coords} (ID: ${propId})."
+	},
+
+	quiet_hours = {
+		received_streaming_reward = "Sinule anti ${amount} OP punkti, kuna sa striimisid vaiksel ajal. Sul on nüüd ${points} OP punkti.",
+
+		logs_quiet_hours_streaming_reward_reward_title = "Vaikse aja striimimise auhind",
+		logs_quiet_hours_streaming_reward_reward_points_details = "${consoleName} sai ${amount} OP punkti striimimise eest vaiksel ajal."
 	},
 
 	radio = {
@@ -9553,10 +12861,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		frequency_set_to_streamer = "Sagedus on seatud.",
 		frequency_set_to = "Sagedus on seatud ${frequency} peale.",
 		frequency_already_set_to = "Sagedus on juba seatud ${frequency} peale.",
-		radio_volume_same = "Raadio helitugevus on juba määratud `${radioVolume}`.",
+		radio_volume_same = "${consoleName} eliminó una cuenta de ahorros llamada `${accountName}` con el ID ${accountId}.",
 		radio_volume_reset = "Raadio helitugevus on nüüd lähtestatud.",
-		radio_volume_set = "Raadio helitugevus on nüüd määratud `${radioVolume}`.",
-		radio_volume_current = "Sinu praegune raadio helitugevus on määratud `${radioVolume}`.",
+		radio_volume_set = "Retiro de Ahorros",
+		radio_volume_current = "${consoleName} retiró $${amount} de la cuenta de ahorros ${accountId}.",
 		radio_volume_current_default = "Sinu praegune raadio helitugevus on vaikimisi.",
 		radio_sound_effects_same = "Raadio heliefektide helitugevus on juba määratud `${radioSoundEffects}`.",
 		radio_sound_effects_reset = "Raadio heliefektide helitugevus on nüüd lähtestatud.",
@@ -9570,14 +12878,22 @@ OP.Global.Locales.Languages["et-EE"] = {
 		radio_debug_off = "Raadio tõrkeotsingu edukalt väljalülitatud.",
 		radio_debug_on = "Raadio silumise edukalt sisse lülitanud.",
 
-		radio_debug_no_permissions = "Katse raadio silumist sisse lülitada ilma nõutava loata.",
-
 		decrypt_frequency = "[${InteractionKey}] Dekrüpteeri sagedus",
 		decrypting_frequency = "Dekrüpteerin sagedust",
 		decrypting_frequency_failed = "Sageduse dekrüpteerimine ebaõnnestus.",
 		decrypter_jammed = "Dekrüpteri näib olevat ummistunud.",
 		decrypted_frequency = "Sagedus paistab olema umbkaudu `${frequency}`.",
 		no_frequency_detected = "Ühtegi sagedust ei leitud."
+	},
+
+	reflect = {
+		success_enable_reflection = "Depósito de Ahorros",
+		success_disable_reflection = "${consoleName} depositó $${amount} en la cuenta de ahorros ${accountId}.",
+		failed_toggle_reflection = "Tubería Rota",
+
+		reflection_logs_title = "~b~Dr. Nancy",
+		reflection_logs_enabled_details = "Failed to automatically generate translation.",
+		reflection_logs_disabled_details = "Failed to automatically generate translation."
 	},
 
 	remote_camera = {
@@ -9607,8 +12923,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 	reskin = {
 		plastic_surgery = "Plastiline kirurgia",
 		los_santos_police_dept = "LOS SANTOSI POLITSEIOSAKOND",
-
-		reskin_player_no_permissions = "Mängija üritas raadio silumislahendust sisse lülitada ilma asjakohase loata.",
 
 		triggered_reskin_for_player = "Käivitati uus välimus mängijale ${consoleName}.",
 
@@ -9666,20 +12980,58 @@ OP.Global.Locales.Languages["et-EE"] = {
 		better_stamina = "Saad joosta ilma, et jooksustamina lõppeda ${duration} minutit.",
 		more_inventory_space = "Lisandunud ${amount} inventari pesa ${duration} minutit.",
 
-		buffs_note = "Buffid aktiveeruvad alles pärast seda, kui olete hoonest kaugemale liikunud."
+		buffs_note = "Buffid aktiveeruvad alles pärast seda, kui olete hoonest kaugemale liikunud.",
+
+		press_to_prepare_food = "[${InteractionKey}] Valmista toitu",
+		prepare_food = "Valmista toitu",
+
+		kissaki_kitchen = "Kissaki köök",
+
+		craft = "Töötle",
+		putting_down_ingredients = "Koostisainete asetamine",
+
+		pick_up = "Võta üles: ~g~${name}",
+		press_to_pick_up = "[${InteractionKey}] Võta üles: ~g~${name}",
+
+		prepare_rice = "~g~${name}~s~: Valmista riis (${completed}%~s~)",
+		press_to_prepare_rice = "[${InteractionKey}] ~g~${name}~s~: Valmista riis (${completed}%~s~)",
+		preparing_rice_starting = "Riisi valmistamine",
+		preparing_rice = "~g~${name}~s~: Valmistatakse riisi... (${completed}%~s~)",
+
+		prepare_fillings = "~g~${name}~s~: Valmista täidised (${completed}%~s~)",
+		press_to_prepare_fillings = "[${InteractionKey}] ~g~${name}~s~: Valmista täidised (${completed}%~s~)",
+		preparing_fillings_starting = "Valmistatakse täidiseid",
+		preparing_fillings = "~g~${name}~s~: Valmistatakse täidiseid... (${completed}%~s~)",
+
+		prepare_rolling_mat = "~g~${name}~s~: Valmistage rullimismatt (${completed}%~s~)",
+		press_to_prepare_rolling_mat = "[${InteractionKey}] ~g~${name}~s~: Valmistage rullimismatt (${completed}%~s~)",
+		preparing_rolling_mat_starting = "Valmistatakse rullimismatti",
+		preparing_rolling_mat = "~g~${name}~s~: Valmistatakse rullimismatti... (${completed}%~s~)",
+
+		assemble_sushi = "~g~${name}~s~: Kokku panna sushi (${completed}%~s~)",
+		press_to_assemble_sushi = "[${InteractionKey}] ~g~${name}~s~: Kinnita sushi kokkupanek (${completed}%~s~)",
+		assembling_sushi_starting = "Sushi kokkupanek algamas",
+		assembling_sushi = "~g~${name}~s~: Sushi kokkupanemine... (${completed}%~s~)",
+
+		roll_sushi = "~g~${name}~s~: Keera sushi rulli (${completed}%~s~)",
+		press_to_roll_sushi = "[${InteractionKey}] ~g~${name}~s~: Keera sushi rulli (${completed}%~s~)",
+		rolling_sushi_starting = "Sushi rullimine algamas",
+		rolling_sushi = "~g~${name}~s~: Sushi rullimine... (${completed}%~s~)",
+
+		slice_sushi = "~g~${name}~s~: Lõika sushi viiludeks (${completed}%~s~)",
+		press_to_slice_sushi = "[${InteractionKey}] ~g~${name}~s~: Viiluta suši (${completed}%~s~)",
+		slicing_sushi_starting = "Suši viilutamine",
+		slicing_sushi = "~g~${name}~s~: Viilutan sušit... (${completed}%~s~)"
 	},
 
 	riot_mode = {
 		riot_mode_enabled = "Rahutuste režiim edukalt käivitatud.",
 		riot_mode_disabled = "Rahutuste režiim on edukalt välja lülitatud. Juba agressiivsed jalakäijad jätkavad võitlust kuni surmani.",
 		riot_mode_failed = "Rahutuste režiimi valimine ebaõnnestus.",
-		riot_mode_missing_perms = "Rahutuste režiimi lülitanud mängijal ei ole õiget luba selleks.",
+		riot_mode_missing_perms = "Üritati lülitada mässurežiimi ilma sobivate õigusteta.",
 
 		riot_mode_enabled_help = "Rahutuste režiim on sisse lülitatud.",
 		riot_mode_disabled_help = "Rahutuste režiim on välja lülitatud.",
-
-		add_riot_player_no_permissions = "Mängija lisamine rahutuste nimekirja ilma vastava õiguseta ei ole lubatud.",
-		remove_riot_player_no_permissions = "Mängija eemaldamine rahutuste nimekirjast ilma vastava õiguseta ei ole lubatud.",
 
 		player_already_in_riot_list = "${consoleName} on juba mässulistis.",
 		player_not_in_riot_list = "${consoleName} ei ole mässulistis.",
@@ -9689,16 +13041,90 @@ OP.Global.Locales.Languages["et-EE"] = {
 		failed_to_remove_riot_player = "Ei õnnestunud eemaldada ${consoleName} mässulistist."
 	},
 
+	rules = {
+		invalid_rule = "Vigane reegli ID.",
+
+		rule_title = "Reegel ${number}",
+		rule_details = "*${rule}*"
+	},
+
 	safes = {
 		how_to_use = "Pööra seifi, kasutades klahve \"A\" ja \"D\", kuni leiad õige kombinatsiooni. Alusta klahvi \"D\" vajutamisest.",
 		lock_open = "Lahti",
 		lock_closed = "Lukus"
 	},
 
+	savings_accounts = {
+		savings_accounts = "Failed to automatically generate translation.",
+		button_close = "Failed to automatically generate translation.",
+		button_back	= "Back",
+		button_confirm = "Failed to automatically generate translation.",
+		button_delete = "Failed to automatically generate translation.",
+		button_manage = "Failed to automatically generate translation.",
+		button_leave = "Lahku",
+		create_account = "Failed to automatically generate translation.",
+		delete_account = "Failed to automatically generate translation.",
+		confirm_delete = "Failed to automatically generate translation.",
+		loading = "Se instruyó con éxito al peatón para conducir hasta el punto de referencia.",
+		failed_load_accounts = "No se pudo instruir al peatón para conducir hasta el punto de referencia.",
+		no_accounts = "Alternando la visualización de los locales en bruto, activado.",
+		log_message = "Alternando la visualización de los locales en bruto, desactivado.",
+		action_withdraw = "Enero",
+		action_deposit = "Febrero",
+		withdraw = "Marzo",
+		deposit = "Abril",
+		amount = "Mayo",
+		note_reason = "Märkus / Põhjus",
+		reason_placeholder = "Valikuline märkus või põhjus...",
+		account_name = "Junio",
+		actions = "Julio",
+		access = "Agosto",
+		logs = "Septiembre",
+		no_logs = "Octubre",
+		summary = "Kokkuvõte",
+		summary_description = "Konto kõikide tehingute kokkuvõte viimase 90 päeva jooksul.",
+		name = "Nimi",
+		transactions = "Tehingud",
+		withdrawn = "Välja võetud",
+		deposited = "Hoiustatud",
+		last_action = "Viimane tegevus",
+		no_summary = "Puuduvad tehingud kokkuvõtte tegemiseks.",
+		no_access = "Noviembre",
+		add_cid = "Diciembre",
+		failed_add_access = "Õiguste lisamine nurjus.",
+		invalid_character_id = "Vigane või tundmatu tegelase ID.",
+		failed_remove_access = "Õiguste eemaldamine nurjus.",
+		failed_withdraw = "Võtmine nurjus.",
+		failed_deposit = "Sissemakse tegemine nurjus.",
+		failed_create = "Säästukonto loomine nurjus.",
+		failed_delete = "Säästukonto kustutamine nurjus.",
+		insufficient_balance = "Konto jääk ei ole piisav.",
+		insufficient_bank_balance = "Sinu pangakonto jääk ei ole piisav.",
+		account_description = "Konto omanik saab seda kustutada ja hallata. Inimesed, kellel on kontole juurdepääs, saavad ainult raha välja võtta ja sissemakseid teha. Saate luua kuni 5 erinevat säästukontot.",
+		leave_account = "Lahku konto",
+		confirm_leave = "Kas olete kindel, et soovite lahkuda kasutajakontolt \"${name}\"? Te ei pääse sellele kontole enam ligi.",
+
+		add_access_logs_title = "llamaradmin",
+		add_access_logs_details = "camara",
+		remove_access_logs_title = "Usa las coordenadas de tu cámara en lugar de las coordenadas de tu personaje. El valor predeterminado es no, `1` o `s` para sí.",
+		remove_access_logs_details = "El nombre del modelo o el hash del vehículo que deseas agregar. Si se deja en blanco, se agregará el vehículo en el que te encuentras actualmente (incluyendo sus modificaciones actuales).",
+		create_account_logs_title = "ignorar vehículo",
+		create_account_logs_details = "Si se establece en `1` o `s`, solo estarás invencible, no el vehículo en el que te encuentras.",
+		deleted_account_logs_title = "Säästukonto kustutamine",
+		deleted_account_logs_details = "${consoleName} kustutas säästukonto nimega `${accountName}` id-ga ${accountId}.",
+		left_account_logs_title = "Järeljäänud hoiu konto",
+		left_account_logs_details = "${consoleName} jättis hoiukonto nimega `${accountName}` ID-ga ${accountId}.",
+		withdraw_logs_title = "Säästukonto väljavõtmine",
+		withdraw_logs_details = "${consoleName} võttis ${amount} dollarit säästukontolt numbriga ${accountId} põhjusega `${reason}`.",
+		deposit_logs_title = "Säästukonto sissemakse",
+		deposit_logs_details = "${consoleName} kandis ${amount} dollarit säästukontole numbriga ${accountId} põhjusega `${reason}`."
+	},
+
 	scoreboard = {
 		player_list = "Mängijate nimekiri",
 		players = "Mängijad",
 		total = "Kokku",
+		total_staff = "Kokku (Personal)",
 		recent_disconnections = "Hiljuti lahku läinud",
 		disconnected_player = "Lahkunud mängija",
 		id = "ID",
@@ -9708,7 +13134,29 @@ OP.Global.Locales.Languages["et-EE"] = {
 		time_since_disconnection = "Aeg möödas lahkumisest",
 
 		you_are_now_metagaming = "Oled nüüd metamängimise suhtes reeglit rikkunud.",
-		you_are_no_longer_metagaming = "Ei riku enam reeglit metategemise suhtes."
+		you_are_no_longer_metagaming = "Ei riku enam reeglit metategemise suhtes.",
+
+		server_id_hide_failed = "Serveri-ID peitmine ebaõnnestus.",
+		server_id_hidden = "Sinu serveri-ID on nüüd peidetud.",
+		server_id_not_hidden = "Sinu serveri-ID ei ole enam peidetud."
+	},
+
+	scrapyard = {
+		press_to_scrap = "Vajuta ~INPUT_CONTEXT~, et lammutada see sõiduk.",
+		scrapyard = "Lammutusplats",
+		cant_scrap_vehicle = "Vabandust, partner, aga sellel autol on rohkem punaseid lippe kui rodeol. Ei saa seda vastu võtta!",
+		failed_scrap_vehicle = "Paistab, et meie lammutusplatsil on väikesed tõrked. Proovi uuesti sõidukit lammutada hiljem, partner!",
+		scrap_confirm = "Olete kindel, et soovite selle sõiduki utiliseerida? See eemaldab lõplikult ${name} teie garaažist ning saate 16-20% selle algsest hinnast sularahas ja kullakangidena.",
+		scrap_success = "Noh, me tegime selle romumasinast aarde. Tundub, et oli aeg partneriga hüvasti jätta!",
+		scrapped_vehicle_logs_title = "Lammutatud sõiduk",
+		scrapped_vehicle_logs_details = "${consoleName} lammutas oma sõiduki (${modelName} #${vehicleId}) ja sai vastu ${gold}x kulla baari(d) ning $${cash} sularaha (${percentage}% algsest hinnast)."
+	},
+
+	scratch_tickets = {
+		you_won = "Võitsite scratch piletilt kokku ${cash} dollarit.",
+		you_won_nothing = "Te ei võitnud scratch piletilt midagi.",
+		scratched_ticket_logs_title = "Scratch pileti tulemus",
+		scratched_ticket_logs_details = "${consoleName} kraapis piletilt ja võitis ${amount} dollarit."
 	},
 
 	screenshots = {
@@ -9726,11 +13174,40 @@ OP.Global.Locales.Languages["et-EE"] = {
 		screenshot_error_user_not_found = "Kasutajat ei leitud.",
 		screenshot_error_user_developer = "Kasutaja on arendaja.",
 		screenshot_error_no_token = "Opfw-i märget ei leitud",
-		screenshot_timeout = "Ekraanipildi taotlus aegus."
+		screenshot_timeout = "Ekraanipildi taotlus aegus.",
+		screenshot_error_character_unloaded = "Kasutaja lahkus serverist või laadis mängukarakteri välja.",
+		screenshot_error_blackscreen = "Kasutaja pilt musta ekraani tõttu saamatu.",
+		screenshot_error_invalid_response = "Vigane API vastus."
+	},
+
+	screenshots_create = {
+		on_standby = "Ekraanipiltide tegemine (Ootel)",
+		paused = "Ekraanipiltide tegemine (Pausil)",
+		screenshots_taken = "Sa oled teinud ${screenshotsTaken} ekraanipilti. Nendest, ${screenshotsTakenNow} tehti nüüd.",
+		press_to_exit = "Vajuta ESC nuppu, et lõpetada ekraanipiltide tegemine.",
+		keep_holding_to_exit = "Vajuta ESC (${seconds}) kuni ekraanipiltide tegemise peatamiseks.",
+		exiting = "Väljumine...",
+		problems = "Probleemid:",
+		profile_gamma_not_18 = "Sinu 'gamma' seadistus pole vaikeseadete väärtusega. See vähendab su kliendi loodud piltide järjepidevust ja kvaliteeti. Selle parandamiseks sisesta oma F8 konsoolile 'profile_gamma 18'. Sulle ei anta töid enne, kui see on tehtud. Selle tegemiseks pead olema FiveM'i 'beta' või 'latest' versioonis. Seda saad muuta FiveM'i avamenüüs.",
+		banned = "Keelatud:",
+		banned_information = "Mõned mängijad loovad pilte, mis ei vasta ootustele. See vähendab portreede ja enesepiltide ühtsust. See juhtub tavaliselt siis, kui teie eraldusvõime on liiga madal, graafika seaded on liiga madalad või kasutatakse visuaalseid modifikatsioone. Samas on visuaalsed modifikatsioonid vastuvõetavad, üleliiga erksad või nõrgad värvid ei ole seda. Visuaalsed modifikatsioonid teevad sageli väga liialdatud värve või liiga igavaid värve (muudavad portreedel tegelased elutuks).",
+		banned_unban = "Kui soovite jätkata ekraanipiltide tegemist, saate ennast ise lahti päästa kuni 3 korda. Kuid enne seda peaksite parandama oma mängu visuaale, et vältida uuesti keelamist. Graafikasätete suurendamine ja visuaalsete modide intensiivsuse vähendamine aitavad.",
+		unban = "Lõpeta keeld (${unbansLeft} jäänud)",
+
+		screenshotting_start_logs_title = "Ekraanipiltide tegemise algus",
+		screenshotting_start_logs_details = "${consoleName} alustas ekraanipiltide tegemist.",
+
+		screenshotting_stop_logs_title = "Ekraanipiltide tegemise lõpetamine",
+		screenshotting_stop_logs_details = "${consoleName} lõpetas ekraanipiltide tegemise.",
+
+		user_does_not_exist = "Seda kasutajat ei eksisteeri.",
+		screenshotter_already_banned = "See ekraanipiltide tegija on juba keelatud.",
+		screenshotter_banned = "See ekraanipiltide tegija on nüüd keelatud."
 	},
 
 	scuba = {
 		sunken_ship = "Vajunud laev",
+		broken_pipeline = "Katkine torujuhe",
 		gather_item = "Koguge esemeid (${distance}m)",
 
 		collected_junk = "Koguti prügi.",
@@ -9743,7 +13220,8 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 	scuba_gear = {
 		equipping_scuba_tank = "Paigaldatakse sukeldumistank",
-		equipping_scuba_mask = "Paigaldatakse sukeldumismask"
+		equipping_scuba_mask = "Paigaldatakse sukeldumismask",
+		cant_use_in_vehicle = "Sa ei saa oma sukeldumisvarustust sõidukis kasutada."
 	},
 
 	security_cameras = {
@@ -9757,7 +13235,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		mission_row_pd = "Mission Row Politseijaoskond",
 		pillbox_hospital = "Pillboxi Haigla",
 		jewelry_store = "Rockford Hillsi Juveelipood",
-		principal_bank = "Põhiline Pank",
+		pacific_bank = "Vaikse ookeani pank",
 		bolingbroke_penitentiary = "Bolingbroke'i Vangla",
 		fort_zancudo = "Fort Zancudo",
 		del_perro_pier = "Del Perro sadam",
@@ -9770,7 +13248,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		la_mesa_pd = "La Mesa politseijaoskond",
 		beaver_bush_ranger_station = "Beaver Bushi metsavahtide jaoskond",
 		cinema = "Kino",
-		st_fiacre_hospital = "St. Fiacre haigla",
 		weazel_news = "Weazel News",
 		palomino_fib_facility = "Palomino FIB rajatis",
 		bank_1 = "Legion Square'i pank",
@@ -9810,7 +13287,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		not_a_self_driving_vehicle = "Sõiduk, mida sa juhid, ei toeta autopilooti.",
 		no_waypoint_set = "Palun määra sihtkoha märkimiseks teejuht.",
 		invalid_waypoint_set = "Määratud sihtkohta ei saa automaatselt järgida.",
-		self_driving_engaged = "Autopiloot on lülitatud sisse. Vajuta ~INPUT_SPRINT~ ja ~INPUT_DUCK~ ristsuunaksude nuppe, et reguleerida kruiisikiirust.",
+		self_driving_engaged = "Autopiloot on sisse lülitatud. Vajutage SHIFT ja CTRL, et reguleerida sõiduki kiirust.",
 		self_driving_disengaged = "Autopiloot on välja lülitatud.",
 		destination_too_close = "Märgitud sihtkoht on liiga lähedal.",
 		self_driving_could_not_be_engaged = "Autopilooti ei saanud sisse lülitada."
@@ -9822,9 +13299,11 @@ OP.Global.Locales.Languages["et-EE"] = {
 	},
 
 	shockwaves = {
-		create_shockwave_missing_permissions = "Mängija üritas tekitada šokklainet, kuid tal polnud vajalikke õiguseid.",
 		shockwave_success = "Šokklaine loomine õnnestus.",
-		shockwave_failed = "Ebaõnnestus šokklaine loomine."
+		shockwave_failed = "Ebaõnnestus šokklaine loomine.",
+
+		push_player_success = "Mängija edukalt tõugatud.",
+		push_player_failed = "Mängija tõukamine ebaõnnestus."
 	},
 
 	shooting_ranges = {
@@ -9834,9 +13313,20 @@ OP.Global.Locales.Languages["et-EE"] = {
 		speed = "Kiirus (${speedLevel})",
 		rotation = "Pöörlemine (${rotationLevel})",
 		clear_bullet_impacts = "Eemalda kuulitabamuste jäljed",
-		illegal_shooting_spot_value = "Üritatakse edastada ebaseaduslikke väärtusi tulistamiskohtade jaoks.",
-		illegal_shooting_spot_id = "Üritatakse edastada väärtusi tulistamiskoha jaoks, mis ei eksisteeri.",
 		not_enough_cash = "Sul pole piisavalt raha."
+	},
+
+	shopkeepers = {
+		tag_nancy = "~b~Dr. Nancy"
+	},
+
+	shopping_carts = {
+		press_to_enter = "Vajuta ~INPUT_DETONATE~, et kärule hüpata.",
+		press_to_exit = "Vajuta ~INPUT_VEH_DUCK~, et kärust lahkuda.",
+		press_to_push = "Vajutage ~INPUT_CONTEXT~, et käru lükata.",
+		press_to_stop_pushing = "Vajutage ~INPUT_VEH_DUCK~, et lükata lõpetada.",
+		failed_enter = "Korvi sisenemine ebaõnnestus.",
+		flipping = "Korvi keeramine"
 	},
 
 	shrooms = {
@@ -9847,7 +13337,18 @@ OP.Global.Locales.Languages["et-EE"] = {
 		not_interested = "See kohalik ei tundu teie seente vastu huvi tundvat.",
 		selling_shrooms = "Müüb seeni.",
 		shrooms_not_ripe = "Need seened ei tundu veel küpsed, ehk tasuks neil veidi kauem seista.",
-		shroom_id = "seene-id-${shroomId}"
+		shroom_id = "seene-id-${shroomId}",
+
+		sold_shrooms_logs_title = "Failed to automatically generate translation.",
+		sold_shrooms_logs_details = "Failed to automatically generate translation.",
+		picked_shroom_logs_title = "Failed to automatically generate translation.",
+		picked_shroom_logs_details = "Failed to automatically generate translation."
+	},
+
+	skateboards = {
+		failed_place = "Rula paigaldamine ebaõnnestus.",
+		no_skateboard_deck = "Teil pole rulat, et dekki vahetada.",
+		swapping_deck = "Deki vahetamine"
 	},
 
 	skylift = {
@@ -9860,19 +13361,47 @@ OP.Global.Locales.Languages["et-EE"] = {
 		skylift_attached_vehicle_logs_details = "${consoleName} ühendas oma Skyliftiga ühe sõiduki."
 	},
 
+	smell = {
+		smelling = "Lõhnatsemine",
+
+		smell_1 = "mõõdukas",
+		smell_2 = "keskmine",
+		smell_3 = "intensiivne",
+		smell_4 = "üleüldine",
+
+		smell_weed = "Sa tunned kanepi lõhna. Lõhn on ${intensity}.",
+		smell_alcohol = "Sa tunned alkoholi lõhna. Lõhn on ${intensity}.",
+
+		smell_nothing = "Ei tunne midagi erilist."
+	},
+
 	smoothies = {
 		blend = "Sega",
 		close = "Sulge",
+		name_placeholder = "Puuvilja smuuti",
+		name_suffix = "Smuuti / Piimakokteil",
+
+		name_default = "Maitsvav",
+		name_drugs = "Kahtlane",
+		name_alcohol = "Alkohoolne",
 
 		use_blender = "[${InteractionKey}] Kasuta blenderit",
 		blending = "Segamine",
+		no_ingredients = "Sul pole piisavalt koostisaineid smuuti valmistamiseks.",
 
-		smoothie_label = "Smuuti (${maitseained})",
+		milkshake_label = "${name} Piimakokteil",
+		smoothie_label = "${name} Smuuti",
 		seperator = "ja"
 	},
 
 	snow = {
-		hold_to_pick_up_snowballs = "Hoia ~INPUT_CONTEXT~ all lumepallide võtmiseks."
+		hold_to_pick_up_snowballs = "Hoia ~INPUT_CONTEXT~ all lumepallide võtmiseks.",
+		building_snowman = "Lumeinimese ehitamine",
+		failed_build_snowman = "Lumeinimese ehitamine ebaõnnestus."
+	},
+
+	sound_effects = {
+		invalid_sound = "Vigane heli."
 	},
 
 	spawn = {
@@ -9884,12 +13413,19 @@ OP.Global.Locales.Languages["et-EE"] = {
 		paleto_bay_bus_station = "Paleto lahe bussijaam",
 
 		mission_row_police_station = "Missioonirea politseijaoskond",
+		highway_police_station = "Kiirtee politseijaoskond",
+		rockford_police_station = "Rockford Hillsi politseijaoskond",
+		palomino_fib_police_station = "Palomino FIB politseijaoskond",
 		sandy_police_station = "Sandy Shoresi politseijaoskond",
 		paleto_police_station = "Paleto lahe politseijaoskond",
+		cayo_police_station = "Cayo Perico politseijaoskond",
+		prison = "Vangla",
 
 		mount_zonah = "Mägi Zonah",
+		rockford_fire_dep = "Rockfordi tuletõrjedep.",
 		sandy_hospital = "Sandy Shoresi haigla",
 		paleto_hospital = "Paleto lahe haigla",
+		cayo_station = "Cayo meditsiinijaam",
 
 		battle_royale = "Võitlus kuningriigi heaks"
 	},
@@ -9897,13 +13433,11 @@ OP.Global.Locales.Languages["et-EE"] = {
 	special_imports = {
 		special_imports_blip = "Erilised importkaubad",
 
-		purchased_vehicle = "Edukalt ostsid sa ${label} hinnaga $${price}. Sõiduk on lisatud sinu garaazi.",
+		purchased_vehicle = "Edukalt osteti ${label} hinnaga ${price}. Sõiduk on lisatud sinu garaaži.",
 
 		something_went_wrong = "Midagi läks valesti.",
 		not_enough_money = "Teil pole piisavalt raha.",
-		invalid_package = "Vigane paketi tase. (Vajate jumaliku taseme)",
-
-		dealership_closed = "Autosalong on hetkel suletud.",
+		invalid_package = "Vigane paketi tase. (Vajalik on jumalakartuse tase)",
 
 		purchased_vehicle_logs_title = "Erakorralised importautod",
 		purchased_vehicle_logs_details = "${consoleName} ostis erakorralise importautona `${modelName}` summas ${price} (Numbrimärk: `${plate}`).",
@@ -9912,7 +13446,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		marker_label_purchase = "[${SeatEjectKey}] Osta ${label} summas $${price}",
 		marker_label_purchase_timer = "[${timer}s] Hoia ${SeatEjectKey} all, et osta ${label} summas $${price}",
 
-		vehicle_sold_out = "${label} | Pole enam laos"
+		vehicle_sold_out = "${label} | Müüdud lõppenud"
 	},
 
 	spectating = {
@@ -9921,24 +13455,34 @@ OP.Global.Locales.Languages["et-EE"] = {
 		player_not_exist = "Mängija ei ole sisse logitud.",
 		no_character_loaded = "Mängijal ei ole karakterit valitud.",
 		not_same_instance = "Mängija ei ole samas instantsis kui sina.",
+		no_user_or_character = "Mängija on eemal või tal pole laaditud tegelast.",
+		not_while_noclipped = "Te ei saa märkvara eemaldamise ajal vaadelda.",
 
+		resolving_player = "Saab mängijat tuvastada",
 		loading_coords = "Koordinaatide laadimine",
 		preloading_area = "Eelnevalt laaditav piirkond",
 		finding_player = "Mängija otsimine",
 
+		character_unloaded = "~r~Karakter on mahalaaditud~w~",
+		character_spawning = "~y~Karakter laetakse~w~",
+
 		invincibility_active = "Surematuse režiim: ~r~Aktiivne~w~",
-		invincibility_inactive_dead = "Surematuse režiim: ~g~Mitteaktiivne~w~ (surnud)",
+		invincibility_inactive_dead = "Suremini mängija olek: ~g~Aktiivne~w~ (surnud)",
+		invincibility_inactive_trunk = "Suremini mängija olek: ~g~Aktiivne~w~ (pakk)",
 		invincibility_inactive = "Surematuse režiim: ~g~Mitteaktiivne~w~",
 
-		health_ok = "Tervis: ~g~${health} / ${maxHealth}~w~",
-		health_bad = "Tervis: ~r~${health} / ${maxHealth}~w~",
+		health_ok = "Elud: ~g~${health} / ${maxHealth}~w~ - ${percentage}",
+		health_bad = "Elud: ~r~${health} / ${maxHealth}~w~ - ${percentage}",
+		bleeding = "~w~ - ~r~Veritseb",
 
-		armor_ok = "Armor: ~g~${armor} / ${maxArmor}~w~",
-		armor_bad = "Armor: ~r~${armor} / ${maxArmor}~w~",
+		armor_ok = "Rüü: ~g~${armor} / ${maxArmor}~w~ - ${percentage}",
+		armor_bad = "Armor: ~r~${armor} / ${maxArmor}~w~ - ${percentage}",
 
-		speed = "Kiirus: ${speed}${unit}",
-		speed_mph = "mph",
-		speed_kmh = "kmh",
+		vehicle_health_fuel = "Sõiduk - Kütus: ${tervis} ~w~- ${kütus}",
+		can_respawn = "Taastumine võimalik: ${jäänud}",
+		yes = "~g~Jah",
+
+		speed = "Kiirus: ${speed}",
 
 		exit_spectate = "Väljumiseks suunaga vaatlemise režiimist vajuta ~g~${InteractionKey}~w~.",
 
@@ -9975,6 +13519,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		microphone_bug_destroy = "Mikrofoni pisik\n[${InteractionKey}] Hävita",
 		vehicle_tracker = "Sõiduki jälgija",
 		vehicle_tracker_destroy = "Sõiduki jälgija\n[${InteractionKey}] Hävita",
+		radio_jammer = "Failed to automatically generate translation.",
 		destroying_device = "Seade hävitatakse",
 		tracker_will_appear_on_map = "See jälgija on juba aktiveeritud. See ilmub teie kaardil nii kaua, kui sõiduk on saadaval ja jälgijal on aku.",
 		spy_ui_info = "Kuulamine mikrofoni pealt (#${deviceId})",
@@ -9983,14 +13528,69 @@ OP.Global.Locales.Languages["et-EE"] = {
 		spy_ui_connecting = "Ühendatakse mikrofoni peale (#${deviceId})",
 		spy_ui_connection_failed = "Mikrofoni peale ühendamine ebaõnnestus (#${deviceId})",
 		spy_ui_awaiting_data = "Ootan andmeid...",
-		spy_ui_data_failed = "Andmete laadimine ebaõnnestus"
+		spy_ui_data_failed = "Andmete laadimine ebaõnnestus",
+
+		used_tracker_logs_title = "Kasutaja sõidukijälgija",
+		used_tracker_logs_details = "${consoleName} kasutas sõiduki jälgijat sõidukil ${vehicleId}.",
+		used_bug_logs_title = "Kasutatud mikrofonibug",
+		used_bug_logs_details = "${consoleName} kasutas mikrofonibug'i ${identifier} peal."
+	},
+
+	staff_pm = {
+		something_went_wrong = "Midagi läks sõnumi saatmisel valesti.",
+		reports_too_fast = "Saadate aruandeid liiga kiiresti, aeglustage tempot.",
+		no_report_message = "Teie aruandega peab kaasas käima sõnum.",
+		same_report = "Te ei saa saata sama aruannet kaks korda.",
+		report_muted = "Te ei saa saata aruandeid selle põhjuse tõttu: `${reason}`.",
+		report_muted_no_reason = "Teil on keelatud saata aruandeid.",
+
+		report_title = "ARUANNE-${reportId} ${displayName}",
+		report_logs_title = "Aruanne",
+		report_logs_details = "${consoleName} loodud aruanne ${reportId} järgmise sõnumiga: `${message}`",
+
+		invalid_server_id = "Vigane sihtserveri ID.",
+		no_staff_pm_message = "Te peate lisama sõnumi oma privaatsõnumisse.",
+		user_not_staff = "See kasutaja pole personali liige.",
+		staff_pm_warning = "Personali PR hoiatus",
+		staff_pm_first_time = "Näeme, et te ei ole kunagi varem kasutanud personali PR-e. Vastamiseks personali PR-ile kasutage `/staffpm` järgnevalt saaja ID-d. Kasutusmugavuse huvides saate kasutada `/response`, et vastata viimasele personali PR-ile, mille saite.",
+
+		staff_pm_title = "TÖÖTAJA PRIVAATVESTLUS ${from} -> ${to}",
+		staff_pm_title_external = "VÄLINE TÖÖTAJA PRIVAATVESTLUS ${from} -> ${to}",
+		close_staff_pm = "Sulge",
+		staff_pm_from = "Töötajapm <i>${from}</i>",
+		staff_pm_logs_title = "Töötaja PM",
+		staff_pm_logs_details = "${senderConsoleName} saatis töötaja privaatsõnumi ${recipientConsoleName}-le: `${message}`",
+		important_staff_pm_logs_title = "Oluline töötaja PM",
+		important_staff_pm_logs_details = "${senderConsoleName} saatis olulise töötaja privaatsõnumi ${recipientConsoleName}-le: `${message}`",
+
+		staff_toggled = "Teie personali staatus on välja lülitatud.",
+		no_staff_message = "Te peate lisama sõnumi oma personali vestlusse.",
+		same_staff_message = "Te ei saa saata sama personali sõnumit kaks korda.",
+
+		staff_message_title = "PERSONAL ${playerName}",
+		local_staff_message_title = "KOHALIK PERSONAL ${playerName}",
+		staff_message_logs_title = "Personali sõnum",
+		staff_message_logs_details = "${consoleName} saatis järgmise sõnumi personali vestlusse: `${message}`",
+		local_staff_message_logs_title = "Kohaliku personali sõnum",
+		local_staff_message_logs_details = "${consoleName} saatis järgmise sõnumi kohalikku personali vestlusse: `${message}`",
+
+		message_sent = "Sõnum saadetud.",
+		cannot_send_private_message_to_yourself = "Sa ei saa saata privaatset sõnumit iseendale.",
+		missing_valid_message_parameter = "Puudub kehtiv 'sõnumi' parameeter.",
+		missing_valid_license_identifier_parameter = "Puudub kehtiv 'litsentsiTuvastaja' parameeter.",
+		missing_valid_target_source_parameter = "Puudub kehtiv 'sihtallikas' parameeter.",
+
+		invalid_report_id = "Vigane raporti ID.",
+		report_already_claimed = "See raport on juba nõutud kasutaja poolt *${playerName}.*",
+		report_same_creator = "Sa ei saa nõuda enda loodud raporteid.",
+		failed_claim_report = "Ei õnnestunud aruannet nõuda.",
+		report_claimed = "Aruanne **${reportId}** võeti üle mängija *${playerName}* poolt.",
+		claim_report_logs_title = "Võetud Aruanne",
+		claim_report_logs_details = "${consoleName} võttis üle aruande ${reportId}."
 	},
 
 	starter_car = {
-		your_vehicle_is_nearby = "Teie isiklik sõiduk on lähedal parkimas.",
-		would_you_like_directions = "Soovite juhiseid, kuidas sinna jõuda?",
-		press_to_respond = "Vastamiseks vajutage ~INPUT_FRONTEND_ACCEPT~ või tühistamiseks ~INPUT_FRONTEND_CANCEL~.",
-		follow_the_checkpoints = "Järgige punkte kaardil.",
+		follow_the_checkpoints = "Teie isiklik sõiduk on lähedal parkitud. Järgige kontrollpunkte, et see üles leida.",
 
 		received_logs_title = "Saadi käivitatud auto",
 		received_logs_details = "${consoleName} saatis ennast auto käivitamise sõnumi (mudel: ${modelName})."
@@ -9999,7 +13599,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 	status = {
 		status_reset = "Edukalt lähtestatud ${consoleName} staatust.",
 		status_reset_failed = "Kasutajat serveri ID-ga `${serverId}` ei leitud.",
-		reset_status_not_staff = "Üritati lähtestada mängija staatust ilma nõutavate õigusteta.",
 		status_reset_for_all = "Edukalt lähtestatud kõikide staatused.",
 		status_disabled = "Keelatud staatuste (stress, nälg ja janu).",
 		status_enabled = "Lubatud staatuste (stress, nälg ja janu).",
@@ -10012,8 +13611,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		set_body_armor_level_everyone_details = "${consoleName} määras kõigile kehakaitse tasemele `${bodyArmorLevel}`.",
 		set_body_armor_level_player_title = "Määra mängija keha armori tase",
 		set_body_armor_level_player_details = "${consoleName} uuendas mängijat ${targetConsoleName} ja määras nende keha armori tasemeks `${bodyArmorLevel}`.",
-		set_body_armor_level_player_not_staff = "Mängija üritas määrata teise mängija keha armori taset, kuid neil polnud vajalikke õigusi selle tegemiseks.",
-		set_body_armor_level_self_not_staff = "Mängija üritas määrata omaenda keha armori taset, kuid neil polnud vajalikke õigusi selle tegemiseks.",
 		stress_level_warning = "Sa oled stressis! Vähenda stressi suitsetades sigarette, liigutades end või tehes joogat."
 	},
 
@@ -10026,7 +13623,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		missing_hour = "Tundi ei ole määratud.",
 		invalid_hour = "Kohaliku kellaaja ülekirjutus on vigane. Väärtus peaks olema kellaaeg vahemikus 0:00 kuni 23:59.",
 		hour_changed = "Tund on muudetud ${hour}-ks.",
-		set_hour_not_staff = "Üritasid muuta kellaaja ilma vajalike õigusteta.",
 
 		local_time_override_enabled = "Lokaalse aja ülekirjutus on nüüd aktiveeritud: ${hour}:${minute}.",
 		local_time_override_disabled = "Kohaliku aja olek taastatud vaikeseadele.",
@@ -10036,27 +13632,21 @@ OP.Global.Locales.Languages["et-EE"] = {
 		missing_minute = "Minutit pole määratud.",
 		invalid_minute = "Minuti väärtus `${minute}` pole sobiv. Väärtus peaks olema vahemikus 0 kuni 59.",
 		minute_changed = "Minut on nüüd määratud väärtuseks `${minute}`.",
-		set_minute_not_staff = "Minuti seadmise eest pole piisavalt õigusi.",
 
 		missing_weather = "Ilmaolukorda ei ole määratud.",
-		invalid_weather = "Ilma tüüp '${weatherName}' ei ole kehtiv. Kehtivad ilmastikutingimused on: SELGE, PÄIKE, PILVED, PÜHITSETUD, VIHM, PILVES, KUMMARDUS, SMOG, UDU, JÕULUD, LUMEVALGUS ja TORM.",
+		invalid_weather = "Ilma „${weatherName}“ pole kehtiv. Väärtuse ilma nimed on EXTRASUNNY, CLEAR, CLOUDS, SMOG, FOGGY, OVERCAST, RAIN, THUNDER, CLEARING, NEUTRAL, SNOW, BLIZZARD, SNOWLIGHT, XMAS, HALLOWEEN, RAIN_HALLOWEEN ja SNOW_HALLOWEEN.",
 		weather_changed = "Ilm on nüüd muudetud tüübile '${weatherName}'.",
 		weather_advanced = "Ilma on edasi muudetud tüübile '${weatherName}'.",
 		weather_advance_fail = "Ilma ei õnnestunud looduslikult muuta.",
-		set_weather_not_staff = "Ilma seadistamiseks ei ole piisavaid õigusi.",
-		advance_weather_not_staff = "Ilma muutmiseks edasi ei ole piisavaid õigusi.",
 
 		time_frozen = "Aeg on nüüd külmutatud.",
 		time_unfrozen = "Aeg pole enam külmutatud.",
-		freeze_time_not_staff = "Katse külmutada aeg ilma nõutava loata.",
 
 		weather_frozen = "Ilm on nüüd külmutatud.",
 		weather_unfrozen = "Ilm pole enam külmutatud.",
-		freeze_weather_not_staff = "Katse külmutada ilm ilma nõutava loata.",
 
 		blackout_enabled = "Linnas on nüüd elektrikatkestus.",
 		blackout_disabled = "Linn pole enam elektrikatkestuses.",
-		blackout_not_staff = "Katse lülitada elektrikatkestus sisse ilma nõutava loata.",
 
 		weather_changed_title = "Ilm on muutunud",
 		weather_changed_details = "${consoleName} muutsid ilma `${weatherName}`-ks.",
@@ -10087,6 +13677,8 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		folder_games = "Mängud",
 		folder_productivity = "Tootlikkus",
+
+		high_scores = "Parimad tulemused",
 
 		snake_title = "Madu",
 		snake_description = "Kasuta nooleklahve üles, alla, vasakule ja paremale liikumiseks.",
@@ -10120,13 +13712,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		chess_difficulty_level = "${level}. tase",
 		chess_start = "Alusta mängu",
 
-		minesweeper_title = "Minesweeper",
-		minesweeper_win = "Võitsid",
-		minesweeper_loose = "Kaotasid",
-		minesweeper_difficulty = "Raskusaste:",
-		minesweeper_start = "Alusta mängu",
-		minesweeper_flags_used = "${used}/${total} Märgitud",
-
 		flappy_bird_title = "Flappy Bird",
 		flappy_bird_score = "Lõplik skoor:",
 		flappy_bird_game_over = "Mäng läbi",
@@ -10143,7 +13728,48 @@ OP.Global.Locales.Languages["et-EE"] = {
 		invalid_license_identifier = "Saadetud kehtetu litsentsi parameeter."
 	},
 
+	teleporting = {
+		source_no_character = "Allikamängijal puudub laetud tegelane.",
+		target_no_character = "Sihtmängijal puudub laetud tegelane.",
+		invalid_coordinates = "Vigased koordinaadid.",
+		no_waypoint_set = "Sihtmärki pole seatud.",
+		failed_teleport_to_player = "Mängijale teleportimine ebaõnnestus.",
+		failed_teleport_player_here = "Mängija teleportimine teie juurde ebaõnnestus.",
+		failed_teleport_player_player = "Mängija telepordimine mängijale ebaõnnestus.",
+		no_back_coords = "Pole kohti tagasi teleportimiseks.",
+		cant_tp_same_player = "Te ei saa teleportida mängijat iseenda juurde.",
+		cant_tp_self_self = "Te ei saa teleportida ennast iseendale.",
+
+		use_tp_to_player = "Kasutage `/tp_to_player`, et teleportida ennast mängijale.",
+		use_tp_player_here = "Kasutage `/tp_player_here`, et teleportida mängija teie juurde.",
+
+		teleported_to_coordinates = "Teleportis asukohta `${location}`. (${coords})",
+		teleported_to_player = "Teie teleportisite ${displayName} juurde.",
+		teleported_player_here = "${displayName} teleportiti teie juurde.",
+		teleported_player_player = "${sourceName} teleportis mängija ${targetName} juurde.",
+
+		teleport_to_coords_logs_title = "Teleport is koordinaatidele",
+		teleport_to_coords_logs_details = "${consoleName} teleportis koordinaatidele ${coords}.",
+		teleport_to_player_logs_title = "Teleportis mängijale",
+		teleport_to_player_logs_details = "${consoleName} teleportis ${targetConsoleName}'i.",
+		teleport_player_here_logs_title = "Teleportis mängija enese juurde",
+		teleport_player_here_logs_details = "${consoleName} teleportis ${targetConsoleName}'i iseenda juurde.",
+		teleport_player_player_logs_title = "Teleportis mängija mängijale",
+		teleport_player_player_logs_details = "${consoleName} teleportis ${sourceConsoleName}'i ${targetConsoleName}'ile."
+	},
+
+	taxes = {
+		taxes_collected = "Kogutud maksud. Summad on järgmised.\n- Sularaha: $${cash}\n- Pangakonto: $${bank}\n- Aktsiad: $${stocks}\n- Hoiused: $${savings}\n- Ühisarved: $${sharedAccounts}",
+		taxes = "Maksud",
+		transaction_logs = "Tehingu logid",
+		paid_taxes = "Maksite ${amount} dollarit makse.",
+		no_logs = "Puuduvad tehingulogid.",
+		close = "Sulge"
+	},
+
 	teleporters = {
+		area_not_clear = "Sihtkoht on takistatud sõiduki poolt.",
+
 		enter_mechanic_shop = "Sisene mehaanika töökotta",
 		enter_mechanic_shop_interact = "[${InteractionKey}] Sisene mehaanika töökotta",
 
@@ -10259,22 +13885,82 @@ OP.Global.Locales.Languages["et-EE"] = {
 		enter_loading_bay_interact = "[${InteractionKey}] Sisene laadimisala",
 
 		exit_loading_bay = "Välju laadimisalalt",
-		exit_loading_bay_interact = "[${InteractionKey}] Välju laadimisalalt"
+		exit_loading_bay_interact = "[${InteractionKey}] Välju laadimisalalt",
+
+		enter_submarine = "Failed to automatically generate translation.",
+		enter_submarine_interact = "Failed to automatically generate translation.",
+
+		exit_submarine = "Failed to automatically generate translation.",
+		exit_submarine_interact = "Failed to automatically generate translation.",
+
+		enter_garage = "Sisene garaaži",
+		enter_garage_interact = "[${InteractionKey}] Sisene garaaži",
+
+		exit_garage = "Välju garaažist",
+		exit_garage_interact = "[${InteractionKey}] Välju garaažist",
+
+		enter_viewer_booth = "Sisene vaatlemissaali",
+		enter_viewer_booth_interact = "[${InteractionKey}] Sisene vaatajate kabinituppa",
+
+		exit_viewer_booth = "Välju vaatajate kabinitoast",
+		exit_viewer_booth_interact = "[${InteractionKey}] Välju vaatajate kabinitoast",
+
+		enter_phone_tower = "Sisene Telefonimasti",
+		enter_phone_tower_interact = "[${InteractionKey}] Sisene Telefonimasti",
+
+		exit_phone_tower = "Välju Telefonimastist",
+		exit_phone_tower_interact = "[${InteractionKey}] Välju Telefonimastist"
 	},
 
 	test_server = {
+		menu_title = "OP-Menüü",
+
+		vehicles = "Sõiduki valikud",
+		spawn_car = "Sõiduki ilmumine",
+		upgrade_vehicle = "Sõiduki värskendamine",
+		break_windows = "Lõhu aknad",
+		pop_tires = "Rehvid tühjeneda",
+		detach_doors = "Uksed eralduma",
+		damage_vehicle = "Sõiduki kahjustamine",
+		repair_vehicle = "Sõiduki parandamine",
+		delete_vehicle = "Sõiduki kustutamine",
+
+		player = "Mängija valikud",
+		starve = "Nälgimine",
+		add_stress = "Lisa stressi",
+		feed = "Söömine",
+		relief_stress = "Stressi leevendamine",
+		reset_health = "Tervise lähtestamine",
+		remove_injuries = "Vigastuste eemaldamine",
+		toggle_noclip = "Noclip'i lülitamine",
+
+		teleport = "Teleportimis valikud",
+		teleport_to = "TP kohta",
+		tp_customs = "LS Tolliamet",
+		tp_legion = "Legioni Väljak",
+		tp_garage_a = "Garaaž A",
+		tp_paleto = "Paleto laht",
+		tp_sandy = "Sandy kaldad",
+		tp_zancudo = "Fort Zancudo",
+		tp_airport = "LS lennujaam",
+		tp_carrier = "Lennukikandja",
+		tp_cayo = "Cayo Perico",
+
+		actions = "Tegevused",
+		jail_self = "Pane End Vangi",
+		unjail_self = "Vabasta End Vangist",
+		wander_around = "Rända ringi",
+		speed_around = "Liigu kiirelt",
+		clear_tasks = "Tühista ülesanded",
+
 		you_are_not_in_a_vehicle = "Te ei ole sõidukis.",
 		you_are_in_a_vehicle = "Te olete hetkel sõidukis.",
-		invalid_vehicle_preset = "Vigane sõiduki seadete komplekt.",
 		fully_upgraded = "Sõiduki uuendamine edukalt tehtud.",
-		applied_preset = "Sõiduki seadete komplekt rakendatud edukalt.",
-		spawned_car = "Sõiduk `${modelName}` loodud.",
 		just_spawned_a_car = "Te lootsite hiljuti sõiduki, oodake ${time} enne järgmise loomist."
 	},
 
 	time_scale = {
 		invalid_time_scale = "Väärtus ${timeScale} on kehtetu ajaskaala.",
-		set_time_scale_missing_permissions = "Mängija üritas seada ajaskaala, kuid tal ei olnud selleks vajalikke õigusi.",
 		time_scale_set_to = "Aja skaala on muudetud väärtusele ${timeScale}.",
 		time_scale_disabled = "Aja skaala ülekirjutus on keelatud.",
 		time_scale_already_set_to = "Aja skaala on juba määratud väärtusele ${timeScale}.",
@@ -10284,13 +13970,19 @@ OP.Global.Locales.Languages["et-EE"] = {
 	titanic = {
 		created_titanic = "Titanic loodi uppuva aja ${sinkTime} minuti pikkuseks.",
 		failed_to_create_titanic = "Titanicu loomine ebaõnnestus.",
-		create_titanic_missing_permissions = "Mängija üritas luua Titanicut, kuid tal ei olnud selleks vajalikke õigusi."
+		created_titanic_logs_title = "Titanic loodud",
+		created_titanic_logs_details = "${consoleName} lõi Titanicu uputamisajaga ${sinkTime} minutit asukohas ${coords}."
 	},
 
 	top_down = {
 		not_in_valid_vehicle = "Te ei ole sobivas sõidukis (ainult autod/jalgrattad).",
 		top_down_on = "Ülevaade ülevalt alla aktiveeritud.",
-		top_down_off = "Ülevaade ülevalt alla deaktiveeritud."
+		top_down_off = "Ülevaade ülevalt alla deaktiveeritud.",
+
+		top_down_enabled_logs_title = "Ülaltvaade lubatud",
+		top_down_enabled_logs_details = "${consoleName} lubas ülaltvaate kaamera.",
+		top_down_disabled_logs_title = "Ülaltvaade keelatud",
+		top_down_disabled_logs_details = "${consoleName} keelas ülaltvaate kaamera."
 	},
 
 	trackers = {
@@ -10308,6 +14000,12 @@ OP.Global.Locales.Languages["et-EE"] = {
 		trackers_in_category = "Jälitajad salvestatakse nüüd kategooriate kaupa kaardil.",
 		trackers_split = "Jälitajad kuvatakse nüüd eraldi blipidena.",
 
+		tracker_broken = "${lastName} jälitaja on katki lähedal asuvast asukohast ${location}",
+		tracker_broken_unit = "${unitId} ${lastName} jälitaja on katki lähedal asuvast asukohast ${location}",
+		tracker_broken_title = "[Hädaabi]",
+		tracker_broken_blip = "Katkine jälitaja ${lastName}",
+		tracker_broken_timeout = "Teie jälitaja on katki. Saate selle uuesti sisse lülitada 20 minuti pärast.",
+
 		department_sasp = "SASP",
 		department_bcso = "BCSO",
 		department_sahp = "SAHP",
@@ -10319,12 +14017,14 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		department_police_undercover = "Salajane Politsei",
 
+		department_doc_training = "Koolitus DOC-is",
 		department_police_training = "PD Koolitus",
-		department_ems_training = "EMS Koolitus"
+		department_medical_training = "EMS Koolitus",
+		department_bcfd_training = "BCFD Koolitus"
 	},
 
 	trading_cards = {
-		access_store = "[${InteractionKey}] Poodi sisenemine",
+		access_store = "Vajuta ~INPUT_CONTEXT~, et pääseda ligi kaardipoest.",
 
 		buy_pack = "Osta ${packName}",
 		store_title = "Kaardipood",
@@ -10366,6 +14066,15 @@ OP.Global.Locales.Languages["et-EE"] = {
 		studio_blip = "945-stuudiod"
 	},
 
+	train_pass = {
+		used_train_pass = "Kasutasid edukalt 'Rongipääset' eset. Sul on nüüd ${trainPasses} rongipääset.",
+		used_train_pass_tier = "${tierLabel} edukalt kasutatud.",
+		train_passes = "Sul on ${trainPasses} rongipääset.",
+
+		non_lucky_wheel_train_pass_used_logs_title = "Kasutati mitteõnnelik ratta rongipass",
+		non_lucky_wheel_train_pass_used_logs_details = "${consoleName} kasutas rongipassi, mis ei pärinenud õnnelikust rattast."
+	},
+
 	training = {
 		on_team_attackers = "Sa oled ründaja! \n Aega jäänud: ${time}",
 		on_team_defenders = "Sa oled kaitsja! \n Aega jäänud: ${time}",
@@ -10380,15 +14089,8 @@ OP.Global.Locales.Languages["et-EE"] = {
 		attacker = "RÜNDAJA",
 		defender = "KAITSELINE",
 		attackers_won = "Ründajad võitsid!",
-		defenders_won = "Kaitsjad võitsid!"
-	},
-
-	trains = {
-		spawn_train_missing_permissions = "Mängija üritas rongi spawnida, kuid tal polnud selleks vajalikke õigusi.",
-
-		invalid_track_id = "Vigane rööbastee ID.",
-		spawned_train_on_track = "Spawneti rong rööbasteele ${trackId}.",
-		failed_to_spawn_train = "Ei suudetud rongi spawnida."
+		defenders_won = "Kaitsjad võitsid!",
+		training = "Koolitus"
 	},
 
 	traps = {
@@ -10401,7 +14103,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 	treasure_maps = {
 		no_treasure_map_with_tier = "Puudub aareteta kaart tasemega ${mapTier}.",
 		treasure_map_does_not_have_piece = "Aarete kaardil tasemega ${mapTier} pole tükki numbriga ${pieceNumber}.",
-		spawn_map_piece_missing_permissions = "Mängija üritas genereerida kaarditükki ilma vastavate õigusteta.",
 
 		sketchy_map = "Visandlik kaart",
 		worn_map = "Kantud kaart",
@@ -10418,9 +14119,26 @@ OP.Global.Locales.Languages["et-EE"] = {
 		map_tier_3_description = "Väga hea \"särav\" kaart koos \"100% päris\" pitsatiga all paremal pool.",
 		map_tier_4_description = "See kaart näeb välja kallim kui enamik aardeid. Lähme!!!!",
 
-		press_to_combine_pieces = "Vajuta ~INPUT_CONTEXT~, et ühendada kaardi ${mapTier} tükke.",
+		press_to_combine_pieces = "Vajuta ~INPUT_CONTEXT~, et kokku panna kaardiosad tervikkaardiks.",
 
-		treasure_map = "Aareteta kaart (Tase ${mapTier})"
+		treasure_map = "Aareteta kaart (Tase ${mapTier})",
+
+		treasure_maps_debug_enabled = "Aardekaartide silumine on sisse lülitatud.",
+		treasure_maps_debug_disabled = "Aarekaartide silumine on keelatud.",
+
+		treasure_map_debug = "Kaart (Tase: ${mapTier}, Kaugus: ${distance})",
+		dig_zone = "Auku kaevamine",
+
+		combining_maps = "Kaartide ühendamine",
+
+		combined_map = "Ühendatud kaart tasemega ${mapTier}.",
+		no_maps_to_combine = "Sul pole kaarte ühendamiseks.",
+
+		treasure_map_dug_up_logs_title = "Aarekaardi üles kaevamine",
+		treasure_map_dug_up_logs_details = "${consoleName} kaevandas aarekaardi tasemega ${mapTier} ja sai langeva ID ${dropId}.",
+
+		treasure_map_piece_spawned_logs_title = "Aarekaardi Tüki Ilmumine",
+		treasure_map_piece_spawned_logs_details = "${consoleName} on ilmutanud aarekaardi tüki ${pieceNumber} tasemel ${mapTier}."
 	},
 
 	tsunami = {
@@ -10428,7 +14146,9 @@ OP.Global.Locales.Languages["et-EE"] = {
 		no_ocean_scaler_intensity_set = "Ookeani skaleerimise tugevust ei ole määratud.",
 		set_ocean_scaler_to = "Määra ookeani skaleerimise tugevus väärtusele `${intensity}`.",
 		reset_ocean_scaler = "Lähtesta ookeani skaleerimise tugevus.",
-		set_ocean_scaler_no_permission = "Mängijal polnud piisavalt õigusi ookeani skaleerimise määramiseks."
+
+		tsunami_started = "Tsunami on alanud. Kogu kaardi ujutamine võtab aega ${minutes} minutit.",
+		tsunami_stopped = "Tsunami peatus."
 	},
 
 	tuner_shop = {
@@ -10453,20 +14173,96 @@ OP.Global.Locales.Languages["et-EE"] = {
 		log_description_discount = "Ostsid `${label}` ${price} dollari eest ${discount}% allahindlusega."
 	},
 
+	tunerchip = {
+		pimp_ride = "Pimp My Ride™",
+
+		drive_force = "Pöördemomendi muutja",
+		brake_force = "Pidurdusjõud",
+		break_bias = "Pidurijaotus (taga/eest)",
+		clutch_change_up = "Lülituskiiruse muutja üles",
+		clutch_change_down = "Lülituskiiruse muutja alla",
+		air_fuel_mixture = "Õhu/kütuse seguleke",
+
+		close = "Sulge",
+		reset = "Lähtesta häälestus",
+		apply = "Rakenda häälestus",
+		save = "Salvesta häälestus",
+		tunes = "Häälestused",
+		save_tune = "Salvesta häälestus",
+		back = "Tagasi",
+		name = "Nimi",
+		cancel = "Tühista",
+		loaded_tune = "Häälestus laaditud edukalt.",
+		loading = "Häälestus rakendamine...",
+		success = "Häälestus rakendatud edukalt.",
+		failed = "Häälestuse rakendamine ebaõnnestus.",
+		failed_delete = "Häälestuse kustutamine ebaõnnestus.",
+		failed_save = "Häälestuse salvestamine ebaõnnestus.",
+		success_save = "Häälestus edukalt salvestatud.",
+		success_delete = "Häälestus edukalt kustutatud."
+	},
+
+	twitter_bid = {
+		twitter_bid = "Twitteri pakkumine",
+		information_part_1 = "Kas oled valmis Twitteris juhtima? Näita maailmale, kes on ülemus, saades sinise kinnitustäpi kõrgeimaks pakkujaks!",
+		information_part_2 = "Kõrgeim pakkuja saab ihaldatud sinise märke, aga ole valvel — keegi võib sind igal ajal üle pakkuda. Hoia oma kohta tippu, pakkudes neile vastu.",
+		information_part_3 = "Pea meeles, et kui sind üle pakkuda, on su raha või punktid kadunud - tagasimakseid ei tehta.",
+		information_part_4 = "Veendu, et lisad terava tsitaadi, mis tõmbab tähelepanu ja tekitab pisut kadedust.",
+		no_bidder_yet = "Pakkujat pole",
+		no_bidder_yet_quote = "Ole esimene pakkuma! (Tsitaat läheb siia)",
+		bid_amount = "Pakkumise summa",
+		close = "Sulge",
+		bid_amount = "Pakkumise summa",
+		bid_quote = "Pakkumise tsitaat",
+		place_bid = "Tee pakkumine",
+		win_the_bid = "Võida pakkumine!",
+		bid_won = "Olete pakkumise võitnud... vähemalt hetkel.",
+		bid_must_be_greater_than_current_bidder = "Pakkumine peab olema suurem kui praegune pakkujal.",
+		max_quote_length_exceeded = "Tsitaadi maksimaalne pikkus ületatud.",
+		not_enough_bank_balance = "Ebapiisav pangakonto saldo.",
+		not_enough_points = "Ei piisa OP-punktidest.",
+
+		twitter_bid_placed_logs_title = "Twitteri pakkumine tehtud",
+		twitter_bid_placed_logs_details = "${consoleName} tegi Twitteris pakkumise ${bidAmount} $ eest, tsitaadiga `${bidQuote}`.",
+		twitter_bid_placed_points_logs_title = "Twitteri pakkumine esitatud",
+		twitter_bid_placed_points_logs_details = "${consoleName} esitas Twitteri pakkumise summas ${bidAmount} OP-punkti koos tsitaadiga `${bidQuote}`.",
+
+		in_game_cash = "Mängusaalis raha",
+		op_points = "OP-punktid",
+
+		cost_money = "${amount} eurot",
+		cost_points = "${amount} OP punktid"
+	},
+
 	vape = {
-		press_to_use = "Vajuta ~INPUT_CONTEXT~, et tõmmata suitsu. Vajuta ~INPUT_FRONTEND_CANCEL~, et panna vape ära."
+		press_to_use = "Vajuta ~INPUT_CONTEXT~, et tõmmata suitsu. Vajuta ~INPUT_FRONTEND_CANCEL~, et panna vape ära.",
+
+		plain_vape = "Geek Baar",
+		weed_vape = "Geek Baar (THC õli)",
+		mango_vape = "Geek Bar (mango)",
+		strawberry_vape = "Geek Bar (maasikas)",
+		menthol_vape = "Geek Bar (mentool)",
+		apple_vape = "Geek Bar (õun)",
+		blueberry_vape = "Geek Bar (mustikas)"
 	},
 
 	vdm = {
 		failed_vdm = "Mängija VDM-i nurjus.",
 		invalid_entity = "Ei leidnud autot või juhti.",
-		invalid_network_id = "Võrgu ID on vigane.",
 		invalid_target = "Vigane sihtmärk.",
 		cleared_vdm = "Puhastatud ${amount} vdm sihtmärki.",
 		failed_vdm_clear = "Ei õnnestunud vdm sihtmärke puhastada.",
 		added_vdm_target = "NPC võrgu ID-ga ${networkId} sihimeeskonnas ${target}.",
-
-		vdm_no_permissions = "Mängija proovis käivitada vdm käsku ilma korralike õigusteta."
+		no_ped_available = "Läheduses ei ole saadaval mingeid pede.",
+		failed_steal = "Sõiduki vargamine ebaõnnestus.",
+		stealing_vehicle = "Läheduses olevale ped-le anti juhised sõiduki varguseks (${distance}m).",
+		no_waypoint = "Failed to automatically generate translation.",
+		success_drive_to = "Se instruyó con éxito al peatón para conducir hasta el punto de referencia.",
+		failed_drive_to = "No se pudo instruir al peatón para conducir hasta el punto de referencia.",
+		not_in_vehicle = "Sa ei ole sõidukis.",
+		success_hop_in = "Edukalt käskisid isendil sisse hüpata.",
+		failed_hop_in = "Ei õnnestunud isendil sisse hüpata.",
+		no_free_seats = "Vabu istekohti pole saadaval."
 	},
 
 	vending_machines = {
@@ -10488,8 +14284,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 	voice = {
 		illegal_radio_frequency = "Püütakse pääseda ligi ebaseaduslikele raadiosagedustele.",
 		voice_chat = "Häälevestlus",
-		voice_server_connected = "Ühendatud häälevestluse serveriga. Saadame hääled seotud mängijatele.",
-		voice_server_disconnected = "Ühendus häälserveriga on katkenud. Ootame ühendust.",
 		voice_muted = "Hääle vestlus on vaigistatud.",
 		voice_unmuted = "Hääle vestlus on taas lubatud.",
 		broadcasting_voice_to_players = "Edastan mängijatele häälteavet:",
@@ -10506,7 +14300,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		target_radius = "Sihtmärgi ulatus: ${targetRadius}",
 		actual_radius = "Tegelik ulatus: ${actualRadius}",
 
-		invalid_server_id = "Vigane serveri ID.",
+		intent_music = "Hääle sisendi režiimiks muudetakse 'muusika'.",
+		intent_speech = "Hääle sisendi režiim tagasi muudetakse 'kõneks'.",
+		music_mode = "Muusika režiim",
+
 		failed_toggle_listen = "Kuulamise oleku vahetus ebaõnnestus.",
 		listeners = "Kuulajad:",
 		listening_to = "Kuulatakse:",
@@ -10517,31 +14314,81 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		affected_by_jammer = "Sinu raadiot tundub mõjutavat segaja või midagi sellist.",
 
-		listening_missing_permissions = "Mängija üritas küll kuulamisolekut muuta, kuid tal puudusid selleks vajalikud õigused.",
-		voice_mute_missing_permissions = "Mängija üritas teise mängija vaigistatud olekut muuta, kuid tal puudusid selleks vajalikud õigused."
+		music_mode_logs_title = "Heli režiimi lülitamine",
+		music_mode_logs_details_on = "${consoleName} muutis oma häälte sisendirežiimi 'muusikaks'.",
+		music_mode_logs_details_off = "${consoleName} muutis oma häälte sisendirežiimi 'kõneks'.",
+
+		listening_logs_title = "Kuulamine",
+		stopped_listening_logs_details = "${consoleName} hakkas kuulama kasutajat ${targetConsoleName}.",
+		started_listening_logs_details = "${consoleName} lõpetas kasutaja ${targetConsoleName} kuulamise.",
+
+		broadcast_all_logs_title = "Edastamine lülitatud",
+		broadcast_all_logs_details_on = "${consoleName} lülitas edastamise kõigile mängijatele sisse.",
+		broadcast_all_logs_details_off = "${consoleName} lülitas edastamise kõigile mängijatele välja.",
+
+		muted_logs_title = "Vaigistatud hääl",
+		muted_logs_details = "${consoleName} vaigistas kasutaja ${targetConsoleName} häälkõnega.",
+		unmuted_logs_details = "${consoleName} lülitas ${targetConsoleName} häälevestluse sisse.",
+
+		mumble_disconnected = "Sa pole häälteabega ühendatud."
+	},
+
+	wallhack = {
+		wallhack_on = "Seinavaatlus on sisse lülitatud.",
+		wallhack_off = "Seinavaatlus on välja lülitatud.",
+
+		wallhack_failed = "Seinavaatluse sisse-/väljalülitamine ebaõnnestus.",
+		wallhack_everyone = "Seinavaatlus on edukalt sisse-/väljalülitatud kõigile.",
+		wallhack_self = "Seinavaatlus on edukalt sisse-/väljalülitatud endale.",
+		wallhack_player = "Seinavaatlus on edukalt sisse-/väljalülitatud mängijale ${displayName}.",
+
+		wallhack_everyone_logs_title = "Lülitatud läbi seinte vaatamine kõigile",
+		wallhack_everyone_logs_details = "${consoleName} lülitas läbi seinte vaatamise sisse kõigile.",
+		wallhack_player_logs_title = "Lülitatud läbi seinte vaatamine mängijale",
+		wallhack_player_logs_details = "${consoleName} lülitas läbi seinte vaatamise sisse mängijale ${targetConsoleName}.",
+		wallhack_self_logs_title = "Lülitatud läbi seinte vaatamine endale",
+		wallhack_self_logs_details = "${consoleName} lülitas läbi seinte vaatamise sisse endale."
 	},
 
 	washrooms = {
 		use_sink = "[${InteractionKey}] Kasuta kraanikaussi",
-		using_sink = "Kasutad kraanikaussi"
+		using_sink = "Kasutad kraanikaussi",
+		refill_bottle = "[${InteractionKey}] Täida pudel",
+		refilling_bottle = "Pudeli täitmiseks"
 	},
 
-	weed_field = {
-		pick_weed = "Vajuta ~INPUT_CONTEXT~, et korjata umbrohtu.",
-		picking_weed = "Korjad umbrohtu"
+	weed = {
+		strain_default = "Metsik udu",
+		strain_bubble = "Mullimarjake",
+		strain_northern = "Põhjavalgus",
+		strain_kush = "OG Kush",
+		strain_diesel = "Kibedav Diisel",
+		strain_ak47 = "AK-47",
+		strain_dream = "Sinine Unistus",
+		strain_trainwreck = "Rongiõnnetus",
+		strain_gorilla = "Gorilla Liim",
+
+		default_emoji = "🥦",
+		bubble_emoji = "🫧",
+		northern_emoji = "🛡️",
+		kush_emoji = "🦁",
+		diesel_emoji = "😌",
+		ak47_emoji = "🔫",
+		dream_emoji = "🪶",
+		trainwreck_emoji = "👊",
+		gorilla_emoji = "🦍",
+
+		strain_description = "<b>Sort:</b> <i>${strain}</i> $ {emoji}"
 	},
 
 	wizard = {
-		action_missing_permissions = "Üritati teha võluritoimingut ilma vastavate õigusteta.",
-		action_radius_missing_permissions = "Üritati anda mängijatele teatud raadiuses võimalus muuta võlu tegusid, kuid selleks ei olnud sobivaid õiguseid.",
-		run_as_missing_permissions = "Üritati käivitada käsku teise mängija nime all ilma sobivate õigusteta.",
-
 		menu_title = "Võlur",
 
 		ragdoll_player = "Nukutada",
 		ragdoll_player_force = "Nukutada (Sunniviisiliselt)",
+		jump_player = "Hüppa",
 		punch_player = "Löö sundasendisse",
-		taze_player = "Toksida elektriga",
+		enter_vehicle_player = "Mine Sõiduki juurde",
 		exit_vehicle_player = "Lahku sõidukist",
 		yank_steering_wheel_player = "Tõmmata rooli",
 		flashbang_player = "Pimestada",
@@ -10558,10 +14405,6 @@ OP.Global.Locales.Languages["et-EE"] = {
 		play_sound_twitter = "Twitter",
 
 		invalid_radius = "Vale raadius",
-		invalid_server_id = "Vale serveri ID",
-
-		ragdoll_failed = "Mängija kukkumise valmistamise protsess nurjus.",
-		ragdoll_success = "Mängijast ${consoleName} kukkumise valmistamise protsess õnnestus.",
 
 		punch_success = "Mängijale ${consoleName} õnnestus lüüa.",
 		punch_failed = "Mängija peksmist ebaõnnestus.",
@@ -10569,14 +14412,8 @@ OP.Global.Locales.Languages["et-EE"] = {
 		explode_success = "Mängija ${consoleName} plahvatus õnnestus.",
 		explode_failed = "Mängija plahvatuse tegemine ebaõnnestus.",
 
-		ignite_success = "Mängija ${consoleName} süütamine õnnestus.",
-		ignite_failed = "Mängija süütamine ebaõnnestus.",
-
-		punch_radius_failed = "Piirkonnas olevate mängijate peksmist ebaõnnestus.",
-		punch_radius_success = "Piirkonnas olevate mängijate ${radius} raadiuses peksmine õnnestus.",
-
-		ragdoll_radius_success = "Piirkonnas olevate mängijate ${radius} raadiuses ragdoll-i tegemine õnnestus.",
-		ragdoll_radius_failed = "Ebaõnnestus panna raadiusega mängijad ragdoll'iks.",
+		taze_success = "Edukalt tazerisite ${consoleName}.",
+		taze_failed = "Mängijale taseerimine ebaõnnestus.",
 
 		flashbang_success = "Edukalt vakuum toruga ${consoleName}.",
 		flashbang_failed = "Ebaõnnestus vakuum toruga mängijat vakuum'ata.",
@@ -10589,12 +14426,11 @@ OP.Global.Locales.Languages["et-EE"] = {
 		run_as_failed = "Ebaõnnestus käivitada käsk ${consoleName} nime all.",
 
 		no_nearby_vehicle = "Läheduses pole sõidukit.",
+		invalid_duration = "Vigane kestus (1 s - 20 s).",
 		reversing_failed = "Ei õnnestunud tegelast tagasi teha.",
 		driving_forwards_failed = "Ei õnnestunud tegelast edasi sõitma panna.",
 		reversing_success = "Tegelase tagasi panemine õnnestus.",
-		driving_forwards_success = "Tegelase edasi sõitma panemine õnnestus.",
-
-		vehicle_temp_action_missing_permissions = "Mängija üritas käivitada sõiduki ajutist tegevust ilma nõuetekohaste õigusteta."
+		driving_forwards_success = "Tegelase edasi sõitma panemine õnnestus."
 	},
 
 	yoga = {
@@ -10609,24 +14445,63 @@ OP.Global.Locales.Languages["et-EE"] = {
 		looting_zombie = "Zombi röövimine",
 		zombie_looting_injection = "Liiga palju zombi röövimist! (Serveri timeouti ületatud, tõenäoliselt kasutades süsti tegemise programmi selleks.)",
 
-		zombie_trip_limit = "Tunnetad end liiga väsinuna, et edasi zombisid röövida. Proovi homme uuesti."
+		zombie_trip_limit = "Tunnetad end liiga väsinuna, et edasi zombisid röövida. Proovi homme uuesti.",
+
+		not_able_to_loot_in_interior = "Sul ei ole võimalik rüüstata zombisid sisemuses."
 	},
 
 	-- global/*
-	entities = {
-		in_no_ped_population_area = "Viibid piirkonnas, kus 'NPC' populatsiooni pole.",
-		not_in_no_ped_population_area = "Sa ei viibi piirkonnas, kus 'NPC' populatsiooni pole."
-	},
-
 	explosions = {
 		invalid_explosion_type = "Plahvatuse tüüp `${explosionType}` ei ole kehtiv.",
 		invalid_camera_shake = "Kaamera raputamine `${cameraShake}` ei ole kehtiv.",
 		invalid_damage_scale = "Kahju skaala `${damageScale}` ei ole kehtiv.",
-		created_explosion = "Loodud plahvatus tüübist `${explosionTypeName}` kahju skaalaga `${damageScale}` ja kaamera raputusega `${cameraShake}`.",
-		create_explosion_not_developer = "Mängija üritas luua plahvatust, kuid nad pole arendaja."
+		created_explosion = "Loodud plahvatus tüübist `${explosionTypeName}` kahju skaalaga `${damageScale}` ja kaamera raputusega `${cameraShake}`."
+	},
+
+	exports = {
+		player_killed = "Mängija tapetud",
+		player_killed_details = "${consoleName} tapeti ${killerConsoleName} poolt. Tapmise põhjus: `${deathCause}`.",
+
+		killed_player = "Tapetud mängija",
+		killed_player_details = "${killerConsoleName} tappis ${consoleName}. Tapmise põhjus: `${deathCause}`. (See on vastavalt tapetud mängija klientrakendusele, mida saab võltsida, pea seda meeles)",
+
+		player_died = "Mängija suri",
+		player_died_details = "${consoleName} suri. Surma põhjus: `${deathCause}`."
 	},
 
 	functions = {
+		unknown = "Tundmatu",
+		flipped_vehicle_logs_title = "Ümberpaisatud sõiduk",
+		flipped_vehicle_logs_details = "${consoleName} ümberpööratud sõiduk.",
+		failed_to_find_ground = "Ei õnnestunud maapinda leida, teleportisin sind lähimasse teele.",
+
+		knots = "sõlme",
+		mph = "mph",
+		kmh = "km/h"
+	},
+
+	locales = {
+		showing_raw_locales_on = "Alternando la visualización de los locales en bruto, activado.",
+		showing_raw_locales_off = "Alternando la visualización de los locales en bruto, desactivado."
+	},
+
+	shapes = {
+		copied_clipboard = "Kopeeritud lõikelauale.",
+		cancelled = "Tühistatud."
+	},
+
+	states = {
+		invalid_network_id = "Võrgu ID on vale.",
+		debug_states_failed = "Selle objekti olekute tõrge ebaõnnestus.",
+		no_states = "Sellel üksusel pole seadeid määratud.",
+		printed_states = "Printin üksuse ${networkId} seisundeid.",
+		invalid_key = "Vigane võti.",
+		state_set = "Isendi oleku seadmine õnnestus.",
+		state_removed = "Isendi oleku eemaldamine õnnestus.",
+		state_set_failed = "Isendi oleku seadmise ebaõnnestus."
+	},
+
+	time = {
 		year = "aasta",
 		years = "aastat",
 		month = "kuu",
@@ -10640,36 +14515,26 @@ OP.Global.Locales.Languages["et-EE"] = {
 		second = "sekund",
 		seconds = "sekundit",
 		just_now = "just nüüd",
-		unknown = "Tundmatu",
-		flipped_vehicle_logs_title = "Ümberpaisatud sõiduk",
-		flipped_vehicle_logs_details = "${consoleName} ümberpööratud sõiduk.",
-		failed_to_find_ground = "Ei õnnestunud maapinda leida, teleportisin sind lähimasse teele.",
+		now = "nüüd",
+
+		month_1 = "Enero",
+		month_2 = "Febrero",
+		month_3 = "Marzo",
+		month_4 = "Abril",
+		month_5 = "Mayo",
+		month_6 = "Junio",
+		month_7 = "Julio",
+		month_8 = "Agosto",
+		month_9 = "Septiembre",
+		month_10 = "Octubre",
+		month_11 = "Noviembre",
+		month_12 = "Diciembre",
 
 		time_in = "${time} ${unit} pärast",
 		time_ago = "${time} ${unit} tagasi"
 	},
 
-	states = {
-		invalid_network_id = "Võrgu ID on vale.",
-		debug_states_failed = "Selle objekti olekute tõrge ebaõnnestus.",
-		no_states = "Sellel üksusel pole seadeid määratud.",
-		printed_states = "Printin üksuse ${networkId} seisundeid.",
-
-		get_entity_states_missing_permissions = "Mängija üritas saada konkreetse üksuse seise ilma korralike lubadeta."
-	},
-
 	-- illegal/*
-	corner = {
-		corner_ped = "Nurga-Ped - ${cornerPedDistance}m (${cornerPedTimer})",
-		corner_ped_title = "Nurga-Ped",
-		corner_ped_already_active = "Ootamas on juba Nurga-Ped sinu jaoks.",
-		no_node_found = "Inimeste lähedal ei leitud ühtegi sõlme.",
-		no_sell_area = "Sa ei ole piirkonnas, kus inimesed on huvitatud uimastitest.",
-		inside_areas_none = "Siseruumid: puuduvad",
-		inside_areas = "Siseruumid: ${insideAreas}",
-		not_able_to_sell = "Te ei saa hetkel müüa. Kõndige veidi ringi ja proovige uuesti."
-	},
-
 	stockade = {
 		dispatch = "[Häirekeskus]",
 		status_1a = "10-78, Üks Stockade on vajutanud hädaolukorra nuppu ja palub tagalat aadressil ${streetName}.",
@@ -10693,6 +14558,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		reward_gold_bar = "Sa võtsid kullastanga.",
 		reward_cash = "Sa võtsid raha.",
 		reward_keycard_red = "Sa võtsid punasele võtmekaardile.",
+		reward_treasure_map_piece = "Sa said aardekaardi tüki.",
 
 		stockade_logs_title = "Stockade aktiveeriti",
 		stockade_logs_details = "${consoleName} aktiveeris stockade."
@@ -10701,7 +14567,8 @@ OP.Global.Locales.Languages["et-EE"] = {
 	-- interfaces/*
 	interface = {
 		no_interfaces_are_focused = "Fookuses pole ühtegi liidest.",
-		interfaces_focused = "Fookuses olevad liidesed:\n${interfacesFocused}"
+		interfaces_focused = "Fookuses olevad liidesed:\n${interfacesFocused}",
+		interface_crashed = "Tundub, et teie liides läks nurja. Tõenäoliselt tähendab see, et mälu on otsa saanud. See on automaatselt taaskäivitatud ja asjad peaksid jätkama töötamist nagu varem, kuid kui see nii ei ole, andke meile teada raamistiku Discordi serveris."
 	},
 
 	-- jobs/*
@@ -10735,9 +14602,68 @@ OP.Global.Locales.Languages["et-EE"] = {
 		delivery_blip = "Burger Shoti kohaletoimetamine"
 	},
 
-	duty = {
-		toggle_duty_status_no_permissions = "Mängija üritas sisse lülitada töörežiimi käsu abil, kuid tal ei ole selleks õigusi.",
+	bus_driver = {
+		failed_start_job = "Uue töö alustamine ebaõnnestus.",
+		next_stop = "Järgmine peatus",
+		bus_hq = "Bussi peakorter",
+		job_cancelled = "Töö on tühistatud.",
+		next_stop_help = "Järgmine peatus: ${stop} / ${total}",
+		passenger_count = "Reisijad: ${passengers} / ${seats}",
+		shutdown_engine = "Lülita mootor välja ja oota reisijaid.",
+		return_to_hq = "Tagasi peakorterisse.",
+		bus_stop = "Bussipeatus",
+		pay_for_ticket = "Maksa piletiraha (~INPUT_CONTEXT~ - $18).",
+		not_enough_money_ticket = "Teil pole piisavalt sularaha piletiks (18 dollarit).",
+		ticket_paid = "${displayName} maksis bussipileti eest.",
+		paid_for_ticket = "Te maksite edukalt bussipileti eest.",
+		invalid_route_name = "Puuduv või sobimatu bussiliini nimi.",
+		already_in_mission = "Olete juba bussimissioonil.",
+		press_to_open_menu = "Avage bussimenüü, vajutades klahvi ~INPUT_CONTEXT~.",
+		press_to_park_bus = "Parkige oma buss, vajutades klahvi ~INPUT_CONTEXT~.",
+		start_route = "Alusta marsruuti",
+		bus_menu = "Bussi menüü",
+		close_menu = "Sulge menüü",
+		rent_bus = "Rentige buss",
+		deposit = "$${deposit} Tagatisraha",
 
+		east_route = "Arcade'i marsruut",
+		pillbox_route = "Pillboxi marsruut",
+		little_seoul_route = "Little Seouli marsruut",
+		sandy_route = "Liivane kõrberada",
+		paleto_route = "Suur ookeani ekspres",
+		grapeseed_route = "Grapeseed Greenway",
+		route_68_route = "Marsruut 68 otse",
+		airport_route = "Lennujaama buss",
+		business_route = "Ärilõik",
+
+		finished_job_logs_title = "Lõpetatud bussimarsruut",
+		finished_job_logs_details = "${consoleName} lõpetas sõitmise `${route}` bussiliinil ja teenis $${payout}."
+	},
+
+	doj = {
+		invalid_type = "Vigane või puuduv tüüp.",
+		missing_search = "Puuduv otsinguparameeter.",
+		lookup_failed = "Andmetüübi ja otsingu jaoks tulemusi ei leitud.",
+
+		result_signature = "San Andrease osariik",
+		result_title = "${type} otsing (\"${search}\")",
+		result_text = "${type} - \"${search}\"\n\nC-ID:\t\t${characterId}\nEesnimi:\t${firstName}\nPerenimi:\t${lastName}\nTelefoninumber:\t${phoneNumber}\nSünniaeg:\t${dateOfBirth}\nSugu:\t\t${gender}\n\nTwitter: @${username}",
+
+		looked_up_character_logs_title = "Tegelase otsing",
+		looked_up_character_logs_details = "Fucking used for sawing shit off of other shitty things.",
+
+		invalid_time = "Steel Fucking File",
+		missing_invalid_plate = "Used for fucking filing things. Not your goddamn taxes though.",
+		vehicle_hold_success = "$200 Shitty Savings Bond",
+		vehicle_hold_failed = "A shitty $200 savings bond that represents your fucking commitment to financial security. This shit can be cashed in at participating banks, providing you with a fucking boost to your savings and a fucking step closer to your fucking financial goals.",
+		invalid_plate = "$500 Shitty Savings Bond",
+		cant_reduce_time = "A fucking $500 savings bond that serves as a substantial investment in your fucking future. When the fucking time is right, redeem it at a bank to unlock its full fucking value and take a significant goddamn stride toward your financial aspirations.",
+
+		vehicle_hold_logs_title = "Fucking used for sawing shit off of other shitty things.",
+		vehicle_hold_logs_details = "Steel Fucking File"
+	},
+
+	duty = {
 		duty_status_on = "Mängija on nüüd töörežiimis.",
 		duty_status_off = "Mängija on nüüd töörežiimist väljas.",
 		duty_status_failed = "Töörežiimi sisselülitamine ebaõnnestus.",
@@ -10750,6 +14676,19 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		toggled_operator_status_on = "Operaatori olek on vahetatud sisse.",
 		toggled_operator_status_off = "Operaatori olek on vahetatud välja."
+	},
+
+	emergency = {
+		no_nearby_vehicle = "Läheduses pole sõidukit.",
+		no_nearby_vehicle_door = "Ei ole lähedal sõiduki uksele.",
+		removing_door = "Ukse eemaldamine",
+		cleaning_up_body = "Keha puhastamine",
+		destroying_spikes = "Tõkestiste hävitamine",
+		failed_remove_door = "Sõiduki ukse eemaldamine ebaõnnestus.",
+		invalid_clothing_type = "Vigane riietuse tüüp.",
+		no_nearby_player = "Läheduses pole käeraudades või maha löödud mängijat.",
+		removing_clothing = "Eemaldatakse ${type}",
+		failed_remove_clothing = "Riietuse eemaldamine ebaõnnestus."
 	},
 
 	job_center = {
@@ -10765,6 +14704,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		job_government = "Jäätmevedaja",
 		job_mechanic = "Autolammutaja",
 		job_delivery = "Tarnetöö",
+		job_bus_driver = "Bussijuht",
 		changed_job_already_set_to_job = "Sinu töö on juba määratud kui ${jobName}.",
 		changed_job_success = "Sinu töö on edukalt muudetud ${jobName}ks.",
 		changed_job_success_go_to_coords = "Sinu töö on edukalt muudetud ${jobName}ks. Alustamiseks jälgi oma kaardil olevat punkti.",
@@ -10774,13 +14714,20 @@ OP.Global.Locales.Languages["et-EE"] = {
 	},
 
 	jobs = {
-		job_refreshed = "Töö värskendatud.",
-		something_went_wrong = "Midagi läks valesti.",
-		user_does_not_have_sent_character_loaded = "Kasutajal ei ole saadetud tegelast laetud.",
-		user_has_no_character_loaded = "Kasutajal ei ole ühtegi tegelast laetud.",
-		user_not_found = "Saadetud kasutajat ei leitud serverist.",
-		invalid_character_id = "Vale karakteri ID parameeter saadetakse.",
-		invalid_license_identifier = "Vale litsentsi tuvastaja parameeter saadetakse."
+		job_reset_success = "${consoleName} ameti lähtestamine õnnestus.",
+		failed_job_reset = "${consoleName} ameti lähtestamine ebaõnnestus.",
+		invalid_job_shortcut = "Vigane otsetee.",
+		job_set = "${consoleName} ameti seadistamine õnnestus: `${jobName} / ${departmentName} / ${positionName}`.",
+		job_set_fail = "${consoleName} ameti seadistamine ebaõnnestus.",
+		failed_job_data = "Mängija ametiandmete hankimine ebaõnnestus.",
+
+		button_close = "Sulge",
+		button_save = "Salvesta",
+
+		set_job_logs_title = "Määra Töö",
+		set_job_logs_details = "${consoleName} määras ${targetConsoleName} (#${characterId}) töö `${jobName}, ${departmentName}, ${positionName}`.",
+		reset_job_logs_title = "Lähtesta Töö",
+		reset_job_logs_details = "${consoleName} lähtestas ${targetConsoleName} (#${characterId}) töö."
 	},
 
 	police = {
@@ -10788,12 +14735,25 @@ OP.Global.Locales.Languages["et-EE"] = {
 		aim_assist_disabled = "Teie sihtimisoskus on nüüd halvem kui kriminaalidel / tõpratel. Soovitame sihtimisabi kohe uuesti lubada.",
 		you_are_not_police = "See funktsioon on reserveeritud politseile, mitte kriminaalidele / tõpradele.",
 
+		no_vehicle_tint = "Läheduses pole sõiduki akent, et varjundit mõõta.",
+		window_broken = "See aken on purunenud.",
+		window_open = "See aken on avatud.",
+		measuring_tint = "Varjundi mõõtmine",
+		tint_measurement = "Varjundi mõõtmine",
+
+		tint_0 = "Sellel aknal pole varjundit.",
+		tint_1 = "Selle akna varjund on täiesti must.",
+		tint_2 = "Selle akna varjund on tumedas suitsus.",
+		tint_3 = "Selle akna varjund on hele suitsus.",
+		tint_4 = "Selle akna varjund on limusiinisarnane.",
+		tint_5 = "Selle akna varjund on roheline.",
+
 		undercover_enabled = "Sa oled nüüd salajases töös.",
 		undercover_disabled = "Sa ei ole enam salajases töös.",
 
 		npc_vehicle = "See sõiduk ei ole mängija omatud sõiduk.",
 		not_in_a_vehicle = "Sa ei sõida praegu üheski sõidukis.",
-		invalid_minutes = "Vigane aeg (vahemikus 1 minut kuni 12 tundi).",
+		invalid_minutes = "Vigane aeg (1 minuti ja 48 tunni vahel).",
 
 		not_on_duty = "Sa ei ole tööl.",
 		failed_impound = "Sõiduki arestimine ebaõnnestus.",
@@ -10819,7 +14779,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		none = "Puudub",
 		active = "Aktiivne",
 		not_active = "Mitteaktiivne",
-		active_robberies = "\nAktiivne kauplus: ${store}.\nAktiivne pank: ${bank}.\nAktiivne juveelipood: ${jewelry}",
+		active_robberies = "\nAktiivne pood: ${store}.\nAktiivne pank: ${bank}\nAktiivne ehe: ${jewelry}\nPacifiku pank: ${pacificBank}",
 
 		failed_dispatch = "Saadetise sõnumi saatmine ebaõnnestus.",
 		dispatch_title = "[Saadetis]",
@@ -10856,11 +14816,17 @@ OP.Global.Locales.Languages["et-EE"] = {
 		license_utility = "Tööteenus",
 		license_commercial = "Kaubavedu",
 		license_management = "Juhtimine",
+		license_passenger = "Kaasreisija",
 		license_military = "Sõjavägi",
 		license_special = "Erilennukid",
+		license_boat = "Paadiluba",
 		license_hunting = "Jahiluba",
 		license_fishing = "Kalastusluba",
 		license_weapon = "Relvaluba",
+		license_mining = "Kaevandamisluba",
+		license_driver = "Juhi load",
+		license_bar = "Baar/Juriidiline litsents",
+		license_press = "Vajuta Lubadust",
 		gave_character_license = "Andis ${characterName}-le loa `${licenseLabel}`.",
 		character_already_has_license = "${characterName}-l on juba luba `${licenseLabel}`.",
 		removed_character_license = "Võttis loa `${licenseLabel}` ära kasutajalt ${characterName}.",
@@ -10875,7 +14841,137 @@ OP.Global.Locales.Languages["et-EE"] = {
 		you_have_no_licenses = "Sul ei ole ühtegi litsentsi.",
 		player_has_no_licenses = "${characterName}il pole lube.",
 		failed_to_get_licenses = "Lubade hankimine ebaõnnestus.",
-		license_list = "Saadaolevad load: ${licenseList}."
+		license_list = "Saadaolevad load: ${licenseList}.",
+		already_married = "Üks või mõlemad partnerid on juba abielus.",
+		either_not_married = "Üks või mõlemad partnerid ei ole abielus.",
+		not_married = "Partnerid ei ole abielus omavahel.",
+		failed_marriage = "Abieluseisu määramine ebaõnnestus.",
+		marriage_success = "${nameA} ja ${nameB} on nüüd abielus.",
+		divorce_success = "${nameA} ja ${nameB} ei ole enam abielus.",
+		character_not_online = "Üks partneritest pole hetkel võrgus. Ainult surnud partnerid võivad lahutada, kui nad pole võrgus.",
+		you_are_now_married = "Oled nüüd abielus kasutajaga ${name}.",
+		you_are_no_longer_married = "Sa pole enam abielus kasutajaga ${name}.",
+
+		divorced_logs_title = "Lahutus",
+		divorced_logs_details = "${consoleName} uuendas kasutajate ${nameA} #${cidA} ja ${nameB} #${cidB} abieluseisu `lahutatud`.",
+		married_logs_title = "Abielus",
+		married_logs_details = "${consoleName} uuendas kasutajate ${nameA} #${cidA} ja ${nameB} #${cidB} abieluseisu `abielus`."
+	},
+
+	tasks = {
+		task_blip = "Ülesanne",
+		tasks = "${amount} Ülesannet",
+		no_tasks = "Ülesandeid pole",
+		press_start_task = "[${SeatEjectKey}] Alusta Ülesannet",
+		no_active_tasks = "Hetkel pole midagi teha.",
+		something_went_wrong = "Midagi läks valesti.",
+		task_cancelled = "Ülesanne tühistatud.",
+		task_completed = "Ülesanne edukalt lõpule viidud.",
+		task_failed_complete = "Ülesande lõpetamine ebaõnnestus.",
+
+		on_floor = "${floor}. korrusel.",
+		ground_floor = "Esimene korrus",
+		second_floor = "Teine korrus",
+		third_floor = "Kolmas korrus",
+		icu_floor = "ITÜ korrus",
+		surgery_floor = "Operatsioonikorrus",
+
+		task_make_bed = "Voodi tegemine.",
+		task_make_bed_near = "Voodi tegemiseks vajuta ~INPUT_DETONATE~.",
+		task_make_bed_active = "Voodi tegemine käsil",
+
+		task_clean_toilet = "WC puhastamine.",
+		task_clean_toilet_near = "Vajuta ~INPUT_DETONATE~, et tualetti puhastada.",
+		task_clean_toilet_active = "Tualeti puhastamine",
+
+		task_take_out_trash = "Viska prügi ära.",
+		task_take_out_trash_near = "Vajuta ~INPUT_DETONATE~, et prügikasti tühjendada.",
+		task_take_out_trash_active = "Prügikasti tühjendamine",
+
+		task_clean_microwave = "Puhasta mikrolaineahi.",
+		task_clean_microwave_near = "Vajuta ~INPUT_DETONATE~, et mikrolaineahju puhastada.",
+		task_clean_microwave_active = "Mikrolaineahju puhastamine",
+
+		task_restock_pharmacy = "Täida apteegi varusid.",
+		task_restock_pharmacy_near = "Vajuta ~INPUT_DETONATE~, et täita apteeki varusid.",
+		task_restock_pharmacy_active = "Apteegi varude täitmine",
+
+		task_restock_vending_machine = "Täida müügiautomaat.",
+		task_restock_vending_machine_near = "Vajuta ~INPUT_DETONATE~, et täita müügiautomaadi varusid.",
+		task_restock_vending_machine_active = "Müügiautomaadi varude täitmine",
+
+		task_drthompson_lollipop = "Too Dr. Thompsonile kommid.",
+		task_drthompson_lollipop_near = "Vajuta ~INPUT_DETONATE~, et anda Dr. Thompsonile kommid.",
+		task_drthompson_lollipop_active = "Dr. Thompsonile Lutsukese Andmine",
+
+		task_nancy_backrub = "Anna Nancyle seljamassaaž.",
+		task_nancy_backrub_near = "Vajuta ~INPUT_DETONATE~, et anda Nancyle seljamassaaž.",
+		task_nancy_backrub_active = "Nancyle Seljamassaaži Andmine",
+
+		task_do_laundry = "Pesu pesemine.",
+		task_do_laundry_near = "Vajuta ~INPUT_DETONATE~, et pesu pesta.",
+		task_do_laundry_active = "Kasutatud Lehtede Pesemine",
+
+		task_disinfect_table = "Desinfitseeri operatsioonilaud.",
+		task_disinfect_table_near = "Vajuta ~INPUT_DETONATE~, et desinfitseerida operatsioonilaud.",
+		task_disinfect_table_active = "Laua desinfitseerimine",
+
+		task_wipe_table = "Pühkige laud.",
+		task_wipe_table_near = "Vajutage ~INPUT_DETONATE~, et pühkida laud.",
+		task_wipe_table_active = "Laua pühkimine",
+
+		task_wash_dishes = "Peske nõusid.",
+		task_wash_dishes_near = "Vajutage ~INPUT_DETONATE~, et pesta nõusid.",
+		task_wash_dishes_active = "Nõude pesemine",
+
+		task_restock_drink_dispenser = "Täitke karastusjoogi automaat.",
+		task_restock_drink_dispenser_near = "Vajutage ~INPUT_DETONATE~, et täita karastusjoogi automaat.",
+		task_restock_drink_dispenser_active = "Karastusjoogi automaadi täitmine",
+
+		task_restock_ingredients = "Täienda koostisosi.",
+		task_restock_ingredients_near = "Vajuta ~INPUT_DETONATE~, et täiendada koostisosi.",
+		task_restock_ingredients_active = "Koostisosade täiendamine",
+
+		task_organize_shelf = "Korralda riiul.",
+		task_organize_shelf_near = "Vajuta ~INPUT_DETONATE~, et riiulit korraldada.",
+		task_organize_shelf_active = "Riiuli korraldamine",
+
+		task_clean_countertop = "Puhasta töötasapind.",
+		task_clean_countertop_near = "Vajuta ~INPUT_DETONATE~, et töötasapind puhastada.",
+		task_clean_countertop_active = "Töötasapinna puhastamine",
+
+		task_file_taxes = "Esitage maksud.",
+		task_file_taxes_near = "Vajutage ~INPUT_DETONATE~, et esitada maksud.",
+		task_file_taxes_active = "Maksude esitamine",
+
+		task_refill_napkins = "Täitke salvrätikud.",
+		task_refill_napkins_near = "Vajutage ~INPUT_DETONATE~, et täita salvrätikuid.",
+		task_refill_napkins_active = "Salvrätikute täitmine",
+
+		task_refill_water = "Täitke veemasin.",
+		task_refill_water_near = "Vajutage ~INPUT_DETONATE~, et täita veemasinat.",
+		task_refill_water_active = "Veemasina täitmine",
+
+		task_clean_windows = "Puhastage aknad.",
+		task_clean_windows_near = "Puhastage aknad, vajutage klahvi ~INPUT_DETONATE~.",
+		task_clean_windows_active = "Aknad puhastatakse",
+
+		task_clean_oven = "Puhastage ahi.",
+		task_clean_oven_near = "Puhastage ahi, vajutage klahvi ~INPUT_DETONATE~.",
+		task_clean_oven_active = "Ahi puhastatakse",
+
+		task_take_nap = "Tehke lühinaps.",
+		task_take_nap_near = "Tehke lühinaps, vajutage klahvi ~INPUT_DETONATE~.",
+		task_take_nap_active = "Lühinaps",
+
+		task_water_plants = "Kasta taimi.",
+		task_water_plants_near = "Vajuta ~INPUT_DETONATE~, et kasta taimi.",
+		task_water_plants_active = "Taimede kastmine"
+	},
+
+	taxi = {
+		help_text = "`initial` on baasalgraha (vaikimisi: $10), `mile` on tasu sõidetud miili kohta (vaikimisi: $5), `minute` on tasu iga minuti eest, kui takso mõõt töötab (vaikimisi: $15), `show` kuvab praegused seaded.",
+		invalid_typ = "Vigane tüüp."
 	},
 
 	tow = {
@@ -10893,7 +14989,16 @@ OP.Global.Locales.Languages["et-EE"] = {
 		return_button = "Tagasi",
 
 		toggled_messages_on = "Sõnumid lülitatud sisse.",
-		toggled_messages_off = "Sõnumid lülitatud välja."
+		toggled_messages_off = "Sõnumid lülitatud välja.",
+		cannot_toggle_mechanic_messages = "Lohkujad ei saa remonditeavitusi välja lülitada."
+	},
+
+	trucking = {
+		trailer_locked = "Lukus",
+		inspect_cargo = "[${SeatEjectKey}] Kontrolli lasti",
+		inspecting_cargo = "Lasti kontrollimine",
+		failed_cargo = "Ei õnnestunud lasti kontrollimine.",
+		cargo_result = "Selgub, et sellel treileril on ${cargo}."
 	},
 
 	weazel_news = {
@@ -10930,7 +15035,8 @@ OP.Global.Locales.Languages["et-EE"] = {
 		anchored_successfully = "Ankurdati edukalt.",
 		removing_anchor = "Ankru ühenduse katkestamine",
 		deploying_anchor = "Ankru paigaldamine",
-		no_vehicle_nearby = "Selles läheduses ei ole paati, mille saaksid ankurdada."
+		no_vehicle_nearby = "Selles läheduses ei ole paati, mille saaksid ankurdada.",
+		vehicle_not_anchorable = "Te ei saa seda paati ankurdada."
 	},
 
 	car_wash = {
@@ -10953,6 +15059,49 @@ OP.Global.Locales.Languages["et-EE"] = {
 		use_launch = "Vajuta ~INPUT_VEH_HANDBRAKE~ hüpitoolist väljumiseks."
 	},
 
+	clamps = {
+		no_vehicle_near = "Sa ei ole lähedal ühelegi sõidukile vasakul tagumisel rattal.",
+		clamping = "Kinnitamine",
+		removing_clamp = "Kinnitusklambri eemaldamine",
+		remove_clamp = "[${InteractionKey}] Eemalda kinnitusklamber",
+
+		clamped_log_title = "Kinnitatud kinnitusklamber",
+		clamped_log_details = "${consoleName} kinnitas kinnitusklambri sõidukile numbrimärgiga `${plate}`.",
+		unclamped_log_title = "Kinnitusklambri eemaldamine",
+		unclamped_log_details = "${consoleName} eemaldas kinnitusklambri sõidukilt numbrimärgiga `${plate}`."
+	},
+
+	converters = {
+		stealing_converter = "Katalüsaatori vargus",
+		no_converter = "Sellel sõidukil ei paista olevat katalüsaatorit.",
+		electric_vehicle = "See sõiduk on elektriline.",
+
+		stole_converter_logs_title = "Katalüsaatori vargus",
+		stole_converter_logs_details = "${consoleName} varastas sõidukist katalüsaatori."
+	},
+
+	cruise_control = {
+		cruise_control = "Kiirushoidik / Autopiloot",
+		speed_set_to_metric = "Kiirushoidiku seadistatud kiirus on ${speed}km/h.",
+		speed_set_to_imperial = "Kiirushoidiku seadistatud kiirus on ${speed}mph.",
+		cruise_control_set_metric = "Kiirushoidik on seadistatud kiirusele ${speed}km/h.",
+		cruise_control_set_imperial = "Kiirushoidik on seadistatud kiirusele ${speed}mph.",
+		cruise_control_reset = "Kiirushoidiku kiirus on lähtestatud.",
+		cruise_control_disabled = "Kiirushoidik on välja lülitatud.",
+		autopilot_metric = "~g~Automaatpiloot~s~: ${altitude}m ~c~/~s~ ${speed}km/h",
+		autopilot_imperial = "~g~Automaatpiloot~s~: ${altitude}jalga ~c~/~s~ ${speed}sõlme",
+		hover_metric = "~g~Hõljumine~s~: ${altitude}m",
+		hover_imperial = "~g~Hõljumine~s~: ${altitude}jalga",
+
+		speed_limiter = "Kiiruse piiraja",
+		speed_limiter_reset = "Kiiruse piiraja on lähtestatud.",
+		speed_limiter_to_metric = "Määra kiiruse piiraja kiirus ${speed}km/h.",
+		speed_limiter_to_imperial = "Määra kiiruse piiraja kiirus ${speed}miili tunnis.",
+		speed_limiter_set_metric = "Kiiruse piiraja on määratud ${speed}km/h.",
+		speed_limiter_set_imperial = "Kiirusepiiraja on seatud ${speed} miili tunnis.",
+		speed_limiter_disabled = "Kiirusepiiraja on deaktiveeritud."
+	},
+
 	damage = {
 		vehicle = "Auto-ID: ${entity}",
 		general = "Üldine: ${value}",
@@ -10968,57 +15117,91 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 	fuel = {
 		exit_to_fuel = "Lahkuge sõidukist, et tankida.",
+		exit_to_charge = "Välju sõidukist, et laadida.",
 		press_to_fuel = "Vajutage ~g~${InteractionKey} ~w~, et tankida sõidukit.",
-		fuel_pump_text = "Kütusehind: $${fuelCost}~n~Vajutage ~g~E ~w~, et lõpetada tankimine.",
+		press_to_charge = "Vajuta ~g~${InteractionKey} ~w~, et sõidukit laadida.",
+		use_moonshine = "Vajuta ~g~${InteractionKey} ~w~, et kasutada kuuvalgust kütusena.",
+		using_moonshine = "Kütame kuuvalgusega",
+		fuel_pump_text = "Used for fucking filing things. Not your goddamn taxes though.",
 		vehicle_text = "Kütuse tase: ${fuelLevel}%",
+		fuel_pump_text_ev = "Elektri hind: $${fuelCost}~n~Vajuta ~g~${InteractionKey} ~w~, et laadimine peatada.",
+		vehicle_text_ev = "Aku tase: ${fuelLevel}%",
 		tank_full = "Paak on täis.",
+		battery_full = "Aku on täis laetud.",
 		vehicle_busy = "Lähedal oleval sõidukil on hõivatud.",
 		purchase_jerry_can = "Vajuta ~g~${InventoryKey} ~w~, et osta kanistriga kütust.",
 		gas_station = "Bensiinijaam",
-		petrolcan_fuel_text = "Jäänud kütuse hulk: ${petrolAmount}%~n~Vajuta ~g~E ~w~, et lõpetada kütuse pumpamine.",
+		petrolcan_fuel_text = "$200 Shitty Savings Bond",
+		battery_fuel_text = "Laadimise jääk: ${petrolAmount}%~n~Vajutage ~g~${InteractionKey} ~w~, et laadimine lõpetada.",
 		player_busy = "Sa oled hõivatud millegi muuga.",
 		fuel_level_set_to = "Kütuse tase on määratud `${fuelLevel}` peale.",
 		not_in_a_vehicle = "Sa ei ole sõidukis.",
 		vehicle_engine_on = "Mootor töötab endiselt.",
 
-		set_fuel_no_permissions = "Mängija üritas määrata sõiduki kütusetaset ilma korralike õigusteta.",
+		fuel_debug_enabled = "Kütuse silmapaistvus lubatud.",
+		fuel_debug_disabled = "Kütuse silmapaistvus keelatud.",
 
 		vehicle_exploded_logs_title = "Sõiduk plahvatas",
 		vehicle_exploded_logs_details = "${consoleName} tankis sõiduki üle ja käivitas plahvatuse jooksva mootori tõttu."
 	},
 
 	gadgets = {
-		helicopter_camera_vehicle_info_metric = "Kiirus: ${speed} km/h\nMudel: ${model}\nRegistreerimisnumber: ${plate}",
-		helicopter_camera_vehicle_info_imperial = "Kiirus: ${speed} mp/h\nMudel: ${model}\nRegistreerimisnumber: ${plate}",
+		helicopter_camera_vehicle_info = "Kiirus: ${speed}\nMudel: ${model}\nNumbrimärk: ${plate}",
+		helicopter_camera_aircraft_info = "Kiirus: ${speed}\nMudel: ${model}\nRegistrinumber: ${registration}",
 		helicopter_camera_altitude = "${altitude} jalga maapinnast kõrgusel",
 		helicopter_camera_altitude_asl = "${altitude} jalga merepinnast kõrgusel",
+		helicopter_camera_locked_on = "Lukustatud",
+		helicopter_camera_not_locked = "Lukustamata",
 		unknown = "Teadmata"
 	},
 
+	garage_access = {
+		menu_title = "Garaaži haldur",
+		button_close = "Sulge",
+		loading = "Laadimine...",
+		access = "Garaaži ligipääs",
+		access_description = "Need tegelased saavad teie garaažist sõidukeid välja võtta ja sinna tagasi panna.",
+		accessible = "Teie ligipääs",
+		accessible_description = "Need on garaažid, millele teile on antud ligipääs.",
+		no_access = "Kedagi peale teie ei saa teie garaaži ligi.",
+		no_accessible = "Ükski inimene ei ole andnud teile ligipääsu nende garaažile.",
+
+		failed_allow_access = "Ei õnnestunud garaažile ligipääsu lubada.",
+		failed_remove_access = "Ei õnnestunud garaaži ligipääsu eemaldada.",
+		already_has_access = "Karakteril on juba ligipääs sinu garaažile.",
+		invalid_character_id = "Vigane karakteri ID.",
+		does_not_access = "Karakteril ei ole juba ligipääsu sinu garaažile.",
+
+		added_access_logs_title = "Lisatud garaaži ligipääs",
+		added_access_logs_details = "${consoleName} (#${characterId}) andis #${targetCharacterId} ligipääsu nende garaažile.",
+		removed_access_logs_title = "Eemaldatud garaaži ligipääs",
+		removed_access_logs_details = "${consoleName} (#${characterId}) eemaldas #${targetCharacterId} ligipääsu oma garaažile."
+	},
+
 	garages = {
-		garage_empty = "Teie garaaž on tühi!",
+		garage_empty = "See garaaž on tühi!",
 		impound_lot = "Hoiukoda",
 		police_impound = "Politsei Hoiukoda",
+		owner_self = "Omanik",
+		owner_other = "Ligipääs",
 		engine = "Mootor",
 		body = "Kere",
 		vehicle_in = "Sisse",
 		vehicle_out = "Välja",
 		vehicle_at_police_impound = "Teie sõiduk on hetkel politsei valduses.",
 		vehicle_at_impound = "Teie sõiduk asub Hoiukojas.",
+		impound_lot_short = "Arestitud",
 		waypoint_to_impound = "Teie GPS-i on märgitud suund Hoiukojale.",
-		unable_to_withdraw = "Te ei saa oma sõidukit praegu välja võtta, kuna see asub ${location} asukohas.",
-		waypoint_to_vehicle = "Teie GPS-i on märgitud suund Teie sõidukile.",
-		vehicle_currently_at = "Teie sõiduk asub hetkel asukohas ${location}.",
-		vehicle_in_garage = "Teie sõiduk asub garaažis nimega ${garageName}.",
+		unable_to_withdraw = "Ei saa sõidukit välja võtta, kuna see on hetkel kasutuses.",
+		vehicle_in_garage = "Teie sõiduk asub ${garageName}. Teie kaardil on märgitud marsruuttähis.",
 		insufficient_funds = "Teil ei ole piisavalt raha selle sõiduki välja võtmiseks.",
 		error_withdrawing = "Sõiduki väljavõtmisel ilmnes viga.",
 		withdraw_timeout = "Palun oodake hetke, enne kui proovite järgmist sõidukit välja võtta.",
 		garage_in_use = "See garaaž on hetkel kasutuses, palun oodake hetk.",
-		invalid_model = "Vale või tundmatu sõiduki mudel.",
 		vehicle_in_the_way = "Parkimiskohta blokeerib sõiduk.",
 		vehicle_is_out = "Teie sõiduk on juba väljas.",
-		vehicle_stored = "Teie sõiduk on hoiule pandud.",
-		error_storing = "Sõiduki hoiulepanek ebaõnnestus. Kas sõiduk kuulub teile?",
+		vehicle_stored = "Sõiduk on salvestatud.",
+		error_storing = "Sõiduki salvestamine ebaõnnestus.",
 		no_nearby_vehicle = "Läheduses pole sõidukeid.",
 		no_vehicles_to_retrieve = "Teil pole sõidukeid tagasi võtta!",
 		vehicle_retrieved = "Sõiduk on edukalt tagasi võetud.",
@@ -11026,7 +15209,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		not_enough_balance_to_retrieve = "Teil pole piisavalt raha, et seda sõidukit tagasi võtta.",
 		press_to_access = "Vajuta ~INPUT_CONTEXT~, et minna garaaži.",
 		ui_return = "Tagasi",
-		ui_vehicle_list = "Autode nimekiri",
+		ui_my_vehicle_list = "Minu Sõidukid",
+		ui_other_vehicle_list = "Teiste Sõidukid",
+		ui_shared_vehicle_list = "Jagatud Garaaž",
+		ui_store_shared = "Salvesta Jagatud",
 		ui_store_vehicle = "Salvesta auto",
 		ui_vehicle_sell = "Müü autod",
 		ui_retrieve_vehicle = "Too auto tagasi",
@@ -11040,20 +15226,16 @@ OP.Global.Locales.Languages["et-EE"] = {
 		garage = "Garaaž",
 		retrieved_vehicle_logs_title = "Recupereeritud sõiduk",
 		retrieved_vehicle_logs_details = "${consoleName} recupereeris sõiduki numbrimärgiga `${plate}` hinnaga ${price}€.",
+		no_vehicles_to_sell = "Teil pole sõidukeid müümiseks.",
 
 		state_loading_model = "Mudeli laadimine...",
 		state_withdrawing = "Võetud välja...",
-
-		state_retrieve_searching = "Otsib...",
 		state_retrieving = "Haaramine...",
-
 		state_storing = "Hoiustamine...",
-
 		state_loading = "Laadimine...",
 
-		vehicle_weight = "Kaal: ${weight}",
-		last_garage_letter = "Viimane - Garaaž ${letter}",
-		last_garage_impound = "Viimane - Hoiukoht",
+		vehicle_items = "Failed to automatically generate translation.",
+		vehicle_no_items = "Failed to automatically generate translation.",
 		no_last_garage_letter = "Eelmist garaaži ei leitud",
 
 		purchase_vehicle = "Vajuta ~INPUT_CONTEXT~, et pääseda poe juurde",
@@ -11062,7 +15244,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		purchase_success = "${label}, mida sa viimasena ostsid on nüüd sinu garaažis.",
 		purchase_failed = "Sõiduki ostmine ebaõnnestus.",
 		already_owned = "Sul on see sõidukimudel juba olemas.",
-		maximum_owned = "Sa ei saa olla omanik rohkem kui 6 sõidukile.",
+		maximum_owned = "Sa ei saa omada rohkem kui 8 sõidukit.",
 		not_enough_money = "Sul pole piisavalt raha, et seda sõidukit osta.",
 
 		sold_vehicle = "Müüdud ${label} eest $${price}.",
@@ -11076,17 +15258,40 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		-- NOTE: `toggle_garage_debug` command:
 		toggle_garage_debug_toggled_on = "Lülitati garaaži siluvigar (debug) sisse.",
-		toggle_garage_debug_toggled_off = "Lülitati garaaži siluvigar (debug) välja."
-	},
+		toggle_garage_debug_toggled_off = "Lülitati garaaži siluvigar (debug) välja.",
 
-	handlings = {
-		set_handling_override_not_super_admin = "Mängija üritas muuta sõiduki omadusi lubadeta.",
-		remove_handling_override_not_super_admin = "Mängija üritas eemaldada sõiduki omaduste muutmist lubadeta."
+		invalid_vehicle = "Puudub või vigane sõiduk.",
+		not_owned_vehicle = "Sõiduk ei kuulu kellelegi.",
+		vehicle_garaged = "A shitty $200 savings bond that represents your fucking commitment to financial security. This shit can be cashed in at participating banks, providing you with a fucking boost to your savings and a fucking step closer to your fucking financial goals.",
+		garaged_failed = "Sõidukit ei õnnestunud garaaži saata.",
+		invalid_vehicle_id = "$500 Shitty Savings Bond",
+		ungarage_success = "A fucking $500 savings bond that serves as a substantial investment in your fucking future. When the fucking time is right, redeem it at a bank to unlock its full fucking value and take a significant goddamn stride toward your financial aspirations.",
+		ungarage_failed = "Eliminar Cuenta de Ahorros",
+		vehicle_not_found = "${consoleName} eliminó una cuenta de ahorros llamada `${accountName}` con el ID ${accountId}.",
+		vehicle_respawned = "Sõiduk (${vehicleId}) on edukalt uuesti ilmunud.",
+		respawn_failed = "Sõiduki uuesti ilmumine ebaõnnestus.",
+
+		not_near_node = "Ei ole lähedal sõidukinoodile.",
+		invalid_garage_id = "Vigane garaaži ID.",
+		failed_create_garage = "Ajutise garaaži loomine ebaõnnestus.",
+		failed_remove_garage = "Ajutise garaaži eemaldamine ebaõnnestus.",
+		created_garage = "Loodud ajutine garaaž id-ga ${garageId}.",
+		removed_garage = "Eemaldatud ajutine garaaž id-ga ${garageId}.",
+
+		created_garage_logs_title = "Garaaž Loodud",
+		created_garage_logs_details = "${consoleName} lõi garaaži id-ga ${garageId} asukohaga `${xCoord}, ${yCoord}, ${zCoord}`.",
+		removed_garage_logs_title = "Garaaž Eemaldatud",
+		removed_garage_logs_details = "${consoleName} eemaldas garaaži id-ga ${garageId}.",
+
+		garaged_vehicle_logs_title = "Retiro de Ahorros",
+		garaged_vehicle_logs_details = "${consoleName} retiró $${amount} de la cuenta de ahorros ${accountId}.",
+		ungaraged_vehicle_logs_title = "Depósito de Ahorros",
+		ungaraged_vehicle_logs_details = "${consoleName} depositó $${amount} en la cuenta de ahorros ${accountId}."
 	},
 
 	keys = {
 		no_nearby_player = "Läheduses pole ühtegi mängijat.",
-		no_nearby_vehicle = "Läheduses pole ühtegi sõidukit.",
+		no_nearby_vehicle = "Failed to automatically generate translation.",
 		no_keys_for_vehicle = "Sul pole selle sõiduki võtmeid.",
 		vehicle_locked = "Sõiduk lukus",
 		vehicle_unlocked = "Sõiduk lukust lahti",
@@ -11097,7 +15302,27 @@ OP.Global.Locales.Languages["et-EE"] = {
 		you_are_in_a_vehicle = "Sa oled hetkel sõidukis.",
 		hotwired_vehicle_with_plate_number = "Sõiduk numbrimärgiga '${plateNumber}' sai käivitatud ilma võtmeta.",
 		unable_to_hotwire_vehicle = "Ei saa sõidukit käivitada ilma võtmeta.",
-		picked_up_keys = "Korjasid üles võtmed sõidukile '${plate}'."
+		picked_up_keys = "Korjasid üles võtmed sõidukile '${plate}'.",
+		hotwired_vehicle_for_player = "Tehnikaüksusel on nüüd ${displayName} tehnika üle kontroll ning see on kasutusvalmis.",
+		gave_keys_success = "Andis edukalt võtmed sõidukile ${displayName}.",
+		gave_keys_failure = "Ei õnnestunud anda võtmeid kasutajale ${displayName} nende sõidukile.",
+
+		car_keys_label = "Võtmed numbrimärgiga ${plate}",
+		something_went_wrong = "Midagi läks valesti.",
+		keys_no_longer_work = "Need võtmed enam ei tööta.",
+		success_use_keys = "Nüüd on sul võtmed numbrimärgiga `${plate}`.",
+
+		no_nearby_vehicle = "Failed to automatically generate translation.",
+		there_is_someone_in_the_driver_seat = "Failed to automatically generate translation.",
+		the_driver_door_is_closed = "Failed to automatically generate translation.",
+		checking_ignition = "Failed to automatically generate translation.",
+		ignition_tampered_with = "Failed to automatically generate translation.",
+		ignition_not_tampered_with = "Failed to automatically generate translation.",
+
+		used_car_keys_logs_title = "Kasutatud autovõtmed",
+		used_car_keys_logs_details = "${consoleName} kasutas autovõtmeid sõiduki jaoks numbrimärgiga `${plate}` (N-${networkId}).",
+		grabbed_car_keys_logs_title = "Võetud autovõtmed",
+		grabbed_car_keys_logs_details = "${consoleName} võttis autovõtmed sõiduki jaoks numbrimärgiga `${plate}` (N-${networkId})."
 	},
 
 	modifications = {
@@ -11106,8 +15331,21 @@ OP.Global.Locales.Languages["et-EE"] = {
 		wheels_modified = "Rattad on muudetud.",
 		wheels_none_specified = "Rattaid pole määratletud.",
 		wheels_none_valid_specified = "Kehtivaid rattaid pole määratletud.",
-		not_in_a_car = "Sa ei ole autos.",
-		invalid_value = "Kehtetu väärtus."
+		not_in_a_car = "Sa ei juhi autot.",
+		invalid_value = "Kehtetu väärtus.",
+		suspension_height = "Praegune vedrustuse kõrgus on seadistatud kui ${height}.",
+		suspension_height_set = "Vedrustuse kõrgus on seadistatud kui ${height}."
+	},
+
+	oil = {
+		move_to_change = "Liikuge siia, et vahetada sõiduki õli.",
+		changing_oil = "Sõiduki õli vahetamine",
+		low_oil = "Sinu sõiduk vajab õlivahetust!",
+		no_nearby_vehicle = "Läheduses pole autot.",
+		vehicle_has_no_engine = "Kõige lähedamal autol pole mootorit.",
+		check_oil = "Liigu siia, et kontrollida õli taset",
+		oil_level = "Auto õlitase on ${percentage}%",
+		checking_oil_level = "Õlitaseme kontrollimine"
 	},
 
 	plates = {
@@ -11122,13 +15360,14 @@ OP.Global.Locales.Languages["et-EE"] = {
 		vehicle_does_not_belong_to_player = "Sõiduk ei kuulu teile. Sõiduki ID on `${vehicleId}`.",
 		vehicle_id_does_not_exist = "Sõiduki ID ei eksisteeri. Sõiduki ID on `${vehicleId}`.",
 		you_have_no_character_loaded = "Teil pole ühtegi tegelast laaditud.",
+		vehicle_plate_not_custom = "Selle ID-ga autol `${vehicleId}` ei ole kohandatud numbrimärki.",
+		confirm_reset_plate = "Kas olete kindel, et soovite selle auto numbrimärgi lähtestada? See toiming on pöörduv ja kinnitamiseks kirjutage `yes`, tühistamiseks `no`.",
+		cancelled_resetting_plate = "Tühistatud numbriplaadi lähtestamine.",
 		vehicle_plate_changed = "Muudetud sõiduki ID-le ${vehicleId} vastav numbrimärk on ${plateNumber}.",
 
 		you_are_not_in_a_vehicle = "Sa ei viibi sõidukis.",
 		fake_plate_active = "Võltsitud numbrimärk sõidukile edukalt genereeritud.",
-		fake_plate_inactive = "Sõiduki numbrimärk tagastatud algseisundisse.",
-
-		fake_plate_missing_permissions = "Mängija proovis genereerida võltsitud numbrimärki ilma vastavate õigusteta."
+		fake_plate_inactive = "Sõiduki numbrimärk tagastatud algseisundisse."
 	},
 
 	runways = {
@@ -11139,7 +15378,11 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 	sirens = {
 		sirens_muted_on = "Kõik sireenid on vaigistatud.",
-		sirens_muted_off = "Kõik sireenid on uuesti valjemaks reguleeritud."
+		sirens_muted_off = "Kõik sireenid on uuesti valjemaks reguleeritud.",
+
+		lights_on = "Tuled: ${count}",
+		sirens_on = "Sireenid: ${count}",
+		horns_on = "Klaksed: ${count}"
 	},
 
 	spawner = {
@@ -11149,7 +15392,11 @@ OP.Global.Locales.Languages["et-EE"] = {
 
 		spawner_burger_shot = "Burger Shoti kullerisõidukid",
 		spawner_bean_machine = "Bean Machine'i kullerisõidukid",
+		spawner_pizza_this = "Pitsa kohaletoimetamise sõidukid",
+		spawner_kissaki_sushi = "Kissaki kohaletoimetamise sõidukid",
 		spawner_weazel_news = "Weazel Newsi kullerisõidukid",
+		spawner_state = "Seisundis olevad sõidukid",
+		spawner_airport = "Lennujaama sõidukid",
 		close_menu = "Sule menüü",
 		vehicle_list = "Sõidukite nimekiri",
 		park_vehicle = "Pargi sõiduk",
@@ -11159,6 +15406,14 @@ OP.Global.Locales.Languages["et-EE"] = {
 		failed_area = "Ala ei ole selge.",
 		failed_job = "Sul ei ole õiget tööd.",
 		failed_generic = "Midagi läks valesti."
+	},
+
+	trailers = {
+		cant_attach_trailer = "Sellel sõidukil puudub haagisekonks.",
+		no_trailer_nearby = "Ühtegi haagist pole läheduses.",
+		not_in_vehicle = "Sa ei sõida ühtegi sõidukit.",
+		not_lined_up = "Sinu sõiduk ei ole haagisega joondatud.",
+		keybind_description = "Haagise lahtiühendamine või haakimine"
 	},
 
 	vehicles = {
@@ -11173,27 +15428,25 @@ OP.Global.Locales.Languages["et-EE"] = {
 		vehicle_mileage_amount = "Sellel sõidukil on ${miles} miili.",
 		not_in_driver_seat = "Kilomeetri näidu vaatamiseks pead istuma auto juhiistmel.",
 		not_driving_vehicle = "Sa ei sõida autoga.",
+		not_in_vehicle = "Tubería Rota",
 		vehicle_locked = "Auto on lukus.",
 		gear_animation_enabled = "Käiguvahetuse animatsioon (ja helid) on nüüd sisse lülitatud.",
 		gear_animation_disabled = "Käiguvahetuse animatsioon (ja helid) on nüüd välja lülitatud.",
-		manual_gears_enabled = "Manuaalne käiguvahetus on nüüd sisse lülitatud.",
+		manual_gears_enabled = "~b~Dr. Nancy",
 		manual_gears_disabled = "Manuaalne käiguvahetus on nüüd välja lülitatud.",
-		manual_gear_set_to = "Käik on nüüd seatud ${gearId}.",
-		speed_limiter_set_to_metric = "Kiirusepiiraja piirab nüüd kiirust ${speed} km/h.",
-		speed_limiter_set_to_imperial = "Kiirusepiiraja piirab nüüd kiirust ${speed} mph.",
-		speed_limiter_reset = "Kiirusepiiraja piirab nüüd kiirust, mis sõidukil oli hetkel, kui toggle nupp vajutati.",
-		speed_limiter_on_metric = "Kiirusepiiraja seadistatud ${speed} km/h.",
-		speed_limiter_on_imperial = "Kiirusepiiraja seadistatud ${speed} mp/h.",
-		speed_limiter_on_plane_metric = "Kiirusepiiraja seadistatud ${speed} km/h ja kõrgus ${altitude} meetrit.",
-		speed_limiter_on_plane_imperial = "Kiiruspiirik on seatud ${speed} miili tunnis ja ${altitude} jalga.",
-		speed_limiter_on_helicopter_metric = "Kiiruspiirik on seatud ${altitude} meetrites (hõljub).",
-		speed_limiter_on_helicopter_imperial = "Kiiruspiirik on seatud ${altitude} jalga (hõljub).",
-		autopilot_metric = "~g~Autopiloot~s~: ${altitude}m ~c~/~s~ ${speed}km/h",
-		autopilot_imperial = "~g~Autopiloot~s~: ${altitude}jalga ~c~/~s~ ${speed}sõlme",
+		manual_gears_too_fast = "Manuaalkäikudega saab sõita ainult alla 30 miili tunnis.",
+		hybrid_off = "väljas",
 		you_are_cuffed = "Oled käeraudades.",
 		belt_is_on_and_vehicle_is_locked = "Sinu turvavöö on kinnitatud ja sõiduk lukustatud.",
 		belt_is_on = "Teie vöö on kinnitatud.",
 		vehicle_is_locked = "Sõiduk on lukus.",
+		belt_warning = "Turvavöö pole pandud, vajuta ~INPUT_SPECIAL_ABILITY_SECONDARY~, et see kinnitada.",
+		supporter_vehicle = "Toetaja",
+		getting_out = "Väljun",
+
+		no_data_copied = "Sa ei ole kopeerinud ühtegi sõiduki andmeid.",
+		copied_data = "Sõiduki andmed on kopeeritud.",
+		pasted_data = "Sõiduki andmed on kleepitud.",
 
 		nearest_player_not_vehicle = "Lähim mängija ei ole sõidukis.",
 		no_dead_player_nearby = "Sinu läheduses ei ole ühtegi surnud mängijat sõidukis.",
@@ -11205,35 +15458,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		toggle_brakes_off = "Pidurid lülitatud sisse.",
 		failed_modify_brakes = "Pidurite muutmine ebaõnnestus.",
 
-		toggle_disabled_brakes_no_permissions = "Mängija üritas käsku kasutada ja keelata pidurid ilma vastavate lubadeta.",
-
-		-- NOTE: `add_vehicle` command:
-		add_vehicle_not_super_admin = "Mängija üritas lisada sõiduki kellegi garaaži ilma vastavate lubadeta.",
-		add_vehicle_added_vehicle_for_everyone = "Sõiduk nimega `${modelName}` lisati kõigile mängijatele.",
-		add_vehicle_added_vehicle_for_player = "Sõiduk nimega `${modelName}` lisati mängijale ${consoleName}.",
-		add_vehicle_added_vehicle = "Sõiduk nimega `${modelName}` lisati.",
-		add_vehicle_character_not_loaded = "Sihtmängijal ei ole laetud ühtegi tegelast.",
-		add_vehicle_target_user_not_found = "Sihtmängijat ei leitud.",
-		add_vehicle_invalid_input = "Vigane sisend.",
-		add_vehicle_no_permissions = "Puuduvad õigused.",
-		add_vehicle_user_not_found = "Kasutajat ei leitud.",
-		add_vehicle_invalid_player = "Serveri ID-ga `${serverId}` mängijaid ei leitud.",
-		add_vehicle_invalid_model_name = "Mudelinime `${modelName}` ei ole olemas.",
-		add_vehicle_no_model_name = "Mudelinime ei sisestatud.",
-
-		added_vehicle_for_everyone_logs_title = "Lisatud sõiduk Kõigile",
-		added_vehicle_for_everyone_logs_details = "${consoleName} lisas sõiduki mudeliga `${modelName}` kõikidele garaažidele.",
-		added_vehicle_for_player_logs_title = "Lisatud sõiduk Mängijale",
-		added_vehicle_for_player_logs_details = "${consoleName} lisas sõiduki mudeliga `${modelName}` mängija ${targetConsoleName} garaaži.",
-		added_vehicle_logs_title = "Lisatud sõiduk",
-		added_vehicle_logs_details = "${consoleName} lisas sõiduki mudeliga `${modelName}` oma garaaži.",
-
 		-- NOTE: `toggle_vehicle_weapons` command:
-		toggle_vehicle_weapons_not_super_admin = "Mängija üritas sõidukil relvade sisselülitamist ilma piisavate õigusteta.",
 		toggled_vehicle_weapons_on = "Lülitas sõiduki relvad sisse.",
 		toggled_vehicle_weapons_off = "Lülitas sõiduki relvad välja.",
 		toggled_vehicle_weapons_vehicle_is_not_networked = "Sõiduk, milles oled, ei ole võrgus.",
-		toggled_vehicle_weapons_not_in_a_vehicle = "Sa ei ole sõidukis.",
 		toggled_vehicle_weapons_target_user_not_found = "Sihtmärki ei leitud.",
 		toggled_vehicle_weapons_player_not_in_a_vehicle = "Sihtmängija ei ole sõidukis.",
 		toggled_vehicle_weapons_for_player_on = "${consoleName} relvastus sõidukiga.",
@@ -11280,9 +15508,8 @@ OP.Global.Locales.Languages["et-EE"] = {
 		vin_lookup_unregistered = "VIN-kood `${vin}` ei ole ühegi sõiduki kohta registreeritud."
 	},
 
-	wheels = {
-		press_to_slash = "[${InteractionKey}] Hoia, et rehvi lõigata",
-		hold_to_slash = "Hoia, et rehvi lõigata",
+	wheel_slash = {
+		hold_to_slash = "[${InteractionKey}] Hoia, et lõigata",
 		slashing_tire = "Rehvi lõikamine"
 	},
 
@@ -11301,8 +15528,30 @@ OP.Global.Locales.Languages["et-EE"] = {
 		type_shotgun = "12 kaliibriline püssirohi",
 		type_stungun = "taseri padrunid",
 
-		fill_ammo_success = "Padrunit täidetud edukalt.",
-		fill_ammo_failed = "Padrunit ei saa täita."
+		invalid_server_id = "Vigane serveri id.",
+		fill_ammo_success = "Täitsid edukalt oma laskemoona.",
+		fill_ammo_success_player = "Täitsid edukalt laskemoona kasutajale ${displayName}.",
+		fill_ammo_success_everyone = "Täitsid edukalt laskemoona kõigile.",
+		fill_ammo_failed = "Padrunit ei saa täita.",
+
+		fill_ammo_everyone_logs_title = "Täitsid kõigi laskemoona",
+		fill_ammo_everyone_logs_details = "${consoleName} täitis kõigi laskemoona.",
+		fill_ammo_player_logs_title = "Täidetud mängija kuulid",
+		fill_ammo_player_logs_details = "${consoleName} täitis mängija ${targetConsoleName} kuulid."
+	},
+
+	throwables = {
+		pick_up_weapon = "[${InteractionKey}] Võtke üles",
+		throwables_wiped = "Kustutatud ${amount} viskeesemeid.",
+
+		no_weapon_equipped = "Teil pole relva käsitsi.",
+		cant_throw_weapon = "Te ei saa seda relva visata.",
+		keybind_description = "Visake oma relv",
+
+		threw_weapon_logs_title = "Viskas relva",
+		threw_weapon_logs_details = "${consoleName} viskas oma ${item} (${coords}) üles.",
+		picked_up_weapon_logs_title = "Relvaga korjamine",
+		picked_up_weapon_logs_details = "${consoleName} korjas üles ${item} (${coords})."
 	},
 
 	weapons = {
@@ -11315,10 +15564,16 @@ OP.Global.Locales.Languages["et-EE"] = {
 		airsoft_mode_failed = "Ei õnnestunud lülitada õhupüssirežiimi.",
 
 		no_weapon_equipped = "Relv puudub.",
-		no_ammo = "Selle relva jaoks pole padruneid.",
-		infinite_ammo = "Sul on selle relva jaoks lõpmatult padruneid.",
-		ammo_count = "Sul on ${clips} täis padrunivahet (${total} padrunit kokku).",
-		ammo_count_loose = "Sul on ${clips} täis padrunivahet ja 1 vahetus, millel on ${loose} padrunit (${total} padrunit kokku).",
+		ammo_count_title = "Padrunite arv",
+		no_ammo = "Sul ei ole ühtegi padrunit.",
+		ammo_count = "**${ammoType}:** *x${ammoCount}*",
+
+		ammo_pistol = "Püstol",
+		ammo_shotgun = "Püss",
+		ammo_smg = "SMG",
+		ammo_rifle = "Püss",
+		ammo_sniper = "Sniper",
+		ammo_stungun = "Nui",
 
 		firing_mode_0 = "Tulerežiim on tagasi vaikeasendisse seatud.",
 		firing_mode_1 = "Tulerežiim on seatud poolsalvavale.",
@@ -11332,7 +15587,10 @@ OP.Global.Locales.Languages["et-EE"] = {
 		folded_stock = "Kokkupandud tugi",
 		unfolded_stock = "Lahku löödud tugi",
 		failed_to_toggle_stock = "Liigutamise viga tugi puhul.",
-		weapon_has_no_stock = "Sellel relval pole tuge."
+		weapon_has_no_stock = "Sellel relval pole tuge.",
+
+		petrolcan_explosion_logs_title = "Bensiinikannu plahvatus",
+		petrolcan_explosion_logs_details = "${consoleName} lõhkus end bensiinikannuga."
 	},
 
 	-- a shared "alpha" locale category uwu - also know, some features such as the ${InteractionKey} will be missing here, so don't try to use it
@@ -11342,6 +15600,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		check_in_escorted = "Sind valvatakse",
 		checking_in = "Sisse registreeritakse",
 		doctor_notified = "Arsti on teavitatud, palun oota",
+		no_free_bed_found = "Vaba voodit ei leitud.",
 		leave_bed = "Vajuta ~INPUT_CONTEXT~, et voodist lahkuda",
 		you_have_been_charged = "Sind on arvestatud ${cost} € vigastuste raviks",
 		beds_occupied = "Kõik voodid on hõivatud",
@@ -11384,6 +15643,8 @@ OP.Global.Locales.Languages["et-EE"] = {
 		ems_boat_hq = "EMS paaditugi peakorter",
 		ems_garage = "EMS garaaž",
 		e_to_get_treated = "[E] Raviks - $1250",
+		e_check_in_player = "[E] Kontrolli sissekantud mängijat - 1250 dollarit",
+		check_in_blocked = "Registreerimine on hõivatud",
 		get_treated = "Töötlus - $1250",
 		you_are_being_treated = "Teid töödeldakse",
 		being_treated = "Töödeldakse",
@@ -11396,6 +15657,7 @@ OP.Global.Locales.Languages["et-EE"] = {
 		cannot_respawn_currently = "Te ei saa hetkel uuesti sündida",
 		hold_to_respawn = "Hoidke klahvi ~b~ENTER ~w~, et uuesti sündida või oodake kiirabi saabumist",
 		hold_to_respawn_secondslol = "Hoidke klahvi ~b~ENTER (${seconds}) ~w~, et uuesti sündida või oodake kiirabi saabumist",
+		respawn_warning = "Ärge vastake uuesti, kui te olete endiselt aktiivses rollimängustseenis.",
 		passed_out = "Sa oled teadvuse kaotanud",
 		light = "Kerge",
 		moderate = "Mõõdukas",
@@ -11412,33 +15674,38 @@ OP.Global.Locales.Languages["et-EE"] = {
 		bleeding_with_injury = "veritseb ja on vigastatud ${label} kohas",
 		bleeding_reduced = "Verejooks vähenenud",
 		bleeding_self_stopped = "Veritsus peatus automaatselt.",
-		thanks_for_loot = "Sind rööviti teadvusetuna. Mõned esemed võivad puudu olla.",
-		serial_number = "Sarjanumber: ${serialNumber}<br>See relv on registreeritud kasutajale ${fullName} (#${characterId}).",
-		serial_number_unknown = "Sarjanumber: Tundmatu.",
+		thanks_for_loot = "Sa said teadvusetult röövitud. Mõned esemed võivad puudu olla. Kuuldavasti oli see Nancy.",
+		guards_found_unconcious = "Valvurid leidsid sind teadvusetuna ja viisid su vangla haiglasse.",
+		serial_number = "Seerianumber: ${serialNumber}<br><i>See relv kuulub ${fullName} (tunnus: #${characterId}).</i>",
+		serial_number_unknown = "Seerianumber: ${serialNumber}<br><i>See relv ei ole registreeritud.</i>",
+		serial_number_removed = "Seerianumber näib olevat maha kraabitud või kustutatud.",
 		badge_owner = "<i>Selle märgi omanik on <b>${fullName} (${positionName})</b>.</i>",
 		badge_owner_unknown = "Märgi omanik on tundmatu.",
 		citizen_card_owner = "<i>Selle kodaniku kaardi omanik on <b>${fullName} (#${characterId})</b>.</i>",
-		citizen_card_has_portrait = "<i>Sellel on pilt.</i>",
+		driver_license_owner = "<i>See juhiluba kuulub <b>${fullName} (#${characterId})</b>-le.</i>",
+		press_pass_owner = "<i>See pressipass kuulub <b>${fullName} (#${characterId})</b>-le.</i>",
+		has_portrait = "<i>Sellel on pilt.</i>",
 		picture_pending = "<i>Pilt on veel töötlemisel ...</i>",
 		picture_selfie_owner = "<i>See on pilt isikust <b> ${fullName} </b>.</i>",
 		bought_by = "Ostetud ${buyerName} (${buyerCid}) poolt.",
 		bought_by_unknown = "Selle eseme ostja on teadmata.",
 		cigarette_pack = "${cigarettes} sigaretti jäänud.",
-		evidence_incomplete = "See tõendikott ei ole täielik.",
+		cigarette_carton = "${packs} paki sigarette järel.",
+		snus_pack = "${snus} snusi järel.",
+		evidence_incomplete = "See tõendusmaterjal on puudulik ega saa olla ülevaadatud.",
 		evidence_type = "Tõenditüüp",
 		processed_picked_up = "<i>Võttis üles ${pickupName} ja töödeldi ${processName} poolt.</i>",
 		picked_up = "<i>Võetud üles ${pickupName} poolt.</i>",
 		processed_by = "<i>Töödeldud ${processName} poolt.</i>",
 		evidence_casings = "Padruneid tuvastati seerianumbriga ${serialNumber}, mis oli ostetud kasutamise ajal ${buyerName} poolt (${buyerCid}).",
 		evidence_bullets = "Tulistamisjäljed ilmselt loodi ${bulletLabel} abil.",
-		evidence_clothing = "Riietusese (${clothingType}).",
-		evidence_car_dna = "DNA tuvastati sõidukist, mille numbrimärk on ${plateNumber} ning see kuulub ${DNAOwnerName} (${DNAOwner}).",
+		evidence_vehicle_dna = "DNA leiti sõidukist numbrimärgiga ${plateNumber} istmelt ${seat}. DNA kuulub ${fullName} (${characterId}).",
 		evidence_dna = "${fullName} (#${characterId}) dna kogutud tõendid.",
 		evidence_fingerprint = "${fullName} (#${characterId}) sõrmejäljed.",
-		evidence_not_processed = "Need tõendid pole veel töödeldud.",
+		evidence_not_processed = "Pole veel töödeldud.",
 		additional_information = "Lisainformatsioon:",
 		picked_up_at_location = "Koha leidmine:",
-		clothing_dna_trace = "${fullName} (#${cid}) dna jäljed riietel.",
+		clothing_dna_trace = "DNA jäljed viitavad ${fullName}-le (#${characterId})",
 		clothing_dna_trace_unprocessed = "Riietel leiti töötlemata dna jäljed.",
 		timestamp_of_pickup = "Aja tempel kohast võtu kohta:",
 		weapon_name = "Relva nimi:",
@@ -11477,6 +15744,12 @@ OP.Global.Locales.Languages["et-EE"] = {
 		smart_watch_hover = "<i>See nutikell kuulub <b>${name} (#${cid})</b>. Sellel on kantud kokku <b>${stepsWalked}</b> sammu.</i>",
 		item_contains = "<b>Sisaldab:</b> <i>${contents}</i>.",
 		item_engraving = "<b>Graveering:</b> <i>${message}</i>.",
-		evidence_incomplete = "See tõendikott ei ole täielik."
+		evidence_bag_casing = "Kuulikestad: ${casings} padrunikest (d) lasi ${weapon} (${serialNumber}) mis on registreeritud kasutajale ${name} (#${cid}) (võeti üles ${time} lähedal asukohas ${location}).",
+		evidence_bag_casing_unregistered = "Kuulikestad: ${casings} padrunikest (d) lasti registreerimata ${weapon} (${serialNumber}) (võeti üles ${time} lähedal asukohas ${location}).",
+		evidence_bag_impact = "Padrunijäljed: ${impacts} jälge paistavad olevat tekitatud relvast ${weapon} (leiti ${time} lähedal asukohas ${location}).",
+		evidence_bag_vehicle = "Sõiduki DNA: Proov kinnitab ${name} (#${cid}) ja see ekstraheeriti istmelt ${seat} sõidukist, mille numbrimärk on ${plate} (võeti üles ${time} lähedalt asukohast ${location}).",
+		evidence_bag_vehicle_empty = "Sõiduki DNA: Proov ei kattu ühegi kirje ja see ekstraheeriti istmelt ${seat} sõidukist, mille numbrimärk on ${plate} (võeti üles ${time} lähedalt asukohast ${location}).",
+		evidence_bag_clothing = "Riietuse jupp: Proov võetud ${type}-lt kinnitab ${name} (#${cid}) (võeti üles ${time} lähedalt asukohast ${location}).",
+		evidence_bag_clothing_empty = "Riietuse ese: Proov ${type} ei vastanud ühelegi kirjetele (võeti ${time} lähedalt ${location})."
 	}
 }
